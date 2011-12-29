@@ -8,7 +8,7 @@
 		........statemachine
 		...converter.xmi - package that will contains converter from XMI format to our model.
 		...engine - contains will contains classes for verifying UML.
-		...gui - it's obviously.
+		...gui - it's obviously..
 		
 		
 		
