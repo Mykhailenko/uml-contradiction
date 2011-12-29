@@ -9,5 +9,6 @@ public class Client {
 		frame.setLocation(300, 300);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		System.out.println("completed..");
 	}
 }

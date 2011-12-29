@@ -1,1 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<project name="UML Contradiction" basedir="." default="run">
+	<property name="src" location="main"/>
+	<property name="build" location="build"/>
+	<path id="classpath">
+	        <pathelement path="build" />
+	</path>
+	<target name="init">
+		<mkdir dir="${build}"/>
+	</target>
+	<target name="compile" depends="init">
+		<javac srcdir="${src}" destdir="${build}"	/>
+	</target>
+	<target name="run" depends="compile">
+		
+		<java  fork="no" classname="com.uml.contradiction.gui.Client" >
+			<classpath refid="classpath"/>
+			<arg line=""/>
+			
+		</java>
+	</target>
+	
+</project>
