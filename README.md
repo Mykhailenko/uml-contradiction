@@ -1,3 +1,4 @@
+##  Verification UML Contradiction ##
 		Hello! It is project about verifying contradiction that may occur in UML(2.0 version) project.
 	We decided to work with 4 types of diagrams : Class, Object, Sequence, State Machine.
 	There are 4 package in the root:
@@ -13,8 +14,8 @@
 		There is visual-paradigm project in folder resource.
 		
 		
-	Authors:
-		Kulankhina Alexandra
-		Mikhaylenko Gleb
-		Shatalov Yaroslav
+### Contributors:
+* Kulankhina Alexandra	mary.culiflower@gmail.com
+* Mikhaylenko Gleb		tas.nix@gmail.com
+* Shatalov Yaroslav
 	
