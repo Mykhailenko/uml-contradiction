@@ -1,10 +1,11 @@
 package com.uml.contradiction.engine.model;
-import java.util.*;
+
+import java.util.List;
 
 public class Criterion {
 	private String name;
-	private Collection<Quantifier> quantifiers;
-	private Collection<BoundedPredicate> boundedPredicates;
+	private List<Quantifier> quantifiers;
+	private List<BoundedPredicate> boundedPredicates;
 	private boolean negative;
 	public String getName() {
 		return name;
@@ -12,16 +13,17 @@ public class Criterion {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Collection<Quantifier> getQuantifiers() {
+	
+	public List<Quantifier> getQuantifiers() {
 		return quantifiers;
 	}
-	public void setQuantifiers(Collection<Quantifier> quantifiers) {
+	public void setQuantifiers(List<Quantifier> quantifiers) {
 		this.quantifiers = quantifiers;
 	}
-	public Collection<BoundedPredicate> getBoundedPredicates() {
+	public List<BoundedPredicate> getBoundedPredicates() {
 		return boundedPredicates;
 	}
-	public void setBoundedPredicates(Collection<BoundedPredicate> boundedPredicates) {
+	public void setBoundedPredicates(List<BoundedPredicate> boundedPredicates) {
 		this.boundedPredicates = boundedPredicates;
 	}
 	public boolean isNegative() {
