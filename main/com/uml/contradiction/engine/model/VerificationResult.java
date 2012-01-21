@@ -3,8 +3,8 @@ package com.uml.contradiction.engine.model;
 import java.util.List;
 
 public class VerificationResult {
-	private boolean good;
-	private List<HistoryItem> badHistory;
+	private boolean good = false;
+	private List<HistoryPlainItem> badHistory;
 	public boolean isGood() {
 		return good;
 	}
@@ -13,12 +13,13 @@ public class VerificationResult {
 		this.good = good;
 	}
 
-	public List<HistoryItem> getBadHistory() {
+	public List<HistoryPlainItem> getBadHistory() {
 		return badHistory;
 	}
 
-	public void setBadHistory(List<HistoryItem> badHistory) {
+	public void setBadHistory(List<HistoryPlainItem> badHistory) {
 		this.badHistory = badHistory;
 	}
+
 	
 }
