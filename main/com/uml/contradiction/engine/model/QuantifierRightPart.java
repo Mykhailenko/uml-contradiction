@@ -9,6 +9,6 @@ public interface QuantifierRightPart {
 	 * @param params
 	 * @return 
 	 */
-	List getSet(int params);
+	List getSet(List params);
 
 }

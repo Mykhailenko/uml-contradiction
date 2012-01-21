@@ -6,7 +6,7 @@ public class ComplexRightPart implements QuantifierRightPart {
 	Variable boundVariable;
 	Collection<Mapping> nestedMappings;
 	@Override
-	public List getSet(int params) {
+	public List getSet(List params) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -5,7 +5,7 @@ public class BoundedPredicate {
 
 	Collection<Variable> boundVariable;
 	private boolean negative;
-
+	private Predicate predicate;
 	public boolean isNegative() {
 		return this.negative;
 	}
@@ -13,5 +13,5 @@ public class BoundedPredicate {
 	public void setNegative(boolean negative) {
 		this.negative = negative;
 	}
-
+	
 }
