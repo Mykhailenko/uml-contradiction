@@ -3,7 +3,7 @@ import java.util.*;
 
 public class BoundedPredicate {
 
-	private Collection<Variable> boundVariable;
+	private List<Variable> boundVariable;
 	private boolean negative;
 	private Predicate predicate;
 	public boolean isNegative() {
@@ -14,11 +14,11 @@ public class BoundedPredicate {
 		this.negative = negative;
 	}
 
-	public Collection<Variable> getBoundVariable() {
+	public List<Variable> getBoundVariable() {
 		return boundVariable;
 	}
 
-	public void setBoundVariable(Collection<Variable> boundVariable) {
+	public void setBoundVariable(List<Variable> boundVariable) {
 		this.boundVariable = boundVariable;
 	}
 

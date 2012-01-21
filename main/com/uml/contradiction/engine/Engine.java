@@ -31,15 +31,51 @@ public class Engine {
 		}
 		// тут мы имеем "консервативную историю". Осталось её санализировать
 		
-		
-		boolean isSuccess = true;
-		VerificationResult result = new VerificationResult();
-		result.setGood(isSuccess);
-		///////////////////////////////////////
+		VerificationResult result = analysHistory();
 		return null;
 	}
 	
+	private VerificationResult analysHistory() {
+		VerificationResult result = new VerificationResult();
+		Quantifier quantifier = criterion.getQuantifiers().get(0);
+		int counter = 0;
+		for(int i = 0; i < wholeHistory.size(); ++i){
+			if(analyse(wholeHistory.get(i))){
+				++counter;
+			}
+		}
+		switch (quantifier.getType()) {
+		case ALL:
+			if(counter == wholeHistory.size()){
+				result.setGood(true);
+			}else{
+				result.setGood(false);
+			}
+			break;
+		case EXIST:
+			if(counter > 0){
+				result.setGood(true);
+			}else{
+				result.setGood(false);
+			}
+			break;
+		case ALONE:
+			if(counter == 1){
+				result.setGood(true);
+			}else{
+				result.setGood(false);
+			}
+			break;
+		}
+		return result;
+	}
+
+	private boolean analyse(HistoryItem historyItem) {
+		return false;
+	}
+
 	private void verify(HistoryItem parentHistoryItem, int currentIndex) {
+		assert currentIndex > 0 : "Bad index";
 		if(currentIndex < criterion.getQuantifiers().size()){
 			Quantifier quantifier = criterion.getQuantifiers().get(currentIndex);
 			List<Object> set = quantifier.getRightPart().getSet(parentHistoryItem.getPlainHistory()); 
@@ -67,10 +103,33 @@ public class Engine {
 		}
 	}
 	private boolean evaluetePredicate(BoundedPredicate boundedPredicate, List<VariableValue> currentVariables){
-		return true;
+		List<Object> vars = new LinkedList<Object>();
+		for(int i = 0; i < boundedPredicate.getBoundVariable().size(); ++i){
+			vars.add(findVV(currentVariables, boundedPredicate.getBoundVariable().get(i)));
+		}
+		return boundedPredicate.getPredicate().predict(vars);
+	}
+	private Object findVV(List<VariableValue> list, Variable variable){
+		for(VariableValue variableValue : list){
+			if(variableValue.variable.equals(variable)){
+				return variableValue.value;
+			}
+		}
+		return null;
 	}
 	public Engine(Criterion criterion) {
 		this.criterion = criterion;
 		this.wholeHistory = new LinkedList<HistoryItem>();
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
