@@ -31,6 +31,15 @@ public class HistoryItem {
 		return result;
 		
 	}
+	public int getDepth(){
+		int result = 1;
+		HistoryItem current = this.parent;
+		while(current != null){
+			++result;
+			current = current.parent;
+		}
+		return result;
+	}
 	public VariableValue getVariableValue() {
 		return variableValue;
 	}

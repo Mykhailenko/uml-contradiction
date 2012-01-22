@@ -1,16 +1,14 @@
 package com.uml.contradiction.engine;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.pattern.LogEvent;
 
 import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.Criterion;
 import com.uml.contradiction.engine.model.HistoryItem;
+import com.uml.contradiction.engine.model.HistoryPlainItem;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.Variable;
 import com.uml.contradiction.engine.model.VariableValue;
@@ -36,49 +34,9 @@ public class Engine {
 		}
 		// тут мы имеем "консервативную историю". Осталось её санализировать
 		
-		VerificationResult result = analysHistory();
+		VerificationResult result = analyseHistory();
 		return null;
 	}
-	
-	private VerificationResult analysHistory() {
-		VerificationResult result = new VerificationResult();
-		Quantifier quantifier = criterion.getQuantifiers().get(0);
-		int counter = 0;
-		for(int i = 0; i < wholeHistory.size(); ++i){
-			if(analyse(wholeHistory.get(i))){
-				++counter;
-			}
-		}
-		switch (quantifier.getType()) {
-		case ALL:
-			if(counter == wholeHistory.size()){
-				result.setGood(true);
-			}else{
-				result.setGood(false);
-			}
-			break;
-		case EXIST:
-			if(counter > 0){
-				result.setGood(true);
-			}else{
-				result.setGood(false);
-			}
-			break;
-		case ALONE:
-			if(counter == 1){
-				result.setGood(true);
-			}else{
-				result.setGood(false);
-			}
-			break;
-		}
-		return result;
-	}
-
-	private boolean analyse(HistoryItem historyItem) {
-		return false;
-	}
-
 	private void verify(HistoryItem parentHistoryItem, int currentIndex) {
 		assert currentIndex > 0 : "Bad index";
 		if(currentIndex < criterion.getQuantifiers().size()){
@@ -107,6 +65,77 @@ public class Engine {
 			parentHistoryItem.setSuccess(result);
 		}
 	}
+	private VerificationResult analyseHistory() {
+		VerificationResult result = new VerificationResult();
+		Quantifier quantifier = criterion.getQuantifiers().get(0);
+		int counter = 0;
+		List<HistoryPlainItem> failHistory = new LinkedList<HistoryPlainItem>();
+		for(int i = 0; i < wholeHistory.size(); ++i){
+			if(analyseHistory(wholeHistory.get(i))){
+				++counter;
+			}else{
+				HistoryPlainItem item = new HistoryPlainItem();
+				HistoryItem hi = wholeHistory.get(i);
+				item.getItems().add(hi.getVariableValue());;
+				failHistory.add(item);
+			}
+		}
+		result.setGood(false);
+		switch (quantifier.getType()) {
+		case ALL:
+			if(counter == wholeHistory.size()){
+				result.setGood(true);
+			}
+			break;
+		case EXIST:
+			if(counter > 0){
+				result.setGood(true);
+			}
+			break;
+		case ALONE:
+			if(counter == 1){
+				result.setGood(true);
+			}
+			break;
+		}
+		// а тут мы должны в случае плохого исхода составить историю лишь из плохих результатов
+		// пока сделаем бедово
+		if(result.isFail()){
+			result.setFailHistory(failHistory);
+		}
+		return result;
+	}
+
+	private boolean analyseHistory(HistoryItem historyItem) {
+		Quantifier quantifier = criterion.getQuantifiers().get(historyItem.getDepth());
+		int counter = 0;
+		for(int i = 0; i < historyItem.getChildren().size(); ++i){
+			if(analyseHistory(historyItem.getChildren().get(i))){
+				++counter;
+			}
+		}
+		boolean result = false;
+		switch (quantifier.getType()) {
+		case ALL:
+			if(counter == historyItem.getChildren().size()){
+				result = true;
+			}
+			break;
+		case EXIST:
+			if(counter > 0){
+				result = true;
+			}
+			break;
+		case ALONE:
+			if(counter == 1){
+				result = true;
+			}
+			break;
+		}
+		return result;
+	}
+
+	
 	private boolean evaluetePredicate(BoundedPredicate boundedPredicate, List<VariableValue> currentVariables){
 		List<Object> vars = new LinkedList<Object>();
 		for(int i = 0; i < boundedPredicate.getBoundVariable().size(); ++i){
