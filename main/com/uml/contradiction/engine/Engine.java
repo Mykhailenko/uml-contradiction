@@ -5,6 +5,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.pattern.LogEvent;
+
 import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.Criterion;
 import com.uml.contradiction.engine.model.HistoryItem;
@@ -12,8 +15,10 @@ import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.Variable;
 import com.uml.contradiction.engine.model.VariableValue;
 import com.uml.contradiction.engine.model.VerificationResult;
+import com.uml.contradiction.engine.model.exception.PredicatException;
 
 public class Engine {
+	private static final Logger LOGGER = Logger.getRootLogger();
 	private Criterion criterion;
 	private List<HistoryItem> wholeHistory;
 	
@@ -107,7 +112,13 @@ public class Engine {
 		for(int i = 0; i < boundedPredicate.getBoundVariable().size(); ++i){
 			vars.add(findVV(currentVariables, boundedPredicate.getBoundVariable().get(i)));
 		}
-		return boundedPredicate.getPredicate().predict(vars);
+		boolean result = false;
+		try {
+			result = boundedPredicate.getPredicate().predict(vars);
+		} catch (PredicatException e) {
+			LOGGER.error(e.getMessage());
+		}
+		return result;
 	}
 	private Object findVV(List<VariableValue> list, Variable variable){
 		for(VariableValue variableValue : list){
