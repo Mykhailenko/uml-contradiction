@@ -1,6 +1,8 @@
 package com.uml.contradiction.engine.model;
 import java.util.*;
 
+import com.uml.contradiction.engine.model.predicate.Predicate;
+
 public class BoundedPredicate {
 
 	private List<Variable> boundVariable;

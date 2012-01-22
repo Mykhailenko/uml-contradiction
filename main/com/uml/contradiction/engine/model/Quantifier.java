@@ -1,5 +1,7 @@
 package com.uml.contradiction.engine.model;
 
+import com.uml.contradiction.engine.model.rightPart.QuantifierRightPart;
+
 public class Quantifier {
 	private Variable boundVariable;
 	private QuantifierType type;

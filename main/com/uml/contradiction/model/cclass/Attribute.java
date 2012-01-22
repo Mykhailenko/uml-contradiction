@@ -1,6 +1,8 @@
 package com.uml.contradiction.model.cclass;
 
-public class Attribute {
+import com.uml.contradiction.model.NamedElement;
+
+public class Attribute implements NamedElement{
 	private String name;
 	private Visibility visibility;
 	private boolean isDerived;

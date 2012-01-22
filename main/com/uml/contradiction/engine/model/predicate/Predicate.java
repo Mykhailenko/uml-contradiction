@@ -1,8 +1,8 @@
-package com.uml.contradiction.engine.model;
+package com.uml.contradiction.engine.model.predicate;
 
 import java.util.List;
 
-import com.uml.contradiction.engine.model.exception.PredicatException;
+import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
 
 public interface Predicate {
 

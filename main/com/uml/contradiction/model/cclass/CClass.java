@@ -1,6 +1,7 @@
 package com.uml.contradiction.model.cclass;
 
 import java.util.Set;
+import java.util.List;
 
 import com.uml.contradiction.model.Vertex;
 
@@ -11,8 +12,8 @@ public class CClass implements Vertex {
 	private Visibility visibility;
 	private boolean isAbstract;
 	private String properties;
-	private Set<Attribute> attributes;
-	private Set<MMethod> methods;
+	private List<Attribute> attributes;
+	private List<MMethod> methods;
 	private Set templateParameters;
 	public String getName() {
 		return name;
@@ -50,16 +51,16 @@ public class CClass implements Vertex {
 	public void setProperties(String properties) {
 		this.properties = properties;
 	}
-	public Set<Attribute> getAttributes() {
+	public List<Attribute> getAttributes() {
 		return attributes;
 	}
-	public void setAttributes(Set<Attribute> attributes) {
+	public void setAttributes(List<Attribute> attributes) {
 		this.attributes = attributes;
 	}
-	public Set<MMethod> getMethods() {
+	public List<MMethod> getMethods() {
 		return methods;
 	}
-	public void setMethods(Set<MMethod> methods) {
+	public void setMethods(List<MMethod> methods) {
 		this.methods = methods;
 	}
 	public Set getTemplateParameters() {

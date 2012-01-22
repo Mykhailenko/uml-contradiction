@@ -13,7 +13,7 @@ import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.Variable;
 import com.uml.contradiction.engine.model.VariableValue;
 import com.uml.contradiction.engine.model.VerificationResult;
-import com.uml.contradiction.engine.model.exception.PredicatException;
+import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
 
 public class Engine {
 	private static final Logger LOGGER = Logger.getRootLogger();
@@ -61,6 +61,9 @@ public class Engine {
 				if(result == false){
 					break;
 				}
+			}
+			if(criterion.isNegative()){
+				result = !result;
 			}
 			parentHistoryItem.setSuccess(result);
 		}
@@ -146,6 +149,9 @@ public class Engine {
 			result = boundedPredicate.getPredicate().predict(vars);
 		} catch (PredicatException e) {
 			LOGGER.error(e.getMessage());
+		}
+		if(boundedPredicate.isNegative()){
+			result = !result;
 		}
 		return result;
 	}

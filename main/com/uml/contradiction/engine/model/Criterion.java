@@ -1,11 +1,12 @@
 package com.uml.contradiction.engine.model;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Criterion {
 	private String name;
-	private List<Quantifier> quantifiers;
-	private List<BoundedPredicate> boundedPredicates;
+	private List<Quantifier> quantifiers = new LinkedList<Quantifier>();
+	private List<BoundedPredicate> boundedPredicates = new LinkedList<BoundedPredicate>();
 	private boolean negative;
 	public String getName() {
 		return name;
