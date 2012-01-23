@@ -2,10 +2,10 @@ package com.uml.contradiction.tests;
 
 import org.junit.Test;
 
-import com.uml.contradiction.engine.model.Criterion;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
+import com.uml.contradiction.engine.model.criteria.Criterion;
 
 import static org.junit.Assert.*;
 

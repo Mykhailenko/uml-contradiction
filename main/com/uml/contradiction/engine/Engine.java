@@ -6,13 +6,14 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.uml.contradiction.engine.model.BoundedPredicate;
-import com.uml.contradiction.engine.model.Criterion;
 import com.uml.contradiction.engine.model.HistoryItem;
 import com.uml.contradiction.engine.model.HistoryPlainItem;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.Variable;
 import com.uml.contradiction.engine.model.VariableValue;
 import com.uml.contradiction.engine.model.VerificationResult;
+import com.uml.contradiction.engine.model.criteria.Criterion;
+import com.uml.contradiction.engine.model.mapping.exception.MappingException;
 import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
 
 public class Engine {
@@ -22,8 +23,13 @@ public class Engine {
 	
 	public VerificationResult verify(){
 		Quantifier quantifier = criterion.getQuantifiers().get(0);
-		List<Object> firstSet = quantifier.getRightPart().getSet(null);
-
+		List<Object> firstSet = null;;
+		try {
+			firstSet = quantifier.getRightPart().getSet(null);
+		} catch (MappingException e) {
+			e.printStackTrace();
+		}
+		assert firstSet != null;
 		for(int i = 0; i < firstSet.size(); ++i){
 			Object o = firstSet.get(i);
 			HistoryItem historyItem = new HistoryItem();
@@ -41,8 +47,13 @@ public class Engine {
 		assert currentIndex > 0 : "Bad index";
 		if(currentIndex < criterion.getQuantifiers().size()){
 			Quantifier quantifier = criterion.getQuantifiers().get(currentIndex);
-			List<Object> set = quantifier.getRightPart().getSet(parentHistoryItem.getPlainHistory()); 
-			
+			List<Object> set = null;
+			try {
+				set = quantifier.getRightPart().getSet(parentHistoryItem.getPlainHistory());
+			} catch (MappingException e) {
+				e.printStackTrace();
+			} 
+			assert set != null;
 			for(int i = 0; i < set.size(); ++i){
 				Object o = set.get(i);
 				HistoryItem historyItem = new HistoryItem();

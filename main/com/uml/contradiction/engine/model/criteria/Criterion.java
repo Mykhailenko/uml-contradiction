@@ -1,7 +1,10 @@
-package com.uml.contradiction.engine.model;
+package com.uml.contradiction.engine.model.criteria;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import com.uml.contradiction.engine.model.BoundedPredicate;
+import com.uml.contradiction.engine.model.Quantifier;
 
 public class Criterion {
 	private String name;
