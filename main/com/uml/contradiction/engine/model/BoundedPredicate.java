@@ -5,7 +5,7 @@ import com.uml.contradiction.engine.model.predicate.Predicate;
 
 public class BoundedPredicate {
 
-	private List<Variable> boundVariable;
+	private List<Variable> boundVariable = new LinkedList<Variable>();
 	private boolean negative;
 	private Predicate predicate;
 	public boolean isNegative() {

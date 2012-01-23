@@ -1,4 +1,4 @@
-package com.uml.contradiction.engine;
+*package com.uml.contradiction.engine;
 
 import java.util.LinkedList;
 import java.util.List;
