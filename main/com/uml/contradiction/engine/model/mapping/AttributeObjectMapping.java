@@ -5,7 +5,7 @@ import java.util.List;
 import com.uml.contradiction.engine.model.mapping.exception.MappingException;
 import com.uml.contradiction.model.object.OObject;
 
-public class AttibuteObjectMapping implements Mapping {
+public class AttributeObjectMapping implements Mapping {
 
 	@Override
 	public List map(Object element) throws MappingException{

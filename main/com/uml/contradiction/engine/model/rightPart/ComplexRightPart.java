@@ -10,8 +10,8 @@ import com.uml.contradiction.engine.model.mapping.exception.MappingException;
 
 public class ComplexRightPart implements QuantifierRightPart {
 	private static final Logger LOGGER = Logger.getRootLogger();
-	protected Variable boundVariable;
-	protected List<Mapping> nestedMappings;
+	private Variable boundVariable;
+	private List<Mapping> nestedMappings = new LinkedList<Mapping>();
 	
 	private List result;
 	@Override
@@ -31,15 +31,31 @@ public class ComplexRightPart implements QuantifierRightPart {
 		assert index > 0;
 		if(index < nestedMappings.size()){
 			Mapping mapping = nestedMappings.get(index);
+			List list;
 			try {
-				List list = mapping.map(value);
+				list = mapping.map(value);
 			} catch (MappingException e) {
 				LOGGER.error(e);
 				throw e;
 			}
+			for(int i = 0; i < list.size(); ++i){
+				rek(index+1, list.get(i));
+			}
 		}else{
-			
+			result.add(value);
 		}
 	}
-
+	public Variable getBoundVariable() {
+		return boundVariable;
+	}
+	public void setBoundVariable(Variable boundVariable) {
+		this.boundVariable = boundVariable;
+	}
+	public List<Mapping> getNestedMappings() {
+		return nestedMappings;
+	}
+	public void setNestedMappings(List<Mapping> nestedMappings) {
+		this.nestedMappings = nestedMappings;
+	}
+	
 }
