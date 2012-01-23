@@ -38,7 +38,7 @@ public class SimpleCriterion extends Criterion {
 		quantifier2.setRightPart(complexRightPart2);
 		getQuantifiers().add(quantifier2);
 		
-		Predicate predicate = new 
+//		Predicate predicate = new 
 	}
 }
 
