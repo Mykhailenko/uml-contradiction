@@ -10,7 +10,6 @@ import com.uml.contradiction.engine.model.Variable;
 import com.uml.contradiction.engine.model.mapping.AttributeClassMapping;
 import com.uml.contradiction.engine.model.mapping.AttributeObjectMapping;
 import com.uml.contradiction.engine.model.mapping.ClassObjectMapping;
-import com.uml.contradiction.engine.model.predicate.Predicate;
 import com.uml.contradiction.engine.model.predicate.PredicateIsEqualName;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.RPObjects;
@@ -48,6 +47,8 @@ public class SimpleCriterion extends Criterion {
 		boundedPredicate.getBoundVariable().add(Variable.c);
 		boundedPredicate.setNegative(false);
 		boundedPredicate.setPredicate(new PredicateIsEqualName());
+		getBoundedPredicates().add(boundedPredicate);
+		
 	}
 }
 

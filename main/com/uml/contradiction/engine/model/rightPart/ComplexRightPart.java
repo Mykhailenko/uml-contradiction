@@ -25,10 +25,10 @@ public class ComplexRightPart implements QuantifierRightPart {
 		assert firstValue != null;
 		result = new LinkedList();
 		rek(0,firstValue);
-		return null;
+		return result;
 	}
 	private void rek(int index, Object value) throws MappingException{
-		assert index > 0;
+		assert index >= 0;
 		if(index < nestedMappings.size()){
 			Mapping mapping = nestedMappings.get(index);
 			List list;
