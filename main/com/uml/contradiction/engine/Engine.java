@@ -43,6 +43,7 @@ public class Engine {
 		VerificationResult result = analyseHistory();
 		return null;
 	}
+	///olololo
 	private void verify(HistoryItem parentHistoryItem, int currentIndex) {
 		assert currentIndex > 0 : "Bad index";
 		if(currentIndex < criterion.getQuantifiers().size()){
