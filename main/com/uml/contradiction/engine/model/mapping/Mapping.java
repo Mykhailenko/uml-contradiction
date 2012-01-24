@@ -8,10 +8,10 @@ public interface Mapping {
 
 	/**
 	 * 
-	 * @param element
+	 * @param args
 	 * @return 
 	 * @throws MappingException 
 	 */
-	List map(Object element) throws MappingException;
+	List map(List args) throws MappingException;
 
 }

@@ -32,7 +32,7 @@ public class ComplexRightPart implements QuantifierRightPart {
 			Mapping mapping = nestedMappings.get(index);
 			List list;
 			try {
-				list = mapping.map(value);
+				list = mapping.map(Collections.singletonList(value));
 			} catch (MappingException e) {
 				LOGGER.error(e);
 				throw e;

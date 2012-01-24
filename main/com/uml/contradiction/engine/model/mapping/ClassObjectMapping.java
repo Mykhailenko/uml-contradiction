@@ -14,8 +14,10 @@ public class ClassObjectMapping implements Mapping {
 	private static final Logger LOGGER = Logger.getRootLogger();
 	
 	@Override
-	public List map(Object element) throws MappingException {
-		assert element != null;
+	public List map(List args) throws MappingException {
+		assert args != null ;
+		assert args.size() == 1 : "bad size";
+		Object element = args.get(0);
 		if(element instanceof OObject){
 			OObject oObject = (OObject) element;
 			String className = oObject.getClasses().get(0);
