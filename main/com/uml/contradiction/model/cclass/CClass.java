@@ -4,6 +4,7 @@ import java.util.Set;
 import java.util.List;
 
 import com.uml.contradiction.model.Vertex;
+import com.uml.contradiction.model.common.Stereotype;
 
 public class CClass implements Vertex {
 	private String name;

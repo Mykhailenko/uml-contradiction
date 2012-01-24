@@ -3,6 +3,8 @@ package com.uml.contradiction.model.cclass;
 import java.util.List;
 import java.util.Set;
 
+import com.uml.contradiction.model.common.Stereotype;
+
 public class MMethod {
 	private String name;
 	private Visibility visibility;
