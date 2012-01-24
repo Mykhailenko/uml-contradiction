@@ -1,8 +1,5 @@
 package com.uml.contradiction.engine.model.criteria;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;

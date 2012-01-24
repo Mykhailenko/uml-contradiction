@@ -21,12 +21,12 @@ public class PredicateIsEqualName implements Predicate {
 		}
 		if((params.get(0) instanceof com.uml.contradiction.model.object.Attribute) == false &&
 				(params.get(0) instanceof com.uml.contradiction.model.cclass.Attribute) == false){
-			LOGGER.error("first element must be a Attribute");
+			LOGGER.error("first element must be a Attribute " + params.get(0).getClass().toString());
 			throw new PredicatException("first element must be a Attribute");
 		}
 		if((params.get(1) instanceof com.uml.contradiction.model.object.Attribute) == false &&
 				(params.get(1) instanceof com.uml.contradiction.model.cclass.Attribute) == false){
-			LOGGER.error("second element must be a Attribute");
+			LOGGER.error("second element must be a Attribute" + params.get(1).getClass().toString());
 			throw new PredicatException("second element must be a Attribute");
 		}
 		NamedElement first = (NamedElement) params.get(0);
