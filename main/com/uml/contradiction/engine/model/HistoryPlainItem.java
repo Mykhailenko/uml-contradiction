@@ -6,6 +6,10 @@ import java.util.List;
 public class HistoryPlainItem {
 	private List<VariableValue> items = new LinkedList<VariableValue>();
 
+	public HistoryPlainItem(List<VariableValue> items) {
+		this.items = items;
+	}
+
 	public List<VariableValue> getItems() {
 		return items;
 	}

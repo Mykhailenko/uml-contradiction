@@ -1,5 +1,6 @@
 package com.uml.contradiction.tests;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ import static org.junit.Assert.assertTrue;
 
 public class EngineTest {
 	private static final Logger LOGGER = Logger.getRootLogger();
-	@Test
+//	@Test
 	public void goodContradictionTest(){
 		////// good case
 		CClass cClass = new CClass();
@@ -72,6 +73,7 @@ public class EngineTest {
 		ClassDiagram.setClasses(classes);
 		
 		OObject object0 = new OObject();
+		object0.setName("olololool");
 		List<String> c0 = new LinkedList<String>();
 		c0.add("Student");
 		object0.setClasses(c0);
@@ -95,7 +97,23 @@ public class EngineTest {
 		assert verificationResult != null : "verificationResult == null";
 		LOGGER.info("isGood = " + verificationResult.isGood());
 		for(HistoryPlainItem plain : verificationResult.getFailHistory()){
-			LOGGER.info(plain.getItems().get(0).variable + " = " + plain.getItems().get(0).value);
+			try {
+				String slog = new String();
+				for(int i = 0; i < plain.getItems().size(); ++i){
+					slog += plain.getItems().get(i).variable + " = " + plain.getItems().get(i).value.getClass().getMethod("getName").invoke(plain.getItems().get(i).value) + ";";
+				}
+				LOGGER.info(slog);
+			} catch (IllegalArgumentException e) {
+				e.printStackTrace();
+			} catch (SecurityException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				e.printStackTrace();
+			} catch (NoSuchMethodException e) {
+				e.printStackTrace();
+			}
 		}
 		assertTrue(verificationResult.isFail());
 		LOGGER.info("test really Completed");

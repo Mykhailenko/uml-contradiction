@@ -20,7 +20,7 @@ public class Engine {
 	private static final Logger LOGGER = Logger.getRootLogger();
 	private Criterion criterion;
 	private List<HistoryItem> wholeHistory;
-	
+	private List<HistoryItem> failHistory;
 	public VerificationResult verify(){
 		Quantifier quantifier = criterion.getQuantifiers().get(0);
 		List<Object> firstSet = null;;
@@ -84,15 +84,12 @@ public class Engine {
 		VerificationResult result = new VerificationResult();
 		Quantifier quantifier = criterion.getQuantifiers().get(0);
 		int counter = 0;
-		List<HistoryPlainItem> failHistory = new LinkedList<HistoryPlainItem>();
+		failHistory = new LinkedList<HistoryItem>();
 		for(int i = 0; i < wholeHistory.size(); ++i){
 			if(analyseHistory(wholeHistory.get(i))){
 				++counter;
 			}else{
-				HistoryPlainItem item = new HistoryPlainItem();
-				HistoryItem hi = wholeHistory.get(i);
-				item.getItems().add(hi.getVariableValue());;
-				failHistory.add(item);
+				failHistory.add(wholeHistory.get(i));
 			}
 		}
 		result.setGood(false);
@@ -116,11 +113,33 @@ public class Engine {
 		// а тут мы должны в случае плохого исхода составить историю лишь из плохих результатов
 		// пока сделаем бедово
 		if(result.isFail()){
-			result.setFailHistory(failHistory);
+			result.setFailHistory(createPlainFailHistory());
 		}
 		return result;
 	}
 
+	private List<HistoryPlainItem> createPlainFailHistory() {
+		List<HistoryPlainItem> result = new LinkedList<HistoryPlainItem>();
+		for(HistoryItem historyItem : failHistory){
+			if(historyItem.getChildren().isEmpty() && historyItem.isFail()){
+				result.add(new HistoryPlainItem(historyItem.getPlainHistory()));
+			}else{
+				createPlainFailHistory(result, historyItem);
+			}
+		}
+		return result;
+	}
+	private void createPlainFailHistory(List<HistoryPlainItem> result,
+			HistoryItem parentHistoryItem) {
+		for(HistoryItem historyItem : parentHistoryItem.getChildren()){
+			if(historyItem.getChildren().isEmpty() && historyItem.isFail()){
+				result.add(new HistoryPlainItem(historyItem.getPlainHistory()));
+			}else{
+				createPlainFailHistory(result, historyItem);
+			}
+		}
+		
+	}
 	private boolean analyseHistory(HistoryItem historyItem) {
 		int d = historyItem.getDepth();
 		if(d < criterion.getQuantifiers().size()){
