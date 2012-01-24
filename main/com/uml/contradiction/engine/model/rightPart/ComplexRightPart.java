@@ -24,12 +24,11 @@ public class ComplexRightPart implements QuantifierRightPart {
 		}
 		assert firstValue != null;
 		result = new LinkedList();
-		rek(0,firstValue);
-		return null;
+		rek(nestedMappings.size()-1,firstValue);
+		return result;
 	}
 	private void rek(int index, Object value) throws MappingException{
-		assert index > 0;
-		if(index < nestedMappings.size()){
+		if(index >= 0){
 			Mapping mapping = nestedMappings.get(index);
 			List list;
 			try {
@@ -38,8 +37,9 @@ public class ComplexRightPart implements QuantifierRightPart {
 				LOGGER.error(e);
 				throw e;
 			}
+			assert list != null;
 			for(int i = 0; i < list.size(); ++i){
-				rek(index+1, list.get(i));
+				rek(index-1, list.get(i));
 			}
 		}else{
 			result.add(value);

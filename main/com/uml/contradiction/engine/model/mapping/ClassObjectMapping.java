@@ -18,7 +18,7 @@ public class ClassObjectMapping implements Mapping {
 		assert element != null;
 		if(element instanceof OObject){
 			OObject oObject = (OObject) element;
-			String className = oObject.getName();
+			String className = oObject.getClasses().get(0);
 			List<CClass> listClass = ClassDiagram.getClasses();
 			for(CClass cClass : listClass){
 				if(cClass.getName().equals(className)){

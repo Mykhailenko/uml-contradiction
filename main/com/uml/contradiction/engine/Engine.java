@@ -41,7 +41,7 @@ public class Engine {
 		// тут мы имеем "консервативную историю". Осталось её санализировать
 		
 		VerificationResult result = analyseHistory();
-		return null;
+		return result;
 	}
 	///olololo
 	private void verify(HistoryItem parentHistoryItem, int currentIndex) {
@@ -122,32 +122,37 @@ public class Engine {
 	}
 
 	private boolean analyseHistory(HistoryItem historyItem) {
-		Quantifier quantifier = criterion.getQuantifiers().get(historyItem.getDepth());
-		int counter = 0;
-		for(int i = 0; i < historyItem.getChildren().size(); ++i){
-			if(analyseHistory(historyItem.getChildren().get(i))){
-				++counter;
+		int d = historyItem.getDepth();
+		if(d < criterion.getQuantifiers().size()){
+			Quantifier quantifier = criterion.getQuantifiers().get(d);
+			int counter = 0;
+			for(int i = 0; i < historyItem.getChildren().size(); ++i){
+				if(analyseHistory(historyItem.getChildren().get(i))){
+					++counter;
+				}
 			}
+			boolean result = false;
+			switch (quantifier.getType()) {
+			case ALL:
+				if(counter == historyItem.getChildren().size()){
+					result = true;
+				}
+				break;
+			case EXIST:
+				if(counter > 0){
+					result = true;
+				}
+				break;
+			case ALONE:
+				if(counter == 1){
+					result = true;
+				}
+				break;
+			}
+			return result;
+		}else{
+			return historyItem.isSuccess();
 		}
-		boolean result = false;
-		switch (quantifier.getType()) {
-		case ALL:
-			if(counter == historyItem.getChildren().size()){
-				result = true;
-			}
-			break;
-		case EXIST:
-			if(counter > 0){
-				result = true;
-			}
-			break;
-		case ALONE:
-			if(counter == 1){
-				result = true;
-			}
-			break;
-		}
-		return result;
 	}
 
 	
@@ -168,6 +173,9 @@ public class Engine {
 		return result;
 	}
 	private Object findVV(List<VariableValue> list, Variable variable){
+		for(VariableValue variableValue : list){
+			LOGGER.debug("" + variableValue.variable + " = " + variableValue.value.getClass().toString());
+		}
 		for(VariableValue variableValue : list){
 			if(variableValue.variable.equals(variable)){
 				return variableValue.value;
