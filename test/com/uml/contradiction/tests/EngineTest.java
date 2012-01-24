@@ -21,7 +21,7 @@ import static org.junit.Assert.assertTrue;
 
 public class EngineTest {
 	private static final Logger LOGGER = Logger.getRootLogger();
-//	@Test
+	@Test
 	public void goodContradictionTest(){
 		////// good case
 		CClass cClass = new CClass();
