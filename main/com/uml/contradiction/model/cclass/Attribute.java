@@ -6,7 +6,7 @@ public class Attribute implements NamedElement{
 	private String name;
 	private Visibility visibility;
 	private boolean isDerived;
-	private String type;
+	private Type type;
 	private Multiplicity multiplicity;
 	private String ddefault;
 	private String constraints;
@@ -29,10 +29,10 @@ public class Attribute implements NamedElement{
 	public void setDerived(boolean isDerived) {
 		this.isDerived = isDerived;
 	}
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 	public Multiplicity getMultiplicity() {

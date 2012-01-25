@@ -37,7 +37,7 @@ public class ComplexRightPart implements QuantifierRightPart {
 				LOGGER.error(e);
 				throw e;
 			}
-			assert list != null;
+			assert list != null : "list is null";
 			for(int i = 0; i < list.size(); ++i){
 				rek(index-1, list.get(i));
 			}
