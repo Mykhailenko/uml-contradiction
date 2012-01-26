@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 
 import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
 import com.uml.contradiction.model.common.Type;
+import com.uml.contradiction.model.common.UMLType;
 import com.uml.contradiction.model.object.Attribute;
 
 public class PredicateValueCorrectType implements Predicate {
@@ -39,12 +40,16 @@ public class PredicateValueCorrectType implements Predicate {
 		return result;
 	}
 	private boolean valueChecker(Type type, String value){
-		switch (type) {
-		case BOOLEAN:
-			return booleanRecognizer(value);
-		case INT:
-			return intRecognizer(value);
-		default:
+		if(type instanceof UMLType){
+			switch ((UMLType)type) {
+			case BOOLEAN:
+				return booleanRecognizer(value);
+			case INTEGER:
+				return intRecognizer(value);
+			default:
+				return true;
+			}
+		}else{
 			return true;
 		}
 	}

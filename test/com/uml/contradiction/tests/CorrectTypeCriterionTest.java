@@ -19,6 +19,7 @@ import com.uml.contradiction.engine.model.diagram.ClassDiagram;
 import com.uml.contradiction.engine.model.diagram.ObjectDiagram;
 import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.common.Type;
+import com.uml.contradiction.model.common.UMLType;
 import com.uml.contradiction.model.object.OObject;
 
 public class CorrectTypeCriterionTest {
@@ -31,11 +32,11 @@ public class CorrectTypeCriterionTest {
 		List<com.uml.contradiction.model.cclass.Attribute> lac = new LinkedList<com.uml.contradiction.model.cclass.Attribute>();
 		com.uml.contradiction.model.cclass.Attribute newAttrc = new com.uml.contradiction.model.cclass.Attribute();
 		newAttrc.setName("sex");
-		newAttrc.setType(Type.BOOLEAN);
+		newAttrc.setType(UMLType.BOOLEAN);
 		lac.add(newAttrc);
 		com.uml.contradiction.model.cclass.Attribute newAttrc2 = new com.uml.contradiction.model.cclass.Attribute();
 		newAttrc2.setName("crab");
-		newAttrc2.setType(Type.INT);
+		newAttrc2.setType(UMLType.INTEGER);
 		lac.add(newAttrc2);
 		cClass.setAttributes(lac);
 		List<CClass> classes = new LinkedList<CClass>();
@@ -78,7 +79,7 @@ public class CorrectTypeCriterionTest {
 		List<com.uml.contradiction.model.cclass.Attribute> lac = new LinkedList<com.uml.contradiction.model.cclass.Attribute>();
 		com.uml.contradiction.model.cclass.Attribute newAttrc = new com.uml.contradiction.model.cclass.Attribute();
 		newAttrc.setName("sex");
-		newAttrc.setType(Type.BOOLEAN);
+		newAttrc.setType(UMLType.BOOLEAN);
 		lac.add(newAttrc);
 		cClass.setAttributes(lac);
 		List<CClass> classes = new LinkedList<CClass>();
