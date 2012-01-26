@@ -1,6 +1,8 @@
 package com.uml.contradiction.model.cclass;
 
 import com.uml.contradiction.model.NamedElement;
+import com.uml.contradiction.model.common.Type;
+import com.uml.contradiction.model.ocl.Constraint;
 
 public class Attribute implements NamedElement{
 	private String name;
@@ -9,7 +11,7 @@ public class Attribute implements NamedElement{
 	private Type type;
 	private Multiplicity multiplicity;
 	private String ddefault;
-	private String constraints;
+	private Constraint constraint;
 	private Scope scope;
 	public String getName() {
 		return name;
@@ -47,11 +49,11 @@ public class Attribute implements NamedElement{
 	public void setDdefault(String ddefault) {
 		this.ddefault = ddefault;
 	}
-	public String getConstraints() {
-		return constraints;
+	public Constraint getConstraints() {
+		return constraint;
 	}
-	public void setConstraints(String constraints) {
-		this.constraints = constraints;
+	public void setConstraints(Constraint constraint) {
+		this.constraint = constraint;
 	}
 	public Scope getScope() {
 		return scope;

@@ -18,7 +18,7 @@ import com.uml.contradiction.engine.model.criteria.SimpleCriterion;
 import com.uml.contradiction.engine.model.diagram.ClassDiagram;
 import com.uml.contradiction.engine.model.diagram.ObjectDiagram;
 import com.uml.contradiction.model.cclass.CClass;
-import com.uml.contradiction.model.cclass.Type;
+import com.uml.contradiction.model.common.Type;
 import com.uml.contradiction.model.object.OObject;
 
 public class CorrectTypeCriterionTest {

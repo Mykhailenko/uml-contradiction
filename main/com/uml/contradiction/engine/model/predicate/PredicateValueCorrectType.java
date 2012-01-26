@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
-import com.uml.contradiction.model.cclass.Type;
+import com.uml.contradiction.model.common.Type;
 import com.uml.contradiction.model.object.Attribute;
 
 public class PredicateValueCorrectType implements Predicate {
