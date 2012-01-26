@@ -55,6 +55,9 @@ public class Engine {
 				e.printStackTrace();
 			} 
 			assert set != null;
+			if(set.isEmpty()){
+				parentHistoryItem.setSuccess(false);
+			}
 			for(int i = 0; i < set.size(); ++i){
 				Object o = set.get(i);
 				HistoryItem historyItem = new HistoryItem();
