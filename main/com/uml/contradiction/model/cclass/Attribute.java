@@ -1,15 +1,17 @@
 package com.uml.contradiction.model.cclass;
 
 import com.uml.contradiction.model.NamedElement;
+import com.uml.contradiction.model.common.Type;
+import com.uml.contradiction.model.ocl.Constraint;
 
 public class Attribute implements NamedElement{
 	private String name;
 	private Visibility visibility;
 	private boolean isDerived;
-	private String type;
+	private Type type;
 	private Multiplicity multiplicity;
 	private String ddefault;
-	private String constraints;
+	private Constraint constraint;
 	private Scope scope;
 	public String getName() {
 		return name;
@@ -29,10 +31,10 @@ public class Attribute implements NamedElement{
 	public void setDerived(boolean isDerived) {
 		this.isDerived = isDerived;
 	}
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 	public Multiplicity getMultiplicity() {
@@ -47,11 +49,11 @@ public class Attribute implements NamedElement{
 	public void setDdefault(String ddefault) {
 		this.ddefault = ddefault;
 	}
-	public String getConstraints() {
-		return constraints;
+	public Constraint getConstraints() {
+		return constraint;
 	}
-	public void setConstraints(String constraints) {
-		this.constraints = constraints;
+	public void setConstraints(Constraint constraint) {
+		this.constraint = constraint;
 	}
 	public Scope getScope() {
 		return scope;

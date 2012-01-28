@@ -1,5 +1,7 @@
 package com.uml.contradiction.model.common;
 
-public interface Stereotype {
+public interface Type {
+	
 	public String getName();
+	
 }
