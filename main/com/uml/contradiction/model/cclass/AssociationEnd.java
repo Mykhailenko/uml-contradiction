@@ -9,6 +9,14 @@ public class AssociationEnd {
 	private Visibility 		visibility;
 	private Constraint		constraint;
 	private boolean 		isDerived;
+	private Navigability 	navigability;
+	
+	public Navigability getNavigability() {
+		return navigability;
+	}
+	public void setNavigability(Navigability navigability) {
+		this.navigability = navigability;
+	}
 	public String getRole() {
 		return role;
 	}
