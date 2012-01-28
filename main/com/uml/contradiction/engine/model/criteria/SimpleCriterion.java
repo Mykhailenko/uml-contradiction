@@ -47,5 +47,13 @@ public class SimpleCriterion extends Criterion {
 		getBoundedPredicates().add(boundedPredicate);
 		
 	}
+	@Override
+	public int getInternalID() {
+		return -2;
+	}
+	@Override
+	public CriterionType getCriterionType() {
+		return CriterionType.CLASS_OBJECT;
+	}
 }
 

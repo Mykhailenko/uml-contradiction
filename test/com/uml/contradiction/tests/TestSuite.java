@@ -8,7 +8,7 @@ import org.junit.runners.Suite.SuiteClasses;
 import static org.junit.Assert.*;
 
 
-@SuiteClasses({EngineTest.class, MustExistClassCriterionTest.class})
+@SuiteClasses({EngineTest.class, MustExistClassCriterionTest.class, CorrectTypeCriterionTest.class})
 @RunWith(Suite.class)
 public class TestSuite {
 	public void test(){

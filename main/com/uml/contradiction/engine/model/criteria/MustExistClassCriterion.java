@@ -27,4 +27,14 @@ public class MustExistClassCriterion extends Criterion {
 		quantifier2.setRightPart(rightPart);
 		getQuantifiers().add(quantifier2);
 	}
+
+	@Override
+	public int getInternalID() {
+		return -2;
+	}
+
+	@Override
+	public CriterionType getCriterionType() {
+		return CriterionType.CLASS_OBJECT;
+	}
 }

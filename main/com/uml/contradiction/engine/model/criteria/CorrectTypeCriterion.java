@@ -57,4 +57,12 @@ public class CorrectTypeCriterion extends Criterion {
 		setNegative(true);
 		
 	}
+	@Override
+	public int getInternalID() {
+		return -2;
+	}
+	@Override
+	public CriterionType getCriterionType() {
+		return CriterionType.CLASS_OBJECT;
+	}
 }

@@ -6,18 +6,13 @@ import java.util.List;
 import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.Quantifier;
 
-public class Criterion {
+public abstract class Criterion {
 	private String name;
 	private List<Quantifier> quantifiers = new LinkedList<Quantifier>();
 	private List<BoundedPredicate> boundedPredicates = new LinkedList<BoundedPredicate>();
 	private boolean negative;
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	
+	abstract public int getInternalID();
+	abstract public CriterionType getCriterionType();
 	public List<Quantifier> getQuantifiers() {
 		return quantifiers;
 	}
@@ -36,5 +31,6 @@ public class Criterion {
 	public void setNegative(boolean negative) {
 		this.negative = negative;
 	}
+	
 	
 }
