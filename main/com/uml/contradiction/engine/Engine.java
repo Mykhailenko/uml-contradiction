@@ -86,6 +86,7 @@ public class Engine {
 	}
 	private VerificationResult analyseHistory() {
 		VerificationResult result = new VerificationResult();
+		result.setCriterion(criterion);
 		Quantifier quantifier = criterion.getQuantifiers().get(0);
 		int counter = 0;
 		failHistory = new LinkedList<HistoryItem>();
