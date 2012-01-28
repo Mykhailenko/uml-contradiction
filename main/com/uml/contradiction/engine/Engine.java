@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import com.sun.org.apache.bcel.internal.generic.CPInstruction;
 import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.HistoryItem;
 import com.uml.contradiction.engine.model.HistoryPlainItem;
@@ -100,16 +101,22 @@ public class Engine {
 		case ALL:
 			if(counter == wholeHistory.size()){
 				result.setGood(true);
+			}else{
+				LOGGER.info("!ALL " + counter + " ; " + wholeHistory.size());
 			}
 			break;
 		case EXIST:
 			if(counter > 0){
 				result.setGood(true);
+			}else{
+				LOGGER.info("!EXI " + counter + " ; " + wholeHistory.size());
 			}
 			break;
 		case ALONE:
 			if(counter == 1){
 				result.setGood(true);
+			}else{
+				LOGGER.info("!ALO " + counter + " ; " + wholeHistory.size());
 			}
 			break;
 		}
@@ -158,16 +165,22 @@ public class Engine {
 			case ALL:
 				if(counter == historyItem.getChildren().size()){
 					result = true;
+				}else{
+					LOGGER.info("!ALL " + counter + " ; " + historyItem.getChildren().size());
 				}
 				break;
 			case EXIST:
 				if(counter > 0){
 					result = true;
+				}else{
+					LOGGER.info("!EXI " + counter + " ; " + historyItem.getChildren().size());
 				}
 				break;
 			case ALONE:
 				if(counter == 1){
 					result = true;
+				}else{
+					LOGGER.info("!ALO " + counter + " ; " + historyItem.getChildren().size());
 				}
 				break;
 			}

@@ -119,17 +119,7 @@ public class CorrectTypeCriterionTest {
 					slog += plain.getItems().get(i).variable + " = " + plain.getItems().get(i).value.getClass().getMethod("getName").invoke(plain.getItems().get(i).value) + ";";
 				}
 				LOGGER.info(slog);
-			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
-			} catch (SecurityException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				e.printStackTrace();
-			} catch (NoSuchMethodException e) {
-				e.printStackTrace();
-			}
+			} catch (Exception e) {	}
 		}
 		assertTrue(verificationResult.isFail());
 		LOGGER.info("test really Completed");
