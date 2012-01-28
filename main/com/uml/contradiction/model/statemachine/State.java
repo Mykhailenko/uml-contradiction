@@ -14,6 +14,7 @@ public class State implements Vertex{
 	private boolean isOrthogonal;
 	private boolean isSimple;
 	private boolean isSubmachineState;
+	private StateMachine stateMachine;
 	public Transition getEntry() {
 		return entry;
 	}
@@ -61,6 +62,12 @@ public class State implements Vertex{
 	}
 	public void setSubmachineState(boolean isSubmachineState) {
 		this.isSubmachineState = isSubmachineState;
+	}
+	public StateMachine getStateMachine() {
+		return stateMachine;
+	}
+	public void setStateMachine(StateMachine stateMachine) {
+		this.stateMachine = stateMachine;
 	}
 	
 }

@@ -3,10 +3,16 @@ package com.uml.contradiction.model.statemachine;
 import com.uml.contradiction.model.Vertex;
 
 public class Transition {
-
+	private String name;
 	private Vertex target;
 	private Vertex source;
 	private TransitionKind kind;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public Vertex getTarget() {
 		return target;
 	}
@@ -26,5 +32,4 @@ public class Transition {
 		this.kind = kind;
 	}
 	
-
 }
