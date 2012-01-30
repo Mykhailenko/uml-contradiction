@@ -17,5 +17,5 @@
 ### Contributors:
 * Kulankhina Alexandra	mary.culiflower@gmail.com
 * Mikhaylenko Gleb		tas.nix@gmail.com
-* Shatalov Yaroslav
+* Shatalov Yaroslav		shatalov_yarik@mail.ru
 	
