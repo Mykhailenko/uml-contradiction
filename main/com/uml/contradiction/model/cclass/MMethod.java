@@ -12,7 +12,6 @@ public class MMethod {
 	private List<Parameter> parameters;
 	private String returnResult;
 	private String properties;
-	private boolean isStatic;
 	private Scope scope;
 	public String getName() {
 		return name;
@@ -49,12 +48,6 @@ public class MMethod {
 	}
 	public void setProperties(String properties) {
 		this.properties = properties;
-	}
-	public boolean isStatic() {
-		return isStatic;
-	}
-	public void setStatic(boolean isStatic) {
-		this.isStatic = isStatic;
 	}
 	public Scope getScope() {
 		return scope;

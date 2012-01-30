@@ -43,19 +43,14 @@ public class CorrectTypeCriterion extends Criterion {
 		BoundedPredicate boundedPredicate = new BoundedPredicate();
 		boundedPredicate.getBoundVariable().add(Variable.a);
 		boundedPredicate.getBoundVariable().add(Variable.c);
-		boundedPredicate.setNegative(false);
 		boundedPredicate.setPredicate(new PredicateIsEqualName());
 		getBoundedPredicates().add(boundedPredicate);
 		
 		BoundedPredicate boundedPredicate2 = new BoundedPredicate();
 		boundedPredicate2.getBoundVariable().add(Variable.a);
 		boundedPredicate2.getBoundVariable().add(Variable.c);
-		boundedPredicate2.setNegative(true);
 		boundedPredicate2.setPredicate(new PredicateValueCorrectType());
 		getBoundedPredicates().add(boundedPredicate2);
-		
-		setNegative(true);
-		
 	}
 	@Override
 	public int getInternalID() {

@@ -16,9 +16,20 @@ public class CClass implements Vertex {
 	private List<Attribute> attributes;
 	private List<MMethod> methods;
 	private Set templateParameters;
+	private String requiredInterface;
+	
 	public String getName() {
 		return name;
 	}
+
+	public String getRequiredInterface() {
+		return requiredInterface;
+	}
+
+	public void setRequiredInterface(String requiredInterface) {
+		this.requiredInterface = requiredInterface;
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
