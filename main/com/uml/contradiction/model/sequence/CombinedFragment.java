@@ -3,7 +3,7 @@ import java.util.*;
 
 public class CombinedFragment extends Interaction {
 
-	InteractionOperand enclosingOperand;
+	InteractionOperator enclosingOperand;
 	Collection<LifeLine> covered;
 	Interaction enclosingInteraction;
 
