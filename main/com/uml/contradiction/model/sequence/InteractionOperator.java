@@ -1,3 +1,14 @@
 package com.uml.contradiction.model.sequence;
-public class InteractionOperator {
+public enum InteractionOperator {
+	ALT,
+	OPT,
+	PAR,
+	LOOP,
+	CRITICAL,
+	NEG,
+	ASSERT,
+	STRICT,
+	SEQ,
+	IGNORE,
+	CONSIDER;
 }
