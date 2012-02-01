@@ -1,3 +1,7 @@
 package com.uml.contradiction.model.sequence;
-public class MessageSort {
+
+public enum MessageSort {
+	SYNCH_CALL,
+	ASYNCH_CALL,
+	ASYNCH_SIGNAL;
 }
