@@ -11,7 +11,7 @@
 		...engine - contains will contains classes for verifying UML.
 		...gui - it's obviously..
 		
-		There is visual-paradigm project in folder resource.
+		
 		
 		
 ### Contributors:
