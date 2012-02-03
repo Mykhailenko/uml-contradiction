@@ -45,11 +45,10 @@ public class DiagramsPanel extends JPanel {
 	
 		final DefaultComboBoxModel comboModel = new DefaultComboBoxModel(diagramsTypes.toArray());	
 		combo = new JComboBox(comboModel);
-		
-	
+	}
+	public void createGUIForDiagrams(List<DiagramForChoise> lise){
 		
 	}
-	
 	
 
 }
