@@ -47,7 +47,7 @@ public class LoadXMIScenery {
 		        }
 		        // Close the input stream and return bytes
 		        bis.close();
-		        return bytes;
+		    //    return bytes;
 			} catch (FileNotFoundException e) {
 				LOGGER.error("File: " + chooser.getSelectedFile().getName() + " dissaper");
 			}

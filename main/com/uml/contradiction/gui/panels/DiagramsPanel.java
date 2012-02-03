@@ -17,7 +17,7 @@ import com.uml.contradiction.gui.vocabularies.english.DiagrPanelVoc;
 
 public class DiagramsPanel extends JPanel {
 	
-	private List<DiagramForChoise> diagrams;
+	private List<DiagramForChoise> diagrams = new ArrayList();
 	
 	public DiagramsPanel() {
 		super();
@@ -45,11 +45,35 @@ public class DiagramsPanel extends JPanel {
 	
 		final DefaultComboBoxModel comboModel = new DefaultComboBoxModel(diagramsTypes.toArray());	
 		combo = new JComboBox(comboModel);
+		fromList = new JList(this.diagrams.toArray());
+		toList = new JList();
 		
-	
+		this.setLayout(null);
+		combo.setBounds(10, 10, 150, 20);
+		fromList.setBounds(10, 40, 150, 300);
+		addBut.setBounds(10, 350, 70, 30);
+		addAllBut.setBounds(90, 350, 70, 30);
+		toList.setBounds(170, 40, 150, 300);
+		removeBut.setBounds(170, 350, 70, 30);
+		removeAllBut.setBounds(250, 350, 70, 30);
 		
+		this.add(combo);
+		this.add(fromList);
+		this.add(addBut);
+		this.add(addAllBut);
+		this.add(toList);
+		this.add(removeBut);
+		this.add(removeAllBut);
+		
+		this.updateUI();
+		this.repaint();
 	}
 	
-	
+	public void setDiagrams(List<DiagramForChoise> newDiagrams) {
+		this.diagrams.clear();
+		this.diagrams.addAll(newDiagrams);
+		this.updateUI();
+		this.repaint();
+	}
 
 }

@@ -25,5 +25,7 @@ public class DiagramForChoise {
 		this.type = type;
 	}
 	
-	
+	public String toString() {
+		return this.name;
+	}
 }
