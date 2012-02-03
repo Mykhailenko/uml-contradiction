@@ -6,31 +6,32 @@ import com.uml.contradiction.model.Vertex;
 
 public class State implements Vertex{
 
-	private Transition entry;
-	private Transition ddo;
-	private Transition exit;
+	private Trigger entry;
+	private Trigger ddo;
+	private Trigger exit;
 	private List<Region> regions;
 	private boolean isComposite;
 	private boolean isOrthogonal;
 	private boolean isSimple;
 	private boolean isSubmachineState;
 	private StateMachine stateMachine;
-	public Transition getEntry() {
+	
+	public Trigger getEntry() {
 		return entry;
 	}
-	public void setEntry(Transition entry) {
+	public void setEntry(Trigger entry) {
 		this.entry = entry;
 	}
-	public Transition getDdo() {
+	public Trigger getDdo() {
 		return ddo;
 	}
-	public void setDdo(Transition ddo) {
+	public void setDdo(Trigger ddo) {
 		this.ddo = ddo;
 	}
-	public Transition getExit() {
+	public Trigger getExit() {
 		return exit;
 	}
-	public void setExit(Transition exit) {
+	public void setExit(Trigger exit) {
 		this.exit = exit;
 	}
 	public List<Region> getRegions() {
