@@ -12,6 +12,7 @@ public class XMIConverter {
 		assert file != null;
 		XMIConverter.file = file;
 	}
+//	Hello world
 	public static List<DiagramForChoise> getAvailableDiagram() throws Exception{
 		assert XMIConverter.file != null : "file should be assigned before";
 		return Collections.emptyList();
