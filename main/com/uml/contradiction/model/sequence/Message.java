@@ -5,6 +5,10 @@ public class Message implements InteractionElement {
 	private MessageKind messageKind;
 	private Event sendEvent;
 	private Event recieveEvent;
+	
+	public String getMethodName(){
+		return "";
+	}
 	public MessageSort getMessageSort() {
 		return messageSort;
 	}

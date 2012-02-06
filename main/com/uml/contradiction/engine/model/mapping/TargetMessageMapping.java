@@ -8,27 +8,26 @@ import org.apache.log4j.Logger;
 import com.uml.contradiction.engine.model.diagram.ClassDiagram;
 import com.uml.contradiction.engine.model.mapping.exception.MappingException;
 import com.uml.contradiction.model.cclass.CClass;
-import com.uml.contradiction.model.object.OObject;
+import com.uml.contradiction.model.sequence.Message;
 
-public class ClassObjectMapping implements Mapping {
+public class TargetMessageMapping implements Mapping {
 	private static final Logger LOGGER = Logger.getRootLogger();
-	
 	@Override
-	public List map(List args) throws MappingException {
-		assert args != null ;
-		assert args.size() == 1 : "bad size";
-		Object element = args.get(0);
-		if(element instanceof OObject){
-			OObject oObject = (OObject) element;
-			String className = oObject.getClasses().get(0);
+	public List map(List list) throws MappingException {
+		assert list != null;
+		assert list.size() == 1;
+		Object element = list.get(0);
+		if(element instanceof Message){
+			Message message = (Message) element;
+			String className = message.getRecieveEvent().getCovered().getClassName();
 			CClass cls = ClassDiagram.findClassByName(className);
 			if(cls == null){
-				LOGGER.info("Can't find class with name: " + className);
 				return null;
+			}else{
+				List<CClass> result = new LinkedList<CClass>();
+				result.add(cls);
+				return result;
 			}
-			List<CClass> result = new LinkedList<CClass>();
-			result.add(cls);
-			return result;
 		}else{
 			LOGGER.error("Unexpected type: " + element.getClass().toString());
 			throw new MappingException("Unexpected type: " + element.getClass().toString());
