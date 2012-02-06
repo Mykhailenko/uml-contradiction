@@ -8,10 +8,13 @@ import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.apache.log4j.Logger;
 import org.w3c.dom.*;
 
 public class ClassParser implements CoreParser {
+	private static final Logger LOGGER = Logger.getRootLogger();
 	
+	// перенести в конвертор
 			//возврат родителя смысловой части
 	private Node startParse (String filename) {		
 		NodeList nList;		
@@ -21,6 +24,7 @@ public class ClassParser implements CoreParser {
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 			Document doc = dBuilder.parse(fXmlFile);
 			doc.getDocumentElement().normalize();
+			LOGGER.debug("Tree from xmi has been builded");
 				
 			nList = doc.getElementsByTagName("uml:Model");
 			return (Node)nList.item(0);			
