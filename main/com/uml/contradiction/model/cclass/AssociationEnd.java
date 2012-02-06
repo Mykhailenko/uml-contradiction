@@ -11,6 +11,7 @@ public class AssociationEnd {
 	private boolean 		isDerived;
 	private Navigability 	navigability;
 	private boolean 		isAssociationClass;
+	private CClass 			associatedClass;
 	
 	public Navigability getNavigability() {
 		return navigability;
@@ -54,6 +55,17 @@ public class AssociationEnd {
 	public void setDerived(boolean isDerived) {
 		this.isDerived = isDerived;
 	}
-	
+	public boolean isAssociationClass() {
+		return isAssociationClass;
+	}
+	public void setAssociationClass(boolean isAssociationClass) {
+		this.isAssociationClass = isAssociationClass;
+	}
+	public CClass getAssociatedClass() {
+		return associatedClass;
+	}
+	public void setAssociatedClass(CClass associatedClass) {
+		this.associatedClass = associatedClass;
+	}
 	
 }
