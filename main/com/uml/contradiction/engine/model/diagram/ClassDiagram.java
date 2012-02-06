@@ -8,6 +8,16 @@ import com.uml.contradiction.model.cclass.CClass;
 public class ClassDiagram {
 	private static List<CClass> classes = new LinkedList<CClass>();
 
+	public static CClass findClassByName(String className){
+		List<CClass> listClass = ClassDiagram.getClasses();
+		for(CClass cClass : listClass){
+			if(cClass.getName().equals(className)){
+				return cClass;
+			}
+		}
+		return null;
+	}
+	
 	public static List<CClass> getClasses() {
 		return classes;
 	}

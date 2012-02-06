@@ -21,16 +21,14 @@ public class ClassObjectMapping implements Mapping {
 		if(element instanceof OObject){
 			OObject oObject = (OObject) element;
 			String className = oObject.getClasses().get(0);
-			List<CClass> listClass = ClassDiagram.getClasses();
-			for(CClass cClass : listClass){
-				if(cClass.getName().equals(className)){
-					List<CClass> result = new LinkedList<CClass>();
-					result.add(cClass);
-					return result;
-				}
+			CClass cls = ClassDiagram.findClassByName(className);
+			if(cls == null){
+				LOGGER.info("Can't find class with name: " + className);
+				return null;
 			}
-			LOGGER.info("Can't find class with name: " + className);
-			return null;
+			List<CClass> result = new LinkedList<CClass>();
+			result.add(cls);
+			return result;
 		}else{
 			LOGGER.error("Unexpected type: " + element.getClass().toString());
 			throw new MappingException("Unexpected type: " + element.getClass().toString());

@@ -2,6 +2,10 @@ package com.uml.contradiction.model.sequence;
 public class LifeLine {
 	private String name;
 
+	public String getClassName(){
+		return "";
+	}
+	
 	public String getName() {
 		return name;
 	}
