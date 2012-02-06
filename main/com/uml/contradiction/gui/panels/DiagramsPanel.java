@@ -75,5 +75,7 @@ public class DiagramsPanel extends JPanel {
 		this.updateUI();
 		this.repaint();
 	}
-
+	public void createGUIForDiagrams(List<DiagramForChoise> lise){
+		
+	}
 }

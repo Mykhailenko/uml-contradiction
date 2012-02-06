@@ -9,7 +9,7 @@ import com.uml.contradiction.engine.model.mapping.AttributeObjectMapping;
 import com.uml.contradiction.engine.model.mapping.ClassObjectMapping;
 import com.uml.contradiction.engine.model.predicate.PredicateIsEqualName;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
-import com.uml.contradiction.engine.model.rightPart.RPObjects;
+import com.uml.contradiction.engine.model.rightPart.simple.RPObjects;
 
 public class SimpleCriterion extends Criterion {
 	public SimpleCriterion() {

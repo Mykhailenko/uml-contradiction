@@ -6,7 +6,7 @@ import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
 import com.uml.contradiction.engine.model.mapping.ClassObjectMapping;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
-import com.uml.contradiction.engine.model.rightPart.RPObjects;
+import com.uml.contradiction.engine.model.rightPart.simple.RPObjects;
 
 public class MustExistClassCriterion extends Criterion {
 	public MustExistClassCriterion() {
