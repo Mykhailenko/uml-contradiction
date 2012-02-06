@@ -2,9 +2,9 @@ package com.uml.contradiction.model.cclass;
 
 public class Multiplicity {
 	private Integer lowerBound;
-	private Integer UpperBound;
+	private Double UpperBound;
 	
-	public Multiplicity(Integer lowerBound, Integer upperBound) {
+	public Multiplicity(Integer lowerBound, Double upperBound) {
 		super();
 		this.lowerBound = lowerBound;
 		UpperBound = upperBound;
@@ -16,10 +16,10 @@ public class Multiplicity {
 	public void setLowerBound(Integer lowerBound) {
 		this.lowerBound = lowerBound;
 	}
-	public Integer getUpperBound() {
+	public Double getUpperBound() {
 		return UpperBound;
 	}
-	public void setUpperBound(Integer upperBound) {
+	public void setUpperBound(Double upperBound) {
 		UpperBound = upperBound;
 	}
 

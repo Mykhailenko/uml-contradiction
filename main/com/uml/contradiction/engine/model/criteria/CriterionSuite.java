@@ -9,6 +9,7 @@ public class CriterionSuite {
 		result.add(new MustExistClassCriterion());
 		result.add(new SimpleCriterion());
 		result.add(new CorrectTypeCriterion());
+		result.add(new PartOfSingleComposite());
 		return result;
 	}
 }
