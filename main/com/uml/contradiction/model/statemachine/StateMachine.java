@@ -6,6 +6,13 @@ public class StateMachine {
 	private List<Pseudostate> connectionPoint;
 	private List<State> submachineState;
 	private String className;
+	private List<Transition> transitions;
+	public List<Transition> getTransitions() {
+		return transitions;
+	}
+	public void setTransitions(List<Transition> transitions) {
+		this.transitions = transitions;
+	}
 	public List<Pseudostate> getConnectionPoint() {
 		return connectionPoint;
 	}
