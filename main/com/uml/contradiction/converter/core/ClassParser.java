@@ -3,6 +3,7 @@ package com.uml.contradiction.converter.core;
 import java.io.File;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -135,10 +136,79 @@ extends CoreParserImpl implements CoreParser{
 		}
 		//закончили первый проход по packageElements
 		
+		secondParse(diagrForSearch, umlModelEl);
 		}catch (Exception e) {
 			e.printStackTrace();
 		  }
 		return null;
+	}
+	
+	//второй проход по дереву (основные элементы уже положены)
+	private void secondParse(DiagramForChoise diagrForSearch, Element umlModelEl){
+		try{
+										
+		NodeList pack_nodes = umlModelEl.getElementsByTagName("packagedElement");
+		int temp;
+		
+		for (temp = 0; temp < pack_nodes.getLength(); temp++) {
+												//разбор одного элемента
+			Element curPackEl = (Element)pack_nodes.item(temp);
+			Map<String, AssociationEnd> watchedOwnAttrRole = new HashMap<String, AssociationEnd>();
+			
+			boolean present = false;
+							//элемент диаграммы классов - класс
+			if(curPackEl.getAttribute("xmi:type").equals("uml:Class")){
+			
+				String id4class = curPackEl.getAttribute("xmi:id");
+				
+				//относиться ли данный класс к диаграмме
+				for(String curID : IdElementsInDIagramm){
+					if(curID.equals(id4class)){
+						present =true;
+						break;
+					}				
+				}		
+				if(present){
+					NodeList ownedAttrList = curPackEl.getElementsByTagName("ownedAttribute");
+					
+					for(int k=0; k < ownedAttrList.getLength(); k++){
+							//просматриваем все ownedAttribute для поиска с ролями
+						Element curOwnAttrElem = (Element)ownedAttrList.item(k);
+						
+						//проверка что это ownedAttribute для роли
+						if(curOwnAttrElem.hasAttribute("association")){
+							
+							String idOwnedAttrRole = curOwnAttrElem.getAttribute("xmi:id");
+							
+							//получили AsocPackElem
+							String idAsocPackElem = curOwnAttrElem.getAttribute("association");
+							Association assocCur = assocesWithId.get(idAsocPackElem);
+							
+//							getOppEndId(); //нужно будет искать элемент 
+							
+							if(assocCur.getEnd1() != null){//с ролью один конец
+								
+							}
+							
+							if(watchedOwnAttrRole.get(idOwnedAttrRole) == null){
+								
+								AssociationEnd end_1 = getEnd4Assoc(curOwnAttrElem);
+								end_1.setRole(curOwnAttrElem.getAttribute("name"));
+								
+//								watchedOwnAttrRole.put(, true);
+															
+							}
+						}
+							
+					}
+				
+				}
+			}
+		}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		  }
 	}
 	
 	private List<Attribute> getAttr4Class(NodeList attrList){
