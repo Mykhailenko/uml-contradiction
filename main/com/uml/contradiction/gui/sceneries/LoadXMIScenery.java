@@ -32,7 +32,7 @@ public class LoadXMIScenery {
 			try {
 				XMIConverter.setFile(file);
 				List<DiagramForChoise> availableDiagram = XMIConverter.getAvailableDiagram();
-				PanelsController.diagramsPanel.createGUIForDiagrams(availableDiagram);
+				PanelsController.diagramsPanel.setFromDiagrams(availableDiagram);
 			} catch (Exception e) {
 				LOGGER.error(e.getMessage());
 			}
