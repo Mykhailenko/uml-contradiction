@@ -9,15 +9,31 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.ListModel;
 
 import com.uml.contradiction.common.DiagramType;
+import com.uml.contradiction.gui.listeners.diagramsChoise.ComboListener;
 import com.uml.contradiction.gui.models.DiagramForChoise;
 import com.uml.contradiction.gui.panels.diagramstypes.ViewedDiagramType;
 import com.uml.contradiction.gui.vocabularies.english.DiagrPanelVoc;
 
 public class DiagramsPanel extends JPanel {
 	
-	private List<DiagramForChoise> diagrams = new ArrayList();
+	private List<DiagramForChoise> fromDiagrams = new ArrayList();
+	private List<DiagramForChoise> toDiagrams = new ArrayList();
+	private final JButton nextBut = new JButton(DiagrPanelVoc.getBtnLabel("nextBut"));
+	private final JButton backBut = new JButton(DiagrPanelVoc.getBtnLabel("backBut"));
+	private final JButton addBut  = new JButton(DiagrPanelVoc.getBtnLabel("addBut"));
+	private final JButton addAllBut  = new JButton(DiagrPanelVoc.getBtnLabel("addAllBut"));
+	private final JButton removeBut = new JButton(DiagrPanelVoc.getBtnLabel("removeBut"));
+	private final JButton removeAllBut = new JButton(DiagrPanelVoc.getBtnLabel("removeAllBut"));
+	private final DefaultListModel fromListModel = new DefaultListModel<DiagramForChoise>();
+	private final DefaultListModel toListModel = new DefaultListModel<DiagramForChoise>();
+	
+
+	private final JComboBox combo = new JComboBox();;
+	private final JList fromList = new JList();;
+	private final JList toList = new JList();;
 	
 	public DiagramsPanel() {
 		super();
@@ -25,17 +41,6 @@ public class DiagramsPanel extends JPanel {
 	}
 	
 	private void createGUI() {
-		final JButton nextBut = new JButton(DiagrPanelVoc.getBtnLabel("nextBut"));
-		final JButton backBut = new JButton(DiagrPanelVoc.getBtnLabel("backBut"));
-		final JButton addBut  = new JButton(DiagrPanelVoc.getBtnLabel("addBut"));
-		final JButton addAllBut  = new JButton(DiagrPanelVoc.getBtnLabel("addAllBut"));
-		final JButton removeBut = new JButton(DiagrPanelVoc.getBtnLabel("removeBut"));
-		final JButton removeAllBut = new JButton(DiagrPanelVoc.getBtnLabel("removeAllBut"));
-				
-		final JComboBox combo;
-		final JList fromList;
-		final JList toList;
-		
 		List<Object> diagramsTypes = new ArrayList<Object>();
 		diagramsTypes.add("All");
 		diagramsTypes.add(new ViewedDiagramType(DiagramType.CLASS, "Class"));
@@ -44,9 +49,13 @@ public class DiagramsPanel extends JPanel {
 		diagramsTypes.add(new ViewedDiagramType(DiagramType.STATE_MACHINE, "StateMaschene"));
 	
 		final DefaultComboBoxModel comboModel = new DefaultComboBoxModel(diagramsTypes.toArray());	
-		combo = new JComboBox(comboModel);
-		fromList = new JList(this.diagrams.toArray());
-		toList = new JList();
+		combo.setModel(comboModel);
+		
+		fromList.setModel(fromListModel);
+		setViewedFromDiagrams(fromDiagrams);
+		toList.setModel(toListModel);
+		
+		this.combo.addActionListener(new ComboListener());
 		
 		this.setLayout(null);
 		combo.setBounds(10, 10, 150, 20);
@@ -69,13 +78,93 @@ public class DiagramsPanel extends JPanel {
 		this.repaint();
 	}
 	
-	public void setDiagrams(List<DiagramForChoise> newDiagrams) {
-		this.diagrams.clear();
-		this.diagrams.addAll(newDiagrams);
+	public void setFromDiagrams(List<DiagramForChoise> newDiagrams) {
+		this.fromDiagrams.clear();
+		this.fromDiagrams.addAll(newDiagrams);
+		setViewedFromDiagrams(fromDiagrams);
+		this.combo.setSelectedIndex(0);
+	}
+
+	public void setViewedFromDiagrams(List<DiagramForChoise> newDiagrams) {
+		this.fromListModel.removeAllElements();
+		for(int i = 0; i < newDiagrams.size(); i++) {
+			fromListModel.addElement(newDiagrams.get(i));
+		}
+		this.fromList.updateUI();
+		
 		this.updateUI();
 		this.repaint();
 	}
-	public void createGUIForDiagrams(List<DiagramForChoise> lise){
+
+	public void setViewedToDiagrams(List<DiagramForChoise> newDiagrams) {
+		this.toListModel.removeAllElements();
+		for(int i = 0; i < newDiagrams.size(); i++) {
+			toListModel.addElement(newDiagrams.get(i));
+		}
+		this.toList.updateUI();
 		
+		this.updateUI();
+		this.repaint();
 	}
+
+	public List<DiagramForChoise> getDiagrams() {
+		return fromDiagrams;
+	}
+
+	public JButton getNextBut() {
+		return nextBut;
+	}
+
+	public JButton getBackBut() {
+		return backBut;
+	}
+
+	public JButton getAddBut() {
+		return addBut;
+	}
+
+	public JButton getAddAllBut() {
+		return addAllBut;
+	}
+
+	public JButton getRemoveBut() {
+		return removeBut;
+	}
+
+	public JButton getRemoveAllBut() {
+		return removeAllBut;
+	}
+
+	public DefaultListModel getFromListModel() {
+		return fromListModel;
+	}
+
+	public DefaultListModel getToListModel() {
+		return toListModel;
+	}
+
+	public JComboBox getCombo() {
+		return combo;
+	}
+
+	public JList getFromList() {
+		return fromList;
+	}
+
+	public JList getToList() {
+		return toList;
+	}
+
+	public List<DiagramForChoise> getToDiagrams() {
+		return toDiagrams;
+	}
+
+	public void setToDiagrams(List<DiagramForChoise> toDiagrams) {
+		this.toDiagrams = toDiagrams;
+	}
+
+	public List<DiagramForChoise> getFromDiagrams() {
+		return fromDiagrams;
+	}
+	
 }

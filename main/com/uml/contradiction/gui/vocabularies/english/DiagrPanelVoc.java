@@ -2,24 +2,24 @@ package com.uml.contradiction.gui.vocabularies.english;
 
 public class DiagrPanelVoc {
 	public static String getBtnLabel(String element) {
-		String lbl = new String();
+		String lbl = new String("?");
 		
-		if(lbl.equals("nextBut")) {
+		if(element.equals("nextBut")) {
 			lbl = "Next >>";
 		}
-		else if(lbl.equals("backBut")) {
+		else if(element.equals("backBut")) {
 			lbl = "<< Back";
 		}
-		else if(lbl.equals("addBut")) {
+		else if(element.equals("addBut")) {
 			lbl = "Add";
 		}
-		else if(lbl.equals("raddAllBut")) {
+		else if(element.equals("addAllBut")) {
 			lbl = "Add all";
 		}
-		else if(lbl.equals("removeBut")) {
+		else if(element.equals("removeBut")) {
 			lbl = "Remove";
 		}
-		else if(lbl.equals("removeAllBut")) {
+		else if(element.equals("removeAllBut")) {
 			lbl = "Remove all";
 		}
 		return lbl;
