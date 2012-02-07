@@ -20,7 +20,7 @@ public class TestShell {
 		List<DiagramForChoise> selectedDiagram = new ArrayList<DiagramForChoise>();
 		DiagramForChoise dfch = new DiagramForChoise();
 		dfch.setId(1);
-		dfch.setName("FirstDiagramm");
+		dfch.setName("Class Diagram1");
 		dfch.setType(DiagramType.CLASS);
 		selectedDiagram.add(dfch);
 		
