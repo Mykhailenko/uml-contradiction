@@ -2,7 +2,7 @@ package com.uml.contradiction.model.cclass;
 
 import com.uml.contradiction.model.Edge;
 
-public class Association implements Edge {
+public class Association implements Edge {	
 	private String name;
 	private AssociationEnd end1;
 	private AssociationEnd end2;
@@ -24,6 +24,10 @@ public class Association implements Edge {
 	public void setEnd2(AssociationEnd end2) {
 		this.end2 = end2;
 	}
-	
+	@Override
+	public String toString() {
+		return "Association [name=" + name + ", end1=" + end1 + ", end2="
+				+ end2 + "]";
+	}
 	
 }

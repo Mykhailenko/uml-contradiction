@@ -13,7 +13,9 @@ public class TestShell {
 	public static void main(String []argc){
 //		System.out.println("Hello world");
 		
-		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\5.JustTestClass.uml");
+//		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\5.JustTestClass.uml");
+		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\10.compos.uml");
+		
 		XMIConverter.reset();
 		XMIConverter.setFile(file);
 		

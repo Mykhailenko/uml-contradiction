@@ -16,9 +16,10 @@ import org.apache.log4j.Logger;
 import org.w3c.dom.*;
 
 public class ClassParser 
-//implements CoreParser
 extends CoreParserImpl implements CoreParser{
 	
+	private static final Logger LOGGER = Logger.getRootLogger();
+		
 	private Map<String, CClass> classesWithId = new LinkedHashMap <String, CClass>();
 	private Map<String, Association> assocesWithId = new LinkedHashMap <String, Association>();
 	
@@ -32,74 +33,111 @@ extends CoreParserImpl implements CoreParser{
 		try{
 			//получения списка Id элементов для выбранной диаграммы
 		IdElementsInDIagramm = getIdElementsInDiagramm(diagrForSearch, umlModelEl);
-			
+		int temp;
+		
 		if(IdElementsInDIagramm == null)
 			throw new Exception("Couldn't select the diagramm");
 		
 							
 		NodeList pack_nodes = umlModelEl.getElementsByTagName("packagedElement");
 		
-		for (int temp = 0; temp < pack_nodes.getLength(); temp++) {
-												//разбор одного класса
+		for (temp = 0; temp < pack_nodes.getLength(); temp++) {
+												//разбор одного элемента
 			Element curPackEl = (Element)pack_nodes.item(temp);
 			
 			boolean present = false;
-							//элемент диаграммы классов
+							//элемент диаграммы классов - класс
 			if(curPackEl.getAttribute("xmi:type").equals("uml:Class")){
 			
-			String id4class = curPackEl.getAttribute("xmi:id");
-			
-			//относиться ли данный класс к диаграмме
-			for(String curID : IdElementsInDIagramm){
-				if(curID.equals(id4class)){
-					present =true;
-					break;
-				}				
-			}		
-			if(present){
+				String id4class = curPackEl.getAttribute("xmi:id");
 				
-			CClass curCClass = new CClass();
-			CClass testCClass;
-											//заполняем поля CClass
-			curCClass.setName(curPackEl.getAttribute("name"));
+				//относиться ли данный класс к диаграмме
+				for(String curID : IdElementsInDIagramm){
+					if(curID.equals(id4class)){
+						present =true;
+						break;
+					}				
+				}		
+				if(present){
+					
+				CClass curCClass = new CClass();
+				CClass testCClass;
+												//заполняем поля CClass
+				curCClass.setName(curPackEl.getAttribute("name"));
+				
+				String visibty = curPackEl.getAttribute("visibility");
+				
+				if(visibty.equals("public")) curCClass.setVisibility(Visibility.PUBLIC);
+				if(visibty.equals("private")) curCClass.setVisibility(Visibility.PRIVATE);
+				if(visibty.equals("protected")) curCClass.setVisibility(Visibility.PROTECTED);
 			
-			String visibty = curPackEl.getAttribute("visibility");
-			
-			if(visibty.equals("public")) curCClass.setVisibility(Visibility.PUBLIC);
-			if(visibty.equals("private")) curCClass.setVisibility(Visibility.PRIVATE);
-			if(visibty.equals("protected")) curCClass.setVisibility(Visibility.PROTECTED);
-		
-			String isAbstract = curPackEl.getAttribute("isAbstract");
-			if(isAbstract.equals("false")) curCClass.setAbstract(false);
-			if(isAbstract.equals("true")) curCClass.setAbstract(true);
-			
-			
-			//разбор атрибутов
-			NodeList attrElemsList = curPackEl.getElementsByTagName("ownedAttribute");
-			
-			List<Attribute> attributes = getAttr4Class(attrElemsList);
-			curCClass.setAttributes(attributes);
-			
-			//разбор методов
-			NodeList methElemsList = curPackEl.getElementsByTagName("ownedOperation");
-			
-			List<MMethod> methods = getMethods4Class(methElemsList);
-			curCClass.setMethods(methods);
-			
-			//вставляем класс и его ID в map
-			classesWithId.put(id4class, curCClass);
-			
-			testCClass = classesWithId.get(id4class);
-			System.out.println(testCClass.toString());
-			
-			
+				String isAbstract = curPackEl.getAttribute("isAbstract");
+				if(isAbstract.equals("false")) curCClass.setAbstract(false);
+				if(isAbstract.equals("true")) curCClass.setAbstract(true);
+				
+				
+				//разбор атрибутов
+				NodeList attrElemsList = curPackEl.getElementsByTagName("ownedAttribute");
+				
+				List<Attribute> attributes = getAttr4Class(attrElemsList);
+				curCClass.setAttributes(attributes);
+				
+				//разбор методов
+				NodeList methElemsList = curPackEl.getElementsByTagName("ownedOperation");
+				
+				List<MMethod> methods = getMethods4Class(methElemsList);
+				curCClass.setMethods(methods);
+				
+				//вставляем класс и его ID в map
+				classesWithId.put(id4class, curCClass);
+				
+				testCClass = classesWithId.get(id4class);
+				System.out.println(testCClass.toString());
+				}
 			}
-			}
+			
+			boolean pres2 = false;
+			
+			//элемент диаграммы - ассоциация
+			if(curPackEl.getAttribute("xmi:type").equals("uml:Association")){
+
+				String id4assoc = curPackEl.getAttribute("xmi:id");
+				
+				//относиться ли данная ассоциация к диаграмме
+				for(String curID : IdElementsInDIagramm){
+					if(curID.equals(id4assoc)){
+						pres2 =true;
+						break;
+					}				
+				}		
+				if(pres2){
+					
+				Association curAssoc = new Association();
+				
+				if(curPackEl.hasAttribute("memberEnd")){
+					//разбор конца ассоциации
+					NodeList endsList = curPackEl.getElementsByTagName("ownedEnd");
+					
+					for(int z=0; z < endsList.getLength(); z++){
+						
+						AssociationEnd end = getEnd4Assoc((Element)endsList.item(z));
+						if(z == 0)
+							curAssoc.setEnd1(end);
+						if(z == 1)
+							curAssoc.setEnd2(end);
+					}
+				}
+				assocesWithId.put(id4assoc, curAssoc);
+				}
+				System.out.println(assocesWithId.get(id4assoc));
+			}//закончили с ассоциацией
+			
 		}
+		//закончили первый проход по packageElements
+		
 		}catch (Exception e) {
 			e.printStackTrace();
 		  }
-
 		return null;
 	}
 	
@@ -110,6 +148,9 @@ extends CoreParserImpl implements CoreParser{
 			Attribute attr_1 = new Attribute();
 			Element curAttrElem = (Element)attrList.item(k);
 			
+				//проверка что это не ownedAttribute для роли
+			if(!curAttrElem.hasAttribute("association"))
+			{			
 			attr_1.setName(curAttrElem.getAttribute("name"));
 			
 			String visibty = curAttrElem.getAttribute("visibility");
@@ -126,6 +167,7 @@ extends CoreParserImpl implements CoreParser{
 			if(scope.equals("classifier")) attr_1.setScope(Scope.CLASSIFIER);
 			
 			attributes.add(attr_1);
+			}
 		}
 		return attributes;
 	}
@@ -152,5 +194,54 @@ extends CoreParserImpl implements CoreParser{
 		}
 		return methods;
 	}
+				//конец для ассоциации
+	private AssociationEnd getEnd4Assoc(Element endElement){
+		AssociationEnd assEnd = new AssociationEnd();
+		
+		String aggreg = endElement.getAttribute("aggregation");
+		if(aggreg.equals("none")) assEnd.setAggregationKind(AggregationKind.NONE);
+		if(aggreg.equals("shared")) assEnd.setAggregationKind(AggregationKind.SHARED);
+		if(aggreg.equals("composite")) assEnd.setAggregationKind(AggregationKind.COMPOSITE);
 	
+		String navig = endElement.getAttribute("isNavigable");
+		if(navig.equals("true")) assEnd.setNavigability(Navigability.NAVIGABLE);
+		if(navig.equals("false")) assEnd.setNavigability(Navigability.NON_NAVIGABLE);
+		
+					//ассоциируемый класс
+		String idAsocedClass = endElement.getAttribute("type");
+		CClass assCClass = classesWithId.get(idAsocedClass);
+		assEnd.setAssociatedClass(assCClass);
+		
+					//кратности
+		try {			
+			NodeList nlistLow = endElement.getElementsByTagName("lowerValue");
+			if(nlistLow.getLength() > 0){
+				String lowValue = ((Element)nlistLow.item(0)).getAttribute("value");
+				NodeList nlistHi = endElement.getElementsByTagName("upperValue");
+				String highValue = ((Element)nlistHi.item(0)).getAttribute("value");
+				
+				Integer lowerBound =  new Integer(0);
+				Double upperBound =  new Double(0);
+							
+				if(lowValue.equals("*")) lowerBound = 0;
+				else
+					lowerBound = Integer.valueOf(lowValue);
+					
+				if(highValue.equals("*")) {
+					upperBound = Double.MAX_VALUE;
+					LOGGER.info("We have upper value *");
+				}
+				else
+					upperBound = Double.valueOf(highValue);
+				
+				Multiplicity multipl = new Multiplicity(lowerBound, upperBound); 
+					
+				assEnd.setMultiplicity(multipl);	
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return assEnd;
+	}
 }
