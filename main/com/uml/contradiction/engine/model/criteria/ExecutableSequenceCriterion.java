@@ -1,0 +1,47 @@
+package com.uml.contradiction.engine.model.criteria;
+
+import com.uml.contradiction.engine.model.BoundedPredicate;
+import com.uml.contradiction.engine.model.Quantifier;
+import com.uml.contradiction.engine.model.QuantifierType;
+import com.uml.contradiction.engine.model.Variable;
+import com.uml.contradiction.engine.model.mapping.LifeLineFromInteractionMapping;
+import com.uml.contradiction.engine.model.predicate.IsExecutableLifeLine;
+import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
+import com.uml.contradiction.engine.model.rightPart.simple.RPInteractions;
+
+public class ExecutableSequenceCriterion extends Criterion {
+	public ExecutableSequenceCriterion() {
+		super();
+		Quantifier quantifier0 = new Quantifier();
+		quantifier0.setType(QuantifierType.ALL);
+		quantifier0.setBoundVariable(Variable.f);
+		quantifier0.setRightPart(new RPInteractions());
+		getQuantifiers().add(quantifier0);
+		
+		Quantifier quantifier1 = new Quantifier();
+		quantifier1.setType(QuantifierType.ALL);
+		quantifier1.setBoundVariable(Variable.l);
+		ComplexRightPart rightPart = new ComplexRightPart();
+		rightPart.setBoundVariable(Variable.f);
+		rightPart.getNestedMappings().add(new LifeLineFromInteractionMapping());
+		quantifier1.setRightPart(rightPart);
+		getQuantifiers().add(quantifier1);
+		
+		BoundedPredicate boundedPredicate = new BoundedPredicate();
+		boundedPredicate.getBoundVariable().add(Variable.f);
+		boundedPredicate.getBoundVariable().add(Variable.l);
+		boundedPredicate.setPredicate(new IsExecutableLifeLine());
+		getBoundedPredicates().add(boundedPredicate);
+	}
+	
+	@Override
+	public int getInternalID() {
+		return -2;
+	}
+
+	@Override
+	public CriterionType getCriterionType() {
+		return CriterionType.SEQUENCE_STATE;
+	}
+
+}

@@ -11,6 +11,7 @@ public class CriterionSuite {
 		result.add(new CorrectTypeCriterion());
 		result.add(new MustExistMethodCriterion());
 		result.add(new PartOfSingleComposite());
+		result.add(new ExecutableSequenceCriterion());
 		return result;
 	}
 }
