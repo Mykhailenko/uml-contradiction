@@ -13,5 +13,6 @@ public interface Predicate {
 	 * @return 
 	 */
 	boolean predict(List params) throws PredicatException;
-
+	
+	String getFailDescription();
 }

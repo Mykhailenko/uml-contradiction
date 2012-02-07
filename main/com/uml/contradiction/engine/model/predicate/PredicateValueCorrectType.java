@@ -73,4 +73,8 @@ public class PredicateValueCorrectType implements Predicate {
 		return true;
 		
 	}
+	@Override
+	public String getFailDescription() {
+		return null;
+	}
 }

@@ -38,4 +38,9 @@ public class PredicateCorrectCompositeMultiplicity implements Predicate{
 			return true;
 		}
 	}
+
+	@Override
+	public String getFailDescription() {
+		return null;
+	}
 }

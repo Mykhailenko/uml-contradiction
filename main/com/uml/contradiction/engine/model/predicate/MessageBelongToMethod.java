@@ -32,5 +32,9 @@ public class MessageBelongToMethod implements Predicate {
 			return false;
 		}
 	}
+	@Override
+	public String getFailDescription() {
+		return null;
+	}
 
 }
