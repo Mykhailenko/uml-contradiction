@@ -10,7 +10,7 @@ public class CClass implements Vertex {
 	private String name;
 	private String packageName;
 	private Set<Stereotype> stereotypes;
-	private Visibility visibility;
+	private Visibility visibility;	
 	private boolean isAbstract;
 	private String properties;
 	private List<Attribute> attributes;
@@ -80,6 +80,16 @@ public class CClass implements Vertex {
 	}
 	public void setTemplateParameters(Set templateParameters) {
 		this.templateParameters = templateParameters;
+	}
+	
+	@Override
+	public String toString() {
+		return "CClass [name=" + name + ", packageName=" + packageName
+				+ ", stereotypes=" + stereotypes + ", visibility=" + visibility
+				+ ", isAbstract=" + isAbstract + ", properties=" + properties
+				+ ", attributes=" + attributes + ", methods=" + methods
+				+ ", templateParameters=" + templateParameters
+				+ ", requiredInterface=" + requiredInterface + "]";
 	}
 	
 }

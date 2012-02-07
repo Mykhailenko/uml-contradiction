@@ -13,14 +13,16 @@ public class TestShell {
 	public static void main(String []argc){
 //		System.out.println("Hello world");
 		
-		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\5.JustTestClass.uml");
+//		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\5.JustTestClass.uml");
+		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\10.compos.uml");
+		
 		XMIConverter.reset();
 		XMIConverter.setFile(file);
 		
 		List<DiagramForChoise> selectedDiagram = new ArrayList<DiagramForChoise>();
 		DiagramForChoise dfch = new DiagramForChoise();
 		dfch.setId(1);
-		dfch.setName("FirstDiagramm");
+		dfch.setName("Class Diagram1");
 		dfch.setType(DiagramType.CLASS);
 		selectedDiagram.add(dfch);
 		

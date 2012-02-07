@@ -4,7 +4,7 @@ import com.uml.contradiction.model.ocl.Constraint;
 
 public class AssociationEnd {
 	private String 			role;
-	private Multiplicity 	multiplicity;
+	private Multiplicity 	multiplicity;	
 	private AggregationKind aggregationKind;
 	private Visibility 		visibility;
 	private Constraint		constraint;
@@ -67,5 +67,13 @@ public class AssociationEnd {
 	public void setAssociatedClass(CClass associatedClass) {
 		this.associatedClass = associatedClass;
 	}
-	
+	@Override
+	public String toString() {
+		return "AssociationEnd [role=" + role + ", multiplicity="
+				+ multiplicity + ", aggregationKind=" + aggregationKind
+				+ ", visibility=" + visibility + ", constraint=" + constraint
+				+ ", isDerived=" + isDerived + ", navigability=" + navigability
+				+ ", isAssociationClass=" + isAssociationClass
+				+ ", associatedClass=" + associatedClass + "]";
+	}
 }
