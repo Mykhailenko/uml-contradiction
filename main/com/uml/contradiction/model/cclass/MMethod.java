@@ -55,5 +55,11 @@ public class MMethod {
 	public void setScope(Scope scope) {
 		this.scope = scope;
 	}
-	
+	@Override
+	public String toString() {
+		return "MMethod [name=" + name + ", visibility=" + visibility
+				+ ", stereotypes=" + stereotypes + ", parameters=" + parameters
+				+ ", returnResult=" + returnResult + ", properties="
+				+ properties + ", scope=" + scope + "]";
+	}
 }	

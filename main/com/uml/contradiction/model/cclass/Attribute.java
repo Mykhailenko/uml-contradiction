@@ -55,11 +55,20 @@ public class Attribute implements NamedElement{
 	public void setConstraints(Constraint constraint) {
 		this.constraint = constraint;
 	}
+	
 	public Scope getScope() {
 		return scope;
 	}
 	public void setScope(Scope scope) {
 		this.scope = scope;
+	}
+	
+	@Override
+	public String toString() {
+		return "Attribute [name=" + name + ", visibility=" + visibility
+				+ ", isDerived=" + isDerived + ", type=" + type
+				+ ", multiplicity=" + multiplicity + ", ddefault=" + ddefault
+				+ ", constraint=" + constraint + ", scope=" + scope + "]";
 	}
 	
 }

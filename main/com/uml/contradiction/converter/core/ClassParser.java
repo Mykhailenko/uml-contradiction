@@ -7,12 +7,10 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.uml.contradiction.model.cclass.CClass;
-import com.uml.contradiction.model.cclass.Association;
-import com.uml.contradiction.model.cclass.Visibility;
 import com.uml.contradiction.common.DiagramType;
 import com.uml.contradiction.engine.model.diagram.*;
 import com.uml.contradiction.gui.models.DiagramForChoise;
+import com.uml.contradiction.model.cclass.*;
 
 import org.apache.log4j.Logger;
 import org.w3c.dom.*;
@@ -31,9 +29,6 @@ extends CoreParserImpl implements CoreParser{
 	@Override
 	public List<Object> parse(DiagramForChoise diagrForSearch, Element umlModelEl) {
 
-		LinkedHashMap<String, ArrayList<String>> clas_s;
-		ArrayList<String> info_cls;
-		
 		try{
 			//получения списка Id элементов для выбранной диаграммы
 		IdElementsInDIagramm = getIdElementsInDiagramm(diagrForSearch, umlModelEl);
@@ -65,7 +60,6 @@ extends CoreParserImpl implements CoreParser{
 				
 			CClass curCClass = new CClass();
 			CClass testCClass;
-//			String id4class;
 											//заполняем поля CClass
 			curCClass.setName(curPackEl.getAttribute("name"));
 			
@@ -75,30 +69,32 @@ extends CoreParserImpl implements CoreParser{
 			if(visibty.equals("private")) curCClass.setVisibility(Visibility.PRIVATE);
 			if(visibty.equals("protected")) curCClass.setVisibility(Visibility.PROTECTED);
 		
-//			id4class = curPackEl.getAttribute("xmi:id");
+			String isAbstract = curPackEl.getAttribute("isAbstract");
+			if(isAbstract.equals("false")) curCClass.setAbstract(false);
+			if(isAbstract.equals("true")) curCClass.setAbstract(true);
+			
+			
+			//разбор атрибутов
+			NodeList attrElemsList = curPackEl.getElementsByTagName("ownedAttribute");
+			
+			List<Attribute> attributes = getAttr4Class(attrElemsList);
+			curCClass.setAttributes(attributes);
+			
+			//разбор методов
+			NodeList methElemsList = curPackEl.getElementsByTagName("ownedOperation");
+			
+			List<MMethod> methods = getMethods4Class(methElemsList);
+			curCClass.setMethods(methods);
+			
+			//вставляем класс и его ID в map
 			classesWithId.put(id4class, curCClass);
 			
 			testCClass = classesWithId.get(id4class);
 			System.out.println(testCClass.toString());
 			
-//			 clas_s = new LinkedHashMap<String, ArrayList<String>>();
-//			 info_cls = new ArrayList<String>();
-//			 
-//			System.out.println(curPackEl.getAttribute("name"));
-//			
-//			info_cls.add(curPackEl.getAttribute("visibility"));
-//			
-//			info_cls=null;
-//			 clas_s.put(curPackEl.getAttribute("xmi:id"), info_cls);
-//			
-//			 info_cls = clas_s.get(curPackEl.getAttribute("xmi:id"));
-////			 System.out.println(info_cls.get(0));
-											
-						//разбор атрибутов
-			curPackEl.getElementsByTagName("ownedAttribute");
-			}
-			}
 			
+			}
+			}
 		}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -106,5 +102,55 @@ extends CoreParserImpl implements CoreParser{
 
 		return null;
 	}
+	
+	private List<Attribute> getAttr4Class(NodeList attrList){
+		List<Attribute> attributes = new ArrayList<Attribute>();
+		
+		for(int k=0; k<attrList.getLength(); k++){
+			Attribute attr_1 = new Attribute();
+			Element curAttrElem = (Element)attrList.item(k);
+			
+			attr_1.setName(curAttrElem.getAttribute("name"));
+			
+			String visibty = curAttrElem.getAttribute("visibility");
+			if(visibty.equals("public")) attr_1.setVisibility(Visibility.PUBLIC);
+			if(visibty.equals("private")) attr_1.setVisibility(Visibility.PRIVATE);
+			if(visibty.equals("protected")) attr_1.setVisibility(Visibility.PROTECTED);
+		
+			String isDeriv = curAttrElem.getAttribute("isAbstract");
+			if(isDeriv.equals("false")) attr_1.setDerived(false);
+			if(isDeriv.equals("true")) attr_1.setDerived(true);
+			
+			String scope = curAttrElem.getAttribute("ownerScope");
+			if(scope.equals("instance")) attr_1.setScope(Scope.INSTANCE);
+			if(scope.equals("classifier")) attr_1.setScope(Scope.CLASSIFIER);
+			
+			attributes.add(attr_1);
+		}
+		return attributes;
+	}
 
+	private List<MMethod> getMethods4Class(NodeList methdsList){
+		List<MMethod> methods = new ArrayList<MMethod>();
+		
+		for(int k=0; k<methdsList.getLength(); k++){
+			MMethod meth_1 = new MMethod();
+			Element curMethElem = (Element)methdsList.item(k);
+			
+			meth_1.setName(curMethElem.getAttribute("name"));
+			
+			String visibty = curMethElem.getAttribute("visibility");
+			if(visibty.equals("public")) meth_1.setVisibility(Visibility.PUBLIC);
+			if(visibty.equals("private")) meth_1.setVisibility(Visibility.PRIVATE);
+			if(visibty.equals("protected")) meth_1.setVisibility(Visibility.PROTECTED);
+		
+			String scope = curMethElem.getAttribute("ownerScope");
+			if(scope.equals("instance")) meth_1.setScope(Scope.INSTANCE);
+			if(scope.equals("classifier")) meth_1.setScope(Scope.CLASSIFIER);
+			
+			methods.add(meth_1);
+		}
+		return methods;
+	}
+	
 }
