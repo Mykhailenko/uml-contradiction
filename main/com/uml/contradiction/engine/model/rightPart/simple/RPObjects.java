@@ -8,6 +8,7 @@ import com.uml.contradiction.engine.model.rightPart.SimpleRightPart;
 
 public class RPObjects extends SimpleRightPart {
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public List getSet(List<VariableValue> params) {
 		return ObjectDiagram.getObjects();

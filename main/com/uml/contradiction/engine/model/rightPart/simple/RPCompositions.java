@@ -13,6 +13,7 @@ import com.uml.contradiction.model.cclass.AssociationEnd;
 
 public class RPCompositions extends SimpleRightPart {
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public List getSet(List<VariableValue> params) throws MappingException {
 		List<Association> associations = ClassDiagram.getAssociations();

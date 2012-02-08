@@ -1,14 +1,10 @@
 package com.uml.contradiction.gui.sceneries;
 
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 
 import org.apache.log4j.Logger;
 

@@ -27,8 +27,8 @@ public class DiagramsPanel extends JPanel {
 	private final JButton addAllBut  = new JButton(DiagrPanelVoc.getBtnLabel("addAllBut"));
 	private final JButton removeBut = new JButton(DiagrPanelVoc.getBtnLabel("removeBut"));
 	private final JButton removeAllBut = new JButton(DiagrPanelVoc.getBtnLabel("removeAllBut"));
-	private final DefaultListModel fromListModel = new DefaultListModel<DiagramForChoise>();
-	private final DefaultListModel toListModel = new DefaultListModel<DiagramForChoise>();
+	private final DefaultListModel fromListModel = new DefaultListModel();
+	private final DefaultListModel toListModel = new DefaultListModel();
 	
 
 	private final JComboBox combo = new JComboBox();;

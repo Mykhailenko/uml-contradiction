@@ -8,6 +8,7 @@ import com.uml.contradiction.engine.model.rightPart.QuantifierRightPart;
 
 public class RPInteractions implements QuantifierRightPart {
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public List getSet(List<VariableValue> params) throws MappingException {
 		// TODO Auto-generated method stub

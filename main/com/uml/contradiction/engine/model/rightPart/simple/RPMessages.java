@@ -7,6 +7,7 @@ import com.uml.contradiction.engine.model.mapping.exception.MappingException;
 import com.uml.contradiction.engine.model.rightPart.SimpleRightPart;
 
 public class RPMessages extends SimpleRightPart {
+	@SuppressWarnings("rawtypes")
 	@Override
 	public List getSet(List<VariableValue> params) throws MappingException {
 		return null;
