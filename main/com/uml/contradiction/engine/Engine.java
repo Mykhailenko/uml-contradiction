@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.sun.org.apache.bcel.internal.generic.CPInstruction;
 import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.HistoryItem;
 import com.uml.contradiction.engine.model.HistoryPlainItem;
@@ -22,6 +21,7 @@ public class Engine {
 	private Criterion criterion;
 	private List<HistoryItem> wholeHistory;
 	private List<HistoryItem> failHistory;
+	@SuppressWarnings("unchecked")
 	public VerificationResult verify(){
 		Quantifier quantifier = criterion.getQuantifiers().get(0);
 		List<Object> firstSet = null;;
@@ -45,6 +45,7 @@ public class Engine {
 		return result;
 	}
 	///olololo
+	@SuppressWarnings("unchecked")
 	private void verify(HistoryItem parentHistoryItem, int currentIndex) {
 		assert currentIndex > 0 : "Bad index";
 		if(currentIndex < criterion.getQuantifiers().size()){
@@ -81,6 +82,9 @@ public class Engine {
 			if(criterion.isNegative()){
 				result = !result;
 			}
+			if(result == false && criterion.getBoundedPredicates().size() == 1){
+				parentHistoryItem.setFailDescription(criterion.getBoundedPredicates().get(0).getPredicate().getFailDescription());
+			}
 			parentHistoryItem.setSuccess(result);
 		}
 	}
@@ -103,21 +107,21 @@ public class Engine {
 			if(counter == wholeHistory.size()){
 				result.setGood(true);
 			}else{
-				LOGGER.info("!ALL " + counter + " ; " + wholeHistory.size());
+				LOGGER.debug("!ALL " + counter + " ; " + wholeHistory.size());
 			}
 			break;
 		case EXIST:
 			if(counter > 0){
 				result.setGood(true);
 			}else{
-				LOGGER.info("!EXI " + counter + " ; " + wholeHistory.size());
+				LOGGER.debug("!EXI " + counter + " ; " + wholeHistory.size());
 			}
 			break;
 		case ALONE:
 			if(counter == 1){
 				result.setGood(true);
 			}else{
-				LOGGER.info("!ALO " + counter + " ; " + wholeHistory.size());
+				LOGGER.debug("!ALO " + counter + " ; " + wholeHistory.size());
 			}
 			break;
 		}
@@ -133,7 +137,8 @@ public class Engine {
 		List<HistoryPlainItem> result = new LinkedList<HistoryPlainItem>();
 		for(HistoryItem historyItem : failHistory){
 			if(historyItem.getChildren().isEmpty() && historyItem.isFail()){
-				result.add(new HistoryPlainItem(historyItem.getPlainHistory()));
+//				result.add(new HistoryPlainItem(historyItem.getPlainHistory()));
+				result.add(historyItem.getHistoryPlainItem());
 			}else{
 				createPlainFailHistory(result, historyItem);
 			}
@@ -144,7 +149,8 @@ public class Engine {
 			HistoryItem parentHistoryItem) {
 		for(HistoryItem historyItem : parentHistoryItem.getChildren()){
 			if(historyItem.getChildren().isEmpty() && historyItem.isFail()){
-				result.add(new HistoryPlainItem(historyItem.getPlainHistory()));
+//				result.add(new HistoryPlainItem(historyItem.getPlainHistory()));
+				result.add(historyItem.getHistoryPlainItem());
 			}else{
 				createPlainFailHistory(result, historyItem);
 			}
@@ -167,21 +173,21 @@ public class Engine {
 				if(counter == historyItem.getChildren().size()){
 					result = true;
 				}else{
-					LOGGER.info("!ALL " + counter + " ; " + historyItem.getChildren().size());
+					LOGGER.debug("!ALL " + counter + " ; " + historyItem.getChildren().size());
 				}
 				break;
 			case EXIST:
 				if(counter > 0){
 					result = true;
 				}else{
-					LOGGER.info("!EXI " + counter + " ; " + historyItem.getChildren().size());
+					LOGGER.debug("!EXI " + counter + " ; " + historyItem.getChildren().size());
 				}
 				break;
 			case ALONE:
 				if(counter == 1){
 					result = true;
 				}else{
-					LOGGER.info("!ALO " + counter + " ; " + historyItem.getChildren().size());
+					LOGGER.debug("!ALO " + counter + " ; " + historyItem.getChildren().size());
 				}
 				break;
 			}

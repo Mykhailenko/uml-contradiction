@@ -12,6 +12,7 @@ public class HistoryItem {
 	private VariableValue variableValue = new VariableValue();
 	private List<HistoryItem> children = new LinkedList<HistoryItem>();
 	private Boolean success = null;
+	private String failDescription = null;
 	public boolean isSuccess() {
 		return success;
 	}
@@ -20,6 +21,11 @@ public class HistoryItem {
 	}
 	public void setSuccess(boolean success) {
 		this.success = success;
+	}
+	public HistoryPlainItem getHistoryPlainItem(){
+		HistoryPlainItem historyPlainItem = new HistoryPlainItem(getPlainHistory());
+		historyPlainItem.setFailDdescription(failDescription);
+		return historyPlainItem;
 	}
 	public List<VariableValue> getPlainHistory(){
 		List<VariableValue> result = new LinkedList<VariableValue>();
@@ -64,6 +70,10 @@ public class HistoryItem {
 	public void setParent(HistoryItem parent) {
 		this.parent = parent;
 	}
-	
-	
+	public String getFailDescription() {
+		return failDescription;
+	}
+	public void setFailDescription(String failDescription) {
+		this.failDescription = failDescription;
+	}
 }
