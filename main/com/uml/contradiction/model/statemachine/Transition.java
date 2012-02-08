@@ -2,9 +2,11 @@ package com.uml.contradiction.model.statemachine;
 
 import java.util.List;
 
+import com.uml.contradiction.model.Edge;
+import com.uml.contradiction.model.EdgeType;
 import com.uml.contradiction.model.Vertex;
 
-public class Transition {
+public class Transition implements Edge{
 	private Vertex target;
 	private Vertex source;
 	private TransitionKind kind;
@@ -39,6 +41,10 @@ public class Transition {
 	}
 	public void setGuard(Guard guard) {
 		this.guard = guard;
+	}
+
+	public EdgeType getType() {
+		return EdgeType.TRANSITION;
 	}
 	
 }

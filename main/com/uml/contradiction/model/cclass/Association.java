@@ -1,6 +1,7 @@
 package com.uml.contradiction.model.cclass;
 
 import com.uml.contradiction.model.Edge;
+import com.uml.contradiction.model.EdgeType;
 
 public class Association implements Edge {	
 	private String name;
@@ -29,5 +30,8 @@ public class Association implements Edge {
 		return "Association [name=" + name + ", end1=" + end1 + ", end2="
 				+ end2 + "]";
 	}
-	
+
+	public EdgeType getType() {
+		return EdgeType.ASSOCIATION;
+	}
 }

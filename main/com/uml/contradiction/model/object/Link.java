@@ -1,6 +1,7 @@
 package com.uml.contradiction.model.object;
 
 import com.uml.contradiction.model.Edge;
+import com.uml.contradiction.model.EdgeType;
 
 public class Link implements Edge {
 	private LinkEnd end1;
@@ -38,5 +39,7 @@ public class Link implements Edge {
 		this.name = name;
 	}
 	
-	
+	public EdgeType getType() {
+		return EdgeType.LINK;
+	}	
 }
