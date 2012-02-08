@@ -3,12 +3,14 @@ package com.uml.contradiction.converter.core;
 import java.io.File;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.uml.contradiction.common.DiagramType;
+import com.uml.contradiction.converter.XMIConverter;
 import com.uml.contradiction.engine.model.diagram.*;
 import com.uml.contradiction.gui.models.DiagramForChoise;
 import com.uml.contradiction.model.cclass.*;
@@ -119,6 +121,8 @@ extends CoreParserImpl implements CoreParser{
 					//разбор конца ассоциации
 					NodeList endsList = curPackEl.getElementsByTagName("ownedEnd");
 					
+					assert endsList.getLength() <= 2 : "assosiation must have 2 ends";
+					
 					for(int z=0; z < endsList.getLength(); z++){
 						
 						AssociationEnd end = getEnd4Assoc((Element)endsList.item(z));
@@ -130,13 +134,18 @@ extends CoreParserImpl implements CoreParser{
 				}
 				assocesWithId.put(id4assoc, curAssoc);
 				}
-				System.out.println(assocesWithId.get(id4assoc));
+//				System.out.println(assocesWithId.get(id4assoc));
 			}//закончили с ассоциацией
 			
 		}
 		//закончили первый проход по packageElements
 		
 		secondParse(diagrForSearch, umlModelEl);
+		
+		Collection<Association> colectAssocs = assocesWithId.values();
+		for(Association ass : colectAssocs)			
+		System.out.println(ass);
+		
 		}catch (Exception e) {
 			e.printStackTrace();
 		  }
@@ -153,7 +162,7 @@ extends CoreParserImpl implements CoreParser{
 		for (temp = 0; temp < pack_nodes.getLength(); temp++) {
 												//разбор одного элемента
 			Element curPackEl = (Element)pack_nodes.item(temp);
-			Map<String, AssociationEnd> watchedOwnAttrRole = new HashMap<String, AssociationEnd>();
+//			Map<String, AssociationEnd> watchedOwnAttrRole = new HashMap<String, AssociationEnd>();
 			
 			boolean present = false;
 							//элемент диаграммы классов - класс
@@ -178,26 +187,38 @@ extends CoreParserImpl implements CoreParser{
 						//проверка что это ownedAttribute для роли
 						if(curOwnAttrElem.hasAttribute("association")){
 							
-							String idOwnedAttrRole = curOwnAttrElem.getAttribute("xmi:id");
+//							String idOwnedAttrRole = curOwnAttrElem.getAttribute("xmi:id");
 							
-							//получили AsocPackElem
+							//получили AsocPackElem  ассоциацию, чей это конец
 							String idAsocPackElem = curOwnAttrElem.getAttribute("association");
 							Association assocCur = assocesWithId.get(idAsocPackElem);
 							
 //							getOppEndId(); //нужно будет искать элемент 
 							
-							if(assocCur.getEnd1() != null){//с ролью один конец
+							if(assocCur.getEnd1() != null){//с ролью второй конец
+													//первый конец уже есть
 								
-							}
-							
-							if(watchedOwnAttrRole.get(idOwnedAttrRole) == null){
+								AssociationEnd end_2 = getEnd4Assoc(curOwnAttrElem);
+								end_2.setRole(curOwnAttrElem.getAttribute("name"));
+								
+								assocCur.setEnd2(end_2);
+								
+							}else{
 								
 								AssociationEnd end_1 = getEnd4Assoc(curOwnAttrElem);
 								end_1.setRole(curOwnAttrElem.getAttribute("name"));
 								
-//								watchedOwnAttrRole.put(, true);
-															
+								assocCur.setEnd1(end_1);								
 							}
+							
+//							if(watchedOwnAttrRole.get(idOwnedAttrRole) == null){
+//								
+//								AssociationEnd end_1 = getEnd4Assoc(curOwnAttrElem);
+//								end_1.setRole(curOwnAttrElem.getAttribute("name"));
+//								
+////								watchedOwnAttrRole.put(, true);
+//															
+//							}
 						}
 							
 					}
@@ -298,7 +319,7 @@ extends CoreParserImpl implements CoreParser{
 					lowerBound = Integer.valueOf(lowValue);
 					
 				if(highValue.equals("*")) {
-					upperBound = Double.MAX_VALUE;
+					upperBound = Double.POSITIVE_INFINITY;
 					LOGGER.info("We have upper value *");
 				}
 				else

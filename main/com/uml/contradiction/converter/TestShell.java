@@ -14,7 +14,9 @@ public class TestShell {
 //		System.out.println("Hello world");
 		
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\5.JustTestClass.uml");
-		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\10.compos.uml");
+//		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\10.compos.uml");
+		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\composMultipl_Role.uml");
+		
 		
 		XMIConverter.reset();
 		XMIConverter.setFile(file);
