@@ -52,4 +52,17 @@ public class CoreParserImpl implements CoreParser{
 		else
 			return listId;
 	}
+	
+	//относиться ли данный элемент к диаграмме
+	protected boolean isElementInDiagrammByID(String idElem){		
+		boolean present = false;		
+		
+		for(String curID : IdElementsInDIagramm){
+			if(curID.equals(idElem)){
+				present =true;
+				break;
+			}				
+		}	
+		return present;
+	}
 }

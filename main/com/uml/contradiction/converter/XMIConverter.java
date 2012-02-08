@@ -19,6 +19,7 @@ import com.uml.contradiction.model.cclass.Association;
 import com.uml.contradiction.common.DiagramType;
 import com.uml.contradiction.engine.model.diagram.*;
 import com.uml.contradiction.converter.core.*;
+import com.uml.contradiction.converter.core.classes.ClassParser;
 
 public class XMIConverter {
 	private static File file = null;
@@ -63,6 +64,7 @@ private static final Logger LOGGER = Logger.getRootLogger();
 		
 		List<CClass> class_s = ClassDiagram.getClasses();
 		List<Association> asssoc_s = ClassDiagram.getAssociations();
+		CoreParser coreParser;
 				
 		for(int i=0; i<selectedDiagram.size(); i++){
 			if(selectedDiagram.get(i).getType() == DiagramType.CLASS){
