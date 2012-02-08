@@ -7,7 +7,6 @@ import java.util.List;
 
 import javax.swing.JComboBox;
 
-import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 import com.uml.contradiction.common.DiagramType;
 import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.models.DiagramForChoise;
