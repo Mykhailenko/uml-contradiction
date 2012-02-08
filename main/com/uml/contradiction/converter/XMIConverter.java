@@ -62,9 +62,9 @@ private static final Logger LOGGER = Logger.getRootLogger();
 		
 		Element umlModelEl = (Element)startParse(file); //начало разбора
 		
-		List<CClass> class_s = ClassDiagram.getClasses();
-		List<Association> asssoc_s = ClassDiagram.getAssociations();
-		CoreParser coreParser;
+//		List<CClass> class_s = ClassDiagram.getClasses();
+//		List<Association> asssoc_s = ClassDiagram.getAssociations();
+		CoreParser corePars;
 				
 		for(int i=0; i<selectedDiagram.size(); i++){
 			if(selectedDiagram.get(i).getType() == DiagramType.CLASS){

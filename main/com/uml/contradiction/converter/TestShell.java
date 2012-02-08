@@ -1,11 +1,15 @@
 package com.uml.contradiction.converter;
 
 //import com.uml.contradiction.converter.core.ClassParser;
+import com.uml.contradiction.engine.model.diagram.ClassDiagram;
 import com.uml.contradiction.gui.models.DiagramForChoise;
+import com.uml.contradiction.model.cclass.Association;
+import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.common.DiagramType;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Collections;
 
@@ -34,5 +38,17 @@ public class TestShell {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		//печатаем ClassDiagram
+		printClassDiagr();
 	}
+	public static void printClassDiagr () {
+		List<CClass> class_s = ClassDiagram.getClasses();
+		List<Association> asssoc_s = ClassDiagram.getAssociations();
+		
+		for(CClass cls : class_s)			
+			System.out.println(cls);
+		
+		for(Association ass : asssoc_s)			
+			System.out.println(ass);	
+	}	
 }

@@ -35,8 +35,19 @@ extends CoreParserImpl implements CoreParser{
 		classParsHelper = new ClassParsHelper(classesWithId, assocesWithId);
 	}
 	
-	private Boolean AddToClassDiagram(Map<String, CClass> classesWithId) {
-		return null;
+	private Boolean addToClassDiagram() {
+		List<CClass> class_s = ClassDiagram.getClasses();
+		List<Association> asssoc_s = ClassDiagram.getAssociations();
+		
+		Collection<CClass> colectCls = classesWithId.values();
+		for(CClass cls : colectCls)			
+			class_s.add(cls);
+		
+		Collection<Association> colectAssocs = assocesWithId.values();
+		for(Association ass : colectAssocs)			
+			asssoc_s.add(ass);		
+		
+		return true;
 	}
 		
 	@Override
@@ -58,13 +69,8 @@ extends CoreParserImpl implements CoreParser{
 		//		для работы с ролями, наследованием
 		secondParsePackElems(diagrForSearch, umlModelEl);
 		
-		Collection<CClass> colectCls = classesWithId.values();
-		for(CClass cls : colectCls)			
-		System.out.println(cls);
-		
-		Collection<Association> colectAssocs = assocesWithId.values();
-		for(Association ass : colectAssocs)			
-		System.out.println(ass);
+		//запись значений в статические коллекции
+		addToClassDiagram();
 		
 		}catch (Exception e) {
 			e.printStackTrace();
