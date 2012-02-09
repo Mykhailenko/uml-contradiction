@@ -4,11 +4,12 @@ import java.util.Set;
 import java.util.List;
 
 import com.uml.contradiction.model.Vertex;
+import com.uml.contradiction.model.common.PackageElement;
 import com.uml.contradiction.model.common.Stereotype;
 
 public class CClass implements Vertex {
 	private String name;
-	private String packageName;
+	private PackageElement parentPackageElement;
 	private Set<Stereotype> stereotypes;
 	private Visibility visibility;	
 	private boolean isAbstract;
@@ -22,7 +23,7 @@ public class CClass implements Vertex {
 	public String getName() {
 		return name;
 	}
-
+	
 	public String getRequiredInterface() {
 		return requiredInterface;
 	}
@@ -33,12 +34,6 @@ public class CClass implements Vertex {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getPackageName() {
-		return packageName;
-	}
-	public void setPackageName(String packageName) {
-		this.packageName = packageName;
 	}
 	public Set<Stereotype> getStereotypes() {
 		return stereotypes;
@@ -82,10 +77,24 @@ public class CClass implements Vertex {
 	public void setTemplateParameters(Set templateParameters) {
 		this.templateParameters = templateParameters;
 	}
-	
+	public PackageElement getParentPackageElement() {
+		return parentPackageElement;
+	}
+	public void setParentPackageElement(PackageElement parentPackageElement) {
+		this.parentPackageElement = parentPackageElement;
+	}
+	public String getFullName(){
+		StringBuffer fullName = new StringBuffer();
+		PackageElement packageElement = parentPackageElement;
+		while(packageElement != null){
+			fullName.append(packageElement.getName() + ".");
+		}
+		fullName.append(name);
+		return fullName.toString();
+	}
 	@Override
 	public String toString() {
-		return "CClass [name=" + name + ", packageName=" + packageName
+		return "CClass [name=" + name + ", fullName=" + getFullName()
 				+ ", stereotypes=" + stereotypes + ", visibility=" + visibility
 				+ ", isAbstract=" + isAbstract + ", properties=" + properties
 				+ ", attributes=" + attributes + ", methods=" + methods
