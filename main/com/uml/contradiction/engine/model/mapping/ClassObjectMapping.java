@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.uml.contradiction.engine.model.diagram.ClassDiagram;
 import com.uml.contradiction.engine.model.mapping.exception.MappingException;
 import com.uml.contradiction.model.cclass.CClass;
+import com.uml.contradiction.model.cclass.ClassGraph;
 import com.uml.contradiction.model.object.OObject;
 
 public class ClassObjectMapping implements Mapping {
@@ -20,10 +20,9 @@ public class ClassObjectMapping implements Mapping {
 		Object element = args.get(0);
 		if(element instanceof OObject){
 			OObject oObject = (OObject) element;
-			String className = oObject.getClasses().get(0);
-			CClass cls = ClassDiagram.findClassByName(className);
+			CClass cls = oObject.getClasses().get(0);
 			if(cls == null){
-				LOGGER.info("Can't find class with name: " + className);
+				LOGGER.info("Can't find class!");
 				return null;
 			}
 			List<CClass> result = new LinkedList<CClass>();

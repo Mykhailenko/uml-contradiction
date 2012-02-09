@@ -15,10 +15,10 @@ import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.criteria.MustExistClassCriterion;
 import com.uml.contradiction.engine.model.criteria.SimpleCriterion;
-import com.uml.contradiction.engine.model.diagram.ClassDiagram;
-import com.uml.contradiction.engine.model.diagram.ObjectDiagram;
 import com.uml.contradiction.model.cclass.CClass;
+import com.uml.contradiction.model.cclass.ClassGraph;
 import com.uml.contradiction.model.object.OObject;
+import com.uml.contradiction.model.object.ObjectGraph;
 
 public class MustExistClassCriterionTest {
 	private static final Logger LOGGER = Logger.getRootLogger();
@@ -29,23 +29,23 @@ public class MustExistClassCriterionTest {
 		cClass.setName("Student");
 		List<CClass> classes = new LinkedList<CClass>();
 		classes.add(cClass);
-		ClassDiagram.setClasses(classes);
+		ClassGraph.setClasses(classes);
 		
 		OObject object0 = new OObject();
 		object0.setName("goodovo");
-		List<String> c0 = new LinkedList<String>();
-		c0.add("Student");
+		List<CClass> c0 = new LinkedList<CClass>();
+		c0.add(cClass);
 		object0.setClasses(c0);
 		OObject object1 = new OObject();
 		object1.setName("badovo");
-		List<String> c1 = new LinkedList<String>();
-		c1.add("Student!");
+		List<CClass> c1 = new LinkedList<CClass>();
+		c1.add(null);
 		object1.setClasses(c1);
 
 		List<OObject> loo = new LinkedList<OObject>();
 		loo.add(object0);
 		loo.add(object1);
-		ObjectDiagram.setObjects(loo);
+		ObjectGraph.setObjects(loo);
 		
 		/////
 		Criterion criterion = new MustExistClassCriterion();

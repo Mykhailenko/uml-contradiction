@@ -17,7 +17,6 @@ import com.uml.contradiction.gui.models.DiagramForChoise;
 import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.cclass.Association;
 import com.uml.contradiction.common.DiagramType;
-import com.uml.contradiction.engine.model.diagram.*;
 import com.uml.contradiction.converter.core.*;
 import com.uml.contradiction.converter.core.classes.ClassParser;
 

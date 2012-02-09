@@ -14,15 +14,15 @@ import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.CorrectTypeCriterion;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.criteria.PartOfSingleComposite;
-import com.uml.contradiction.engine.model.diagram.ClassDiagram;
-import com.uml.contradiction.engine.model.diagram.ObjectDiagram;
 import com.uml.contradiction.model.cclass.AggregationKind;
 import com.uml.contradiction.model.cclass.Association;
 import com.uml.contradiction.model.cclass.AssociationEnd;
 import com.uml.contradiction.model.cclass.CClass;
+import com.uml.contradiction.model.cclass.ClassGraph;
 import com.uml.contradiction.model.cclass.Multiplicity;
 import com.uml.contradiction.model.common.UMLType;
 import com.uml.contradiction.model.object.OObject;
+import com.uml.contradiction.model.object.ObjectGraph;
 
 public class CorrectCompositeMultiplicityTest {
 	private static final Logger LOGGER = Logger.getRootLogger();
@@ -63,7 +63,7 @@ public class CorrectCompositeMultiplicityTest {
 		ass2.setEnd2(end22);
 		
 		classes.add(ass2);
-		ClassDiagram.setAssociations(classes);
+		ClassGraph.setAssociations(classes);
 		
 		
 		Criterion criterion = new PartOfSingleComposite();
@@ -112,7 +112,7 @@ public class CorrectCompositeMultiplicityTest {
 		ass2.setEnd2(end22);
 		
 		classes.add(ass2);
-		ClassDiagram.setAssociations(classes);
+		ClassGraph.setAssociations(classes);
 		
 		
 		Criterion criterion = new PartOfSingleComposite();

@@ -5,16 +5,16 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.uml.contradiction.engine.model.diagram.ClassDiagram;
-import com.uml.contradiction.engine.model.diagram.StateMachineDiagram;
 import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
 import com.uml.contradiction.model.cclass.CClass;
+import com.uml.contradiction.model.cclass.ClassGraph;
 import com.uml.contradiction.model.sequence.Interaction;
 import com.uml.contradiction.model.sequence.InteractionElement;
 import com.uml.contradiction.model.sequence.LifeLine;
 import com.uml.contradiction.model.sequence.Message;
 import com.uml.contradiction.model.statemachine.State;
 import com.uml.contradiction.model.statemachine.StateMachine;
+import com.uml.contradiction.model.statemachine.StateMachineDiagram;
 import com.uml.contradiction.model.statemachine.Transition;
 import com.uml.contradiction.model.statemachine.Trigger;
 

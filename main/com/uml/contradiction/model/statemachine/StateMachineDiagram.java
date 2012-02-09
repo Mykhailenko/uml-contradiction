@@ -1,9 +1,8 @@
-package com.uml.contradiction.engine.model.diagram;
+package com.uml.contradiction.model.statemachine;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import com.uml.contradiction.model.statemachine.StateMachine;
 
 public class StateMachineDiagram {
 	private static List<StateMachine> stateMachines = new LinkedList<StateMachine>();

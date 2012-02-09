@@ -11,7 +11,6 @@ import java.util.Map;
 
 import com.uml.contradiction.common.DiagramType;
 import com.uml.contradiction.converter.XMIConverter;
-import com.uml.contradiction.engine.model.diagram.*;
 import com.uml.contradiction.gui.models.DiagramForChoise;
 import com.uml.contradiction.model.cclass.*;
 import com.uml.contradiction.converter.core.*;
@@ -36,8 +35,8 @@ extends CoreParserImpl implements CoreParser{
 	}
 	
 	private Boolean addToClassDiagram() {
-		List<CClass> class_s = ClassDiagram.getClasses();
-		List<Association> asssoc_s = ClassDiagram.getAssociations();
+		List<CClass> class_s = ClassGraph.getClasses();
+		List<Association> asssoc_s = ClassGraph.getAssociations();
 		
 		Collection<CClass> colectCls = classesWithId.values();
 		for(CClass cls : colectCls)			

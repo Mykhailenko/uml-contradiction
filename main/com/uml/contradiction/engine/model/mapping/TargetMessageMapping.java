@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.uml.contradiction.engine.model.diagram.ClassDiagram;
 import com.uml.contradiction.engine.model.mapping.exception.MappingException;
 import com.uml.contradiction.model.cclass.CClass;
+import com.uml.contradiction.model.cclass.ClassGraph;
 import com.uml.contradiction.model.sequence.Message;
 
 public class TargetMessageMapping implements Mapping {
@@ -20,7 +20,7 @@ public class TargetMessageMapping implements Mapping {
 		if(element instanceof Message){
 			Message message = (Message) element;
 			String className = message.getRecieveEvent().getCovered().getClassName();
-			CClass cls = ClassDiagram.findClassByName(className);
+			CClass cls = ClassGraph.findClassByName(className);
 			if(cls == null){
 				return null;
 			}else{

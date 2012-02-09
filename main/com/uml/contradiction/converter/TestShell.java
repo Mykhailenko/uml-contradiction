@@ -1,10 +1,10 @@
 package com.uml.contradiction.converter;
 
 //import com.uml.contradiction.converter.core.ClassParser;
-import com.uml.contradiction.engine.model.diagram.ClassDiagram;
 import com.uml.contradiction.gui.models.DiagramForChoise;
 import com.uml.contradiction.model.cclass.Association;
 import com.uml.contradiction.model.cclass.CClass;
+import com.uml.contradiction.model.cclass.ClassGraph;
 import com.uml.contradiction.common.DiagramType;
 
 import java.io.File;
@@ -42,8 +42,8 @@ public class TestShell {
 		printClassDiagr();
 	}
 	public static void printClassDiagr () {
-		List<CClass> class_s = ClassDiagram.getClasses();
-		List<Association> asssoc_s = ClassDiagram.getAssociations();
+		List<CClass> class_s = ClassGraph.getClasses();
+		List<Association> asssoc_s = ClassGraph.getAssociations();
 		
 		for(CClass cls : class_s)			
 			System.out.println(cls);

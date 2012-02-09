@@ -1,11 +1,10 @@
-package com.uml.contradiction.engine.model.diagram;
+package com.uml.contradiction.model.object;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import com.uml.contradiction.model.object.OObject;
 
-public class ObjectDiagram {
+public class ObjectGraph {
 	private static List<OObject> objects = new LinkedList<OObject>()	;
 
 	public static List<OObject> getObjects() {
@@ -13,7 +12,7 @@ public class ObjectDiagram {
 	}
 
 	public static void setObjects(List<OObject> objects) {
-		ObjectDiagram.objects = objects;
+		ObjectGraph.objects = objects;
 	}
 
 	

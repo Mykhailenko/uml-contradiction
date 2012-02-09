@@ -11,11 +11,11 @@ import com.uml.contradiction.engine.Engine;
 import com.uml.contradiction.engine.model.HistoryPlainItem;
 import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.SimpleCriterion;
-import com.uml.contradiction.engine.model.diagram.ClassDiagram;
-import com.uml.contradiction.engine.model.diagram.ObjectDiagram;
 import com.uml.contradiction.model.cclass.Attribute;
 import com.uml.contradiction.model.cclass.CClass;
+import com.uml.contradiction.model.cclass.ClassGraph;
 import com.uml.contradiction.model.object.OObject;
+import com.uml.contradiction.model.object.ObjectGraph;
 
 import static org.junit.Assert.assertTrue;
 
@@ -33,11 +33,11 @@ public class EngineTest {
 		cClass.setAttributes(lac);
 		List<CClass> classes = new LinkedList<CClass>();
 		classes.add(cClass);
-		ClassDiagram.setClasses(classes);
+		ClassGraph.setClasses(classes);
 		
 		OObject object0 = new OObject();
-		List<String> c0 = new LinkedList<String>();
-		c0.add("Student");
+		List<CClass> c0 = new LinkedList<CClass>();
+		c0.add(cClass);
 		object0.setClasses(c0);
 		
 		List<com.uml.contradiction.model.object.Attribute> lao = new LinkedList<com.uml.contradiction.model.object.Attribute>();
@@ -47,7 +47,7 @@ public class EngineTest {
 		object0.setAttributes(lao);
 		List<OObject> loo = new LinkedList<OObject>();
 		loo.add(object0);
-		ObjectDiagram.setObjects(loo);
+		ObjectGraph.setObjects(loo);
 		
 		/////
 		SimpleCriterion simpleCriterion = new SimpleCriterion();
@@ -70,12 +70,12 @@ public class EngineTest {
 		cClass.setAttributes(lac);
 		List<CClass> classes = new LinkedList<CClass>();
 		classes.add(cClass);
-		ClassDiagram.setClasses(classes);
+		ClassGraph.setClasses(classes);
 		
 		OObject object0 = new OObject();
 		object0.setName("olololool");
-		List<String> c0 = new LinkedList<String>();
-		c0.add("Student");
+		List<CClass> c0 = new LinkedList<CClass>();
+		c0.add(cClass);
 		object0.setClasses(c0);
 		
 		List<com.uml.contradiction.model.object.Attribute> lao = new LinkedList<com.uml.contradiction.model.object.Attribute>();
@@ -88,7 +88,7 @@ public class EngineTest {
 		object0.setAttributes(lao);
 		List<OObject> loo = new LinkedList<OObject>();
 		loo.add(object0);
-		ObjectDiagram.setObjects(loo);
+		ObjectGraph.setObjects(loo);
 		
 		/////
 		SimpleCriterion simpleCriterion = new SimpleCriterion();
