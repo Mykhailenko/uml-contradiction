@@ -25,16 +25,10 @@ public class TestShell {
 		
 		XMIConverter.reset();
 		XMIConverter.setFile(file);
-		
-		List<DiagramForChoise> selectedDiagram = new ArrayList<DiagramForChoise>();
-		DiagramForChoise dfch = new DiagramForChoise();
-		dfch.setId(1);
-		dfch.setName("Class Diagram1");
-		dfch.setType(DiagramType.CLASS);
-		selectedDiagram.add(dfch);
+				
 		
 		try {
-			XMIConverter.parse(selectedDiagram);
+			XMIConverter.parse();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

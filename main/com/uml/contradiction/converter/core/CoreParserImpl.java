@@ -12,10 +12,48 @@ import com.uml.contradiction.gui.models.DiagramForChoise;
 
 public class CoreParserImpl implements CoreParser{
 	
-	protected List<String> IdElementsInDIagramm;
+	protected List<String> idElementsInDiagramm;
+	
+	protected List<String> idDiagrams;
 
-	public List<Object> parse(DiagramForChoise diagrForSearch, Element umlModelEl){
+	public List<Object> parse(Element umlModelEl){
 		return null;
+	}
+	
+	protected List<String> getAllIdDiagrams(DiagramType t , Element umlModelEl) {
+		//проходим по всем диаграммам с поиском выбранного типа
+		NodeList diagramAll = umlModelEl.getElementsByTagName("uml:Diagram");
+		
+		String diagrType =null;
+		List<String> listId = new ArrayList<String>();
+				
+		if(t == DiagramType.CLASS)
+			diagrType = new String("ClassDiagram");
+		
+		if(t == DiagramType.SEQUENCE)
+			diagrType = new String("InteractionDiagram");		
+		
+		for(int temp = 0; temp < diagramAll.getLength(); temp++){
+			Element curDiagr = (Element)diagramAll.item(temp);
+			
+			if(curDiagr.getAttribute("diagramType").equals(diagrType))
+			{
+				listId.add(curDiagr.getAttribute("xmi:id"));				
+			}
+		}		
+		return listId;
+	}
+	
+	protected boolean isIdInDiagrams(String searchId) {
+		boolean pres = false;		
+		
+		for(String curID : idDiagrams){
+			if(curID.equals(searchId)){
+				pres =true;
+				break;
+			}				
+		}	
+		return pres;
 	}
 	
 	//получения списка Id элементов для выбранной диаграммы
@@ -57,7 +95,7 @@ public class CoreParserImpl implements CoreParser{
 	protected boolean isElementInDiagrammByID(String idElem){		
 		boolean present = false;		
 		
-		for(String curID : IdElementsInDIagramm){
+		for(String curID : idElementsInDiagramm){
 			if(curID.equals(idElem)){
 				present =true;
 				break;

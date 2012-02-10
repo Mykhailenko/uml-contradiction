@@ -50,23 +50,17 @@ extends CoreParserImpl implements CoreParser{
 	}
 		
 	@Override
-	public List<Object> parse(DiagramForChoise diagrForSearch, Element umlModelEl) {
+	public List<Object> parse(Element umlModelEl) {
 		
 		try{
-			//получения списка Id элементов для выбранной диаграммы
-		IdElementsInDIagramm = getIdElementsInDiagramm(diagrForSearch, umlModelEl);
-				
-		if(IdElementsInDIagramm == null)
-			throw new Exception("Couldn't select the diagramm");
-		
-		
+					
 		//первый проход по packageElements				
-		firstParse(diagrForSearch, umlModelEl);
+		firstParse(umlModelEl);
 		//получили обьекты классов и ассоц-ий с Id
 		
 		//второй проход по packageElements 
 		//		для работы с ролями, наследованием
-		secondParsePackElems(diagrForSearch, umlModelEl);
+		secondParsePackElems(umlModelEl);
 		
 		//запись значений в статические коллекции
 		addToClassDiagram();
@@ -77,7 +71,7 @@ extends CoreParserImpl implements CoreParser{
 		return null;
 	}
 	
-	private void firstParse(DiagramForChoise diagrForSearch, Element umlModelEl){
+	private void firstParse(Element umlModelEl){
 		int temp;
 		
 		try{
@@ -93,9 +87,7 @@ extends CoreParserImpl implements CoreParser{
 			
 				String id4class = curPackEl.getAttribute("xmi:id");
 				
-				//относиться ли данный класс к диаграмме
-				if(isElementInDiagrammByID(id4class)){
-					
+								
 				CClass curCClass = new CClass();
 	
 												//заполняем поля CClass
@@ -126,11 +118,7 @@ extends CoreParserImpl implements CoreParser{
 				
 				//вставляем класс и его ID в map
 				classesWithId.put(id4class, curCClass);
-				
-//				CClass testCClass;
-//				testCClass = classesWithId.get(id4class);
-//				System.out.println(testCClass.toString());
-				}
+								
 			}
 			
 			
@@ -139,8 +127,8 @@ extends CoreParserImpl implements CoreParser{
 
 				String id4assoc = curPackEl.getAttribute("xmi:id");
 				
-				//относиться ли данная ассоциация к диаграмме
-				if(isElementInDiagrammByID(id4assoc)){
+//				//относиться ли данная ассоциация к диаграмме
+//				if(isElementInDiagrammByID(id4assoc)){
 					
 				Association curAssoc = new Association();
 				
@@ -160,8 +148,7 @@ extends CoreParserImpl implements CoreParser{
 					}
 				}
 				assocesWithId.put(id4assoc, curAssoc);
-				}
-//				System.out.println(assocesWithId.get(id4assoc));
+				
 			}//закончили с ассоциацией			
 		}
 		LOGGER.debug("Finished first parse");
@@ -171,7 +158,7 @@ extends CoreParserImpl implements CoreParser{
 	}
 	
 	//второй проход по дереву (основные элементы уже положены)
-	private void secondParsePackElems(DiagramForChoise diagrForSearch, Element umlModelEl){
+	private void secondParsePackElems(Element umlModelEl){
 		try{
 										
 		NodeList pack_nodes = umlModelEl.getElementsByTagName("packagedElement");
@@ -184,11 +171,8 @@ extends CoreParserImpl implements CoreParser{
 							//элемент диаграммы классов - класс
 			if(curPackEl.getAttribute("xmi:type").equals("uml:Class")){
 			
-				String id4class = curPackEl.getAttribute("xmi:id");
-				
-				//относиться ли данный класс к диаграмме
-				if(isElementInDiagrammByID(id4class)){
-					NodeList ownedAttrList = curPackEl.getElementsByTagName("ownedAttribute");
+								
+				NodeList ownedAttrList = curPackEl.getElementsByTagName("ownedAttribute");
 					
 					for(int k=0; k < ownedAttrList.getLength(); k++){
 							//просматриваем все ownedAttribute для поиска с ролями
@@ -218,9 +202,7 @@ extends CoreParserImpl implements CoreParser{
 							}												
 						}
 							
-					}
-				
-				}
+					}	
 			}
 		}
 		LOGGER.debug("Finished second parse");
