@@ -1,17 +1,16 @@
 package com.uml.contradiction.model.sequence;
+
+import com.uml.contradiction.model.cclass.CClass;
+
 public class LifeLine {
-	private String name;
+	private CClass cclass;
 
-	public String getClassName(){
-		return "";
-	}
-	
-	public String getName() {
-		return name;
+	public CClass getCclass() {
+		return cclass;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCclass(CClass cclass) {
+		this.cclass = cclass;
 	}
-	
+
 }

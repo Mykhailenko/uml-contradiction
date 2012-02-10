@@ -3,6 +3,7 @@ package com.uml.contradiction.model.statemachine;
 import java.util.*;
 
 import com.uml.contradiction.model.Vertex;
+import com.uml.contradiction.model.VertexType;
 
 public class State implements Vertex{
 
@@ -69,6 +70,10 @@ public class State implements Vertex{
 	}
 	public void setStateMachine(StateMachine stateMachine) {
 		this.stateMachine = stateMachine;
+	}
+
+	public VertexType getType() {
+		return VertexType.STATE;
 	}
 	
 }

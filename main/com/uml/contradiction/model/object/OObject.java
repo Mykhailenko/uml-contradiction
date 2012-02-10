@@ -3,6 +3,7 @@ package com.uml.contradiction.model.object;
 import java.util.List;
 
 import com.uml.contradiction.model.Vertex;
+import com.uml.contradiction.model.VertexType;
 import com.uml.contradiction.model.cclass.CClass;
 
 public class OObject implements Vertex {
@@ -28,4 +29,8 @@ public class OObject implements Vertex {
 		this.name = name;
 	}
 	
+	public VertexType getType() {
+		return VertexType.OBJECT;
+	}
+		
 }

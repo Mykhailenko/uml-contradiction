@@ -10,7 +10,6 @@ public class AssociationEnd {
 	private Constraint		constraint;
 	private boolean 		isDerived;
 	private Navigability 	navigability;
-	private boolean 		isAssociationClass;
 	private CClass 			associatedClass;
 	
 	public Navigability getNavigability() {

@@ -4,6 +4,7 @@ import java.util.Set;
 import java.util.List;
 
 import com.uml.contradiction.model.Vertex;
+import com.uml.contradiction.model.VertexType;
 import com.uml.contradiction.model.common.PackageElement;
 import com.uml.contradiction.model.common.Stereotype;
 
@@ -100,6 +101,11 @@ public class CClass implements Vertex {
 				+ ", attributes=" + attributes + ", methods=" + methods
 				+ ", templateParameters=" + templateParameters
 				+ ", requiredInterface=" + requiredInterface + "]";
+	}
+
+	@Override
+	public VertexType getType() {
+		return VertexType.CLASS;
 	}
 	
 }
