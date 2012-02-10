@@ -10,6 +10,6 @@ import com.uml.contradiction.gui.models.DiagramForChoise;
 
 public interface CoreParser {
 
-	public List<Object> parse(DiagramForChoise diagrForSearch, Element umlModelEl);
+	public List<Object> parse(Element umlModelEl);
 }
 

@@ -29,8 +29,7 @@ public class XMIConverter {
 	
 private static final Logger LOGGER = Logger.getRootLogger();
 	
-	// перенести в конвертор
-			//возврат родител€ смысловой части
+				//возврат родител€ смысловой части
 	private static Node startParse (File fXmlFile) {		
 		NodeList nList;		
 		try{
@@ -56,22 +55,18 @@ private static final Logger LOGGER = Logger.getRootLogger();
 		return Collections.emptyList();
 	}
 	
-	public static List<Object> parse(List<DiagramForChoise> selectedDiagram) throws Exception{
+	public static List<Object> parse() throws Exception{
 		assert XMIConverter.file != null : "file should be assigned before";
 		
 		Element umlModelEl = (Element)startParse(file); //начало разбора
 		
-//		List<CClass> class_s = ClassDiagram.getClasses();
-//		List<Association> asssoc_s = ClassDiagram.getAssociations();
+
 		CoreParser corePars;
 				
-		for(int i=0; i<selectedDiagram.size(); i++){
-			if(selectedDiagram.get(i).getType() == DiagramType.CLASS){
-				// ƒобавить название диаграммы 
-				ClassParser clPars = new ClassParser();
-				clPars.parse(selectedDiagram.get(i) , umlModelEl);
-			}
-		}
+		
+		ClassParser clPars = new ClassParser();
+		clPars.parse(umlModelEl);
+			
 		
 		return Collections.emptyList();
 	}
