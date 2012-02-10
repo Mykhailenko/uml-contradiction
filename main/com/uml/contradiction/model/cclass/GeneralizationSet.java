@@ -4,7 +4,7 @@ import java.util.Set;
 
 import com.uml.contradiction.model.Vertex;
 
-public class GeneralizationSet implements Vertex{
+public class GeneralizationSet{
 	private CClass root;
 	private Set<CClass> leafs;
 	private String name;

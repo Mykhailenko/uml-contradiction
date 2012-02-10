@@ -54,12 +54,6 @@ public class AssociationEnd {
 	public void setDerived(boolean isDerived) {
 		this.isDerived = isDerived;
 	}
-	public boolean isAssociationClass() {
-		return isAssociationClass;
-	}
-	public void setAssociationClass(boolean isAssociationClass) {
-		this.isAssociationClass = isAssociationClass;
-	}
 	public CClass getAssociatedClass() {
 		return associatedClass;
 	}
@@ -72,7 +66,6 @@ public class AssociationEnd {
 				+ multiplicity + ", aggregationKind=" + aggregationKind
 				+ ", visibility=" + visibility + ", constraint=" + constraint
 				+ ", isDerived=" + isDerived + ", navigability=" + navigability
-				+ ", isAssociationClass=" + isAssociationClass
 				+ ", associatedClass=" + associatedClass + "]";
 	}
 }

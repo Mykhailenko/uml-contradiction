@@ -12,5 +12,10 @@ public class LifeLine {
 	public void setCclass(CClass cclass) {
 		this.cclass = cclass;
 	}
+	
+	public String getClassName() {
+		return this.cclass.getName();
+	}
+	
 
 }
