@@ -19,8 +19,7 @@ public class TargetMessageMapping implements Mapping {
 		Object element = list.get(0);
 		if(element instanceof Message){
 			Message message = (Message) element;
-			String className = message.getRecieveEvent().getCovered().getClassName();
-			CClass cls = ClassGraph.findClassByName(className);
+			CClass cls = message.getRecieveEvent().getCovered().getCclass();
 			if(cls == null){
 				return null;
 			}else{

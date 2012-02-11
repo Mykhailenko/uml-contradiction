@@ -1,14 +1,11 @@
 package com.uml.contradiction.engine.model.predicate;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
 import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
-import com.uml.contradiction.model.cclass.CClass;
-import com.uml.contradiction.model.cclass.ClassGraph;
 import com.uml.contradiction.model.sequence.Interaction;
 import com.uml.contradiction.model.sequence.InteractionElement;
 import com.uml.contradiction.model.sequence.LifeLine;
@@ -29,11 +26,11 @@ public class IsExecutableLifeLine implements Predicate {
 		Interaction interaction = (Interaction) params.get(0);
 		LifeLine lifeLine = (LifeLine) params.get(1);
 		List<Message> messages = findAllMessagesTargetLifeLine(interaction, lifeLine);
-		StateMachine stateMachine = StateMachineDiagram.findStateMachineByClassName(lifeLine.getClassName());
+		StateMachine stateMachine = StateMachineDiagram.findStateMachineByClassName(lifeLine.getCclass());
 		if(stateMachine == null){
 			return true;// it means that inconsistence epsent tooday
 		}
-		return true;//traceMessagesOnClass(stateMachine, messages);
+		return traceMessagesOnClass(stateMachine, messages);
 	}
 	@SuppressWarnings("rawtypes")
 	private void precondition(List params) throws PredicatException {
@@ -69,18 +66,19 @@ public class IsExecutableLifeLine implements Predicate {
 		return messages;
 	}
 	private boolean traceMessagesOnClass(StateMachine stateMachine, List<Message> messages){
-		State startState = null;
-		int index;
-		for(index = 0; index < messages.size() && startState == null; ++index){
-			startState = findStartState(stateMachine, messages.get(index));
+		messages = StateMachine.stayOnlyImportentMessages(stateMachine, messages);
+		if(messages.isEmpty()){
+			return true;
 		}
+		State startState = findStartState(stateMachine, messages.get(0));
 		if(startState == null){
+			return false;
+		}
+		if(messages.size() > 1){
+			return traceFromState(stateMachine, startState, messages);
+		}else{
 			return true;
 		}
-		if(index == messages.size()){
-			return true;
-		}
-		return traceFromState(stateMachine, startState, messages, index);
 	}
 	private State findStartState(StateMachine stateMachine, Message message){
 		for(Transition transition : stateMachine.getTransitions()){
@@ -94,15 +92,33 @@ public class IsExecutableLifeLine implements Predicate {
 	}
 	private boolean traceFromState(StateMachine stateMachine, 
 			State currentState, 
-			List<Message> messages, 
-			int index){
-		// ��� ����� � ������� ���� �� ������ ������������ ��������
-		List<State> nextStates = getNextStates(stateMachine, currentState, messages.get(index));
-		if(nextStates.isEmpty() == true && index == messages.size()-1){
-			return true;
+			List<Message> messages){
+		List<State> nextStates = getNextStates(stateMachine, currentState, messages.get(1));
+		if(nextStates.isEmpty()){
+			return false;
 		}
 		for(State state : nextStates){
-			traceFromState(stateMachine, state, messages, index+1);
+			if(traceFromStateB(stateMachine, state, messages, 2)){
+				return true;
+			}
+		}
+		return false;
+	}
+	private boolean traceFromStateB(StateMachine stateMachine, 
+			State currentState, 
+			List<Message> messages,
+			int index){
+		if(index == messages.size()){
+			return true;
+		}
+		List<State> nextStates = getNextStates(stateMachine, currentState, messages.get(index));
+		if(nextStates.isEmpty()){
+			return false;
+		}
+		for(State state : nextStates){
+			if(traceFromStateB(stateMachine, state, messages, index+1)){
+				return true;
+			}
 		}
 		return false;
 	}
