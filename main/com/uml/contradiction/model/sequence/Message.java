@@ -5,9 +5,36 @@ public class Message implements InteractionElement {
 	private MessageKind messageKind;
 	private Event sendEvent;
 	private Event recieveEvent;
-	
-	public String getMethodName(){
-		return "";
+	private String methodName;
+	private int paramCount;
+	public void parseStr(String str){
+		// i suppose to get some like that 'ololoName(param1,param2)' or 'disable()' or 'enable' 
+		if(str.contains("(")){ // first or second case
+			methodName = str.substring(0, str.indexOf("(")).trim();
+			String params = str.substring(str.indexOf("("), str.indexOf(")"));
+			params = params.replaceAll(" ", "");
+			if(params.length() > 2){//first case
+				paramCount = params.split(",").length;
+			}else{
+				paramCount = 1;
+			}
+		}else{
+			methodName = str;
+			paramCount = 0;
+		}
+	}
+
+	public String getMethodName() {
+		return methodName;
+	}
+	public void setMethodName(String methodName) {
+		this.methodName = methodName;
+	}
+	public int getParamCount() {
+		return paramCount;
+	}
+	public void setParamCount(int paramCount) {
+		this.paramCount = paramCount;
 	}
 	public MessageSort getMessageSort() {
 		return messageSort;

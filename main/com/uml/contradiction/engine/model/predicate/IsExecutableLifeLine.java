@@ -1,5 +1,6 @@
 package com.uml.contradiction.engine.model.predicate;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -95,7 +96,7 @@ public class IsExecutableLifeLine implements Predicate {
 			State currentState, 
 			List<Message> messages, 
 			int index){
-		// тут поиск в глубину хотя бы одного действенного варианта
+		// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		List<State> nextStates = getNextStates(stateMachine, currentState, messages.get(index));
 		if(nextStates.isEmpty() == true && index == messages.size()-1){
 			return true;
