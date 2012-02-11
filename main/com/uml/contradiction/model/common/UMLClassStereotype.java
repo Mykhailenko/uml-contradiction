@@ -22,4 +22,5 @@ public enum UMLClassStereotype implements Stereotype {
 		// TODO Auto-generated method stub
 		return name;
 	}
+	
 }

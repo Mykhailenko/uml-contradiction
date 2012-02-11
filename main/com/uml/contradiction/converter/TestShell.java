@@ -20,7 +20,8 @@ public class TestShell {
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\5.JustTestClass.uml");
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\10.compos.uml");
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\composMultipl_Role.uml");
-		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\N-arn association.uml");
+//		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\N-arn association.uml");
+		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\6.EntBean_Conrol in packNotRoot.uml");
 		
 		
 		XMIConverter.reset();

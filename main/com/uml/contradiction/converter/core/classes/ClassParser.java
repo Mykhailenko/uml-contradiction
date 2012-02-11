@@ -13,11 +13,13 @@ import com.uml.contradiction.common.DiagramType;
 import com.uml.contradiction.converter.XMIConverter;
 import com.uml.contradiction.gui.models.DiagramForChoise;
 import com.uml.contradiction.model.cclass.*;
+import com.uml.contradiction.model.common.*;
 import com.uml.contradiction.converter.core.*;
 
 import org.apache.log4j.Logger;
 import org.w3c.dom.*;
 
+//предназначен для управления и хранения наиболее обширными структурами
 public class ClassParser 
 extends CoreParserImpl implements CoreParser{
 	
@@ -25,13 +27,27 @@ extends CoreParserImpl implements CoreParser{
 		
 	private Map<String, CClass> classesWithId = new LinkedHashMap <String, CClass>();
 	private Map<String, Association> assocesWithId = new LinkedHashMap <String, Association>();
+	private Map<String, ClassDiagram> diagrClassWithId = new LinkedHashMap <String, ClassDiagram>();
 	
-	ClassParsHelper classParsHelper;  //содержит помощника
+	private Map<String, Stereotype> streotypeWithRefClass = new LinkedHashMap <String, Stereotype>();
+	
+	ClassParsHelper classParsHelper;  //содержит помощника для разбора класса
+	CommonClDiagrHelper commonClDiagrHelper; //содержит общего помощника для класс диаграмм
 	
 	public ClassParser() {
 		super();
 		
 		classParsHelper = new ClassParsHelper(classesWithId, assocesWithId);
+		commonClDiagrHelper = new CommonClDiagrHelper();
+	}
+	//создаем ClassDiagram для каждого id
+	private void createDiagrmsClass(List<String> diarmsId) {			
+		if(!diarmsId.isEmpty()){
+			for(String curID : diarmsId){
+				diagrClassWithId.put(curID, new ClassDiagram());	
+			}	
+		}
+		
 	}
 	
 	private Boolean addToClassDiagram() {
@@ -48,9 +64,46 @@ extends CoreParserImpl implements CoreParser{
 		
 		return true;
 	}
-		
-	@Override
+	
 	public List<Object> parse(Element umlModelEl) {
+		try {
+						
+			//получаем idвсех диаграмм классов
+			getAllIdDiagrams(DiagramType.CLASS, umlModelEl);
+								
+			//кладем в коллекцию новые диаграммы и Id
+			createDiagrmsClass(idDiagrams);
+						
+			//получаем стереотипы со ссылками на классы
+			streotypeWithRefClass = commonClDiagrHelper.getStereotWithId(umlModelEl);
+					
+			if(!streotypeWithRefClass.isEmpty()){
+				
+				System.out.println("Size " + streotypeWithRefClass.size());
+							
+				Collection<Stereotype> colects =streotypeWithRefClass.values();;
+				for(Stereotype cls : colects)			
+					System.out.println(cls);		
+		
+			}
+			
+			
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	
+	
+		
+		
+	//заготовка от прошлого метода
+	public List<Object> parse2(Element umlModelEl) {
 		
 		try{
 					
