@@ -1,7 +1,9 @@
 package com.uml.contradiction.converter.core.classes;
 
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.w3c.dom.Element;
@@ -15,9 +17,9 @@ public class CommonClDiagrHelper {
 	private static final Logger logger = Logger.getLogger(CommonClDiagrHelper.class);
 
 			//получаем стереотипы со ссылками на классы
-	public Map<String, Stereotype> getStereotWithId(Element umlModel) {
+	public Map<String, Set<Stereotype>> getStereotWithId(Element umlModel) {
 			
-		Map<String, Stereotype> streotypeWithRefClass = new LinkedHashMap <String, Stereotype>();
+		Map<String, Set<Stereotype>> streotypeWithRefClass = new LinkedHashMap <String, Set<Stereotype>>();
 	
 		if(umlModel.getNextSibling() == null)
 			return null;
@@ -89,8 +91,19 @@ public class CommonClDiagrHelper {
 					
 					assert isRefOnIdClass == false : "unknown reference name on class in strerotype";
 					
-					if(refOnIdClass!=null && curStereot!=null)					
-						streotypeWithRefClass.put(refOnIdClass, curStereot);
+					if(refOnIdClass!=null && curStereot!=null)	{
+						Set<Stereotype> setSters;
+						//если ссылки на класс с ID refOnIdClass ещё не было
+						if(streotypeWithRefClass.get(refOnIdClass) == null){
+							
+							setSters = new HashSet<Stereotype>();
+							setSters.add(curStereot);
+							streotypeWithRefClass.put(refOnIdClass, setSters);
+						}else{
+							setSters = streotypeWithRefClass.get(refOnIdClass);
+							setSters.add(curStereot);
+						}						
+					}						
 				}			
 			}
 			//перешли на следующий узел

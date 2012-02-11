@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.uml.contradiction.common.DiagramType;
 import com.uml.contradiction.converter.XMIConverter;
@@ -29,7 +30,7 @@ extends CoreParserImpl implements CoreParser{
 	private Map<String, Association> assocesWithId = new LinkedHashMap <String, Association>();
 	private Map<String, ClassDiagram> diagrClassWithId = new LinkedHashMap <String, ClassDiagram>();
 	
-	private Map<String, Stereotype> streotypeWithRefClass = new LinkedHashMap <String, Stereotype>();
+	private Map<String, Set<Stereotype>> stereotypesWithRefClass = new LinkedHashMap <String, Set<Stereotype>>();
 	
 	ClassParsHelper classParsHelper;  //содержит помощника для разбора класса
 	CommonClDiagrHelper commonClDiagrHelper; //содержит общего помощника для класс диаграмм
@@ -75,23 +76,25 @@ extends CoreParserImpl implements CoreParser{
 			createDiagrmsClass(idDiagrams);
 						
 			//получаем стереотипы со ссылками на классы
-			streotypeWithRefClass = commonClDiagrHelper.getStereotWithId(umlModelEl);
+			stereotypesWithRefClass = commonClDiagrHelper.getStereotWithId(umlModelEl);
 					
-			if(!streotypeWithRefClass.isEmpty()){
+			//проход по всем элементам  HashMap
+			if(!stereotypesWithRefClass.isEmpty()){
 				
-				System.out.println("Size " + streotypeWithRefClass.size());
-							
-				Collection<Stereotype> colects =streotypeWithRefClass.values();;
-				for(Stereotype cls : colects)			
-					System.out.println(cls);		
-		
+				System.out.println("Size " + stereotypesWithRefClass.size());
+						
+				for(String key : stereotypesWithRefClass.keySet()){
+					System.out.println("Key : " + key + "\n Stereotypes:");
+					Set<Stereotype> sts = stereotypesWithRefClass.get(key);
+					for(Stereotype cls : sts)
+						System.out.println(cls);
+				}		
 			}
 			
 			
 			
 			
-		} catch (Exception e) {
-			// TODO: handle exception
+		} catch (Exception e) {			
 			e.printStackTrace();
 		}
 		
