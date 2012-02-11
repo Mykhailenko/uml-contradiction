@@ -41,6 +41,7 @@ public class CoreParserImpl implements CoreParser{
 				listId.add(curDiagr.getAttribute("xmi:id"));				
 			}
 		}		
+		idDiagrams = listId;
 		return listId;
 	}
 	

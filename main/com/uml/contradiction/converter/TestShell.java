@@ -20,8 +20,9 @@ public class TestShell {
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\5.JustTestClass.uml");
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\10.compos.uml");
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\composMultipl_Role.uml");
-		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\N-arn association.uml");
-		
+//		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\N-arn association.uml");
+		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\6.EntBean_Conrol in packNotRoot.uml");
+//		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\Test xmi.uml");
 		
 		XMIConverter.reset();
 		XMIConverter.setFile(file);
@@ -33,9 +34,9 @@ public class TestShell {
 			e.printStackTrace();
 		}
 		//печатаем ClassDiagram
-		printClassDiagr();
+		printClassGraf();
 	}
-	public static void printClassDiagr () {
+	public static void printClassGraf () {
 		List<CClass> class_s = ClassGraph.getClasses();
 		List<Association> asssoc_s = ClassGraph.getAssociations();
 		
