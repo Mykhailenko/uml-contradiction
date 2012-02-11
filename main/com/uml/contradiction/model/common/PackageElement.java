@@ -33,4 +33,8 @@ public class PackageElement {
 	public void setChildrenClass(List<CClass> childrenClass) {
 		this.childrenClass = childrenClass;
 	}
+//	@Override
+//	public String toString() {
+//		return "PackageElement [name=" + name + "]";
+//	}
 }

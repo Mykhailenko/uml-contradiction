@@ -27,7 +27,7 @@ public class CommonClDiagrHelper {
 		Node sterNode = umlModel.getNextSibling();
 		String tagName = null;
 					
-		do{		//находим все элементов типа стреотип
+		while(sterNode != null){		//находим все элементов типа стреотип
 					
 			if(sterNode.getNodeType()==Node.ELEMENT_NODE){		
 				Element stereotypeEl = (Element)sterNode;
@@ -111,9 +111,12 @@ public class CommonClDiagrHelper {
 					}						
 				}			
 			}
+			if(sterNode.getNextSibling() == null)
+				break;
+				
 			//перешли на следующий узел
 			sterNode = sterNode.getNextSibling();
-		} while(sterNode.getNextSibling() != null);
+		} 
 				
 		return streotypeWithRefClass;
 	}

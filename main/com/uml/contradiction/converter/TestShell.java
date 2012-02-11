@@ -22,7 +22,7 @@ public class TestShell {
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\composMultipl_Role.uml");
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\N-arn association.uml");
 		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\6.EntBean_Conrol in packNotRoot.uml");
-		
+//		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\Test xmi.uml");
 		
 		XMIConverter.reset();
 		XMIConverter.setFile(file);
