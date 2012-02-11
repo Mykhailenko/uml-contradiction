@@ -60,10 +60,15 @@ public class CommonClDiagrHelper {
 								if(stereotypeEl.hasAttribute("base_PrimitiveType")){
 									refOnIdClass =  stereotypeEl.getAttribute("base_PrimitiveType");
 									isRefOnIdClass = true;
-								}
-								else
-									logger.warn("Can't take from steretype reference on class:" +
-											" because unknown reference name");
+								}else{
+									if(stereotypeEl.hasAttribute("base_Dependency")){
+										refOnIdClass =  stereotypeEl.getAttribute("base_Dependency");
+										isRefOnIdClass = true;
+									}
+									else
+										logger.warn("Can't take from steretype reference on class:" +
+												" because unknown reference name");									
+								}									
 							}
 						}
 					}

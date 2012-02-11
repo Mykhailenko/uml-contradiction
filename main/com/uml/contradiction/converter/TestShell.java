@@ -34,9 +34,9 @@ public class TestShell {
 			e.printStackTrace();
 		}
 		//печатаем ClassDiagram
-		printClassDiagr();
+		printClassGraf();
 	}
-	public static void printClassDiagr () {
+	public static void printClassGraf () {
 		List<CClass> class_s = ClassGraph.getClasses();
 		List<Association> asssoc_s = ClassGraph.getAssociations();
 		

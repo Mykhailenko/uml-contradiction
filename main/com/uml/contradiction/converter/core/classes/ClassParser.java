@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -29,6 +30,7 @@ extends CoreParserImpl implements CoreParser{
 	private Map<String, CClass> classesWithId = new LinkedHashMap <String, CClass>();
 	private Map<String, Association> assocesWithId = new LinkedHashMap <String, Association>();
 	private Map<String, ClassDiagram> diagrClassWithId = new LinkedHashMap <String, ClassDiagram>();
+	private Map<String, PackageElement> packagesWithId = new LinkedHashMap <String, PackageElement>();
 	
 	private Map<String, Set<Stereotype>> stereotypesWithRefClass = new LinkedHashMap <String, Set<Stereotype>>();
 	
@@ -51,7 +53,7 @@ extends CoreParserImpl implements CoreParser{
 		
 	}
 	
-	private Boolean addToClassDiagram() {
+	private Boolean addToClassGraf() {
 		List<CClass> class_s = ClassGraph.getClasses();
 		List<Association> asssoc_s = ClassGraph.getAssociations();
 		
@@ -91,7 +93,11 @@ extends CoreParserImpl implements CoreParser{
 				}		
 			}
 			
+			PackageElement rootPackage;			
+			rootPackage = parsePackage(umlModelEl, null);
 			
+			//запись значений в статические коллекции
+			addToClassGraf();
 			
 			
 		} catch (Exception e) {			
@@ -101,7 +107,130 @@ extends CoreParserImpl implements CoreParser{
 		return null;
 	}
 	
+	//разбор одного пакета
+	private PackageElement parsePackage(Element umlModelEl, PackageElement parentPack) {
+		
+		int temp;
+		PackageElement curUmlPackage = null;
+		
+		try{
+		curUmlPackage = new PackageElement();
+		
+		//если разбираем не корневой пакет (default имя)
+		if(parentPack != null){
+			curUmlPackage.setName(umlModelEl.getAttribute("name"));
+		}
+		
+		//установливаем родительский пакет
+		curUmlPackage.setParentPackageElement(parentPack);
+		
+		//добавляем пакет с Ид в коллекцию
+		String id4pack = umlModelEl.getAttribute("xmi:id");
+		packagesWithId.put(id4pack, curUmlPackage);
+				
+		//работаем с внутренним содержанием пакета
+		NodeList pack_nodes = umlModelEl.getElementsByTagName("packagedElement");
+		
+		for (temp = 0; temp < pack_nodes.getLength(); temp++) {
+										//разбор одного элемента packagedElement
+			Element curPackEl = (Element)pack_nodes.item(temp);
+			
+			//элемент - класс
+			if(curPackEl.getAttribute("xmi:type").equals("uml:Class")){
+			
+				String id4class = curPackEl.getAttribute("xmi:id");
+												
+				CClass curCClass = new CClass();
 	
+												//заполняем поля CClass
+				curCClass.setName(curPackEl.getAttribute("name"));
+				
+				String visibty = curPackEl.getAttribute("visibility");
+				
+				if(visibty.equals("public")) curCClass.setVisibility(Visibility.PUBLIC);
+				if(visibty.equals("private")) curCClass.setVisibility(Visibility.PRIVATE);
+				if(visibty.equals("protected")) curCClass.setVisibility(Visibility.PROTECTED);
+			
+				String isAbstract = curPackEl.getAttribute("isAbstract");
+				if(isAbstract.equals("false")) curCClass.setAbstract(false);
+				if(isAbstract.equals("true")) curCClass.setAbstract(true);
+				
+				
+				//разбор атрибутов
+				NodeList attrElemsList = curPackEl.getElementsByTagName("ownedAttribute");
+				
+				List<Attribute> attributes = classParsHelper.getAttr4Class(attrElemsList);
+				curCClass.setAttributes(attributes);
+				
+				//разбор методов
+				NodeList methElemsList = curPackEl.getElementsByTagName("ownedOperation");
+				
+				List<MMethod> methods = classParsHelper.getMethods4Class(methElemsList);
+				curCClass.setMethods(methods);
+				
+				//вставляем класс и его ID в map
+				classesWithId.put(id4class, curCClass);
+				
+				//в пакет добавляем собранный класс
+				List<CClass> childrens = curUmlPackage.getChildrenClass();
+				
+				if(childrens == null){
+					childrens = new LinkedList<CClass>();
+					curUmlPackage.setChildrenClass(childrens);
+				}
+				childrens.add(curCClass);												
+			}
+			
+			
+			//элемент диаграммы - ассоциация
+			if(curPackEl.getAttribute("xmi:type").equals("uml:Association")){
+
+				String id4assoc = curPackEl.getAttribute("xmi:id");
+				
+//				//относиться ли данная ассоциация к диаграмме
+//				if(isElementInDiagrammByID(id4assoc)){
+					
+				Association curAssoc = new Association();
+				
+				if(curPackEl.hasAttribute("memberEnd")){
+					//разбор конца ассоциации
+					NodeList endsList = curPackEl.getElementsByTagName("ownedEnd");
+					
+					assert endsList.getLength() <= 2 : "assosiation must have 2 ends";
+					
+					for(int z=0; z < endsList.getLength(); z++){
+						
+						AssociationEnd end = classParsHelper.getEnd4Assoc((Element)endsList.item(z));
+						if(z == 0)
+							curAssoc.setEnd1(end);
+						if(z == 1)
+							curAssoc.setEnd2(end);
+					}
+				}
+				assocesWithId.put(id4assoc, curAssoc);
+				
+			}//закончили с ассоциацией		
+			
+			//если текущий элемент uml:Package
+			if(curPackEl.getAttribute("xmi:type").equals("uml:Class")){
+				List<PackageElement> childsPack = curUmlPackage.getChildrenPackages();
+				
+				if(childsPack == null){
+					childsPack = new LinkedList<PackageElement>();
+					curUmlPackage.setChildrenPackages(childsPack);
+				}
+				//пакеты-потомки добавляем к текущему пакету
+				//рекурсивно вызвав функцию разбора пакета для потомка
+				childsPack.add(parsePackage(curPackEl, curUmlPackage));
+			}
+		}
+		LOGGER.debug("Finished first parse");
+		}catch (Exception e) {
+			e.printStackTrace();
+		  }
+			
+		return curUmlPackage;
+	}
 	
 		
 		
@@ -119,7 +248,7 @@ extends CoreParserImpl implements CoreParser{
 		secondParsePackElems(umlModelEl);
 		
 		//запись значений в статические коллекции
-		addToClassDiagram();
+		addToClassGraf();
 		
 		}catch (Exception e) {
 			e.printStackTrace();
