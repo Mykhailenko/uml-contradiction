@@ -4,6 +4,7 @@ package com.uml.contradiction.converter;
 import com.uml.contradiction.gui.models.DiagramForChoise;
 import com.uml.contradiction.model.cclass.Association;
 import com.uml.contradiction.model.cclass.CClass;
+import com.uml.contradiction.model.cclass.ClassDiagram;
 import com.uml.contradiction.model.cclass.ClassGraph;
 import com.uml.contradiction.common.DiagramType;
 
@@ -23,8 +24,12 @@ public class TestShell {
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\N-arn association.uml");
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\6.EntBean_Conrol in packNotRoot.uml");
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\Test xmi.uml");
+//		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\8.ManyStereotypes_DefaultPack.uml");
 		
-		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\4 ))) Test2 xmi.uml");
+		
+//		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\4 ))) Test2 xmi.uml");
+		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\5.2 ))) Test3 xmi.uml");
+		
 		
 //		File file = new File("main\\Test xmi.uml");
 		
@@ -43,11 +48,15 @@ public class TestShell {
 	public static void printClassGraf () {
 		List<CClass> class_s = ClassGraph.getClasses();
 		List<Association> asssoc_s = ClassGraph.getAssociations();
+		List<ClassDiagram> clDiagrams = ClassGraph.getClassDiagrams();
 		
 		for(CClass cls : class_s)			
 			System.out.println(cls);
 		
 		for(Association ass : asssoc_s)			
 			System.out.println(ass);	
+		
+//		for(ClassDiagram clds : clDiagrams)			
+//			System.out.println(clds);
 	}	
 }

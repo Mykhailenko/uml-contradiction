@@ -17,6 +17,7 @@ import com.uml.contradiction.gui.models.DiagramForChoise;
 import com.uml.contradiction.model.cclass.*;
 import com.uml.contradiction.model.common.*;
 import com.uml.contradiction.converter.core.*;
+import com.uml.contradiction.model.ocl.*;
 
 import org.apache.log4j.Logger;
 import org.w3c.dom.*;
@@ -33,6 +34,7 @@ extends CoreParserImpl implements CoreParser{
 	private Map<String, PackageElement> packagesWithId = new LinkedHashMap <String, PackageElement>();
 	
 	private Map<String, Set<Stereotype>> stereotypesWithRefClass = new LinkedHashMap <String, Set<Stereotype>>();
+	private Map<String, Constraint> constraintsWithRef = new LinkedHashMap <String, Constraint>();
 	
 	ClassParsHelper classParsHelper;  //содержит помощника для разбора класса
 	CommonClDiagrHelper commonClDiagrHelper; //содержит общего помощника для класс диаграмм
@@ -40,7 +42,7 @@ extends CoreParserImpl implements CoreParser{
 	public ClassParser() {
 		super();
 		
-		classParsHelper = new ClassParsHelper(classesWithId, assocesWithId);
+		classParsHelper = new ClassParsHelper(classesWithId, assocesWithId, constraintsWithRef);
 		commonClDiagrHelper = new CommonClDiagrHelper();
 	}
 	//создаем ClassDiagram для каждого id
@@ -53,9 +55,10 @@ extends CoreParserImpl implements CoreParser{
 		
 	}
 	
-	private Boolean addToClassGraf() {
+	private Boolean addToClassGraf(PackageElement rootPackage) {
 		List<CClass> class_s = ClassGraph.getClasses();
 		List<Association> asssoc_s = ClassGraph.getAssociations();
+		List<ClassDiagram> clDiagrams = ClassGraph.getClassDiagrams();
 		
 		Collection<CClass> colectCls = classesWithId.values();
 		for(CClass cls : colectCls)			
@@ -63,7 +66,15 @@ extends CoreParserImpl implements CoreParser{
 		
 		Collection<Association> colectAssocs = assocesWithId.values();
 		for(Association ass : colectAssocs)			
-			asssoc_s.add(ass);		
+			asssoc_s.add(ass);	
+		
+		Collection<ClassDiagram> colectDiagr = diagrClassWithId.values();
+		for(ClassDiagram cld : colectDiagr)	{
+			if(cld.getParentPackageElement() == null)
+				cld.setParentPackageElement(rootPackage);
+			clDiagrams.add(cld);
+		}
+				
 		
 		return true;
 	}
@@ -79,7 +90,9 @@ extends CoreParserImpl implements CoreParser{
 						
 			//получаем стереотипы со ссылками на классы
 			stereotypesWithRefClass = commonClDiagrHelper.getStereotWithId(umlModelEl);
-					
+			
+			commonClDiagrHelper.getConstraintsWithRef(umlModelEl, constraintsWithRef);
+			
 			//проход по всем элементам  HashMap
 //			if(!stereotypesWithRefClass.isEmpty()){
 //				
@@ -101,8 +114,10 @@ extends CoreParserImpl implements CoreParser{
 			//		для работы с ролями, наследованием
 			secondParsePackage(umlModelEl);
 			
+			commonClDiagrHelper.putClassesAssocInClDiagramm(classesWithId, assocesWithId, diagrClassWithId, umlModelEl);
+			
 			//запись значений в статические коллекции
-			addToClassGraf();
+			addToClassGraf(rootPackage);
 			
 //			printPackHierarchy(rootPackage);
 			
@@ -142,6 +157,9 @@ extends CoreParserImpl implements CoreParser{
 		//если разбираем не корневой пакет (default имя)
 		if(parentPack != null){
 			curUmlPackage.setName(umlModelEl.getAttribute("name"));
+			
+			//добавление к класс диаграмме пакета в котором она содержиться
+			commonClDiagrHelper.putParentPackInClassDiadramm(diagrClassWithId, umlModelEl, curUmlPackage);
 		}
 		else
 			curUmlPackage.setName("[[default package]]");
@@ -263,6 +281,10 @@ extends CoreParserImpl implements CoreParser{
 					childsPack.add(firstParsePackage(curPackEl, curUmlPackage));
 				}
 			}
+//			else{	//это значит что начали просматривать не непосредственных потомков 
+//				break;
+//			}
+				
 		}
 		//цикл закончился
 //		LOGGER.debug("Finished first parse");
@@ -332,5 +354,4 @@ extends CoreParserImpl implements CoreParser{
 		  }
 	}
 	
-
 }
