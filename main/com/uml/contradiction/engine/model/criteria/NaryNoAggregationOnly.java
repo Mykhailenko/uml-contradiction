@@ -8,6 +8,7 @@ import com.uml.contradiction.engine.model.mapping.ClassAssociationMapping;
 import com.uml.contradiction.engine.model.mapping.CompositeEndAssociationMapping;
 import com.uml.contradiction.engine.model.mapping.EndAssociationMapping;
 import com.uml.contradiction.engine.model.predicate.PredicateCorrectCompositeMultiplicity;
+import com.uml.contradiction.engine.model.predicate.PredicateNoAggregation;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPCompositions;
 import com.uml.contradiction.engine.model.rightPart.simple.RPNaries;
