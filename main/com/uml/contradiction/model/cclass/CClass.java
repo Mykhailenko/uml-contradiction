@@ -85,13 +85,14 @@ public class CClass implements Vertex {
 		this.parentPackageElement = parentPackageElement;
 	}
 	public String getFullName(){
-		StringBuffer fullName = new StringBuffer();
+		String fullName = new String();
 		PackageElement packageElement = parentPackageElement;
 		while(packageElement != null){
-			fullName.append(packageElement.getName() + ".");
+			fullName = packageElement.getName() + "." + fullName;
+			packageElement = packageElement.getParentPackageElement();
 		}
-		fullName.append(name);
-		return fullName.toString();
+		fullName = fullName + name;
+		return fullName;
 	}
 	@Override
 	public String toString() {
