@@ -131,6 +131,8 @@ extends CoreParserImpl implements CoreParser{
 	//разбор одного пакета
 	private PackageElement firstParsePackage(Element umlModelEl, PackageElement parentPack) {
 		
+		//umlModelEl - элемент-узел, внутри которого будет разбор
+		
 		int temp;
 		PackageElement curUmlPackage = null;
 		
@@ -154,104 +156,114 @@ extends CoreParserImpl implements CoreParser{
 		//работаем с внутренним содержанием пакета
 		NodeList pack_nodes = umlModelEl.getElementsByTagName("packagedElement");
 		
+		System.out.println("Before go intro pack, length: "  + pack_nodes.getLength());
+		
 		for (temp = 0; temp < pack_nodes.getLength(); temp++) {
-										//разбор одного элемента packagedElement
+			
+			System.out.println("After come from requrse, length: "  + pack_nodes.getLength());
+			
+									//разбор одного элемента packagedElement
 			Element curPackEl = (Element)pack_nodes.item(temp);
 			
-			//элемент - класс
-			if(curPackEl.getAttribute("xmi:type").equals("uml:Class")
-					|| curPackEl.getAttribute("xmi:type").equals("uml:Interface")
-					|| curPackEl.getAttribute("xmi:type").equals("uml:Enumeration")
-					|| curPackEl.getAttribute("xmi:type").equals("uml:PrimitiveType")){
-			
-				String id4class = curPackEl.getAttribute("xmi:id");
-												
-				CClass curCClass = new CClass();
-	
-												//заполняем поля CClass
-				curCClass.setName(curPackEl.getAttribute("name"));
+			if((Element)curPackEl.getParentNode() == umlModelEl)
+			{
 				
-				curCClass.setParentPackageElement(curUmlPackage);
+				//элемент - класс
+				if(curPackEl.getAttribute("xmi:type").equals("uml:Class")
+						|| curPackEl.getAttribute("xmi:type").equals("uml:Interface")
+						|| curPackEl.getAttribute("xmi:type").equals("uml:Enumeration")
+						|| curPackEl.getAttribute("xmi:type").equals("uml:PrimitiveType")){
 				
-				String visibty = curPackEl.getAttribute("visibility");
-				
-				if(visibty.equals("public")) curCClass.setVisibility(Visibility.PUBLIC);
-				if(visibty.equals("private")) curCClass.setVisibility(Visibility.PRIVATE);
-				if(visibty.equals("protected")) curCClass.setVisibility(Visibility.PROTECTED);
-			
-				String isAbstract = curPackEl.getAttribute("isAbstract");
-				if(isAbstract.equals("false")) curCClass.setAbstract(false);
-				if(isAbstract.equals("true")) curCClass.setAbstract(true);
-				
-				
-				//разбор атрибутов
-				NodeList attrElemsList = curPackEl.getElementsByTagName("ownedAttribute");
-				
-				List<Attribute> attributes = classParsHelper.getAttr4Class(attrElemsList);
-				curCClass.setAttributes(attributes);
-				
-				//разбор методов
-				NodeList methElemsList = curPackEl.getElementsByTagName("ownedOperation");
-				
-				List<MMethod> methods = classParsHelper.getMethods4Class(methElemsList);
-				curCClass.setMethods(methods);
-				
-				//вставляем класс и его ID в map
-				classesWithId.put(id4class, curCClass);
-				
-				//в пакет добавляем собранный класс
-				List<CClass> childrens = curUmlPackage.getChildrenClass();
-				
-				if(childrens == null){
-					childrens = new LinkedList<CClass>();
-					curUmlPackage.setChildrenClass(childrens);
-				}
-				childrens.add(curCClass);												
-			}
-			
-			
-			//элемент диаграммы - ассоциация
-			if(curPackEl.getAttribute("xmi:type").equals("uml:Association")){
-
-				String id4assoc = curPackEl.getAttribute("xmi:id");
-				
-//				//относиться ли данная ассоциация к диаграмме
-//				if(isElementInDiagrammByID(id4assoc)){
+					String id4class = curPackEl.getAttribute("xmi:id");
+													
+					CClass curCClass = new CClass();
+		
+													//заполняем поля CClass
+					curCClass.setName(curPackEl.getAttribute("name"));
 					
-				Association curAssoc = new Association();
+					curCClass.setParentPackageElement(curUmlPackage);
+					
+					String visibty = curPackEl.getAttribute("visibility");
+					
+					if(visibty.equals("public")) curCClass.setVisibility(Visibility.PUBLIC);
+					if(visibty.equals("private")) curCClass.setVisibility(Visibility.PRIVATE);
+					if(visibty.equals("protected")) curCClass.setVisibility(Visibility.PROTECTED);
 				
-				if(curPackEl.hasAttribute("memberEnd")){
-					//разбор конца ассоциации
-					NodeList endsList = curPackEl.getElementsByTagName("ownedEnd");
+					String isAbstract = curPackEl.getAttribute("isAbstract");
+					if(isAbstract.equals("false")) curCClass.setAbstract(false);
+					if(isAbstract.equals("true")) curCClass.setAbstract(true);
 					
-					assert endsList.getLength() <= 2 : "assosiation must have 2 ends";
 					
-					for(int z=0; z < endsList.getLength(); z++){
-						
-						AssociationEnd end = classParsHelper.getEnd4Assoc((Element)endsList.item(z));
-						if(z == 0)
-							curAssoc.setEnd1(end);
-						if(z == 1)
-							curAssoc.setEnd2(end);
+					//разбор атрибутов
+					NodeList attrElemsList = curPackEl.getElementsByTagName("ownedAttribute");
+					
+					List<Attribute> attributes = classParsHelper.getAttr4Class(attrElemsList);
+					curCClass.setAttributes(attributes);
+					
+					//разбор методов
+					NodeList methElemsList = curPackEl.getElementsByTagName("ownedOperation");
+					
+					List<MMethod> methods = classParsHelper.getMethods4Class(methElemsList);
+					curCClass.setMethods(methods);
+					
+					//вставляем класс и его ID в map
+					classesWithId.put(id4class, curCClass);
+					
+					//в пакет добавляем собранный класс
+					List<CClass> childrens = curUmlPackage.getChildrenClass();
+					
+					if(childrens == null){
+						childrens = new LinkedList<CClass>();
+						curUmlPackage.setChildrenClass(childrens);
 					}
+					childrens.add(curCClass);												
 				}
-				assocesWithId.put(id4assoc, curAssoc);
 				
-			}//закончили с ассоциацией		
-			
-			//если текущий элемент uml:Package
-			if(curPackEl.getAttribute("xmi:type").equals("uml:Package")){
-				List<PackageElement> childsPack = curUmlPackage.getChildrenPackages();
 				
-				if(childsPack == null){
-					childsPack = new LinkedList<PackageElement>();
-					curUmlPackage.setChildrenPackages(childsPack);
+				//элемент диаграммы - ассоциация
+				if(curPackEl.getAttribute("xmi:type").equals("uml:Association")){
+	
+					String id4assoc = curPackEl.getAttribute("xmi:id");
+					
+	//				//относиться ли данная ассоциация к диаграмме
+	//				if(isElementInDiagrammByID(id4assoc)){
+						
+					Association curAssoc = new Association();
+					
+					if(curPackEl.hasAttribute("memberEnd")){
+						//разбор конца ассоциации
+						NodeList endsList = curPackEl.getElementsByTagName("ownedEnd");
+						
+						assert endsList.getLength() <= 2 : "assosiation must have 2 ends";
+						
+						for(int z=0; z < endsList.getLength(); z++){
+							
+							AssociationEnd end = classParsHelper.getEnd4Assoc((Element)endsList.item(z));
+							if(z == 0)
+								curAssoc.setEnd1(end);
+							if(z == 1)
+								curAssoc.setEnd2(end);
+						}
+					}
+					assocesWithId.put(id4assoc, curAssoc);
+					
+				}//закончили с ассоциацией		
+				
+				//если текущий элемент uml:Package
+				if(curPackEl.getAttribute("xmi:type").equals("uml:Package")){
+					List<PackageElement> childsPack = curUmlPackage.getChildrenPackages();
+					
+					if(childsPack == null){
+						childsPack = new LinkedList<PackageElement>();
+						curUmlPackage.setChildrenPackages(childsPack);
+					}
+					//пакеты-потомки добавляем к текущему пакету
+					//рекурсивно вызвав функцию разбора пакета для потомка
+					childsPack.add(firstParsePackage(curPackEl, curUmlPackage));
 				}
-				//пакеты-потомки добавляем к текущему пакету
-				//рекурсивно вызвав функцию разбора пакета для потомка
-				childsPack.add(firstParsePackage(curPackEl, curUmlPackage));
 			}
 		}
+		//цикл закончился
 		LOGGER.debug("Finished first parse");
 		}catch (Exception e) {
 			e.printStackTrace();
