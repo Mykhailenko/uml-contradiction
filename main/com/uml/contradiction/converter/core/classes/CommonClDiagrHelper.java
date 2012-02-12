@@ -1,7 +1,10 @@
 package com.uml.contradiction.converter.core.classes;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -10,6 +13,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.uml.contradiction.common.DiagramType;
+import com.uml.contradiction.model.cclass.Association;
+import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.cclass.ClassDiagram;
 import com.uml.contradiction.model.common.PackageElement;
 import com.uml.contradiction.model.common.Stereotype;
@@ -146,7 +152,7 @@ public class CommonClDiagrHelper {
 	}
 	
 	//добавление к класс диаграмме пакета, в котором она содержиться
-	public boolean putParentPackToClassDiadramm(Map<String, ClassDiagram> diagrClassWithId, Element umlModelEl, PackageElement curUmlPackage)
+	public boolean putParentPackInClassDiadramm(Map<String, ClassDiagram> diagrClassWithId, Element umlModelEl, PackageElement curUmlPackage)
 	{
 		boolean hasSubDiagrams = false;
 		
@@ -177,4 +183,66 @@ public class CommonClDiagrHelper {
 		
 		return hasSubDiagrams;
 	}
+	
+	//добавляем ссылки на классы и ассоциацммк к диаграмме классов
+	public void putClassesAssocInClDiagramm(Map<String, CClass> classesWithId, Map<String, Association> assocesWithId,
+			Map<String, ClassDiagram> diagrClassWithId, Element umlModelEl) {
+		
+		//проходим по всем диаграммам с поиском выбранной
+	NodeList diagramAll = umlModelEl.getElementsByTagName("uml:Diagram");
+	
+	String diagrType = new String("ClassDiagram");
+	
+		for(int temp = 0; temp < diagramAll.getLength(); temp++){
+			Element curDiagr = (Element)diagramAll.item(temp);
+			
+			if(curDiagr.getAttribute("diagramType").equals(diagrType))
+			{
+				String idCurDiagram = curDiagr.getAttribute("xmi:id");
+				ClassDiagram diagram = diagrClassWithId.get(idCurDiagram);
+				
+				diagram.setName(curDiagr.getAttribute("name"));
+				
+				NodeList mainElementOfDiagr = curDiagr.getElementsByTagName("uml:Diagram.element");
+				NodeList listElementsOfDiagr = 
+						((Element)mainElementOfDiagr.item(0)).getElementsByTagName("uml:DiagramElement");
+				
+				for(int i = 0; i < listElementsOfDiagr.getLength(); i++){
+					Element curElem = (Element)listElementsOfDiagr.item(i);
+					String refOnObject = curElem.getAttribute("subject");
+					String typeElem = curElem.getAttribute("preferredShapeType");
+					
+					//если элемент - класс
+					if(typeElem.equals("Class")){
+						CClass classCur = classesWithId.get(refOnObject);
+						
+						if(classCur != null){
+							List<CClass> classes = diagram.getClasses();
+							
+							if(classes == null){
+								classes = new LinkedList<CClass>();
+								diagram.setClasses(classes);
+							}							
+							classes.add(classCur);							
+						}
+					}					
+					//если элемент - ассоциация
+					if(typeElem.equals("Association")){
+						Association assocCur = assocesWithId.get(refOnObject);
+						
+						if(assocCur != null){
+							List<Association> assoces = diagram.getAssociations();
+							
+							if(assoces == null){
+								assoces = new LinkedList<Association>();
+								diagram.setAssociations(assoces);
+							}							
+							assoces.add(assocCur);							
+						}
+					}					
+				}			
+			}
+		}
+	}
+	
 }

@@ -53,7 +53,7 @@ extends CoreParserImpl implements CoreParser{
 		
 	}
 	
-	private Boolean addToClassGraf() {
+	private Boolean addToClassGraf(PackageElement rootPackage) {
 		List<CClass> class_s = ClassGraph.getClasses();
 		List<Association> asssoc_s = ClassGraph.getAssociations();
 		List<ClassDiagram> clDiagrams = ClassGraph.getClassDiagrams();
@@ -67,8 +67,12 @@ extends CoreParserImpl implements CoreParser{
 			asssoc_s.add(ass);	
 		
 		Collection<ClassDiagram> colectDiagr = diagrClassWithId.values();
-		for(ClassDiagram cld : colectDiagr)			
-			clDiagrams.add(cld);	
+		for(ClassDiagram cld : colectDiagr)	{
+			if(cld.getParentPackageElement() == null)
+				cld.setParentPackageElement(rootPackage);
+			clDiagrams.add(cld);
+		}
+				
 		
 		return true;
 	}
@@ -106,8 +110,10 @@ extends CoreParserImpl implements CoreParser{
 			//		для работы с ролями, наследованием
 			secondParsePackage(umlModelEl);
 			
+			commonClDiagrHelper.putClassesAssocInClDiagramm(classesWithId, assocesWithId, diagrClassWithId, umlModelEl);
+			
 			//запись значений в статические коллекции
-			addToClassGraf();
+			addToClassGraf(rootPackage);
 			
 //			printPackHierarchy(rootPackage);
 			
@@ -149,7 +155,7 @@ extends CoreParserImpl implements CoreParser{
 			curUmlPackage.setName(umlModelEl.getAttribute("name"));
 			
 			//добавление к класс диаграмме пакета в котором она содержиться
-			commonClDiagrHelper.putParentPackToClassDiadramm(diagrClassWithId, umlModelEl, curUmlPackage);
+			commonClDiagrHelper.putParentPackInClassDiadramm(diagrClassWithId, umlModelEl, curUmlPackage);
 		}
 		else
 			curUmlPackage.setName("[[default package]]");
