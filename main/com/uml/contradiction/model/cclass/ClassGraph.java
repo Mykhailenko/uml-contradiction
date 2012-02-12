@@ -3,6 +3,9 @@ package com.uml.contradiction.model.cclass;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.uml.contradiction.model.Vertex;
+import com.uml.contradiction.model.VertexType;
+
 
 public class ClassGraph {
 	private static List<ClassDiagram> classDiagrams = new LinkedList<ClassDiagram>();
@@ -38,5 +41,16 @@ public class ClassGraph {
 	}
 	public static void setClassDiagrams(List<ClassDiagram> classDiagrams) {
 		ClassGraph.classDiagrams = classDiagrams;
+	}
+
+	public static List<NaryAssociationClass> getNaries() {
+		List res = new LinkedList();
+		for(Vertex v : classes) {
+			if(v.getType() == VertexType.NARY) {
+				res.add(v);
+			}
+		}
+		
+		return res;
 	}
 }
