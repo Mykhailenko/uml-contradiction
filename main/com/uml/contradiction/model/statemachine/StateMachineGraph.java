@@ -6,12 +6,12 @@ import java.util.List;
 import com.uml.contradiction.model.cclass.CClass;
 
 
-public class StateMachineDiagram {
+public class StateMachineGraph {
 	private static List<StateMachine> stateMachines = new LinkedList<StateMachine>();
 	
 	public static StateMachine findStateMachineByClassName(CClass cСlass){
 		for(StateMachine stateMachine : stateMachines){
-			if(stateMachine.getClassName().equals(cСlass.getFullName())){
+			if(stateMachine.getcClass().equals(cСlass)){
 				return stateMachine;
 			}
 		}
@@ -22,6 +22,6 @@ public class StateMachineDiagram {
 		return stateMachines;
 	}
 	public static void setStateMachines(List<StateMachine> stateMachines) {
-		StateMachineDiagram.stateMachines = stateMachines;
+		StateMachineGraph.stateMachines = stateMachines;
 	}
 }

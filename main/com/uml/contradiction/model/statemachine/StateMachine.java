@@ -3,12 +3,14 @@ package com.uml.contradiction.model.statemachine;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.sequence.Message;
 
 public class StateMachine {
 	private List<Pseudostate> connectionPoint;
 	private List<State> submachineState;
-	private String className;
+	private String name;
+	private CClass cClass;
 	private List<Transition> transitions;
 	public List<Transition> getTransitions() {
 		return transitions;
@@ -28,11 +30,18 @@ public class StateMachine {
 	public void setSubmachineState(List<State> submachineState) {
 		this.submachineState = submachineState;
 	}
-	public String getClassName() {
-		return className;
+	
+	public String getName() {
+		return name;
 	}
-	public void setClassName(String className) {
-		this.className = className;
+	public void setName(String name) {
+		this.name = name;
+	}
+	public CClass getcClass() {
+		return cClass;
+	}
+	public void setcClass(CClass cClass) {
+		this.cClass = cClass;
 	}
 	public static List<Message> stayOnlyImportentMessages(StateMachine stateMachine, 
 			List<Message> messages){

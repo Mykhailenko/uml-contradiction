@@ -98,13 +98,22 @@ public class CClass implements Vertex {
 	@Override
 	public String toString() {
 		return "CClass [name=" + name 
-//				+ ", fullName=" + getFullName()
+				+ ", fullName=" + getFullName()
 				+ ", package name=" + parentPackageElement.getName()
 				+ ", stereotypes=" + stereotypes + ", visibility=" + visibility
 				+ ", isAbstract=" + isAbstract + ", properties=" + properties
 				+ ", attributes=" + attributes + ", methods=" + methods
 				+ ", templateParameters=" + templateParameters
 				+ ", requiredInterface=" + requiredInterface + "]";
+	}
+
+	
+	public List<CClass> getNestedCClasses() {
+		return nestedCClasses;
+	}
+
+	public void setNestedCClasses(List<CClass> nestedCClasses) {
+		this.nestedCClasses = nestedCClasses;
 	}
 
 	@Override

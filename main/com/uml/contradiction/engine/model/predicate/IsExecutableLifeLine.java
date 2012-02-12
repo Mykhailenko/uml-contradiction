@@ -12,7 +12,7 @@ import com.uml.contradiction.model.sequence.LifeLine;
 import com.uml.contradiction.model.sequence.Message;
 import com.uml.contradiction.model.statemachine.State;
 import com.uml.contradiction.model.statemachine.StateMachine;
-import com.uml.contradiction.model.statemachine.StateMachineDiagram;
+import com.uml.contradiction.model.statemachine.StateMachineGraph;
 import com.uml.contradiction.model.statemachine.Transition;
 import com.uml.contradiction.model.statemachine.Trigger;
 
@@ -26,7 +26,7 @@ public class IsExecutableLifeLine implements Predicate {
 		Interaction interaction = (Interaction) params.get(0);
 		LifeLine lifeLine = (LifeLine) params.get(1);
 		List<Message> messages = findAllMessagesTargetLifeLine(interaction, lifeLine);
-		StateMachine stateMachine = StateMachineDiagram.findStateMachineByClassName(lifeLine.getCclass());
+		StateMachine stateMachine = StateMachineGraph.findStateMachineByClassName(lifeLine.getCclass());
 		if(stateMachine == null){
 			return true;// it means that inconsistence epsent tooday
 		}
