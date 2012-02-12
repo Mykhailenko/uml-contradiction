@@ -15,6 +15,11 @@ public class Constraint {
 		super();
 		this.text = text;
 	}
+
+	@Override
+	public String toString() {
+		return "Constraint [text=" + text + "]";
+	}
 	
 	
 }

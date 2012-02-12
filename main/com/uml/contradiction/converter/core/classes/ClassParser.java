@@ -17,6 +17,7 @@ import com.uml.contradiction.gui.models.DiagramForChoise;
 import com.uml.contradiction.model.cclass.*;
 import com.uml.contradiction.model.common.*;
 import com.uml.contradiction.converter.core.*;
+import com.uml.contradiction.model.ocl.*;
 
 import org.apache.log4j.Logger;
 import org.w3c.dom.*;
@@ -33,6 +34,7 @@ extends CoreParserImpl implements CoreParser{
 	private Map<String, PackageElement> packagesWithId = new LinkedHashMap <String, PackageElement>();
 	
 	private Map<String, Set<Stereotype>> stereotypesWithRefClass = new LinkedHashMap <String, Set<Stereotype>>();
+	private Map<String, Constraint> constraintsWithRef = new LinkedHashMap <String, Constraint>();
 	
 	ClassParsHelper classParsHelper;  //содержит помощника для разбора класса
 	CommonClDiagrHelper commonClDiagrHelper; //содержит общего помощника для класс диаграмм
@@ -40,7 +42,7 @@ extends CoreParserImpl implements CoreParser{
 	public ClassParser() {
 		super();
 		
-		classParsHelper = new ClassParsHelper(classesWithId, assocesWithId);
+		classParsHelper = new ClassParsHelper(classesWithId, assocesWithId, constraintsWithRef);
 		commonClDiagrHelper = new CommonClDiagrHelper();
 	}
 	//создаем ClassDiagram для каждого id
@@ -88,7 +90,9 @@ extends CoreParserImpl implements CoreParser{
 						
 			//получаем стереотипы со ссылками на классы
 			stereotypesWithRefClass = commonClDiagrHelper.getStereotWithId(umlModelEl);
-					
+			
+			commonClDiagrHelper.getConstraintsWithRef(umlModelEl, constraintsWithRef);
+			
 			//проход по всем элементам  HashMap
 //			if(!stereotypesWithRefClass.isEmpty()){
 //				

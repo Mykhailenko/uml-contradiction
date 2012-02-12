@@ -9,6 +9,7 @@ import org.w3c.dom.NodeList;
 
 import com.uml.contradiction.common.DiagramType;
 import com.uml.contradiction.gui.models.DiagramForChoise;
+import com.uml.contradiction.model.cclass.ClassDiagram;
 
 public class CoreParserImpl implements CoreParser{
 	
@@ -103,5 +104,18 @@ public class CoreParserImpl implements CoreParser{
 			}				
 		}	
 		return present;
+	}
+	public String getAttrByNameAndTag(Element elem, String tagName, String attrName){
+		NodeList tagsByName = elem.getElementsByTagName(tagName);
+		
+		Element curTag = (Element)tagsByName.item(0);
+				
+		if(curTag == null  || (curTag.getParentNode() != elem))
+			return null;
+		
+		if(curTag.hasAttribute(attrName))
+			return curTag.getAttribute(attrName);
+		else
+			return null;
 	}
 }

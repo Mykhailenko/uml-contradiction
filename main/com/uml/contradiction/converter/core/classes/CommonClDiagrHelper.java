@@ -21,6 +21,7 @@ import com.uml.contradiction.model.common.PackageElement;
 import com.uml.contradiction.model.common.Stereotype;
 import com.uml.contradiction.model.common.UMLClassStereotype;
 import com.uml.contradiction.model.common.UserStereotype;
+import com.uml.contradiction.model.ocl.Constraint;
 
 public class CommonClDiagrHelper {
 	private static final Logger logger = Logger.getLogger(CommonClDiagrHelper.class);
@@ -151,6 +152,33 @@ public class CommonClDiagrHelper {
 			return null;
 	}
 	
+	public void getConstraintsWithRef(Element umlModel, Map<String, Constraint> constraintsWithRef){
+		
+		try{
+			
+			NodeList rules = umlModel.getElementsByTagName("ownedRule");
+			int temp;
+			
+			for (temp = 0; temp < rules.getLength(); temp++) {
+													//разбор одного элемента
+				Element curRule = (Element)rules.item(temp);
+														
+				String strOfRefs = curRule.getAttribute("constrainedElement");
+				String[] idElems = strOfRefs.split(" ");
+								
+				Element commentEl = (Element)curRule.getElementsByTagName("ownedComment").item(0);
+				Node body = commentEl.getElementsByTagName("body").item(0);
+				Constraint constr = new Constraint(body.getTextContent());
+				
+				for(int i =0; i< idElems.length; i++)
+					constraintsWithRef.put(idElems[i], constr);
+			}
+		}
+	catch (Exception e) {
+		e.printStackTrace();		
+	  }			
+	}
+	
 	//добавление к класс диаграмме пакета, в котором она содержиться
 	public boolean putParentPackInClassDiadramm(Map<String, ClassDiagram> diagrClassWithId, Element umlModelEl, PackageElement curUmlPackage)
 	{
@@ -188,7 +216,7 @@ public class CommonClDiagrHelper {
 	public void putClassesAssocInClDiagramm(Map<String, CClass> classesWithId, Map<String, Association> assocesWithId,
 			Map<String, ClassDiagram> diagrClassWithId, Element umlModelEl) {
 		
-		//проходим по всем диаграммам с поиском выбранной
+		//проходим по всем диаграммам с поиском диаграмм классов
 	NodeList diagramAll = umlModelEl.getElementsByTagName("uml:Diagram");
 	
 	String diagrType = new String("ClassDiagram");

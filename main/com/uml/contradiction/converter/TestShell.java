@@ -24,10 +24,12 @@ public class TestShell {
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\N-arn association.uml");
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\6.EntBean_Conrol in packNotRoot.uml");
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\Test xmi.uml");
-		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\8.ManyStereotypes_DefaultPack.uml");
+//		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\8.ManyStereotypes_DefaultPack.uml");
 		
 		
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\4 ))) Test2 xmi.uml");
+		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\5.2 ))) Test3 xmi.uml");
+		
 		
 //		File file = new File("main\\Test xmi.uml");
 		
@@ -54,7 +56,7 @@ public class TestShell {
 		for(Association ass : asssoc_s)			
 			System.out.println(ass);	
 		
-		for(ClassDiagram clds : clDiagrams)			
-			System.out.println(clds);
+//		for(ClassDiagram clds : clDiagrams)			
+//			System.out.println(clds);
 	}	
 }

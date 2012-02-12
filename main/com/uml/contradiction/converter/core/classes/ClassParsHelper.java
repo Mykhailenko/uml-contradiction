@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import com.uml.contradiction.converter.core.CoreParserImpl;
 import com.uml.contradiction.model.cclass.AggregationKind;
 import com.uml.contradiction.model.cclass.Association;
 import com.uml.contradiction.model.cclass.AssociationEnd;
@@ -18,19 +19,25 @@ import com.uml.contradiction.model.cclass.Multiplicity;
 import com.uml.contradiction.model.cclass.Navigability;
 import com.uml.contradiction.model.cclass.Scope;
 import com.uml.contradiction.model.cclass.Visibility;
+import com.uml.contradiction.model.common.UMLType;
+import com.uml.contradiction.model.common.UserType;
+import com.uml.contradiction.model.ocl.Constraint;
 
 			//помощник разбирает атрибуты классов и ассоциаций
 public class ClassParsHelper {
 	private Map<String, CClass> classesWithId;
 	private Map<String, Association> assocesWithId;
+	private Map<String, Constraint> constraintsWithRef;
 	
 	private static final Logger LOGGER = Logger.getRootLogger();
 	
 	public ClassParsHelper(Map<String, CClass> classesWithId,
-			Map<String, Association> assocesWithId) {
+			Map<String, Association> assocesWithId,
+			Map<String, Constraint> constraintsWithRef) {
 		super();
 		this.classesWithId = classesWithId;
 		this.assocesWithId = assocesWithId;
+		this.constraintsWithRef = constraintsWithRef;
 	}		
 	
 	//get set
@@ -50,6 +57,8 @@ public class ClassParsHelper {
 	public List<Attribute> getAttr4Class(NodeList attrList){
 		List<Attribute> attributes = new ArrayList<Attribute>();
 		
+		CoreParserImpl corePars = new CoreParserImpl();
+		
 		for(int k=0; k<attrList.getLength(); k++){
 			Attribute attr_1 = new Attribute();
 			Element curAttrElem = (Element)attrList.item(k);
@@ -57,6 +66,8 @@ public class ClassParsHelper {
 				//проверка что это не ownedAttribute для роли
 			if(!curAttrElem.hasAttribute("association"))
 			{			
+			String attrId = curAttrElem.getAttribute("xmi:id");
+				
 			attr_1.setName(curAttrElem.getAttribute("name"));
 			
 			String visibty = curAttrElem.getAttribute("visibility");
@@ -64,13 +75,45 @@ public class ClassParsHelper {
 			if(visibty.equals("private")) attr_1.setVisibility(Visibility.PRIVATE);
 			if(visibty.equals("protected")) attr_1.setVisibility(Visibility.PROTECTED);
 		
-			String isDeriv = curAttrElem.getAttribute("isAbstract");
+			String isDeriv = curAttrElem.getAttribute("isDerived");
 			if(isDeriv.equals("false")) attr_1.setDerived(false);
 			if(isDeriv.equals("true")) attr_1.setDerived(true);
 			
 			String scope = curAttrElem.getAttribute("ownerScope");
 			if(scope.equals("instance")) attr_1.setScope(Scope.INSTANCE);
 			if(scope.equals("classifier")) attr_1.setScope(Scope.CLASSIFIER);
+			
+			String defVal = corePars.getAttrByNameAndTag(curAttrElem, "defaultValue", "value");
+			if(defVal != null)
+				attr_1.setDdefault(defVal);
+			
+			Multiplicity mult = getMultiplicity(curAttrElem);
+			if(mult != null)
+				attr_1.setMultiplicity(mult);
+			
+			String typeVal = curAttrElem.getAttribute("type");
+			if(typeVal != null){
+				String[] arr = typeVal.split("_");
+				if(arr.length != 2)
+					LOGGER.error("Trouble with attribute type");
+				if(arr != null){
+					if(arr[0].equals("int")){
+						attr_1.setType(UMLType.INTEGER);
+					}else{
+					if(arr[0].equals("boolean")){
+						attr_1.setType(UMLType.BOOLEAN);
+					}else{
+					if(arr[0].equals("string")){
+						attr_1.setType(UMLType.STRING);
+					}else{
+						attr_1.setType(new UserType(arr[0]));
+					}	}	}					
+				}					
+			}
+			
+			Constraint constr = constraintsWithRef.get(attrId);
+			if(constr != null)
+				attr_1.setConstraints(constr);
 			
 			attributes.add(attr_1);
 			}
@@ -119,11 +162,46 @@ public class ClassParsHelper {
 		assEnd.setAssociatedClass(assCClass);
 		
 					//кратности
+//		try {			
+//			NodeList nlistLow = endElement.getElementsByTagName("lowerValue");
+//			if(nlistLow.getLength() > 0){
+//				String lowValue = ((Element)nlistLow.item(0)).getAttribute("value");
+//				NodeList nlistHi = endElement.getElementsByTagName("upperValue");
+//				String highValue = ((Element)nlistHi.item(0)).getAttribute("value");
+//				
+//				Integer lowerBound =  new Integer(0);
+//				Double upperBound =  new Double(0);
+//							
+//				if(lowValue.equals("*")) lowerBound = 0;
+//				else
+//					lowerBound = Integer.valueOf(lowValue);
+//					
+//				if(highValue.equals("*")) {
+//					upperBound = Double.POSITIVE_INFINITY;
+//					LOGGER.info("We have upper value *");
+//				}
+//				else
+//					upperBound = Double.valueOf(highValue);
+//				
+				Multiplicity multipl = getMultiplicity(endElement); 
+				
+				if(multipl != null)
+				assEnd.setMultiplicity(multipl);	
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		
+		return assEnd;
+	}
+	
+	private Multiplicity getMultiplicity(Element el){
+		Multiplicity multipl = null;
 		try {			
-			NodeList nlistLow = endElement.getElementsByTagName("lowerValue");
+			NodeList nlistLow = el.getElementsByTagName("lowerValue");
 			if(nlistLow.getLength() > 0){
 				String lowValue = ((Element)nlistLow.item(0)).getAttribute("value");
-				NodeList nlistHi = endElement.getElementsByTagName("upperValue");
+				NodeList nlistHi = el.getElementsByTagName("upperValue");
 				String highValue = ((Element)nlistHi.item(0)).getAttribute("value");
 				
 				Integer lowerBound =  new Integer(0);
@@ -140,14 +218,12 @@ public class ClassParsHelper {
 				else
 					upperBound = Double.valueOf(highValue);
 				
-				Multiplicity multipl = new Multiplicity(lowerBound, upperBound); 
-					
-				assEnd.setMultiplicity(multipl);	
+				multipl = new Multiplicity(lowerBound, upperBound); 
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			multipl = null;
 		}
-		
-		return assEnd;
+		return multipl;
 	}
 }
