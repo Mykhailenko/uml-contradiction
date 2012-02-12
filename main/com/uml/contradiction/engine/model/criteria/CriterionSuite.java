@@ -16,4 +16,21 @@ public class CriterionSuite {
 		result.add(new ExecutableSequenceCriterion());
 		return result;
 	}
+	public static String getCriterionName(Criterion criterion){
+		switch (criterion.getInternalID()) {
+		case -2:
+			return "UNSPECIFIED YET";
+		default:
+			return "OLOLO";
+		}
+	}
+	public static String getCriterionDescription(Criterion criterion){
+		switch (criterion.getInternalID()) {
+		case -2:
+			return "UNSPECIFIED YET";
+		default:
+			return "OLOLO";
+		}
+	
+	}
 }
