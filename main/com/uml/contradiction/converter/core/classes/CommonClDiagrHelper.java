@@ -8,7 +8,10 @@ import java.util.Set;
 import org.apache.log4j.Logger;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
+import com.uml.contradiction.model.cclass.ClassDiagram;
+import com.uml.contradiction.model.common.PackageElement;
 import com.uml.contradiction.model.common.Stereotype;
 import com.uml.contradiction.model.common.UMLClassStereotype;
 import com.uml.contradiction.model.common.UserStereotype;
@@ -140,5 +143,38 @@ public class CommonClDiagrHelper {
 			return arrPartColon[1];
 		else
 			return null;
+	}
+	
+	//добавление к класс диаграмме пакета, в котором она содержитьс€
+	public boolean putParentPackToClassDiadramm(Map<String, ClassDiagram> diagrClassWithId, Element umlModelEl, PackageElement curUmlPackage)
+	{
+		boolean hasSubDiagrams = false;
+		
+		NodeList extensionList = umlModelEl.getElementsByTagName("xmi:Extension");
+		Element firstExt = (Element)extensionList.item(0);
+		
+		if(firstExt.getParentNode() == umlModelEl){
+			NodeList subDiagrams = firstExt.getElementsByTagName("subdiagram");
+			
+			//дл€ всех тегов- ссылок на ID диаграммы классов
+			for(int i=0; i < subDiagrams.getLength(); i++){
+				Element curSubDiagram = (Element)subDiagrams.item(i);
+				
+				if(curSubDiagram.getParentNode() == firstExt)
+				{					
+					String idSub = curSubDiagram.getAttribute("xmi:value");
+					ClassDiagram clDiagr = diagrClassWithId.get(idSub);
+					
+					if(clDiagr != null){	//устанавливаем пакет дл€ диаграммы
+						clDiagr.setParentPackageElement(curUmlPackage);
+						hasSubDiagrams = true;
+					}
+				}
+				else
+					break;
+			}
+		}
+		
+		return hasSubDiagrams;
 	}
 }

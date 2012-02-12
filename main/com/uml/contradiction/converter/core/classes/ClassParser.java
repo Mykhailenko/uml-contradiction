@@ -56,6 +56,7 @@ extends CoreParserImpl implements CoreParser{
 	private Boolean addToClassGraf() {
 		List<CClass> class_s = ClassGraph.getClasses();
 		List<Association> asssoc_s = ClassGraph.getAssociations();
+		List<ClassDiagram> clDiagrams = ClassGraph.getClassDiagrams();
 		
 		Collection<CClass> colectCls = classesWithId.values();
 		for(CClass cls : colectCls)			
@@ -63,7 +64,11 @@ extends CoreParserImpl implements CoreParser{
 		
 		Collection<Association> colectAssocs = assocesWithId.values();
 		for(Association ass : colectAssocs)			
-			asssoc_s.add(ass);		
+			asssoc_s.add(ass);	
+		
+		Collection<ClassDiagram> colectDiagr = diagrClassWithId.values();
+		for(ClassDiagram cld : colectDiagr)			
+			clDiagrams.add(cld);	
 		
 		return true;
 	}
@@ -142,6 +147,9 @@ extends CoreParserImpl implements CoreParser{
 		//если разбираем не корневой пакет (default имя)
 		if(parentPack != null){
 			curUmlPackage.setName(umlModelEl.getAttribute("name"));
+			
+			//добавление к класс диаграмме пакета в котором она содержиться
+			commonClDiagrHelper.putParentPackToClassDiadramm(diagrClassWithId, umlModelEl, curUmlPackage);
 		}
 		else
 			curUmlPackage.setName("[[default package]]");
@@ -263,6 +271,10 @@ extends CoreParserImpl implements CoreParser{
 					childsPack.add(firstParsePackage(curPackEl, curUmlPackage));
 				}
 			}
+//			else{	//это значит что начали просматривать не непосредственных потомков 
+//				break;
+//			}
+				
 		}
 		//цикл закончился
 //		LOGGER.debug("Finished first parse");
@@ -332,5 +344,4 @@ extends CoreParserImpl implements CoreParser{
 		  }
 	}
 	
-
 }

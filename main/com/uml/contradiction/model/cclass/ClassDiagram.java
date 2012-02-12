@@ -35,5 +35,11 @@ public class ClassDiagram {
 	public void setParentPackageElement(PackageElement parentPackageElement) {
 		this.parentPackageElement = parentPackageElement;
 	}
+	@Override
+	public String toString() {
+		return "ClassDiagram [name=" + name + "\n\t, classes=" + classes
+				+ "\n\t, associations=" + associations + "\n\t, parentPackageElement="
+				+ parentPackageElement.getName() + "]";
+	}
 	
 }
