@@ -11,7 +11,7 @@ import com.uml.contradiction.model.cclass.ClassGraph;
 public class UNTest {
 	@Test
 	public void t(){
-		File file = new File("main//Test xmi.uml");
+		File file = new File("g.uml");
 		
 		XMIConverter.reset();
 		XMIConverter.setFile(file);
