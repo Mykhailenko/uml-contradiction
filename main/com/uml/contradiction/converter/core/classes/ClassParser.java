@@ -81,17 +81,17 @@ extends CoreParserImpl implements CoreParser{
 			stereotypesWithRefClass = commonClDiagrHelper.getStereotWithId(umlModelEl);
 					
 			//проход по всем элементам  HashMap
-			if(!stereotypesWithRefClass.isEmpty()){
-				
-				System.out.println("Size " + stereotypesWithRefClass.size());
-						
-				for(String key : stereotypesWithRefClass.keySet()){
-					System.out.println("Key : " + key + "\n Stereotypes:");
-					Set<Stereotype> sts = stereotypesWithRefClass.get(key);
-					for(Stereotype cls : sts)
-						System.out.println(cls);
-				}		
-			}
+//			if(!stereotypesWithRefClass.isEmpty()){
+//				
+//				System.out.println("Size " + stereotypesWithRefClass.size());
+//						
+//				for(String key : stereotypesWithRefClass.keySet()){
+//					System.out.println("Key : " + key + "\n Stereotypes:");
+//					Set<Stereotype> sts = stereotypesWithRefClass.get(key);
+//					for(Stereotype cls : sts)
+//						System.out.println(cls);
+//				}		
+//			}
 			
 			//первый проход по packageElements
 			PackageElement rootPackage;			
@@ -104,7 +104,7 @@ extends CoreParserImpl implements CoreParser{
 			//запись значений в статические коллекции
 			addToClassGraf();
 			
-			printPackHierarchy(rootPackage);
+//			printPackHierarchy(rootPackage);
 			
 		} catch (Exception e) {			
 			e.printStackTrace();
@@ -155,16 +155,13 @@ extends CoreParserImpl implements CoreParser{
 				
 		//работаем с внутренним содержанием пакета
 		NodeList pack_nodes = umlModelEl.getElementsByTagName("packagedElement");
-		
-		System.out.println("Before go intro pack, length: "  + pack_nodes.getLength());
-		
-		for (temp = 0; temp < pack_nodes.getLength(); temp++) {
 			
-			System.out.println("After come from requrse, length: "  + pack_nodes.getLength());
+		for (temp = 0; temp < pack_nodes.getLength(); temp++) {
 			
 									//разбор одного элемента packagedElement
 			Element curPackEl = (Element)pack_nodes.item(temp);
 			
+			//проверка что будем рассматривать только непосредственных потомков
 			if((Element)curPackEl.getParentNode() == umlModelEl)
 			{
 				
@@ -264,7 +261,7 @@ extends CoreParserImpl implements CoreParser{
 			}
 		}
 		//цикл закончился
-		LOGGER.debug("Finished first parse");
+//		LOGGER.debug("Finished first parse");
 		}catch (Exception e) {
 			e.printStackTrace();
 		  }
@@ -319,12 +316,12 @@ extends CoreParserImpl implements CoreParser{
 					}	
 			}
 			
-			//если текущий элемент uml:Package
-			if(curPackEl.getAttribute("xmi:type").equals("uml:Package")){
-				secondParsePackage(curPackEl);
-			}
+//			//если текущий элемент uml:Package
+//			if(curPackEl.getAttribute("xmi:type").equals("uml:Package")){
+//				secondParsePackage(curPackEl);
+//			}
 		}
-		LOGGER.debug("Finished second parse");
+//		LOGGER.debug("Finished second parse");
 		}
 		catch (Exception e) {
 			e.printStackTrace();
