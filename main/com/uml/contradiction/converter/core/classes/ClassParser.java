@@ -175,7 +175,11 @@ extends CoreParserImpl implements CoreParser{
 													
 					CClass curCClass = new CClass();
 		
-													//заполняем поля CClass
+						//заполняем поля CClass
+					
+					if(stereotypesWithRefClass.get(id4class) != null)
+						curCClass.setStereotypes(stereotypesWithRefClass.get(id4class));
+					
 					curCClass.setName(curPackEl.getAttribute("name"));
 					
 					curCClass.setParentPackageElement(curUmlPackage);

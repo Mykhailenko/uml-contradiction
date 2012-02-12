@@ -20,6 +20,7 @@ public class CClass implements Vertex {
 	@SuppressWarnings("rawtypes")
 	private Set templateParameters;
 	private String requiredInterface;
+	private List<CClass> nestedCClasses;
 	
 	public String getName() {
 		return name;
