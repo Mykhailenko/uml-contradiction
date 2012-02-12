@@ -22,7 +22,7 @@ public class ExecutableSequenceCriterion extends Criterion {
 		quantifier1.setType(QuantifierType.ALL);
 		quantifier1.setBoundVariable(Variable.l);
 		ComplexRightPart rightPart = new ComplexRightPart();
-		rightPart.setBoundVariable(Variable.f);
+		rightPart.getBoundVariables().add(Variable.f);
 		rightPart.getNestedMappings().add(new LifeLineFromInteractionMapping());
 		quantifier1.setRightPart(rightPart);
 		getQuantifiers().add(quantifier1);

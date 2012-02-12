@@ -32,7 +32,7 @@ public class PartOfSingleComposite extends Criterion {
 		quantifier2.setType(QuantifierType.ALL);
 		quantifier2.setBoundVariable(Variable.e);
 		ComplexRightPart rightPart = new ComplexRightPart();
-		rightPart.setBoundVariable(Variable.a);
+		rightPart.getBoundVariables().add(Variable.a);
 		rightPart.getNestedMappings().add(new CompositeEndAssociationMapping());
 		quantifier2.setRightPart(rightPart);
 		getQuantifiers().add(quantifier2);		

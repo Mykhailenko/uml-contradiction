@@ -24,7 +24,7 @@ public class SimpleCriterion extends Criterion {
 		quantifier1.setType(QuantifierType.ALL);
 		quantifier1.setBoundVariable(Variable.a);
 		ComplexRightPart complexRightPart1 = new ComplexRightPart();
-		complexRightPart1.setBoundVariable(Variable.o);
+		complexRightPart1.getBoundVariables().add(Variable.o);
 		complexRightPart1.getNestedMappings().add(new AttributeObjectMapping());
 		quantifier1.setRightPart(complexRightPart1);
 		getQuantifiers().add(quantifier1);
@@ -33,7 +33,7 @@ public class SimpleCriterion extends Criterion {
 		quantifier2.setType(QuantifierType.ALONE);
 		quantifier2.setBoundVariable(Variable.c);
 		ComplexRightPart complexRightPart2 = new ComplexRightPart();
-		complexRightPart2.setBoundVariable(Variable.o);
+		complexRightPart2.getBoundVariables().add(Variable.o);
 		complexRightPart2.getNestedMappings().add(new AttributeClassMapping());
 		complexRightPart2.getNestedMappings().add(new ClassObjectMapping());
 		quantifier2.setRightPart(complexRightPart2);

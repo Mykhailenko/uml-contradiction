@@ -28,7 +28,7 @@ public class MustExistMethodCriterion extends Criterion {
 		quantifier1.setType(QuantifierType.ALONE);
 		quantifier1.setBoundVariable(Variable.o);
 		ComplexRightPart rightPart = new ComplexRightPart();
-		rightPart.setBoundVariable(Variable.m);
+		rightPart.getBoundVariables().add(Variable.m);
 		List<Mapping> nestedMappings = new LinkedList<Mapping>();
 		nestedMappings.add(new MethodClassMapping());
 		nestedMappings.add(new TargetMessageMapping());

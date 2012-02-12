@@ -99,7 +99,6 @@ public class CClass implements Vertex {
 	public String toString() {
 		return "CClass [name=" + name 
 				+ ", fullName=" + getFullName()
-				+ ", package name=" + parentPackageElement.getName()
 				+ ", stereotypes=" + stereotypes + ", visibility=" + visibility
 				+ ", isAbstract=" + isAbstract + ", properties=" + properties
 				+ ", attributes=" + attributes + ", methods=" + methods

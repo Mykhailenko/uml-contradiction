@@ -10,47 +10,57 @@ import com.uml.contradiction.engine.model.mapping.exception.MappingException;
 
 public class ComplexRightPart implements QuantifierRightPart {
 	private static final Logger LOGGER = Logger.getRootLogger();
-	private Variable boundVariable;
+	private List<Variable> boundVariables = new LinkedList<Variable>();
 	private List<Mapping> nestedMappings = new LinkedList<Mapping>();
 	
 	private List result;
 	@Override
 	public List<?> getSet(List<VariableValue> params) throws MappingException {
-		Object firstValue = null;
-		for(VariableValue vv : params){
-			if(vv.variable.equals(boundVariable)){
-				firstValue = vv.value;
+		List firstValues = new LinkedList();
+		for(Variable variable : boundVariables){
+			Object value = null;
+			for(VariableValue vv : params){
+				if(vv.variable.equals(variable)){
+					value = vv.value;
+					break;
+				}
+			}
+			if(value == null){
+				throw new MappingException("Ololo variable " + variable + " is null");
+			}else{
+				firstValues.add(value);
 			}
 		}
-		assert firstValue != null;
+		assert firstValues.isEmpty() == false;
 		result = new LinkedList();
-		rek(nestedMappings.size()-1,firstValue);
+		rek(nestedMappings.size()-1,firstValues);
 		return result;
 	}
-	private void rek(int index, Object value) throws MappingException{
+	private void rek(int index, List values) throws MappingException{
 		if(index >= 0){
 			Mapping mapping = nestedMappings.get(index);
 			List list;
 			try {
-				list = mapping.map(Collections.singletonList(value));
+				list = mapping.map(values);
 			} catch (MappingException e) {
 				LOGGER.error(e);
 				throw e;
 			}
 			if(list != null){
 				for(int i = 0; i < list.size(); ++i){
-					rek(index-1, list.get(i));
+					rek(index-1, Collections.singletonList(list.get(i)));
 				}
 			}
 		}else{
-			result.add(value);
+			result.add(values.get(0));
 		}
 	}
-	public Variable getBoundVariable() {
-		return boundVariable;
+	
+	public List<Variable> getBoundVariables() {
+		return boundVariables;
 	}
-	public void setBoundVariable(Variable boundVariable) {
-		this.boundVariable = boundVariable;
+	public void setBoundVariables(List<Variable> boundVariables) {
+		this.boundVariables = boundVariables;
 	}
 	public List<Mapping> getNestedMappings() {
 		return nestedMappings;

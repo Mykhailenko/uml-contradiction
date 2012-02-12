@@ -24,7 +24,7 @@ public class CheckStateMachineCriterion extends Criterion{
 		quantifier1.setType(QuantifierType.ALONE);
 		quantifier1.setBoundVariable(Variable.c);
 		ComplexRightPart rightPart1 = new ComplexRightPart();
-		rightPart1.setBoundVariable(Variable.s);
+		rightPart1.getBoundVariables().add(Variable.s);
 		rightPart1.getNestedMappings().add(new ClassOfStateMachine());
 		quantifier1.setRightPart(rightPart1);
 		getQuantifiers().add(quantifier1);
@@ -33,7 +33,7 @@ public class CheckStateMachineCriterion extends Criterion{
 		quantifier2.setType(QuantifierType.ALL);
 		quantifier2.setBoundVariable(Variable.t);
 		ComplexRightPart rightPart2 = new ComplexRightPart();
-		rightPart2.setBoundVariable(Variable.s);
+		rightPart2.getBoundVariables().add(Variable.s);
 		rightPart2.getNestedMappings().add(new TriggersOfStateMachine());
 		quantifier2.setRightPart(rightPart2);
 		getQuantifiers().add(quantifier2);

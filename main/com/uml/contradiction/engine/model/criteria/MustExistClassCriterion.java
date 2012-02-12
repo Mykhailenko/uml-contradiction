@@ -22,7 +22,7 @@ public class MustExistClassCriterion extends Criterion {
 		quantifier2.setType(QuantifierType.ALONE);
 		quantifier2.setBoundVariable(Variable.c);
 		ComplexRightPart rightPart = new ComplexRightPart();
-		rightPart.setBoundVariable(Variable.o);
+		rightPart.getBoundVariables().add(Variable.o);
 		rightPart.getNestedMappings().add(new ClassObjectMapping());
 		quantifier2.setRightPart(rightPart);
 		getQuantifiers().add(quantifier2);

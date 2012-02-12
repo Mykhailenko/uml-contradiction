@@ -48,7 +48,7 @@ public class IsExecutableLifeLine implements Predicate {
 		}
 		
 	}
-	private List<Message> findAllMessagesTargetLifeLine(Interaction interaction,
+	public static List<Message> findAllMessagesTargetLifeLine(Interaction interaction,
 			LifeLine lifeLine){
 		List<Message> messages = new LinkedList<Message>();
 		for(int i = 0; i < interaction.getChilds().size(); ++i){
@@ -80,7 +80,7 @@ public class IsExecutableLifeLine implements Predicate {
 			return true;
 		}
 	}
-	private State findStartState(StateMachine stateMachine, Message message){
+	public  State findStartState(StateMachine stateMachine, Message message){
 		for(Transition transition : stateMachine.getTransitions()){
 			for(Trigger trigger : transition.getTriggers()){
 				if(trigger.getMethodName().equals(message.getMethodName())){
