@@ -20,6 +20,8 @@ public class CoreParserImpl implements CoreParser{
 	public List<Object> parse(Element umlModelEl){
 		return null;
 	}
+	public void makeResult(){		
+	}
 	
 	protected List<String> getAllIdDiagrams(DiagramType t , Element umlModelEl) {
 		//проходим по всем диаграммам с поиском выбранного типа

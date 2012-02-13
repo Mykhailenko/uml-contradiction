@@ -60,11 +60,8 @@ private static final Logger LOGGER = Logger.getRootLogger();
 		
 		Element umlModelEl = (Element)startParse(file); //начало разбора
 		
-
-		CoreParser corePars;
-				
 		
-		ClassParser clPars = new ClassParser();
+		ClassParser clPars = ParsersTool.getClassParser();
 		clPars.parse(umlModelEl);
 			
 		

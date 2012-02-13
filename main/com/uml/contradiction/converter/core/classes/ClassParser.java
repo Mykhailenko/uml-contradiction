@@ -54,6 +54,10 @@ extends CoreParserImpl implements CoreParser{
 		}
 		
 	}
+//	
+	public void makeResult(){
+		
+	}
 	
 	private Boolean addToClassGraf(PackageElement rootPackage) {
 		List<CClass> class_s = ClassGraph.getClasses();
@@ -108,11 +112,7 @@ extends CoreParserImpl implements CoreParser{
 			
 			//первый проход по packageElements
 			PackageElement rootPackage;			
-			rootPackage = firstParsePackage(umlModelEl, null);
-			
-			//второй проход по packageElements 
-			//		для работы с ролями, наследованием
-			secondParsePackage(umlModelEl);
+			rootPackage = parsePackage(umlModelEl);			
 			
 			commonClDiagrHelper.putClassesAssocInClDiagramm(classesWithId, assocesWithId, diagrClassWithId, umlModelEl);
 			
@@ -141,6 +141,17 @@ extends CoreParserImpl implements CoreParser{
 				
 		}
 			
+	}
+	
+	public PackageElement parsePackage(Element umlModelEl){
+		PackageElement rootPackage;			
+		rootPackage = firstParsePackage(umlModelEl, null);
+		
+		//второй проход по packageElements 
+		//		для работы с ролями, наследованием
+		secondParsePackage(umlModelEl);
+		
+		return rootPackage;
 	}
 	
 	//разбор одного пакета

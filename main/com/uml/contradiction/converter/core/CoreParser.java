@@ -11,5 +11,6 @@ import com.uml.contradiction.gui.models.DiagramForChoise;
 public interface CoreParser {
 
 	public List<Object> parse(Element umlModelEl);
+	public void makeResult();
 }
 
