@@ -9,6 +9,7 @@ import org.junit.Test;
 import com.uml.contradiction.common.DiagramType;
 import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.models.DiagramForChoise;
+import com.uml.contradiction.gui.panels.ContradictionsPanel;
 import com.uml.contradiction.gui.panels.DiagramsPanel;
 import com.uml.contradiction.gui.windows.MainWindow;
 
@@ -33,7 +34,7 @@ public class StartTest {
 		l.add(dfc1);
 		l.add(dfc2);
 		
-		mainWindow.setContentPane(p);
+		mainWindow.setContentPane(new ContradictionsPanel());
 		p.setFromDiagrams(l);
 		
 		
