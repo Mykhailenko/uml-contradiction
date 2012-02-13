@@ -1,8 +1,9 @@
 package com.uml.contradiction.engine.model.criteria;
 
-import java.util.LinkedList;
-import java.util.List;
 
+
+import java.util.LinkedList;
+import java.util.List;n;
 import com.uml.contradiction.gui.models.DisplayedCriterion;
 
 public class CriterionSuite {
