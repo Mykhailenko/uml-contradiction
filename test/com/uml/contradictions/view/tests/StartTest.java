@@ -19,9 +19,9 @@ public class StartTest {
 	public void createStartWindow() throws IOException {
 		MainWindow mainWindow = new MainWindow();
 	
-		
-		mainWindow.setContentPane(new ContradictionsPanel());
-		
+		ContradictionsPanel p = new ContradictionsPanel();
+		PanelsController.contradictionsPanel = p;
+		mainWindow.setContentPane(p);
 		
 		mainWindow.show();
 		System.in.read();

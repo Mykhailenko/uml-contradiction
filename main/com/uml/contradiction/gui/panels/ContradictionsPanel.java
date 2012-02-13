@@ -21,6 +21,7 @@ import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.criteria.CriterionSuite;
 import com.uml.contradiction.engine.model.criteria.CriterionTypeSuite;
 import com.uml.contradiction.gui.components.CheckTreeManager;
+import com.uml.contradiction.gui.listeners.ContrTreeListener;
 import com.uml.contradiction.gui.models.DiagramForChoise;
 import com.uml.contradiction.gui.models.DisplayedCriterion;
 import com.uml.contradiction.gui.models.DisplayedCriterionType;
@@ -55,21 +56,40 @@ public class ContradictionsPanel extends JPanel{
 			}
 		}
 		
-		
+		tree.addTreeSelectionListener(new ContrTreeListener());
 		
 		tree.setModel(model);
 		CheckTreeManager checkTreeManager = new CheckTreeManager(tree);
 		JScrollPane treePanel = new JScrollPane(tree);
+		JScrollPane descriptionPanel = new JScrollPane(description);
+		description.setEditable(false);
+		
 		
 		
 		this.setLayout(null);
-		treePanel.setBounds(0, 0, 200, 300);
+		treePanel.setBounds(0, 0, 300, 300);
+		descriptionPanel.setBounds(310, 0, 300, 300);
 		this.add(treePanel);
+		this.add(descriptionPanel);
 		
 		this.updateUI();
 		this.repaint();
 	}
 	
-	
+	public void showDescription(Object object) {
+		
+		if(object instanceof DisplayedCriterion) {
+			this.description.setText(((DisplayedCriterion)object).getDesctiption());
+			this.description.repaint();
+			this.description.updateUI();
+			this.updateUI();
+		}
+		else {
+			this.description.setText("");
+			this.description.repaint();
+			this.description.updateUI();
+			this.updateUI();			
+		}
+	}
 	
 }
