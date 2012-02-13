@@ -6,7 +6,18 @@ import java.util.List;
 import com.uml.contradiction.gui.models.DisplayedCriterion;
 
 public class CriterionSuite {
-	public static List<DisplayedCriterion> getAllCriterion(){
+	public static List<Criterion> getAllCriterion(){
+		List<Criterion> result = new LinkedList<Criterion>();
+		result.add(new CorrectTypeCriterion());
+		result.add(new MustExistClassCriterion());
+		result.add(new SimpleCriterion());
+		result.add(new MustExistMethodCriterion());
+		result.add(new PartOfSingleComposite());
+		result.add(new ExecutableSequenceCriterion());
+		return result;
+	}
+	
+	public static List<DisplayedCriterion> getDisplayedCriterions(){
 		List<DisplayedCriterion> result = new LinkedList<DisplayedCriterion>();
 		result.add(new DisplayedCriterion(new MustExistClassCriterion(), "Class must exist", "SOME DISCRIPTION"));		
 		result.add(new DisplayedCriterion(new SimpleCriterion(), "Class must exist", "SOME DISCRIPTION"));		
@@ -17,3 +28,5 @@ public class CriterionSuite {
 		return result;
 	}
 }
+
+

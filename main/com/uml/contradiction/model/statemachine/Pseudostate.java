@@ -1,6 +1,7 @@
 package com.uml.contradiction.model.statemachine;
 
 import com.uml.contradiction.model.Vertex;
+import com.uml.contradiction.model.VertexType;
 
 
 public class Pseudostate implements Vertex{
@@ -17,6 +18,11 @@ public class Pseudostate implements Vertex{
 	}
 	public void setStateMachine(StateMachine stateMachine) {
 		this.stateMachine = stateMachine;
+	}
+	@Override
+	public VertexType getType() {
+		// TODO Auto-generated method stub
+		return VertexType.PSEUDOSTATE;
 	}
 
 }
