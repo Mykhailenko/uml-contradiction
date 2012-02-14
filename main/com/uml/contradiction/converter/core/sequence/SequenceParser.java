@@ -27,14 +27,16 @@ extends CoreParserImpl implements CoreParser{
 	private Map<String, Interaction> interactsSequenceWithId = new LinkedHashMap <String, Interaction>();
 	private Map<String, LifeLine> lifelinesWithId = new LinkedHashMap <String, LifeLine>();
 	private Map<String, Event> eventsWithId = new LinkedHashMap <String, Event>();
-	
+	private Map<String, Message> messagesWithId = new LinkedHashMap <String, Message>();
+
 	
 	SequenceParsHelper sequenceParsHelper;  //содержит помощника
 	
 	public SequenceParser() {
 		super();
 		
-		sequenceParsHelper = new SequenceParsHelper(interactionsFrWithId, lifelinesWithId, eventsWithId);
+		sequenceParsHelper = new SequenceParsHelper(interactionsFrWithId,
+				lifelinesWithId, eventsWithId, messagesWithId);
 	}
 	
 	@Override
@@ -78,6 +80,8 @@ extends CoreParserImpl implements CoreParser{
 				interactionsFrWithId.put(idFrameEl, curInteraction);
 				curInteraction.setName(frameEl.getAttribute("name"));
 				
+				sequenceParsHelper.parseAllLifelines(frameEl);
+				
 				NodeList includedLifelines = frameEl.getElementsByTagName("lifeline");
 				//работаем с вложенными жизненными линиями
 				for (int k = 0; k < includedLifelines.getLength(); k++) {
@@ -89,32 +93,38 @@ extends CoreParserImpl implements CoreParser{
 						if(lifelineEl.getAttribute("xmi:type").equals("uml:Lifeline"))
 						{
 							//получаем LifeLine
-							LifeLine curLifeLine = sequenceParsHelper.parseLifeline(lifelineEl);
-							lifelinesWithId.put(lifelineEl.getAttribute("xmi:id"), curLifeLine);
+//							LifeLine curLifeLine = sequenceParsHelper.parseLifeline(lifelineEl);
+//							lifelinesWithId.put(lifelineEl.getAttribute("xmi:id"), curLifeLine);
 							
-							List<LifeLine> lifnes = curInteraction.getLifeLines();							
-							if(lifnes == null){
-								lifnes = new LinkedList<LifeLine>();
-								curInteraction.setLifeLines(lifnes);
-							}
-							lifnes.add(curLifeLine); //добавление фрейму линию жизни
+							LifeLine curLifeLine = lifelinesWithId.get(lifelineEl.getAttribute("xmi:id"));
+							if(curLifeLine != null){
+							
+								List<LifeLine> lifnes = curInteraction.getLifeLines();							
+								if(lifnes == null){
+									lifnes = new LinkedList<LifeLine>();
+									curInteraction.setLifeLines(lifnes);
+								}
+								lifnes.add(curLifeLine); //добавление k фрейму линию жизни
+							}else
+								LOGGER.error("Not exist lifeline in frame");
 						}
 					}
 				}
 				
-				NodeList events = frameEl.getElementsByTagName("fragment");
-				//работаем с вложенными фрагментами Events
-				for (int k = 0; k < events.getLength(); k++) {
-					Element eventEl = (Element)events.item(k);
-					
-					//проверка что будем рассматривать только непосредственных потомков
-					if(eventEl.getParentNode() == frameEl)
-					{		
-						//получаем Event
-						Event curEvent = sequenceParsHelper.parseEvent(eventEl);
-						eventsWithId.put(eventEl.getAttribute("xmi:id"), curEvent);					
-					}
-				}
+//				NodeList events = frameEl.getElementsByTagName("fragment");
+//				//работаем с вложенными фрагментами Events
+//				for (int k = 0; k < events.getLength(); k++) {
+//					Element eventEl = (Element)events.item(k);
+//					
+//					//проверка что будем рассматривать только непосредственных потомков
+//					if(eventEl.getParentNode() == frameEl)
+//					{		
+//						//получаем Event
+//						Event curEvent = sequenceParsHelper.parseEvent(eventEl);
+//						eventsWithId.put(eventEl.getAttribute("xmi:id"), curEvent);					
+//					}
+//				}
+				sequenceParsHelper.parseAllInlaidEvents(frameEl);
 				
 				//важна последовательность 
 				//поэтому идем по всем вложенным элементам фрейма
@@ -149,6 +159,8 @@ extends CoreParserImpl implements CoreParser{
 									}
 									Message mess = sequenceParsHelper.parseMessage(includeInterInFrame);
 									childs.add(mess);
+									
+									messagesWithId.put(includeInterInFrame.getAttribute("xmi:id"), mess);
 								}
 							}
 							
@@ -164,6 +176,8 @@ extends CoreParserImpl implements CoreParser{
 
 	@Override
 	public void makeResult() {
+		sequenceParsHelper.checkedConnections();
+		
 		Collection<Interaction> allFrames = interactionsFrWithId.values();
 		Collection<Interaction> sequences = interactsSequenceWithId.values();
 		

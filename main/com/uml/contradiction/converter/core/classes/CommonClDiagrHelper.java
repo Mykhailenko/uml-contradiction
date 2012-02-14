@@ -165,11 +165,14 @@ public class CommonClDiagrHelper {
 														
 				String strOfRefs = curRule.getAttribute("constrainedElement");
 				String[] idElems = strOfRefs.split(" ");
-								
-				Element commentEl = (Element)curRule.getElementsByTagName("ownedComment").item(0);
-				Node body = commentEl.getElementsByTagName("body").item(0);
-				Constraint constr = new Constraint(body.getTextContent());
+				Constraint constr = null;		
 				
+				Element commentEl = (Element)curRule.getElementsByTagName("ownedComment").item(0);
+				if(commentEl != null){
+					Node body = commentEl.getElementsByTagName("body").item(0);
+					if(body != null)
+						constr = new Constraint(body.getTextContent());
+				}
 				for(int i =0; i< idElems.length; i++)
 					constraintsWithRef.put(idElems[i], constr);
 			}
