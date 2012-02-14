@@ -20,4 +20,5 @@ public class UserType implements Type {
 	public boolean equals(Object obj) {
 		return name.equals(((Type)obj).getName());
 	}	
+	
 }

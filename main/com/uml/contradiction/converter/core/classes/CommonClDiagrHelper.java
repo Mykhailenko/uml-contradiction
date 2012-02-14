@@ -212,7 +212,7 @@ public class CommonClDiagrHelper {
 		return hasSubDiagrams;
 	}
 	
-	//добавляем ссылки на классы и ассоциацммк к диаграмме классов
+	//добавляем ссылки на классы и ассоциации к диаграмме классов
 	public void putClassesAssocInClDiagramm(Map<String, CClass> classesWithId, Map<String, Association> assocesWithId,
 			Map<String, ClassDiagram> diagrClassWithId, Element umlModelEl) {
 		

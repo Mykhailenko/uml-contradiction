@@ -35,6 +35,8 @@ extends CoreParserImpl implements CoreParser{
 	
 	private Map<String, Set<Stereotype>> stereotypesWithRefClass = new LinkedHashMap <String, Set<Stereotype>>();
 	private Map<String, Constraint> constraintsWithRef = new LinkedHashMap <String, Constraint>();
+	private PackageElement rootPackage;
+	Element umlModelElRoot;
 	
 	ClassParsHelper classParsHelper;  //содержит помощника для разбора класса
 	CommonClDiagrHelper commonClDiagrHelper; //содержит общего помощника для класс диаграмм
@@ -52,11 +54,6 @@ extends CoreParserImpl implements CoreParser{
 				diagrClassWithId.put(curID, new ClassDiagram());	
 			}	
 		}
-		
-	}
-//	
-	public void makeResult(){
-		
 	}
 	
 	private Boolean addToClassGraf(PackageElement rootPackage) {
@@ -85,7 +82,8 @@ extends CoreParserImpl implements CoreParser{
 	
 	public List<Object> parse(Element umlModelEl) {
 		try {
-						
+			umlModelElRoot = umlModelEl;	
+			
 			//получаем idвсех диаграмм классов
 			getAllIdDiagrams(DiagramType.CLASS, umlModelEl);
 								
@@ -95,6 +93,7 @@ extends CoreParserImpl implements CoreParser{
 			//получаем стереотипы со ссылками на классы
 			stereotypesWithRefClass = commonClDiagrHelper.getStereotWithId(umlModelEl);
 			
+			//получаем ограничения со ссылками на элементы (мы их добавляем к атрибутм)
 			commonClDiagrHelper.getConstraintsWithRef(umlModelEl, constraintsWithRef);
 			
 			//проход по всем элементам  HashMap
@@ -110,15 +109,10 @@ extends CoreParserImpl implements CoreParser{
 //				}		
 //			}
 			
-			//первый проход по packageElements
+			//разбор uml пакета, начиная с корневого элемента
 			PackageElement rootPackage;			
 			rootPackage = parsePackage(umlModelEl);			
-			
-			commonClDiagrHelper.putClassesAssocInClDiagramm(classesWithId, assocesWithId, diagrClassWithId, umlModelEl);
-			
-			//запись значений в статические коллекции
-			addToClassGraf(rootPackage);
-			
+						
 //			printPackHierarchy(rootPackage);
 			
 		} catch (Exception e) {			
@@ -128,22 +122,17 @@ extends CoreParserImpl implements CoreParser{
 		return null;
 	}
 	
-	private void printPackHierarchy(PackageElement curPack){
+//	
+	public void makeResult(){
+		//заполнение диаграммы классов (как визуализируется)
+		commonClDiagrHelper.putClassesAssocInClDiagramm(classesWithId, assocesWithId, diagrClassWithId, umlModelElRoot);
 		
-		System.out.println("Pack name : " + curPack.getName());
-		
-		List<PackageElement> children = curPack.getChildrenPackages();
-		if(children != null && !(children.isEmpty())){
-			for(PackageElement pe : children){
-				System.out.println("In package " + curPack.getName() + " -> ");
-				printPackHierarchy(pe);
-			}
-				
-		}
-			
+		//запись значений в статические коллекции
+		addToClassGraf(rootPackage);
 	}
-	
+		
 	public PackageElement parsePackage(Element umlModelEl){
+		//первый проход по packageElements
 		PackageElement rootPackage;			
 		rootPackage = firstParsePackage(umlModelEl, null);
 		
@@ -365,4 +354,18 @@ extends CoreParserImpl implements CoreParser{
 		  }
 	}
 	
+	private void printPackHierarchy(PackageElement curPack){
+		
+		System.out.println("Pack name : " + curPack.getName());
+		
+		List<PackageElement> children = curPack.getChildrenPackages();
+		if(children != null && !(children.isEmpty())){
+			for(PackageElement pe : children){
+				System.out.println("In package " + curPack.getName() + " -> ");
+				printPackHierarchy(pe);
+			}
+				
+		}
+			
+	}
 }

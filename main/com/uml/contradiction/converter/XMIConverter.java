@@ -63,6 +63,7 @@ private static final Logger LOGGER = Logger.getRootLogger();
 		
 		ClassParser clPars = ParsersTool.getClassParser();
 		clPars.parse(umlModelEl);
+		clPars.makeResult();
 			
 		
 		return Collections.emptyList();

@@ -66,7 +66,7 @@ public class Attribute implements NamedElement{
 	@Override
 	public String toString() {
 		return "Attribute [name=" + name + ", visibility=" + visibility
-				+ ", isDerived=" + isDerived + ", type=" + type
+				+ ", isDerived=" + isDerived + ", type=" + type.getName()
 				+ ", multiplicity=" + multiplicity + ", ddefault=" + ddefault
 				+ ", constraint=" + constraint + ", scope=" + scope + "]";
 	}
