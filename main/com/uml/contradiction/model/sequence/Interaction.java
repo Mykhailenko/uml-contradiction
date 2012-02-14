@@ -30,6 +30,10 @@ public class Interaction implements InteractionElement {
 	public void setChilds(List<InteractionElement> childs) {
 		this.childs = childs;
 	}
-	
+	@Override
+	public String toString() {
+		return "Interaction [name=" + name + ", gates=" + gates
+				+ ", lifeLines=" + lifeLines + "\n\t, childs=" + childs + "]";
+	}	
 
 }
