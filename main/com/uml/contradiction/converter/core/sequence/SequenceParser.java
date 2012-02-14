@@ -10,6 +10,8 @@ import java.util.Map;
 import java.util.Set;
 
 import com.uml.contradiction.model.cclass.CClass;
+import com.uml.contradiction.model.cclass.ClassDiagram;
+import com.uml.contradiction.model.cclass.ClassGraph;
 import com.uml.contradiction.model.common.*;
 import com.uml.contradiction.converter.core.*;
 import com.uml.contradiction.model.sequence.*;
@@ -164,6 +166,11 @@ extends CoreParserImpl implements CoreParser{
 	public void makeResult() {
 		Collection<Interaction> allFrames = interactionsFrWithId.values();
 		Collection<Interaction> sequences = interactsSequenceWithId.values();
+		
+		List<Interaction> interList = SequenceGraph.getInteractions();
+						
+		for(Interaction intr : allFrames)			
+			interList.add(intr);
 		
 //		System.out.println("All frames");
 //		for(Interaction int1 : allFrames)

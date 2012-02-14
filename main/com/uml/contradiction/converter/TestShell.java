@@ -6,6 +6,8 @@ import com.uml.contradiction.model.cclass.Association;
 import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.cclass.ClassDiagram;
 import com.uml.contradiction.model.cclass.ClassGraph;
+import com.uml.contradiction.model.sequence.Interaction;
+import com.uml.contradiction.model.sequence.SequenceGraph;
 import com.uml.contradiction.common.DiagramType;
 
 import java.io.File;
@@ -45,6 +47,8 @@ public class TestShell {
 		}
 		//печатаем ClassDiagram
 		printClassGraf();
+		
+		printSequenceGraf();
 	}
 	public static void printClassGraf () {
 		List<CClass> class_s = ClassGraph.getClasses();
@@ -60,4 +64,11 @@ public class TestShell {
 //		for(ClassDiagram clds : clDiagrams)			
 //			System.out.println(clds);
 	}	
+	public static void printSequenceGraf () {			
+		List<Interaction> interList = SequenceGraph.getInteractions();
+						
+		for(Interaction intr : interList)			
+			System.out.println(intr);
+	}
+	
 }
