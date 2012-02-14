@@ -15,6 +15,10 @@ public class Event {
 	public void setCovered(LifeLine covered) {
 		this.covered = covered;
 	}
+	@Override
+	public String toString() {
+		return "Event ["+ "covered=" + covered.getName() + "]";
+	}
 	
 
 }

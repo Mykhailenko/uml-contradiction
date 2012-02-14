@@ -60,6 +60,12 @@ public class Message implements InteractionElement {
 	public void setRecieveEvent(Event recieveEvent) {
 		this.recieveEvent = recieveEvent;
 	}
-	
 
+	@Override
+	public String toString() {
+		return "Message [messageSort=" + messageSort + ", messageKind="
+				+ messageKind + ", sendEvent=" + sendEvent + ", recieveEvent="
+				+ recieveEvent + ", methodName=" + methodName + ", paramCount="
+				+ paramCount + "]";
+	}
 }
