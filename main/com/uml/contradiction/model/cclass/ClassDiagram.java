@@ -2,7 +2,7 @@ package com.uml.contradiction.model.cclass;
 
 import java.util.List;
 
-import com.uml.contradiction.model.common.PackageElement;
+import com.uml.contradiction.model.common.Package;
 
 
 
@@ -10,7 +10,7 @@ public class ClassDiagram {
 	private String name;
 	private List<CClass> classes;
 	private List<Association> associations;
-	private PackageElement parentPackageElement;
+	private Package parentPackageElement;
 	public String getName() {
 		return name;
 	}
@@ -29,10 +29,10 @@ public class ClassDiagram {
 	public void setAssociations(List<Association> associations) {
 		this.associations = associations;
 	}
-	public PackageElement getParentPackageElement() {
+	public Package getParentPackageElement() {
 		return parentPackageElement;
 	}
-	public void setParentPackageElement(PackageElement parentPackageElement) {
+	public void setParentPackageElement(Package parentPackageElement) {
 		this.parentPackageElement = parentPackageElement;
 	}
 	@Override

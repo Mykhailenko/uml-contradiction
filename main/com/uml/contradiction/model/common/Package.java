@@ -2,12 +2,14 @@ package com.uml.contradiction.model.common;
 
 import java.util.List;
 
+import com.uml.contradiction.model.Vertex;
+import com.uml.contradiction.model.VertexType;
 import com.uml.contradiction.model.cclass.CClass;
 
-public class PackageElement {
+public class Package implements Vertex{
 	private String name;
-	private PackageElement parentPackageElement;
-	private List<PackageElement> childrenPackages;
+	private Package parentPackageElement;
+	private List<Package> childrenPackages;
 	private List<CClass> childrenClass;
 	public String getName() {
 		return name;
@@ -15,16 +17,16 @@ public class PackageElement {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public PackageElement getParentPackageElement() {
+	public Package getParentPackageElement() {
 		return parentPackageElement;
 	}
-	public void setParentPackageElement(PackageElement parentPackageElement) {
+	public void setParentPackageElement(Package parentPackageElement) {
 		this.parentPackageElement = parentPackageElement;
 	}
-	public List<PackageElement> getChildrenPackages() {
+	public List<Package> getChildrenPackages() {
 		return childrenPackages;
 	}
-	public void setChildrenPackages(List<PackageElement> childrenPackages) {
+	public void setChildrenPackages(List<Package> childrenPackages) {
 		this.childrenPackages = childrenPackages;
 	}
 	public List<CClass> getChildrenClass() {
@@ -37,4 +39,8 @@ public class PackageElement {
 //	public String toString() {
 //		return "PackageElement [name=" + name + "]";
 //	}
+	@Override
+	public VertexType getType() {
+		return VertexType.PACKAGE;
+	}
 }

@@ -16,6 +16,7 @@ import com.uml.contradiction.converter.XMIConverter;
 import com.uml.contradiction.gui.models.DiagramForChoise;
 import com.uml.contradiction.model.cclass.*;
 import com.uml.contradiction.model.common.*;
+import com.uml.contradiction.model.common.Package;
 import com.uml.contradiction.converter.core.*;
 import com.uml.contradiction.model.ocl.*;
 
@@ -31,7 +32,7 @@ extends CoreParserImpl implements CoreParser{
 	private Map<String, CClass> classesWithId = new LinkedHashMap <String, CClass>();
 	private Map<String, Association> assocesWithId = new LinkedHashMap <String, Association>();
 	private Map<String, ClassDiagram> diagrClassWithId = new LinkedHashMap <String, ClassDiagram>();
-	private Map<String, PackageElement> packagesWithId = new LinkedHashMap <String, PackageElement>();
+	private Map<String, Package> packagesWithId = new LinkedHashMap <String, Package>();
 	
 	private Map<String, Set<Stereotype>> stereotypesWithRefClass = new LinkedHashMap <String, Set<Stereotype>>();
 	private Map<String, Constraint> constraintsWithRef = new LinkedHashMap <String, Constraint>();
@@ -59,7 +60,7 @@ extends CoreParserImpl implements CoreParser{
 		
 	}
 	
-	private Boolean addToClassGraf(PackageElement rootPackage) {
+	private Boolean addToClassGraf(Package rootPackage) {
 		List<CClass> class_s = ClassGraph.getClasses();
 		List<Association> asssoc_s = ClassGraph.getAssociations();
 		List<ClassDiagram> clDiagrams = ClassGraph.getClassDiagrams();
@@ -111,7 +112,7 @@ extends CoreParserImpl implements CoreParser{
 //			}
 			
 			//первый проход по packageElements
-			PackageElement rootPackage;			
+			Package rootPackage;			
 			rootPackage = parsePackage(umlModelEl);			
 			
 			commonClDiagrHelper.putClassesAssocInClDiagramm(classesWithId, assocesWithId, diagrClassWithId, umlModelEl);
@@ -128,13 +129,13 @@ extends CoreParserImpl implements CoreParser{
 		return null;
 	}
 	
-	private void printPackHierarchy(PackageElement curPack){
+	private void printPackHierarchy(Package curPack){
 		
 		System.out.println("Pack name : " + curPack.getName());
 		
-		List<PackageElement> children = curPack.getChildrenPackages();
+		List<Package> children = curPack.getChildrenPackages();
 		if(children != null && !(children.isEmpty())){
-			for(PackageElement pe : children){
+			for(Package pe : children){
 				System.out.println("In package " + curPack.getName() + " -> ");
 				printPackHierarchy(pe);
 			}
@@ -143,8 +144,8 @@ extends CoreParserImpl implements CoreParser{
 			
 	}
 	
-	public PackageElement parsePackage(Element umlModelEl){
-		PackageElement rootPackage;			
+	public Package parsePackage(Element umlModelEl){
+		Package rootPackage;			
 		rootPackage = firstParsePackage(umlModelEl, null);
 		
 		//второй проход по packageElements 
@@ -155,15 +156,15 @@ extends CoreParserImpl implements CoreParser{
 	}
 	
 	//разбор одного пакета
-	private PackageElement firstParsePackage(Element umlModelEl, PackageElement parentPack) {
+	private Package firstParsePackage(Element umlModelEl, Package parentPack) {
 		
 		//umlModelEl - элемент-узел, внутри которого будет разбор
 		
 		int temp;
-		PackageElement curUmlPackage = null;
+		Package curUmlPackage = null;
 		
 		try{
-		curUmlPackage = new PackageElement();
+		curUmlPackage = new Package();
 		
 		//если разбираем не корневой пакет (default имя)
 		if(parentPack != null){
@@ -210,8 +211,7 @@ extends CoreParserImpl implements CoreParser{
 						curCClass.setStereotypes(stereotypesWithRefClass.get(id4class));
 					
 					curCClass.setName(curPackEl.getAttribute("name"));
-					
-					curCClass.setParentPackageElement(curUmlPackage);
+					curCClass.setParent(curUmlPackage);
 					
 					String visibty = curPackEl.getAttribute("visibility");
 					
@@ -281,10 +281,10 @@ extends CoreParserImpl implements CoreParser{
 				
 				//если текущий элемент uml:Package
 				if(curPackEl.getAttribute("xmi:type").equals("uml:Package")){
-					List<PackageElement> childsPack = curUmlPackage.getChildrenPackages();
+					List<Package> childsPack = curUmlPackage.getChildrenPackages();
 					
 					if(childsPack == null){
-						childsPack = new LinkedList<PackageElement>();
+						childsPack = new LinkedList<Package>();
 						curUmlPackage.setChildrenPackages(childsPack);
 					}
 					//пакеты-потомки добавляем к текущему пакету

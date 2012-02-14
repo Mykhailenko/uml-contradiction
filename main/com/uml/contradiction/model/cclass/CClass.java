@@ -5,12 +5,12 @@ import java.util.List;
 
 import com.uml.contradiction.model.Vertex;
 import com.uml.contradiction.model.VertexType;
-import com.uml.contradiction.model.common.PackageElement;
+import com.uml.contradiction.model.common.Package;
 import com.uml.contradiction.model.common.Stereotype;
 
 public class CClass implements Vertex {
 	private String name;
-	private PackageElement parentPackageElement;
+	private Vertex parent;
 	private Set<Stereotype> stereotypes;
 	private Visibility visibility;	
 	private boolean isAbstract;
@@ -79,21 +79,28 @@ public class CClass implements Vertex {
 	public void setTemplateParameters(Set templateParameters) {
 		this.templateParameters = templateParameters;
 	}
-	public PackageElement getParentPackageElement() {
-		return parentPackageElement;
-	}
-	public void setParentPackageElement(PackageElement parentPackageElement) {
-		this.parentPackageElement = parentPackageElement;
-	}
 	public String getFullName(){
 		String fullName = new String();
-		PackageElement packageElement = parentPackageElement;
+		Vertex packageElement = parent;
 		while(packageElement != null){
-			fullName = packageElement.getName() + "." + fullName;
-			packageElement = packageElement.getParentPackageElement();
+			String str ;
+			if(packageElement.getType().equals(VertexType.CLASS)){
+				str = ((CClass)packageElement).getName();
+				packageElement = ((CClass)packageElement).getParent();
+			}else{
+				str = ((Package)packageElement).getName();
+				packageElement = ((Package)packageElement).getParentPackageElement();
+			}
+			fullName = str + "." + fullName;
 		}
 		fullName = fullName + name;
 		return fullName;
+	}
+	public Vertex getParent() {
+		return parent;
+	}
+	public void setParent(Vertex parent) {
+		this.parent = parent;
 	}
 	@Override
 	public String toString() {

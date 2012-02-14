@@ -17,7 +17,7 @@ import com.uml.contradiction.common.DiagramType;
 import com.uml.contradiction.model.cclass.Association;
 import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.cclass.ClassDiagram;
-import com.uml.contradiction.model.common.PackageElement;
+import com.uml.contradiction.model.common.Package;
 import com.uml.contradiction.model.common.Stereotype;
 import com.uml.contradiction.model.common.UMLClassStereotype;
 import com.uml.contradiction.model.common.UserStereotype;
@@ -180,7 +180,7 @@ public class CommonClDiagrHelper {
 	}
 	
 	//добавление к класс диаграмме пакета, в котором она содержиться
-	public boolean putParentPackInClassDiadramm(Map<String, ClassDiagram> diagrClassWithId, Element umlModelEl, PackageElement curUmlPackage)
+	public boolean putParentPackInClassDiadramm(Map<String, ClassDiagram> diagrClassWithId, Element umlModelEl, Package curUmlPackage)
 	{
 		boolean hasSubDiagrams = false;
 		
