@@ -1,8 +1,11 @@
 package com.uml.contradiction.converter.core.classes;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.w3c.dom.Element;
@@ -17,10 +20,10 @@ import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.cclass.MMethod;
 import com.uml.contradiction.model.cclass.Multiplicity;
 import com.uml.contradiction.model.cclass.Navigability;
+import com.uml.contradiction.model.cclass.Parameter;
 import com.uml.contradiction.model.cclass.Scope;
 import com.uml.contradiction.model.cclass.Visibility;
-import com.uml.contradiction.model.common.UMLType;
-import com.uml.contradiction.model.common.UserType;
+import com.uml.contradiction.model.common.*;
 import com.uml.contradiction.model.ocl.Constraint;
 
 			//помощник разбирает атрибуты классов и ассоциаций
@@ -28,16 +31,19 @@ public class ClassParsHelper {
 	private Map<String, CClass> classesWithId;
 	private Map<String, Association> assocesWithId;
 	private Map<String, Constraint> constraintsWithRef;
+	private Map<String, Set<Stereotype>> stereotypesWithRefClass;
 	
 	private static final Logger LOGGER = Logger.getRootLogger();
 	
 	public ClassParsHelper(Map<String, CClass> classesWithId,
 			Map<String, Association> assocesWithId,
-			Map<String, Constraint> constraintsWithRef) {
+			Map<String, Constraint> constraintsWithRef,
+			Map<String, Set<Stereotype>> stereotypesWithRefClass) {
 		super();
 		this.classesWithId = classesWithId;
 		this.assocesWithId = assocesWithId;
 		this.constraintsWithRef = constraintsWithRef;
+		this.stereotypesWithRefClass = stereotypesWithRefClass;
 	}		
 	
 	//get set
@@ -98,28 +104,8 @@ public class ClassParsHelper {
 					if(mult != null)
 						attr_1.setMultiplicity(mult);
 					
-					if(curAttrElem.hasAttribute("type")){
-						String typeVal = curAttrElem.getAttribute("type");
-						if(typeVal != null){
-							String[] arr = typeVal.split("_");
-							if(arr.length != 2)
-								LOGGER.error("Trouble with attribute type "+
-										"in tag  "+ attrId);
-							if(arr != null){
-								if(arr[0].equals("int")){
-									attr_1.setType(UMLType.INTEGER);
-								}else{
-								if(arr[0].equals("boolean")){
-									attr_1.setType(UMLType.BOOLEAN);
-								}else{
-								if(arr[0].equals("string")){
-									attr_1.setType(UMLType.STRING);
-								}else{
-									attr_1.setType(new UserType(arr[0]));
-								}	}	}					
-							}					
-						}
-					}
+					attr_1.setType(getType(curAttrElem));
+										
 					Constraint constr = constraintsWithRef.get(attrId);
 					if(constr != null)
 						attr_1.setConstraints(constr);
@@ -130,26 +116,103 @@ public class ClassParsHelper {
 		}
 		return attributes;
 	}
+	
+	private Type getType(Element elem) {
+		Type type = null;
+		
+		if(elem.hasAttribute("type")){
+			String typeVal = elem.getAttribute("type");
+			if(typeVal != null){
+				String[] arr = typeVal.split("_");
+				if(arr.length != 2)
+					LOGGER.error("Trouble with attribute type "+
+							"in tag  ");
+				if(arr != null){
+					if(arr[0].equals("int")){
+						type = UMLType.INTEGER;
+					}else{
+					if(arr[0].equals("boolean")){
+						type = UMLType.BOOLEAN;
+					}else{
+					if(arr[0].equals("string")){
+						type = UMLType.STRING;
+					}else{
+						type = new UserType(arr[0]);
+					}	}	}					
+				}	
+			}
+		}
+		return type;
+	}
 
-	public List<MMethod> getMethods4Class(NodeList methdsList){
+	public List<MMethod> getMethods4Class(Element classElement){		
+		NodeList methdsList = classElement.getElementsByTagName("ownedOperation");
+				
 		List<MMethod> methods = new ArrayList<MMethod>();
 		
-		for(int k=0; k<methdsList.getLength(); k++){
-			MMethod meth_1 = new MMethod();
+		for(int k=0; k<methdsList.getLength(); k++){			
 			Element curMethElem = (Element)methdsList.item(k);
 			
-			meth_1.setName(curMethElem.getAttribute("name"));
+			//проверка что будем рассматривать только непосредственных потомков
+			if((Element)curMethElem.getParentNode() == classElement)
+			{
+				MMethod meth_1 = new MMethod();
+				
+				String idMeth = curMethElem.getAttribute("xmi:id");
+								
+				meth_1.setName(curMethElem.getAttribute("name"));
+				
+				String visibty = curMethElem.getAttribute("visibility");
+				if(visibty.equals("public")) meth_1.setVisibility(Visibility.PUBLIC);
+				if(visibty.equals("private")) meth_1.setVisibility(Visibility.PRIVATE);
+				if(visibty.equals("protected")) meth_1.setVisibility(Visibility.PROTECTED);
 			
-			String visibty = curMethElem.getAttribute("visibility");
-			if(visibty.equals("public")) meth_1.setVisibility(Visibility.PUBLIC);
-			if(visibty.equals("private")) meth_1.setVisibility(Visibility.PRIVATE);
-			if(visibty.equals("protected")) meth_1.setVisibility(Visibility.PROTECTED);
-		
-			String scope = curMethElem.getAttribute("ownerScope");
-			if(scope.equals("instance")) meth_1.setScope(Scope.INSTANCE);
-			if(scope.equals("classifier")) meth_1.setScope(Scope.CLASSIFIER);
-			
-			methods.add(meth_1);
+				String scope = curMethElem.getAttribute("ownerScope");
+				if(scope.equals("instance")) meth_1.setScope(Scope.INSTANCE);
+				if(scope.equals("classifier")) meth_1.setScope(Scope.CLASSIFIER);
+				
+				if(stereotypesWithRefClass.get(idMeth) != null)
+					meth_1.setStereotypes(stereotypesWithRefClass.get(idMeth));
+				
+				//разбор параметров
+				List<Parameter> params = null;
+				NodeList parametersList = curMethElem.getElementsByTagName("ownedParameter");
+				for (int i = 0; i < parametersList.getLength(); i++) {
+					Element curParam = (Element)parametersList.item(i);
+					
+					//возвращаемое значение
+					if(curParam.getAttribute("direction").equals("return")){
+						if(curParam.hasAttribute("type")){
+							String typeVal = curParam.getAttribute("type");
+							if(typeVal != null){
+								String[] arr = typeVal.split("_");
+								if(arr.length != 2)
+									LOGGER.error("Trouble with parameter type "+
+											"in tag  ");
+								if(arr != null)
+									meth_1.setReturnResult(arr[0]);														
+							}
+						}
+					}
+					if(curParam.hasAttribute("kind")){
+						if(params == null)
+							params = new LinkedList<Parameter>();
+						
+						Parameter par = new Parameter();
+						
+						if(curParam.hasAttribute("name"))
+							par.setName(curParam.getAttribute("name"));
+						
+						if(curParam.hasAttribute("type"))
+							par.setType(getType(curParam));
+						
+						params.add(par);
+					}					
+				}
+				meth_1.setParameters(params);
+								
+				methods.add(meth_1);
+			}
 		}
 		return methods;
 	}
@@ -171,36 +234,11 @@ public class ClassParsHelper {
 		CClass assCClass = classesWithId.get(idAsocedClass);
 		assEnd.setAssociatedClass(assCClass);
 		
-					//кратности
-//		try {			
-//			NodeList nlistLow = endElement.getElementsByTagName("lowerValue");
-//			if(nlistLow.getLength() > 0){
-//				String lowValue = ((Element)nlistLow.item(0)).getAttribute("value");
-//				NodeList nlistHi = endElement.getElementsByTagName("upperValue");
-//				String highValue = ((Element)nlistHi.item(0)).getAttribute("value");
-//				
-//				Integer lowerBound =  new Integer(0);
-//				Double upperBound =  new Double(0);
-//							
-//				if(lowValue.equals("*")) lowerBound = 0;
-//				else
-//					lowerBound = Integer.valueOf(lowValue);
-//					
-//				if(highValue.equals("*")) {
-//					upperBound = Double.POSITIVE_INFINITY;
-//					LOGGER.info("We have upper value *");
-//				}
-//				else
-//					upperBound = Double.valueOf(highValue);
-//				
-				Multiplicity multipl = getMultiplicity(endElement); 
-				
-				if(multipl != null)
-				assEnd.setMultiplicity(multipl);	
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		//кратности
+		Multiplicity multipl = getMultiplicity(endElement); 
+		
+		if(multipl != null)
+		assEnd.setMultiplicity(multipl);	
 		
 		return assEnd;
 	}

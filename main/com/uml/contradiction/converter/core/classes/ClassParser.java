@@ -45,7 +45,8 @@ extends CoreParserImpl implements CoreParser{
 	public ClassParser() {
 		super();
 		
-		classParsHelper = new ClassParsHelper(classesWithId, assocesWithId, constraintsWithRef);
+		classParsHelper = new ClassParsHelper(classesWithId, assocesWithId, 
+				constraintsWithRef, stereotypesWithRefClass);
 		commonClDiagrHelper = new CommonClDiagrHelper();
 	}
 	//создаем ClassDiagram для каждого id
@@ -92,7 +93,7 @@ extends CoreParserImpl implements CoreParser{
 			createDiagrmsClass(idDiagrams);
 						
 			//получаем стереотипы со ссылками на классы
-			stereotypesWithRefClass = commonClDiagrHelper.getStereotWithId(umlModelEl);
+			commonClDiagrHelper.getStereotWithId(umlModelEl, stereotypesWithRefClass);
 			
 			//получаем ограничения со ссылками на элементы (мы их добавляем к атрибутм)
 			commonClDiagrHelper.getConstraintsWithRef(umlModelEl, constraintsWithRef);
@@ -222,9 +223,9 @@ extends CoreParserImpl implements CoreParser{
 					curCClass.setAttributes(attributes);
 					
 					//разбор методов
-					NodeList methElemsList = curPackEl.getElementsByTagName("ownedOperation");
+//					NodeList methElemsList = curPackEl.getElementsByTagName("ownedOperation");
 					
-					List<MMethod> methods = classParsHelper.getMethods4Class(methElemsList);
+					List<MMethod> methods = classParsHelper.getMethods4Class(curPackEl);
 					curCClass.setMethods(methods);
 					
 					//вставляем класс и его ID в map

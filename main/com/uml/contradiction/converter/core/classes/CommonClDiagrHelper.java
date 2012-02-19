@@ -27,12 +27,10 @@ public class CommonClDiagrHelper {
 	private static final Logger logger = Logger.getLogger(CommonClDiagrHelper.class);
 
 			//получаем стереотипы со ссылками на классы
-	public Map<String, Set<Stereotype>> getStereotWithId(Element umlModel) {
-			
-		Map<String, Set<Stereotype>> streotypeWithRefClass = new LinkedHashMap <String, Set<Stereotype>>();
-	
+	public void getStereotWithId(Element umlModel, Map<String, Set<Stereotype>> streotypeWithRefClass) {
+				
 		if(umlModel.getNextSibling() == null)
-			return null;
+			return;
 					
 		Node sterNode = umlModel.getNextSibling();
 		String tagName = null;
@@ -74,10 +72,15 @@ public class CommonClDiagrHelper {
 									if(stereotypeEl.hasAttribute("base_Dependency")){
 										refOnIdClass =  stereotypeEl.getAttribute("base_Dependency");
 										isRefOnIdClass = true;
-									}
-									else
+									}else{
+										if(stereotypeEl.hasAttribute("base_Operation")){
+											refOnIdClass =  stereotypeEl.getAttribute("base_Operation");
+											isRefOnIdClass = true;
+										}else{
 										logger.warn("Can't take from steretype reference on class:" +
-												" because unknown reference name");									
+												" because unknown reference name");		
+										}
+									}
 								}									
 							}
 						}
@@ -127,8 +130,6 @@ public class CommonClDiagrHelper {
 			//перешли на следующий узел
 			sterNode = sterNode.getNextSibling();
 		} 
-				
-		return streotypeWithRefClass;
 	}
 	
 	private String getStereotypeName(String tagName) {

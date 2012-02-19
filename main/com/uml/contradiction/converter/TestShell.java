@@ -31,7 +31,9 @@ public class TestShell {
 		
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\4 ))) Test2 xmi.uml");
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\5.2 ))) Test3 xmi.uml");
-		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\7))) Seq_s from frame and package.uml");
+//		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\7))) Seq_s from frame and package.uml");
+		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\8.3. Methods-2.uml");
+		
 		
 		File file2 = new File("g.uml");
 		
