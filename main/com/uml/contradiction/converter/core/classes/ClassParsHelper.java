@@ -19,6 +19,7 @@ import com.uml.contradiction.model.cclass.Attribute;
 import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.cclass.MMethod;
 import com.uml.contradiction.model.cclass.Multiplicity;
+import com.uml.contradiction.model.cclass.NaryAssociationClass;
 import com.uml.contradiction.model.cclass.Navigability;
 import com.uml.contradiction.model.cclass.Parameter;
 import com.uml.contradiction.model.cclass.Scope;
@@ -58,6 +59,52 @@ public class ClassParsHelper {
 	}
 	public void setAssocesWithId(Map<String, Association> assocesWithId) {
 		this.assocesWithId = assocesWithId;
+	}
+	
+	public CClass parseClass(Element curClElem) {
+		CClass curCClass = new CClass();
+		CoreParserImpl corePars = new CoreParserImpl();
+		
+		Element extension = (Element)curClElem.getElementsByTagName("xmi:Extension").item(0);
+		//если N-арная ассоциация
+		if(extension.getParentNode() == curClElem){
+			String modelVal = corePars.getAttrByNameAndTag(extension, "modelType", "value");
+			if(modelVal.equals("NARY"))
+				curCClass = new NaryAssociationClass();
+		}
+		
+							
+		//заполняем поля CClass
+		String id4class = curClElem.getAttribute("xmi:id");
+		
+		if(stereotypesWithRefClass.get(id4class) != null)
+			curCClass.setStereotypes(stereotypesWithRefClass.get(id4class));
+		
+		curCClass.setName(curClElem.getAttribute("name"));					
+		
+		String visibty = curClElem.getAttribute("visibility");
+		
+		if(visibty.equals("public")) curCClass.setVisibility(Visibility.PUBLIC);
+		if(visibty.equals("private")) curCClass.setVisibility(Visibility.PRIVATE);
+		if(visibty.equals("protected")) curCClass.setVisibility(Visibility.PROTECTED);
+	
+		String isAbstract = curClElem.getAttribute("isAbstract");
+		if(isAbstract.equals("false")) curCClass.setAbstract(false);
+		if(isAbstract.equals("true")) curCClass.setAbstract(true);
+		
+		
+		//разбор атрибутов		
+		List<Attribute> attributes = getAttr4Class(curClElem);
+		curCClass.setAttributes(attributes);
+		
+		//разбор методов
+		List<MMethod> methods = getMethods4Class(curClElem);
+		curCClass.setMethods(methods);
+		
+		//вставляем класс и его ID в map
+		classesWithId.put(id4class, curCClass);
+
+		return curCClass;	
 	}
 	
 	public List<Attribute> getAttr4Class(Element classElement){
