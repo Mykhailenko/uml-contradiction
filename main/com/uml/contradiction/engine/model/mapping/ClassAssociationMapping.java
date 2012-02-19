@@ -22,7 +22,6 @@ public class ClassAssociationMapping implements Mapping {
 		Object element = args.get(0);
 		
 		if(element instanceof CClass){
-			OObject oObject = (OObject) element;
 			List<Association> associations = ClassGraph.getAssociations();
 			List<Association> res = new LinkedList<Association>();
 			
