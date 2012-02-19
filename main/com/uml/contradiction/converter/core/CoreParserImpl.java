@@ -107,6 +107,7 @@ public class CoreParserImpl implements CoreParser{
 		}	
 		return present;
 	}
+	//получение значения заданного атрибута в заданном теге
 	public String getAttrByNameAndTag(Element elem, String tagName, String attrName){
 		NodeList tagsByName = elem.getElementsByTagName(tagName);
 		

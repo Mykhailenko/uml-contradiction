@@ -216,9 +216,9 @@ extends CoreParserImpl implements CoreParser{
 					
 					
 					//разбор атрибутов
-					NodeList attrElemsList = curPackEl.getElementsByTagName("ownedAttribute");
+//					NodeList attrElemsList = curPackEl.getElementsByTagName("ownedAttribute");
 					
-					List<Attribute> attributes = classParsHelper.getAttr4Class(attrElemsList);
+					List<Attribute> attributes = classParsHelper.getAttr4Class(curPackEl);
 					curCClass.setAttributes(attributes);
 					
 					//разбор методов

@@ -54,68 +54,78 @@ public class ClassParsHelper {
 		this.assocesWithId = assocesWithId;
 	}
 	
-	public List<Attribute> getAttr4Class(NodeList attrList){
+	public List<Attribute> getAttr4Class(Element classElement){
+		NodeList attrList = classElement.getElementsByTagName("ownedAttribute");		
+		
 		List<Attribute> attributes = new ArrayList<Attribute>();
 		
 		CoreParserImpl corePars = new CoreParserImpl();
 		
-		for(int k=0; k<attrList.getLength(); k++){
-			Attribute attr_1 = new Attribute();
-			Element curAttrElem = (Element)attrList.item(k);
+		for(int k=0; k<attrList.getLength(); k++){						
 			
-				//проверка что это не ownedAttribute для роли
-			if(!curAttrElem.hasAttribute("association"))
-			{			
-			String attrId = curAttrElem.getAttribute("xmi:id");
+			Element curAttrElem = (Element)attrList.item(k);	
+			
+			//проверка что будем рассматривать только непосредственных потомков
+			if((Element)curAttrElem.getParentNode() == classElement)
+			{
+				Attribute attr_1 = new Attribute();
+							
+					//проверка что это не ownedAttribute для роли
+				if(!curAttrElem.hasAttribute("association"))
+				{			
+					String attrId = curAttrElem.getAttribute("xmi:id");
+						
+					attr_1.setName(curAttrElem.getAttribute("name"));
+					
+					String visibty = curAttrElem.getAttribute("visibility");
+					if(visibty.equals("public")) attr_1.setVisibility(Visibility.PUBLIC);
+					if(visibty.equals("private")) attr_1.setVisibility(Visibility.PRIVATE);
+					if(visibty.equals("protected")) attr_1.setVisibility(Visibility.PROTECTED);
 				
-			attr_1.setName(curAttrElem.getAttribute("name"));
-			
-			String visibty = curAttrElem.getAttribute("visibility");
-			if(visibty.equals("public")) attr_1.setVisibility(Visibility.PUBLIC);
-			if(visibty.equals("private")) attr_1.setVisibility(Visibility.PRIVATE);
-			if(visibty.equals("protected")) attr_1.setVisibility(Visibility.PROTECTED);
-		
-			String isDeriv = curAttrElem.getAttribute("isDerived");
-			if(isDeriv.equals("false")) attr_1.setDerived(false);
-			if(isDeriv.equals("true")) attr_1.setDerived(true);
-			
-			String scope = curAttrElem.getAttribute("ownerScope");
-			if(scope.equals("instance")) attr_1.setScope(Scope.INSTANCE);
-			if(scope.equals("classifier")) attr_1.setScope(Scope.CLASSIFIER);
-			
-			String defVal = corePars.getAttrByNameAndTag(curAttrElem, "defaultValue", "value");
-			if(defVal != null)
-				attr_1.setDdefault(defVal);
-			
-			Multiplicity mult = getMultiplicity(curAttrElem);
-			if(mult != null)
-				attr_1.setMultiplicity(mult);
-			
-			String typeVal = curAttrElem.getAttribute("type");
-			if(typeVal != null){
-				String[] arr = typeVal.split("_");
-				if(arr.length != 2)
-					LOGGER.error("Trouble with attribute type");
-				if(arr != null){
-					if(arr[0].equals("int")){
-						attr_1.setType(UMLType.INTEGER);
-					}else{
-					if(arr[0].equals("boolean")){
-						attr_1.setType(UMLType.BOOLEAN);
-					}else{
-					if(arr[0].equals("string")){
-						attr_1.setType(UMLType.STRING);
-					}else{
-						attr_1.setType(new UserType(arr[0]));
-					}	}	}					
-				}					
-			}
-			
-			Constraint constr = constraintsWithRef.get(attrId);
-			if(constr != null)
-				attr_1.setConstraints(constr);
-			
-			attributes.add(attr_1);
+					String isDeriv = curAttrElem.getAttribute("isDerived");
+					if(isDeriv.equals("false")) attr_1.setDerived(false);
+					if(isDeriv.equals("true")) attr_1.setDerived(true);
+					
+					String scope = curAttrElem.getAttribute("ownerScope");
+					if(scope.equals("instance")) attr_1.setScope(Scope.INSTANCE);
+					if(scope.equals("classifier")) attr_1.setScope(Scope.CLASSIFIER);
+					
+					String defVal = corePars.getAttrByNameAndTag(curAttrElem, "defaultValue", "value");
+					if(defVal != null)
+						attr_1.setDdefault(defVal);
+					
+					Multiplicity mult = getMultiplicity(curAttrElem);
+					if(mult != null)
+						attr_1.setMultiplicity(mult);
+					
+					if(curAttrElem.hasAttribute("type")){
+						String typeVal = curAttrElem.getAttribute("type");
+						if(typeVal != null){
+							String[] arr = typeVal.split("_");
+							if(arr.length != 2)
+								LOGGER.error("Trouble with attribute type "+
+										"in tag  "+ attrId);
+							if(arr != null){
+								if(arr[0].equals("int")){
+									attr_1.setType(UMLType.INTEGER);
+								}else{
+								if(arr[0].equals("boolean")){
+									attr_1.setType(UMLType.BOOLEAN);
+								}else{
+								if(arr[0].equals("string")){
+									attr_1.setType(UMLType.STRING);
+								}else{
+									attr_1.setType(new UserType(arr[0]));
+								}	}	}					
+							}					
+						}
+					}
+					Constraint constr = constraintsWithRef.get(attrId);
+					if(constr != null)
+						attr_1.setConstraints(constr);
+					
+					attributes.add(attr_1);
+				}
 			}
 		}
 		return attributes;
