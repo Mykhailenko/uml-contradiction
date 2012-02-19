@@ -29,6 +29,8 @@ public class CriterionSuite {
 		result.add(new DisplayedCriterion(new MustExistMethodCriterion(), "MustExistMethodCriterion", "MustExistMethodCriterion"));
 		result.add(new DisplayedCriterion(new PartOfSingleComposite(), "PartOfSingleComposite", "PartOfSingleComposite"));
 		result.add(new DisplayedCriterion(new ExecutableSequenceCriterion(), "ExecutableSequenceCriterion", "ExecutableSequenceCriterion"));
+		result.add(new DisplayedCriterion(new NaryNoAggregationOnly(), "NaryNoAggregationOnly", "NaryNoAggregationOnly"));
+		
 		return result;
 	}
 }

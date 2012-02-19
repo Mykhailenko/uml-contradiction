@@ -229,6 +229,8 @@ public class Engine {
 		this.criterion = criterion;
 		this.wholeHistory = new LinkedList<HistoryItem>();
 	}
+	
+	
 }
 
 

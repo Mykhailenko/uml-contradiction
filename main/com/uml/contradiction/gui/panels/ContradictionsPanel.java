@@ -98,13 +98,16 @@ public class ContradictionsPanel extends JPanel{
 		}
 	}
 	
-	public List<Criterion> getSelectedCriterions() {
-		List<Criterion> res = new LinkedList<Criterion>();
-		
+	public List<DefaultMutableTreeNode> getSelectedNodes() {
+		List<DefaultMutableTreeNode> res = new LinkedList<DefaultMutableTreeNode>();
 		TreePath[] paths = checkTreeManager.getSelectionModel().getSelectionPaths(); 
+
+		if(paths == null) {
+			return res;
+		}
+
 		for(TreePath path:paths) {
-			System.out.println(((DefaultMutableTreeNode)path.getLastPathComponent()).getUserObject().toString());
-			System.out.println(path.getClass());
+			res.add(((DefaultMutableTreeNode)path.getLastPathComponent()));
 		}
 		
 		return res;

@@ -31,4 +31,11 @@ public class VerificationResult {
 	public void setFailHistory(List<HistoryPlainItem> badHistory) {
 		this.failHistory = badHistory;
 	}
+	
+	public String toString() {
+		if(good)
+			return "OK!";
+		else
+			return "ERROR";
+	}
 }

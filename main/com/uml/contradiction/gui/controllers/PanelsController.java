@@ -13,9 +13,11 @@ public class PanelsController {
 	public static VerificationResultsPanel resultsPanel = new VerificationResultsPanel();
 	
 	public static void showPanel(JPanel panel) {
-		mainWindow.removeAll();
+		mainWindow.remove(mainWindow.getContentPane());
 		mainWindow.setContentPane(panel);
 		mainWindow.repaint();
-		
+		mainWindow.getContentPane().repaint();
+		//mainWindow.getContentPane().updateUI();
+		return;
 	}
 }

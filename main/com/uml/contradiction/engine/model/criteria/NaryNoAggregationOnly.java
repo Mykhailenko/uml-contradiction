@@ -61,7 +61,7 @@ public class NaryNoAggregationOnly extends Criterion {
 	@Override
 	public CriterionType getCriterionType() {
 		// TODO Auto-generated method stub
-		return null;
+		return CriterionType.CLASS_CLASS;
 	}
 
 }
