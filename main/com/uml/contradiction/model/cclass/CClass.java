@@ -73,10 +73,10 @@ public class CClass implements Vertex {
 	public void setMethods(List<MMethod> methods) {
 		this.methods = methods;
 	}
-	public Set getTemplateParameters() {
+	public List getTemplateParameters() {
 		return templateParameters;
 	}
-	public void setTemplateParameters(Set templateParameters) {
+	public void setTemplateParameters(List templateParameters) {
 		this.templateParameters = templateParameters;
 	}
 	public String getFullName(){
