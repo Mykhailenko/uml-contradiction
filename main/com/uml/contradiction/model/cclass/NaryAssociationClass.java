@@ -6,4 +6,5 @@ public class NaryAssociationClass extends CClass {
 	public VertexType getType() {
 		return VertexType.NARY;
 	}
+	
 }
