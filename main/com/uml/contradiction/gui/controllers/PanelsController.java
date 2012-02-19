@@ -17,7 +17,7 @@ public class PanelsController {
 		mainWindow.setContentPane(panel);
 		mainWindow.repaint();
 		mainWindow.getContentPane().repaint();
-		//mainWindow.getContentPane().updateUI();
+		((JPanel)mainWindow.getContentPane()).updateUI();
 		return;
 	}
 }

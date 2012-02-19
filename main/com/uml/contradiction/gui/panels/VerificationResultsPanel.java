@@ -13,6 +13,8 @@ import javax.swing.tree.DefaultTreeModel;
 import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.gui.components.CheckTreeManager;
+import com.uml.contradiction.gui.components.ResCellRenderer;
+import com.uml.contradiction.gui.listeners.ResPanelBackListener;
 import com.uml.contradiction.gui.listeners.ResultsTreeListener;
 import com.uml.contradiction.gui.models.DisplayedCriterion;
 import com.uml.contradiction.gui.models.DisplayedCriterionType;
@@ -36,12 +38,17 @@ public class VerificationResultsPanel extends JPanel {
 		JScrollPane descriptionPanel = new JScrollPane(description);
 		
 		this.tree.addTreeSelectionListener(new ResultsTreeListener());
+		this.tree.setCellRenderer(new ResCellRenderer());
+		
+		this.backBut.addActionListener(new ResPanelBackListener());
 		
 		treePanel.setBounds(0, 0, 300, 300);
 		descriptionPanel.setBounds(310, 0, 300, 300);
+		backBut.setBounds(10, 310, 150, 20);
 		
 		this.add(treePanel);
 		this.add(descriptionPanel);
+		this.add(backBut);
 	}
 	
 	public void setSelectedDiagrams(DefaultMutableTreeNode root) {
@@ -78,5 +85,9 @@ public class VerificationResultsPanel extends JPanel {
 	
 	private void showResultDescription(VerificationResult res) {
 		this.description.setText(res.toString());
+	}
+	
+	public VerificationResult getResult(Criterion crit) {
+		return this.results.get(crit);
 	}
 }

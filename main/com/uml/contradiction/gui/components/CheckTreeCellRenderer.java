@@ -8,6 +8,8 @@ import javax.swing.JTree;
 import javax.swing.tree.TreeCellRenderer;
 import javax.swing.tree.TreePath;
 
+import com.uml.contradiction.gui.Images;
+
 public class CheckTreeCellRenderer extends JPanel implements TreeCellRenderer{ 
     private CheckTreeSelectionModel selectionModel; 
     private TreeCellRenderer delegate; 
@@ -35,6 +37,7 @@ public class CheckTreeCellRenderer extends JPanel implements TreeCellRenderer{
         removeAll(); 
         add(checkBox, BorderLayout.WEST); 
         add(renderer, BorderLayout.CENTER); 
+        
         return this; 
     } 
 } 
