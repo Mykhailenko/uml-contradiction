@@ -18,7 +18,7 @@ public class CClass implements Vertex {
 	private List<Attribute> attributes;
 	private List<MMethod> methods;
 	@SuppressWarnings("rawtypes")
-	private Set templateParameters;
+	private List<TemplateParameter> templateParameters;
 	private String requiredInterface;
 	private List<CClass> nestedCClasses;
 	
