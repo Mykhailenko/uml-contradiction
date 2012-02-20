@@ -56,10 +56,10 @@ public class CClass implements Vertex {
 	public void setAbstract(boolean isAbstract) {
 		this.isAbstract = isAbstract;
 	}
-	public String getProperties() {
+	public Constraint getProperties() {
 		return properties;
 	}
-	public void setProperties(String properties) {
+	public void setProperties(Constraint properties) {
 		this.properties = properties;
 	}
 	public List<Attribute> getAttributes() {
