@@ -37,6 +37,9 @@ extends CoreParserImpl implements CoreParser{
 	private Map<String, Set<Stereotype>> stereotypesWithRefClass = new LinkedHashMap <String, Set<Stereotype>>();
 	private Map<String, Constraint> constraintsWithRef = new LinkedHashMap <String, Constraint>();
 	private List<Dependency> dependencies = new LinkedList<Dependency>();
+	private List<Realization> realizations = new LinkedList<Realization>();
+	private List<Generalization> generalizations = new LinkedList<Generalization>();
+	
 	private Package rootPackage;
 	Element umlModelElRoot;
 	
@@ -121,6 +124,12 @@ extends CoreParserImpl implements CoreParser{
 			
 			for(Dependency dep : dependencies)
 				System.out.println(dep);
+			
+			for(Realization real : realizations)
+				System.out.println(real);
+			
+			for(Generalization gen : generalizations)
+				System.out.println(gen);
 			
 		} catch (Exception e) {			
 			e.printStackTrace();
@@ -362,7 +371,64 @@ extends CoreParserImpl implements CoreParser{
 					}
 				}
 			}
+			//разбор зависимости Realization
+			if(curPackEl.getAttribute("xmi:type").equals("uml:Realization")){
+				Realization realiz = new Realization();
+								
+				CClass supplier;	//в данном случае abstraction
+				CClass client;		//realization
 				
+				String id4Supl = curPackEl.getAttribute("supplier");
+				String id4Clint = curPackEl.getAttribute("client");
+				if(classesWithId.get(id4Supl) != null){
+					supplier = classesWithId.get(id4Supl);
+					if(classesWithId.get(id4Clint) != null){
+						client = classesWithId.get(id4Clint);
+						//только еслu оба конца присутствуют
+						realiz.setAbstraction(supplier);
+						realiz.setRealization(client);
+						realizations.add(realiz);
+					}
+				}
+			}
+					
+		}
+		NodeList gen_nodes = umlModelEl.getElementsByTagName("generalization");
+		
+		//проход по всем generalization
+		for (temp = 0; temp < gen_nodes.getLength(); temp++) {
+		Element curGenEl = (Element)gen_nodes.item(temp);
+						
+			//разбор зависимости Generalization
+			if(curGenEl.getAttribute("xmi:type").equals("uml:Generalization")){
+				Generalization gener = new Generalization();
+								
+				CClass general;	//в данном случае abstraction
+				CClass specific;		//realization
+				
+				if(curGenEl.hasAttribute("isSubstitutable")){
+					String subst = curGenEl.getAttribute("isSubstitutable");
+					if(subst.equals("true"))	gener.setSubstitutable(true);
+					if(subst.equals("false"))	gener.setSubstitutable(false);
+				}
+				else
+					gener.setSubstitutable(false);
+												
+				String id4General = curGenEl.getAttribute("general");	
+				Element specEl = (Element)curGenEl.getParentNode();				
+				String id4Specif = specEl.getAttribute("xmi:id");
+								
+				if(classesWithId.get(id4General) != null){
+					general = classesWithId.get(id4General);
+					if(classesWithId.get(id4Specif) != null){
+						specific = classesWithId.get(id4Specif);
+						//только еслu оба конца присутствуют
+						gener.setGeneral(general);
+						gener.setSpecific(specific);
+						generalizations.add(gener);
+					}
+				}
+			}
 		}
 //		LOGGER.debug("Finished second parse");
 		}
