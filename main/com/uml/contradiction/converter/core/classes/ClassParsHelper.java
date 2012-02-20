@@ -276,6 +276,19 @@ public class ClassParsHelper {
 		if(navig.equals("true")) assEnd.setNavigability(Navigability.NAVIGABLE);
 		if(navig.equals("false")) assEnd.setNavigability(Navigability.NON_NAVIGABLE);
 		
+		String derived = endElement.getAttribute("isDerived");
+		if(derived.equals("true")) assEnd.setDerived(true);
+		if(derived.equals("false")) assEnd.setDerived(false);
+		
+		String visibty = endElement.getAttribute("visibility");
+		if(visibty.equals("public")) assEnd.setVisibility(Visibility.PUBLIC);
+		if(visibty.equals("private")) assEnd.setVisibility(Visibility.PRIVATE);
+		if(visibty.equals("protected")) assEnd.setVisibility(Visibility.PROTECTED);
+
+		Constraint constr = constraintsWithRef.get(endElement.getAttribute("xmi:id"));
+		if(constr != null)
+			assEnd.setConstraint(constr);
+		
 					//ассоциируемый класс
 		String idAsocedClass = endElement.getAttribute("type");
 		CClass assCClass = classesWithId.get(idAsocedClass);

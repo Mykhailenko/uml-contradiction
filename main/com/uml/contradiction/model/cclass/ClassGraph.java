@@ -11,7 +11,10 @@ public class ClassGraph {
 	private static List<ClassDiagram> classDiagrams = new LinkedList<ClassDiagram>();
 	private static List<CClass> classes = new LinkedList<CClass>();
 	private static List<Association> associations = new LinkedList<Association>();
-	
+	private static List<Dependency> dependencies = new LinkedList<Dependency>();
+	private static List<Realization> realizations = new LinkedList<Realization>();
+	private static List<Generalization> generalizations = new LinkedList<Generalization>();
+		
 	public static CClass findClassByName(String className){
 		List<CClass> listClass = ClassGraph.getClasses();
 		for(CClass cClass : listClass){
@@ -53,4 +56,29 @@ public class ClassGraph {
 		
 		return res;
 	}
+
+	public static List<Dependency> getDependencies() {
+		return dependencies;
+	}
+
+	public static void setDependencies(List<Dependency> dependencies) {
+		ClassGraph.dependencies = dependencies;
+	}
+
+	public static List<Realization> getRealizations() {
+		return realizations;
+	}
+
+	public static  void setRealizations(List<Realization> realizations) {
+		ClassGraph.realizations = realizations;
+	}
+
+	public static List<Generalization> getGeneralizations() {
+		return generalizations;
+	}
+
+	public static void setGeneralizations(List<Generalization> generalizations) {
+		ClassGraph.generalizations = generalizations;
+	}
+	
 }

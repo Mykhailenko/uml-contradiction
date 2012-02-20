@@ -36,9 +36,9 @@ extends CoreParserImpl implements CoreParser{
 	
 	private Map<String, Set<Stereotype>> stereotypesWithRefClass = new LinkedHashMap <String, Set<Stereotype>>();
 	private Map<String, Constraint> constraintsWithRef = new LinkedHashMap <String, Constraint>();
-	private List<Dependency> dependencies = new LinkedList<Dependency>();
-	private List<Realization> realizations = new LinkedList<Realization>();
-	private List<Generalization> generalizations = new LinkedList<Generalization>();
+	private Map<String, Dependency> dependenciesWithId = new LinkedHashMap <String, Dependency>();
+	private Map<String, Realization> realizationsWithId = new LinkedHashMap <String, Realization>();
+	private Map<String, Generalization> generalizationsWithId = new LinkedHashMap <String, Generalization>();
 	
 	private Package rootPackage;
 	Element umlModelElRoot;
@@ -81,7 +81,21 @@ extends CoreParserImpl implements CoreParser{
 				cld.setParentPackageElement(rootPackage);
 			clDiagrams.add(cld);
 		}
-				
+		
+		List<Dependency> depens = ClassGraph.getDependencies();
+		Collection<Dependency> dependencs = dependenciesWithId.values();
+		for(Dependency dep : dependencs)
+			depens.add(dep);
+		
+		List<Realization> reals = ClassGraph.getRealizations();
+		Collection<Realization> realizs = realizationsWithId.values();
+		for(Realization rel : realizs)
+			reals.add(rel);
+		
+		List<Generalization> geners = ClassGraph.getGeneralizations();
+		Collection<Generalization> generalizs = generalizationsWithId.values();
+		for(Generalization gen : generalizs)
+			geners.add(gen);
 		
 		return true;
 	}
@@ -121,16 +135,7 @@ extends CoreParserImpl implements CoreParser{
 			rootPackage = parsePackage(umlModelEl);			
 						
 //			printPackHierarchy(rootPackage);
-			
-			for(Dependency dep : dependencies)
-				System.out.println(dep);
-			
-			for(Realization real : realizations)
-				System.out.println(real);
-			
-			for(Generalization gen : generalizations)
-				System.out.println(gen);
-			
+					
 		} catch (Exception e) {			
 			e.printStackTrace();
 		}
@@ -140,7 +145,9 @@ extends CoreParserImpl implements CoreParser{
 	
 	public void makeResult(){
 		//заполнение диаграммы классов (как визуализируется)
-		commonClDiagrHelper.putClassesAssocInClDiagramm(classesWithId, assocesWithId, diagrClassWithId, umlModelElRoot);
+		commonClDiagrHelper.putClassesAssocInClDiagramm(classesWithId, assocesWithId, diagrClassWithId,
+				dependenciesWithId, realizationsWithId, generalizationsWithId
+				, umlModelElRoot);
 	
 		//запись значений в статические коллекции
 		addToClassGraf(rootPackage);
@@ -250,6 +257,9 @@ extends CoreParserImpl implements CoreParser{
 	//				if(isElementInDiagrammByID(id4assoc)){
 						
 					Association curAssoc = new Association();
+					
+					if(curPackEl.hasAttribute("name"))
+						curAssoc.setName(curPackEl.getAttribute("name"));
 					
 					if(curPackEl.hasAttribute("memberEnd")){
 						//разбор конца ассоциации
@@ -367,13 +377,14 @@ extends CoreParserImpl implements CoreParser{
 						//только еслu оба конца присутствуют
 						depend.setClients(clients);
 						depend.setSuppliers(suppliers);
-						dependencies.add(depend);
+						dependenciesWithId.put(id4Dep, depend);
 					}
 				}
 			}
 			//разбор зависимости Realization
 			if(curPackEl.getAttribute("xmi:type").equals("uml:Realization")){
 				Realization realiz = new Realization();
+				String id4Real = curPackEl.getAttribute("xmi:id");				
 								
 				CClass supplier;	//в данном случае abstraction
 				CClass client;		//realization
@@ -387,7 +398,7 @@ extends CoreParserImpl implements CoreParser{
 						//только еслu оба конца присутствуют
 						realiz.setAbstraction(supplier);
 						realiz.setRealization(client);
-						realizations.add(realiz);
+						realizationsWithId.put(id4Real, realiz);
 					}
 				}
 			}
@@ -402,6 +413,7 @@ extends CoreParserImpl implements CoreParser{
 			//разбор зависимости Generalization
 			if(curGenEl.getAttribute("xmi:type").equals("uml:Generalization")){
 				Generalization gener = new Generalization();
+				String id4Gen = curGenEl.getAttribute("xmi:id");				
 								
 				CClass general;	//в данном случае abstraction
 				CClass specific;		//realization
@@ -414,18 +426,18 @@ extends CoreParserImpl implements CoreParser{
 				else
 					gener.setSubstitutable(false);
 												
-				String id4General = curGenEl.getAttribute("general");	
+				String id4GeneralCl = curGenEl.getAttribute("general");	
 				Element specEl = (Element)curGenEl.getParentNode();				
 				String id4Specif = specEl.getAttribute("xmi:id");
 								
-				if(classesWithId.get(id4General) != null){
-					general = classesWithId.get(id4General);
+				if(classesWithId.get(id4GeneralCl) != null){
+					general = classesWithId.get(id4GeneralCl);
 					if(classesWithId.get(id4Specif) != null){
 						specific = classesWithId.get(id4Specif);
 						//только еслu оба конца присутствуют
 						gener.setGeneral(general);
 						gener.setSpecific(specific);
-						generalizations.add(gener);
+						generalizationsWithId.put(id4Gen, gener);
 					}
 				}
 			}

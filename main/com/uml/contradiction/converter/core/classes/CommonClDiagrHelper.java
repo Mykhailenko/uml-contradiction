@@ -17,6 +17,9 @@ import com.uml.contradiction.common.DiagramType;
 import com.uml.contradiction.model.cclass.Association;
 import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.cclass.ClassDiagram;
+import com.uml.contradiction.model.cclass.Dependency;
+import com.uml.contradiction.model.cclass.Generalization;
+import com.uml.contradiction.model.cclass.Realization;
 import com.uml.contradiction.model.common.Package;
 import com.uml.contradiction.model.common.Stereotype;
 import com.uml.contradiction.model.common.UMLClassStereotype;
@@ -218,7 +221,9 @@ public class CommonClDiagrHelper {
 	
 	//добавляем ссылки на классы и ассоциации к диаграмме классов
 	public void putClassesAssocInClDiagramm(Map<String, CClass> classesWithId, Map<String, Association> assocesWithId,
-			Map<String, ClassDiagram> diagrClassWithId, Element umlModelEl) {
+			Map<String, ClassDiagram> diagrClassWithId,
+			Map<String, Dependency> dependenciesWithId, Map<String, Realization> realizationsWithId, Map<String, Generalization> generalizationsWithId
+			, Element umlModelEl) {
 		
 		//проходим по всем диаграммам с поиском диаграмм классов
 	NodeList diagramAll = umlModelEl.getElementsByTagName("uml:Diagram");
@@ -271,7 +276,49 @@ public class CommonClDiagrHelper {
 							}							
 							assoces.add(assocCur);							
 						}
-					}					
+					}
+					//если элемент - Generalization
+					if(typeElem.equals("Generalization")){
+						Generalization genCur = generalizationsWithId.get(refOnObject);
+						
+						if(genCur != null){
+							List<Generalization> gens = diagram.getGeneralizations();
+							
+							if(gens == null){
+								gens = new LinkedList<Generalization>();
+								diagram.setGeneralizations(gens);
+							}							
+							gens.add(genCur);							
+						}
+					}	
+					//если элемент - Realization
+					if(typeElem.equals("Realization")){
+						Realization realCur = realizationsWithId.get(refOnObject);
+						
+						if(realCur != null){
+							List<Realization> reals = diagram.getRealizations();
+							
+							if(reals == null){
+								reals = new LinkedList<Realization>();
+								diagram.setRealizations(reals);
+							}							
+							reals.add(realCur);							
+						}
+					}	
+					//если элемент - Dependency
+					if(typeElem.equals("Dependency")){
+						Dependency depenCur = dependenciesWithId.get(refOnObject);
+						
+						if(depenCur != null){
+							List<Dependency> deps = diagram.getDependencies();
+							
+							if(deps == null){
+								deps = new LinkedList<Dependency>();
+								diagram.setDependencies(deps);
+							}							
+							deps.add(depenCur);							
+						}
+					}	
 				}			
 			}
 		}
