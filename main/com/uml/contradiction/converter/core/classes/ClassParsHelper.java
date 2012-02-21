@@ -14,6 +14,7 @@ import org.w3c.dom.NodeList;
 import com.uml.contradiction.converter.core.CoreParserImpl;
 import com.uml.contradiction.model.cclass.AggregationKind;
 import com.uml.contradiction.model.cclass.Association;
+import com.uml.contradiction.model.cclass.AssociationClass;
 import com.uml.contradiction.model.cclass.AssociationEnd;
 import com.uml.contradiction.model.cclass.Attribute;
 import com.uml.contradiction.model.cclass.CClass;
@@ -71,6 +72,22 @@ public class ClassParsHelper {
 			String modelVal = corePars.getAttrByNameAndTag(extension, "modelType", "value");
 			if(modelVal.equals("NARY"))
 				curCClass = new NaryAssociationClass();
+		}
+			//если класс- ассоциация
+		if(curClElem.getAttribute("xmi:type").equals("uml:AssociationClass")){
+			curCClass = new AssociationClass();
+			//получаем ассоциацию внутри класса
+			if(extension.getParentNode() == curClElem){
+				String nameAssoc = corePars.getAttrByNameAndTag(extension, "association", "name");	
+				String idAssoc = corePars.getAttrByNameAndTag(extension, "association", "xmi:id");	
+				if(idAssoc != null){
+					Association ass = new Association();
+					ass.setName(nameAssoc);
+					//добавляем ассоциацию в общий контейнер и в класс-ассоциацию
+					assocesWithId.put(idAssoc, ass);
+					((AssociationClass) curCClass).setAssociation(ass);
+				}
+			}			
 		}
 		
 							
@@ -292,7 +309,8 @@ public class ClassParsHelper {
 					//ассоциируемый класс
 		String idAsocedClass = endElement.getAttribute("type");
 		CClass assCClass = classesWithId.get(idAsocedClass);
-		assEnd.setAssociatedClass(assCClass);
+		if(assCClass != null)
+			assEnd.setAssociatedClass(assCClass);
 		
 		//кратности
 		Multiplicity multipl = getMultiplicity(endElement); 

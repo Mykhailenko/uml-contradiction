@@ -238,88 +238,91 @@ public class CommonClDiagrHelper {
 				String idCurDiagram = curDiagr.getAttribute("xmi:id");
 				ClassDiagram diagram = diagrClassWithId.get(idCurDiagram);
 				
-				diagram.setName(curDiagr.getAttribute("name"));
-				
-				NodeList mainElementOfDiagr = curDiagr.getElementsByTagName("uml:Diagram.element");
-				NodeList listElementsOfDiagr = 
-						((Element)mainElementOfDiagr.item(0)).getElementsByTagName("uml:DiagramElement");
-				
-				for(int i = 0; i < listElementsOfDiagr.getLength(); i++){
-					Element curElem = (Element)listElementsOfDiagr.item(i);
-					String refOnObject = curElem.getAttribute("subject");
-					String typeElem = curElem.getAttribute("preferredShapeType");
+				if(diagram != null)
+				{
+					diagram.setName(curDiagr.getAttribute("name"));
 					
-					//если элемент - класс
-					if(typeElem.equals("Class")){
-						CClass classCur = classesWithId.get(refOnObject);
+					NodeList mainElementOfDiagr = curDiagr.getElementsByTagName("uml:Diagram.element");
+					NodeList listElementsOfDiagr = 
+						((Element)mainElementOfDiagr.item(0)).getElementsByTagName("uml:DiagramElement");
+					
+					for(int i = 0; i < listElementsOfDiagr.getLength(); i++){
+						Element curElem = (Element)listElementsOfDiagr.item(i);
+						String refOnObject = curElem.getAttribute("subject");
+						String typeElem = curElem.getAttribute("preferredShapeType");
 						
-						if(classCur != null){
-							List<CClass> classes = diagram.getClasses();
+						//если элемент - класс
+						if(typeElem.equals("Class")){
+							CClass classCur = classesWithId.get(refOnObject);
 							
-							if(classes == null){
-								classes = new LinkedList<CClass>();
-								diagram.setClasses(classes);
-							}							
-							classes.add(classCur);							
-						}
-					}					
-					//если элемент - ассоциация
-					if(typeElem.equals("Association")){
-						Association assocCur = assocesWithId.get(refOnObject);
-						
-						if(assocCur != null){
-							List<Association> assoces = diagram.getAssociations();
+							if(classCur != null){
+								List<CClass> classes = diagram.getClasses();
+								
+								if(classes == null){
+									classes = new LinkedList<CClass>();
+									diagram.setClasses(classes);
+								}							
+								classes.add(classCur);							
+							}
+						}					
+						//если элемент - ассоциация
+						if(typeElem.equals("Association")){
+							Association assocCur = assocesWithId.get(refOnObject);
 							
-							if(assoces == null){
-								assoces = new LinkedList<Association>();
-								diagram.setAssociations(assoces);
-							}							
-							assoces.add(assocCur);							
+							if(assocCur != null){
+								List<Association> assoces = diagram.getAssociations();
+								
+								if(assoces == null){
+									assoces = new LinkedList<Association>();
+									diagram.setAssociations(assoces);
+								}							
+								assoces.add(assocCur);							
+							}
 						}
-					}
-					//если элемент - Generalization
-					if(typeElem.equals("Generalization")){
-						Generalization genCur = generalizationsWithId.get(refOnObject);
-						
-						if(genCur != null){
-							List<Generalization> gens = diagram.getGeneralizations();
+						//если элемент - Generalization
+						if(typeElem.equals("Generalization")){
+							Generalization genCur = generalizationsWithId.get(refOnObject);
 							
-							if(gens == null){
-								gens = new LinkedList<Generalization>();
-								diagram.setGeneralizations(gens);
-							}							
-							gens.add(genCur);							
-						}
+							if(genCur != null){
+								List<Generalization> gens = diagram.getGeneralizations();
+								
+								if(gens == null){
+									gens = new LinkedList<Generalization>();
+									diagram.setGeneralizations(gens);
+								}							
+								gens.add(genCur);							
+							}
+						}	
+						//если элемент - Realization
+						if(typeElem.equals("Realization")){
+							Realization realCur = realizationsWithId.get(refOnObject);
+							
+							if(realCur != null){
+								List<Realization> reals = diagram.getRealizations();
+								
+								if(reals == null){
+									reals = new LinkedList<Realization>();
+									diagram.setRealizations(reals);
+								}							
+								reals.add(realCur);							
+							}
+						}	
+						//если элемент - Dependency
+						if(typeElem.equals("Dependency")){
+							Dependency depenCur = dependenciesWithId.get(refOnObject);
+							
+							if(depenCur != null){
+								List<Dependency> deps = diagram.getDependencies();
+								
+								if(deps == null){
+									deps = new LinkedList<Dependency>();
+									diagram.setDependencies(deps);
+								}							
+								deps.add(depenCur);							
+							}
+						}	
 					}	
-					//если элемент - Realization
-					if(typeElem.equals("Realization")){
-						Realization realCur = realizationsWithId.get(refOnObject);
-						
-						if(realCur != null){
-							List<Realization> reals = diagram.getRealizations();
-							
-							if(reals == null){
-								reals = new LinkedList<Realization>();
-								diagram.setRealizations(reals);
-							}							
-							reals.add(realCur);							
-						}
-					}	
-					//если элемент - Dependency
-					if(typeElem.equals("Dependency")){
-						Dependency depenCur = dependenciesWithId.get(refOnObject);
-						
-						if(depenCur != null){
-							List<Dependency> deps = diagram.getDependencies();
-							
-							if(deps == null){
-								deps = new LinkedList<Dependency>();
-								diagram.setDependencies(deps);
-							}							
-							deps.add(depenCur);							
-						}
-					}	
-				}			
+				}
 			}
 		}
 	}

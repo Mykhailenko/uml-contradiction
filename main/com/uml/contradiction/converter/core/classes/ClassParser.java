@@ -14,6 +14,7 @@ import java.util.Set;
 import com.uml.contradiction.common.DiagramType;
 import com.uml.contradiction.converter.XMIConverter;
 import com.uml.contradiction.gui.models.DiagramForChoise;
+import com.uml.contradiction.model.VertexType;
 import com.uml.contradiction.model.cclass.*;
 import com.uml.contradiction.model.common.*;
 import com.uml.contradiction.model.common.Package;
@@ -149,6 +150,9 @@ extends CoreParserImpl implements CoreParser{
 				dependenciesWithId, realizationsWithId, generalizationsWithId
 				, umlModelElRoot);
 	
+		//проверка
+		check();
+		
 		//запись значений в статические коллекции
 		addToClassGraf(rootPackage);
 
@@ -211,7 +215,8 @@ extends CoreParserImpl implements CoreParser{
 				if(curPackEl.getAttribute("xmi:type").equals("uml:Class")
 						|| curPackEl.getAttribute("xmi:type").equals("uml:Interface")
 						|| curPackEl.getAttribute("xmi:type").equals("uml:Enumeration")
-						|| curPackEl.getAttribute("xmi:type").equals("uml:PrimitiveType")){
+						|| curPackEl.getAttribute("xmi:type").equals("uml:PrimitiveType")
+						|| curPackEl.getAttribute("xmi:type").equals("uml:AssociationClass")){
 				
 					CClass curCClass = classParsHelper.parseClass(curPackEl);
 						
@@ -292,11 +297,7 @@ extends CoreParserImpl implements CoreParser{
 					//рекурсивно вызвав функцию разбора пакета дл€ потомка
 					childsPack.add(firstParsePackage(curPackEl, curUmlPackage));
 				}
-			}
-//			else{	//это значит что начали просматривать не непосредственных потомков 
-//				break;
-//			}
-				
+			}				
 		}
 		//цикл закончилс€
 //		LOGGER.debug("Finished first parse");
@@ -330,26 +331,44 @@ extends CoreParserImpl implements CoreParser{
 						
 						//проверка что это ownedAttribute дл€ роли
 						if(curOwnAttrElem.hasAttribute("association")){
-														
+							boolean flag = true;
+							
 							//получили AsocPackElem  ассоциацию, чей это конец
 							String idAsocPackElem = curOwnAttrElem.getAttribute("association");
 							Association assocCur = assocesWithId.get(idAsocPackElem);
-								
-							if(assocCur.getEnd1() != null){//с ролью второй конец
-													//первый конец уже есть
-								
-								AssociationEnd end_2 = classParsHelper.getEnd4Assoc(curOwnAttrElem);
-								end_2.setRole(curOwnAttrElem.getAttribute("name"));
-								
-								assocCur.setEnd2(end_2);
-								
-							}else{
-								
-								AssociationEnd end_1 = classParsHelper.getEnd4Assoc(curOwnAttrElem);
-								end_1.setRole(curOwnAttrElem.getAttribute("name"));
-								
-								assocCur.setEnd1(end_1);								
-							}												
+								//рассматриваем случай класса-ассоциации
+							if(assocCur == null){
+								CClass clAssoc = classesWithId.get(idAsocPackElem);
+								if(clAssoc != null){
+									if(clAssoc.getType() == VertexType.ASSOCIATION_CLASS){
+										assocCur = ((AssociationClass)clAssoc).getAssociation();
+									}else
+										flag = false;
+								}else
+									flag = false;
+							}
+							
+							if(flag){
+								if(assocCur.getEnd1() != null){//с ролью второй конец
+														//первый конец уже есть
+									
+									AssociationEnd end_2 = classParsHelper.getEnd4Assoc(curOwnAttrElem);
+									String role = curOwnAttrElem.getAttribute("name");
+									if(!role.equals(""))
+										end_2.setRole(role);
+									
+									assocCur.setEnd2(end_2);
+									
+								}else{
+									
+									AssociationEnd end_1 = classParsHelper.getEnd4Assoc(curOwnAttrElem);
+									String role = curOwnAttrElem.getAttribute("name");
+									if(!role.equals(""))
+										end_1.setRole(role);
+									
+									assocCur.setEnd1(end_1);								
+								}	
+							}
 						}
 							
 					}	
@@ -462,5 +481,20 @@ extends CoreParserImpl implements CoreParser{
 				
 		}
 			
+	}
+	//проверка на наличие обоих концов у ассоциации
+	//в противном случае они улал€ютс€ из коллекции ассоциаций
+	// но не из класса-ассоциации и диаграммы классов
+	private boolean check() {
+		boolean okFlag = true;
+		for(String key : assocesWithId.keySet()){
+			Association ass = 	assocesWithId.get(key);	
+			if(ass.getEnd1() == null || ass.getEnd2() == null){
+				LOGGER.error("Association have empty end");
+				assocesWithId.remove(key);
+				okFlag = false;
+			}
+		}
+		return okFlag;
 	}
 }

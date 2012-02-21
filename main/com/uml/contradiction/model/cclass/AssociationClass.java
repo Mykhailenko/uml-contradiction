@@ -16,4 +16,11 @@ public class AssociationClass extends CClass{
 	public VertexType getType() {
 		return VertexType.ASSOCIATION_CLASS;
 	}
+
+	@Override
+	public String toString() {
+		return "AssociationClass [" + super.toString()+
+				"[association=" + association + "]";
+	}
+	
 }

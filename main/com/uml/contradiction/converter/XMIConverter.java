@@ -63,11 +63,12 @@ private static final Logger LOGGER = Logger.getRootLogger();
 		
 		
 		ClassParser clPars = ParsersTool.getInstanceClassParser();
-		clPars.parse(umlModelEl);
-		clPars.makeResult();
+		clPars.parse(umlModelEl);		
 		
 		SequenceParser seqPars = ParsersTool.getInstanceSequenceParser();
 		seqPars.parse(umlModelEl);
+		
+		clPars.makeResult();
 		seqPars.makeResult();
 			
 		

@@ -2,7 +2,9 @@ package com.uml.contradiction.converter;
 
 //import com.uml.contradiction.converter.core.ClassParser;
 import com.uml.contradiction.gui.models.DiagramForChoise;
+import com.uml.contradiction.model.VertexType;
 import com.uml.contradiction.model.cclass.Association;
+import com.uml.contradiction.model.cclass.AssociationClass;
 import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.cclass.ClassDiagram;
 import com.uml.contradiction.model.cclass.ClassGraph;
@@ -36,8 +38,10 @@ public class TestShell {
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\5.2 ))) Test3 xmi.uml");
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\7))) Seq_s from frame and package.uml");
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\8.5. Nested class.uml");
-		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\9.3 Realization without end.uml");
-				
+//		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\9.3 Realization without end.uml");
+		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\9.5 AssocClass.uml");
+		
+		
 		File file2 = new File("g.uml");
 		
 //		File file = new File("main\\Test xmi.uml");
@@ -64,9 +68,15 @@ public class TestShell {
 		List<Realization> reals = ClassGraph.getRealizations();
 		List<Generalization> geners = ClassGraph.getGeneralizations();
 		
-		for(CClass cls : class_s)			
+		for(CClass cls : class_s){
+//			if(cls.getType() == VertexType.NARY)
+//				System.out.println("Upi "+ cls);
+//			if(cls.getClass() == AssociationClass.class)
+//				System.out.println("Ololo "+ cls);
+			
 			System.out.println(cls);
-		
+		}
+			
 		for(Association ass : asssoc_s)			
 			System.out.println(ass);	
 		
