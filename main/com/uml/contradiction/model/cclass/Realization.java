@@ -22,4 +22,10 @@ public class Realization implements Edge {
 	public EdgeType getType() {
 		return EdgeType.REALIZATION;
 	}
+	@Override
+	public String toString() {
+		return "Realization [abstraction=" + abstraction + ", realization="
+				+ realization + "]";
+	}
+	
 }

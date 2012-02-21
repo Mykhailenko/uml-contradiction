@@ -184,19 +184,7 @@ extends CoreParserImpl implements CoreParser{
 		List<Interaction> interList = SequenceGraph.getInteractions();
 						
 		for(Interaction intr : allFrames)			
-			interList.add(intr);
-		
-//		System.out.println("All frames");
-//		for(Interaction int1 : allFrames)
-//			System.out.println(int1);
-//		
-//		System.out.println("\n Sequences frames");
-//		for(Interaction int2 : sequences)
-//			System.out.println(int2);
-		
-//		Collection<Event> cv= eventsWithId.values();
-//		for(Event ev : cv)
-//			System.out.println(ev);
+			interList.add(intr);		
 	}
 	
 }

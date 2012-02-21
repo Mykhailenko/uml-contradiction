@@ -14,6 +14,7 @@ import java.util.Set;
 import com.uml.contradiction.common.DiagramType;
 import com.uml.contradiction.converter.XMIConverter;
 import com.uml.contradiction.gui.models.DiagramForChoise;
+import com.uml.contradiction.model.VertexType;
 import com.uml.contradiction.model.cclass.*;
 import com.uml.contradiction.model.common.*;
 import com.uml.contradiction.model.common.Package;
@@ -36,6 +37,10 @@ extends CoreParserImpl implements CoreParser{
 	
 	private Map<String, Set<Stereotype>> stereotypesWithRefClass = new LinkedHashMap <String, Set<Stereotype>>();
 	private Map<String, Constraint> constraintsWithRef = new LinkedHashMap <String, Constraint>();
+	private Map<String, Dependency> dependenciesWithId = new LinkedHashMap <String, Dependency>();
+	private Map<String, Realization> realizationsWithId = new LinkedHashMap <String, Realization>();
+	private Map<String, Generalization> generalizationsWithId = new LinkedHashMap <String, Generalization>();
+	
 	private Package rootPackage;
 	Element umlModelElRoot;
 	
@@ -45,7 +50,8 @@ extends CoreParserImpl implements CoreParser{
 	public ClassParser() {
 		super();
 		
-		classParsHelper = new ClassParsHelper(classesWithId, assocesWithId, constraintsWithRef);
+		classParsHelper = new ClassParsHelper(classesWithId, assocesWithId, 
+				constraintsWithRef, stereotypesWithRefClass);
 		commonClDiagrHelper = new CommonClDiagrHelper();
 	}
 	//создаем ClassDiagram для каждого id
@@ -76,7 +82,21 @@ extends CoreParserImpl implements CoreParser{
 				cld.setParentPackageElement(rootPackage);
 			clDiagrams.add(cld);
 		}
-				
+		
+		List<Dependency> depens = ClassGraph.getDependencies();
+		Collection<Dependency> dependencs = dependenciesWithId.values();
+		for(Dependency dep : dependencs)
+			depens.add(dep);
+		
+		List<Realization> reals = ClassGraph.getRealizations();
+		Collection<Realization> realizs = realizationsWithId.values();
+		for(Realization rel : realizs)
+			reals.add(rel);
+		
+		List<Generalization> geners = ClassGraph.getGeneralizations();
+		Collection<Generalization> generalizs = generalizationsWithId.values();
+		for(Generalization gen : generalizs)
+			geners.add(gen);
 		
 		return true;
 	}
@@ -92,7 +112,7 @@ extends CoreParserImpl implements CoreParser{
 			createDiagrmsClass(idDiagrams);
 						
 			//получаем стереотипы со ссылками на классы
-			stereotypesWithRefClass = commonClDiagrHelper.getStereotWithId(umlModelEl);
+			commonClDiagrHelper.getStereotWithId(umlModelEl, stereotypesWithRefClass);
 			
 			//получаем ограничения со ссылками на элементы (мы их добавляем к атрибутм)
 			commonClDiagrHelper.getConstraintsWithRef(umlModelEl, constraintsWithRef);
@@ -116,7 +136,7 @@ extends CoreParserImpl implements CoreParser{
 			rootPackage = parsePackage(umlModelEl);			
 						
 //			printPackHierarchy(rootPackage);
-			
+					
 		} catch (Exception e) {			
 			e.printStackTrace();
 		}
@@ -126,8 +146,13 @@ extends CoreParserImpl implements CoreParser{
 	
 	public void makeResult(){
 		//заполнение диаграммы классов (как визуализируется)
-		commonClDiagrHelper.putClassesAssocInClDiagramm(classesWithId, assocesWithId, diagrClassWithId, umlModelElRoot);
+		commonClDiagrHelper.putClassesAssocInClDiagramm(classesWithId, assocesWithId, diagrClassWithId,
+				dependenciesWithId, realizationsWithId, generalizationsWithId
+				, umlModelElRoot);
 	
+		//проверка
+		check();
+		
 		//запись значений в статические коллекции
 		addToClassGraf(rootPackage);
 
@@ -190,45 +215,32 @@ extends CoreParserImpl implements CoreParser{
 				if(curPackEl.getAttribute("xmi:type").equals("uml:Class")
 						|| curPackEl.getAttribute("xmi:type").equals("uml:Interface")
 						|| curPackEl.getAttribute("xmi:type").equals("uml:Enumeration")
-						|| curPackEl.getAttribute("xmi:type").equals("uml:PrimitiveType")){
+						|| curPackEl.getAttribute("xmi:type").equals("uml:PrimitiveType")
+						|| curPackEl.getAttribute("xmi:type").equals("uml:AssociationClass")){
 				
-					String id4class = curPackEl.getAttribute("xmi:id");
-													
-					CClass curCClass = new CClass();
-		
-						//заполняем поля CClass
-					
-					if(stereotypesWithRefClass.get(id4class) != null)
-						curCClass.setStereotypes(stereotypesWithRefClass.get(id4class));
-					
-					curCClass.setName(curPackEl.getAttribute("name"));
+					CClass curCClass = classParsHelper.parseClass(curPackEl);
+						
+					//устанавливаем классу родительский пакет
 					curCClass.setParent(curUmlPackage);
 					
-					String visibty = curPackEl.getAttribute("visibility");
+					NodeList nestedList = curPackEl.getElementsByTagName("nestedClassifier");
 					
-					if(visibty.equals("public")) curCClass.setVisibility(Visibility.PUBLIC);
-					if(visibty.equals("private")) curCClass.setVisibility(Visibility.PRIVATE);
-					if(visibty.equals("protected")) curCClass.setVisibility(Visibility.PROTECTED);
-				
-					String isAbstract = curPackEl.getAttribute("isAbstract");
-					if(isAbstract.equals("false")) curCClass.setAbstract(false);
-					if(isAbstract.equals("true")) curCClass.setAbstract(true);
-					
-					
-					//разбор атрибутов
-//					NodeList attrElemsList = curPackEl.getElementsByTagName("ownedAttribute");
-					
-					List<Attribute> attributes = classParsHelper.getAttr4Class(curPackEl);
-					curCClass.setAttributes(attributes);
-					
-					//разбор методов
-					NodeList methElemsList = curPackEl.getElementsByTagName("ownedOperation");
-					
-					List<MMethod> methods = classParsHelper.getMethods4Class(methElemsList);
-					curCClass.setMethods(methods);
-					
-					//вставляем класс и его ID в map
-					classesWithId.put(id4class, curCClass);
+					//разбор внутренних классов
+					for (int i = 0; i < nestedList.getLength(); i++) {
+						 Element curNestEl = (Element)nestedList.item(i);
+						 
+						 CClass curNestedClass = classParsHelper.parseClass(curNestEl);
+						 //родителем внутреннего класса будет текущий класс
+						 curNestedClass.setParent(curCClass);
+						 
+						 List<CClass> childNest = curCClass.getNestedCClasses();
+							
+						if(childNest == null){
+							childNest = new LinkedList<CClass>();
+							curCClass.setNestedCClasses(childNest);
+						}		//добавление к коллекции внутренних классов
+						childNest.add(curNestedClass);
+					}
 					
 					//в пакет добавляем собранный класс
 					List<CClass> childrens = curUmlPackage.getChildrenClass();
@@ -250,6 +262,9 @@ extends CoreParserImpl implements CoreParser{
 	//				if(isElementInDiagrammByID(id4assoc)){
 						
 					Association curAssoc = new Association();
+					
+					if(curPackEl.hasAttribute("name"))
+						curAssoc.setName(curPackEl.getAttribute("name"));
 					
 					if(curPackEl.hasAttribute("memberEnd")){
 						//разбор конца ассоциации
@@ -282,11 +297,7 @@ extends CoreParserImpl implements CoreParser{
 					//рекурсивно вызвав функцию разбора пакета для потомка
 					childsPack.add(firstParsePackage(curPackEl, curUmlPackage));
 				}
-			}
-//			else{	//это значит что начали просматривать не непосредственных потомков 
-//				break;
-//			}
-				
+			}				
 		}
 		//цикл закончился
 //		LOGGER.debug("Finished first parse");
@@ -302,12 +313,13 @@ extends CoreParserImpl implements CoreParser{
 										
 		NodeList pack_nodes = umlModelEl.getElementsByTagName("packagedElement");
 		int temp;
-		
+		//проход по всем packagedElements
 		for (temp = 0; temp < pack_nodes.getLength(); temp++) {
 												//разбор одного элемента
 			Element curPackEl = (Element)pack_nodes.item(temp);
 						
 							//элемент диаграммы классов - класс
+			//для заполнения концов ассоциация с ролями
 			if(curPackEl.getAttribute("xmi:type").equals("uml:Class")){
 			
 								
@@ -319,29 +331,134 @@ extends CoreParserImpl implements CoreParser{
 						
 						//проверка что это ownedAttribute для роли
 						if(curOwnAttrElem.hasAttribute("association")){
-														
+							boolean flag = true;
+							
 							//получили AsocPackElem  ассоциацию, чей это конец
 							String idAsocPackElem = curOwnAttrElem.getAttribute("association");
 							Association assocCur = assocesWithId.get(idAsocPackElem);
-								
-							if(assocCur.getEnd1() != null){//с ролью второй конец
-													//первый конец уже есть
-								
-								AssociationEnd end_2 = classParsHelper.getEnd4Assoc(curOwnAttrElem);
-								end_2.setRole(curOwnAttrElem.getAttribute("name"));
-								
-								assocCur.setEnd2(end_2);
-								
-							}else{
-								
-								AssociationEnd end_1 = classParsHelper.getEnd4Assoc(curOwnAttrElem);
-								end_1.setRole(curOwnAttrElem.getAttribute("name"));
-								
-								assocCur.setEnd1(end_1);								
-							}												
+								//рассматриваем случай класса-ассоциации
+							if(assocCur == null){
+								CClass clAssoc = classesWithId.get(idAsocPackElem);
+								if(clAssoc != null){
+									if(clAssoc.getType() == VertexType.ASSOCIATION_CLASS){
+										assocCur = ((AssociationClass)clAssoc).getAssociation();
+									}else
+										flag = false;
+								}else
+									flag = false;
+							}
+							
+							if(flag){
+								if(assocCur.getEnd1() != null){//с ролью второй конец
+														//первый конец уже есть
+									
+									AssociationEnd end_2 = classParsHelper.getEnd4Assoc(curOwnAttrElem);
+									String role = curOwnAttrElem.getAttribute("name");
+									if(!role.equals(""))
+										end_2.setRole(role);
+									
+									assocCur.setEnd2(end_2);
+									
+								}else{
+									
+									AssociationEnd end_1 = classParsHelper.getEnd4Assoc(curOwnAttrElem);
+									String role = curOwnAttrElem.getAttribute("name");
+									if(!role.equals(""))
+										end_1.setRole(role);
+									
+									assocCur.setEnd1(end_1);								
+								}	
+							}
 						}
 							
 					}	
+			}
+			//разбор зависимости Dependency
+			if(curPackEl.getAttribute("xmi:type").equals("uml:Dependency")){
+				Dependency depend = new Dependency();
+				
+				String id4Dep = curPackEl.getAttribute("xmi:id");
+				
+				if(stereotypesWithRefClass.get(id4Dep) != null){
+					Set<Stereotype> sterSet = stereotypesWithRefClass.get(id4Dep);
+					List<Stereotype> listSter = new LinkedList<Stereotype>(sterSet);
+					depend.setStereotypes(listSter);
+				}
+				List<CClass> suppliers = new LinkedList<CClass>();
+				List<CClass> clients = new LinkedList<CClass>();
+				
+				String id4Supl = curPackEl.getAttribute("supplier");
+				String id4Clint = curPackEl.getAttribute("client");
+				if(classesWithId.get(id4Supl) != null){
+					suppliers.add(classesWithId.get(id4Supl));
+					if(classesWithId.get(id4Clint) != null){
+						clients.add(classesWithId.get(id4Clint));
+						//только еслu оба конца присутствуют
+						depend.setClients(clients);
+						depend.setSuppliers(suppliers);
+						dependenciesWithId.put(id4Dep, depend);
+					}
+				}
+			}
+			//разбор зависимости Realization
+			if(curPackEl.getAttribute("xmi:type").equals("uml:Realization")){
+				Realization realiz = new Realization();
+				String id4Real = curPackEl.getAttribute("xmi:id");				
+								
+				CClass supplier;	//в данном случае abstraction
+				CClass client;		//realization
+				
+				String id4Supl = curPackEl.getAttribute("supplier");
+				String id4Clint = curPackEl.getAttribute("client");
+				if(classesWithId.get(id4Supl) != null){
+					supplier = classesWithId.get(id4Supl);
+					if(classesWithId.get(id4Clint) != null){
+						client = classesWithId.get(id4Clint);
+						//только еслu оба конца присутствуют
+						realiz.setAbstraction(supplier);
+						realiz.setRealization(client);
+						realizationsWithId.put(id4Real, realiz);
+					}
+				}
+			}
+					
+		}
+		NodeList gen_nodes = umlModelEl.getElementsByTagName("generalization");
+		
+		//проход по всем generalization
+		for (temp = 0; temp < gen_nodes.getLength(); temp++) {
+		Element curGenEl = (Element)gen_nodes.item(temp);
+						
+			//разбор зависимости Generalization
+			if(curGenEl.getAttribute("xmi:type").equals("uml:Generalization")){
+				Generalization gener = new Generalization();
+				String id4Gen = curGenEl.getAttribute("xmi:id");				
+								
+				CClass general;	//в данном случае abstraction
+				CClass specific;		//realization
+				
+				if(curGenEl.hasAttribute("isSubstitutable")){
+					String subst = curGenEl.getAttribute("isSubstitutable");
+					if(subst.equals("true"))	gener.setSubstitutable(true);
+					if(subst.equals("false"))	gener.setSubstitutable(false);
+				}
+				else
+					gener.setSubstitutable(false);
+												
+				String id4GeneralCl = curGenEl.getAttribute("general");	
+				Element specEl = (Element)curGenEl.getParentNode();				
+				String id4Specif = specEl.getAttribute("xmi:id");
+								
+				if(classesWithId.get(id4GeneralCl) != null){
+					general = classesWithId.get(id4GeneralCl);
+					if(classesWithId.get(id4Specif) != null){
+						specific = classesWithId.get(id4Specif);
+						//только еслu оба конца присутствуют
+						gener.setGeneral(general);
+						gener.setSpecific(specific);
+						generalizationsWithId.put(id4Gen, gener);
+					}
+				}
 			}
 		}
 //		LOGGER.debug("Finished second parse");
@@ -364,5 +481,20 @@ extends CoreParserImpl implements CoreParser{
 				
 		}
 			
+	}
+	//проверка на наличие обоих концов у ассоциации
+	//в противном случае они улаляются из коллекции ассоциаций
+	// но не из класса-ассоциации и диаграммы классов
+	private boolean check() {
+		boolean okFlag = true;
+		for(String key : assocesWithId.keySet()){
+			Association ass = 	assocesWithId.get(key);	
+			if(ass.getEnd1() == null || ass.getEnd2() == null){
+				LOGGER.error("Association have empty end");
+				assocesWithId.remove(key);
+				okFlag = false;
+			}
+		}
+		return okFlag;
 	}
 }

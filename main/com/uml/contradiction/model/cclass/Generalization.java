@@ -30,6 +30,11 @@ public class Generalization implements Edge {
 		// TODO Auto-generated method stub
 		return EdgeType.GENERALIZATION;
 	}
+	@Override
+	public String toString() {
+		return "Generalization [isSubstitutable=" + isSubstitutable
+				+ ", general=" + general + ", specific=" + specific + "]";
+	}
 	
 	
 }

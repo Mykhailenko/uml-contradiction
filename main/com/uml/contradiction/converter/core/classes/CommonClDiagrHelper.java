@@ -17,6 +17,9 @@ import com.uml.contradiction.common.DiagramType;
 import com.uml.contradiction.model.cclass.Association;
 import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.cclass.ClassDiagram;
+import com.uml.contradiction.model.cclass.Dependency;
+import com.uml.contradiction.model.cclass.Generalization;
+import com.uml.contradiction.model.cclass.Realization;
 import com.uml.contradiction.model.common.Package;
 import com.uml.contradiction.model.common.Stereotype;
 import com.uml.contradiction.model.common.UMLClassStereotype;
@@ -27,12 +30,10 @@ public class CommonClDiagrHelper {
 	private static final Logger logger = Logger.getLogger(CommonClDiagrHelper.class);
 
 			//получаем стереотипы со ссылками на классы
-	public Map<String, Set<Stereotype>> getStereotWithId(Element umlModel) {
-			
-		Map<String, Set<Stereotype>> streotypeWithRefClass = new LinkedHashMap <String, Set<Stereotype>>();
-	
+	public void getStereotWithId(Element umlModel, Map<String, Set<Stereotype>> streotypeWithRefClass) {
+				
 		if(umlModel.getNextSibling() == null)
-			return null;
+			return;
 					
 		Node sterNode = umlModel.getNextSibling();
 		String tagName = null;
@@ -74,10 +75,15 @@ public class CommonClDiagrHelper {
 									if(stereotypeEl.hasAttribute("base_Dependency")){
 										refOnIdClass =  stereotypeEl.getAttribute("base_Dependency");
 										isRefOnIdClass = true;
-									}
-									else
+									}else{
+										if(stereotypeEl.hasAttribute("base_Operation")){
+											refOnIdClass =  stereotypeEl.getAttribute("base_Operation");
+											isRefOnIdClass = true;
+										}else{
 										logger.warn("Can't take from steretype reference on class:" +
-												" because unknown reference name");									
+												" because unknown reference name");		
+										}
+									}
 								}									
 							}
 						}
@@ -127,8 +133,6 @@ public class CommonClDiagrHelper {
 			//перешли на следующий узел
 			sterNode = sterNode.getNextSibling();
 		} 
-				
-		return streotypeWithRefClass;
 	}
 	
 	private String getStereotypeName(String tagName) {
@@ -217,7 +221,9 @@ public class CommonClDiagrHelper {
 	
 	//добавляем ссылки на классы и ассоциации к диаграмме классов
 	public void putClassesAssocInClDiagramm(Map<String, CClass> classesWithId, Map<String, Association> assocesWithId,
-			Map<String, ClassDiagram> diagrClassWithId, Element umlModelEl) {
+			Map<String, ClassDiagram> diagrClassWithId,
+			Map<String, Dependency> dependenciesWithId, Map<String, Realization> realizationsWithId, Map<String, Generalization> generalizationsWithId
+			, Element umlModelEl) {
 		
 		//проходим по всем диаграммам с поиском диаграмм классов
 	NodeList diagramAll = umlModelEl.getElementsByTagName("uml:Diagram");
@@ -232,46 +238,91 @@ public class CommonClDiagrHelper {
 				String idCurDiagram = curDiagr.getAttribute("xmi:id");
 				ClassDiagram diagram = diagrClassWithId.get(idCurDiagram);
 				
-				diagram.setName(curDiagr.getAttribute("name"));
-				
-				NodeList mainElementOfDiagr = curDiagr.getElementsByTagName("uml:Diagram.element");
-				NodeList listElementsOfDiagr = 
-						((Element)mainElementOfDiagr.item(0)).getElementsByTagName("uml:DiagramElement");
-				
-				for(int i = 0; i < listElementsOfDiagr.getLength(); i++){
-					Element curElem = (Element)listElementsOfDiagr.item(i);
-					String refOnObject = curElem.getAttribute("subject");
-					String typeElem = curElem.getAttribute("preferredShapeType");
+				if(diagram != null)
+				{
+					diagram.setName(curDiagr.getAttribute("name"));
 					
-					//если элемент - класс
-					if(typeElem.equals("Class")){
-						CClass classCur = classesWithId.get(refOnObject);
+					NodeList mainElementOfDiagr = curDiagr.getElementsByTagName("uml:Diagram.element");
+					NodeList listElementsOfDiagr = 
+						((Element)mainElementOfDiagr.item(0)).getElementsByTagName("uml:DiagramElement");
+					
+					for(int i = 0; i < listElementsOfDiagr.getLength(); i++){
+						Element curElem = (Element)listElementsOfDiagr.item(i);
+						String refOnObject = curElem.getAttribute("subject");
+						String typeElem = curElem.getAttribute("preferredShapeType");
 						
-						if(classCur != null){
-							List<CClass> classes = diagram.getClasses();
+						//если элемент - класс
+						if(typeElem.equals("Class")){
+							CClass classCur = classesWithId.get(refOnObject);
 							
-							if(classes == null){
-								classes = new LinkedList<CClass>();
-								diagram.setClasses(classes);
-							}							
-							classes.add(classCur);							
-						}
-					}					
-					//если элемент - ассоциация
-					if(typeElem.equals("Association")){
-						Association assocCur = assocesWithId.get(refOnObject);
-						
-						if(assocCur != null){
-							List<Association> assoces = diagram.getAssociations();
+							if(classCur != null){
+								List<CClass> classes = diagram.getClasses();
+								
+								if(classes == null){
+									classes = new LinkedList<CClass>();
+									diagram.setClasses(classes);
+								}							
+								classes.add(classCur);							
+							}
+						}					
+						//если элемент - ассоциация
+						if(typeElem.equals("Association")){
+							Association assocCur = assocesWithId.get(refOnObject);
 							
-							if(assoces == null){
-								assoces = new LinkedList<Association>();
-								diagram.setAssociations(assoces);
-							}							
-							assoces.add(assocCur);							
+							if(assocCur != null){
+								List<Association> assoces = diagram.getAssociations();
+								
+								if(assoces == null){
+									assoces = new LinkedList<Association>();
+									diagram.setAssociations(assoces);
+								}							
+								assoces.add(assocCur);							
+							}
 						}
-					}					
-				}			
+						//если элемент - Generalization
+						if(typeElem.equals("Generalization")){
+							Generalization genCur = generalizationsWithId.get(refOnObject);
+							
+							if(genCur != null){
+								List<Generalization> gens = diagram.getGeneralizations();
+								
+								if(gens == null){
+									gens = new LinkedList<Generalization>();
+									diagram.setGeneralizations(gens);
+								}							
+								gens.add(genCur);							
+							}
+						}	
+						//если элемент - Realization
+						if(typeElem.equals("Realization")){
+							Realization realCur = realizationsWithId.get(refOnObject);
+							
+							if(realCur != null){
+								List<Realization> reals = diagram.getRealizations();
+								
+								if(reals == null){
+									reals = new LinkedList<Realization>();
+									diagram.setRealizations(reals);
+								}							
+								reals.add(realCur);							
+							}
+						}	
+						//если элемент - Dependency
+						if(typeElem.equals("Dependency")){
+							Dependency depenCur = dependenciesWithId.get(refOnObject);
+							
+							if(depenCur != null){
+								List<Dependency> deps = diagram.getDependencies();
+								
+								if(deps == null){
+									deps = new LinkedList<Dependency>();
+									diagram.setDependencies(deps);
+								}							
+								deps.add(depenCur);							
+							}
+						}	
+					}	
+				}
 			}
 		}
 	}

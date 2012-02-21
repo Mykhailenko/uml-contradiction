@@ -35,10 +35,10 @@ public class Package implements Vertex{
 	public void setChildrenClass(List<CClass> childrenClass) {
 		this.childrenClass = childrenClass;
 	}
-//	@Override
-//	public String toString() {
-//		return "PackageElement [name=" + name + "]";
-//	}
+	@Override
+	public String toString() {
+		return "PackageElement [name=" + name + "]";
+	}
 	@Override
 	public VertexType getType() {
 		return VertexType.PACKAGE;

@@ -32,5 +32,11 @@ public class Dependency implements Edge {
 	
 	public EdgeType getType() {
 		return EdgeType.DEPENDENCY;
+	}
+	@Override
+	public String toString() {
+		return "Dependency [stereotypes=" + stereotypes + ", suppliers="
+				+ suppliers + ", clients=" + clients + "]";
 	}	
+	
 } 
