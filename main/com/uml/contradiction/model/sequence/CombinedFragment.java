@@ -31,6 +31,9 @@ public class CombinedFragment extends Interaction {
 	public void setOperands(List<InteractionOperand> operands) {
 		this.operands = operands;
 	}
-	
+	@Override
+	public Type getType() {
+		return Type.COMBINED;
+	}
 	
 }
