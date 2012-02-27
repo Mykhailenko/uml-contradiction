@@ -68,4 +68,9 @@ public class Message implements InteractionElement {
 				+ recieveEvent + ", methodName=" + methodName + ", paramCount="
 				+ paramCount + "]";
 	}
+	@Override
+	public Type getType() {
+		return Type.MESSAGE;
+	}
+	
 }

@@ -35,5 +35,8 @@ public class Interaction implements InteractionElement {
 		return "Interaction [name=" + name + ", gates=" + gates
 				+ ", lifeLines=" + lifeLines + "\n\t, childs=" + childs + "]";
 	}	
-
+	@Override
+	public Type getType() {
+		return Type.INTERACTION;
+	}
 }
