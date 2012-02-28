@@ -8,6 +8,7 @@ public class Message implements InteractionElement {
 	private String methodName;
 	private int paramCount;
 	public void parseStr(String str){
+//		System.out.println("There are " + str);
 		// i suppose to get some like that 'ololoName(param1,param2)' or 'disable()' or 'enable' 
 		if(str.contains("(")){ // first or second case
 			methodName = str.substring(0, str.indexOf("(")).trim();

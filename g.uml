@@ -22,7 +22,7 @@
 						<property htmlValue="" name="documentation" type="htmlString" value=""/>
 						<property name="pmAuthor" type="string" value="RedFox"/>
 						<property name="pmCreateDateTime" type="string" value="1328559159960"/>
-						<property name="pmLastModified" type="string" value="1328559720686"/>
+						<property name="pmLastModified" type="string" value="1330442862925"/>
 					</properties>
 					<vpumlChildModelRefs>
 						<modelRef value="GV_SKqyGAqACCg3r"/>
@@ -37,7 +37,7 @@
 								<property htmlValue="" name="documentation" type="htmlString" value=""/>
 								<property name="pmAuthor" type="string" value="RedFox"/>
 								<property name="pmCreateDateTime" type="string" value="1328559159960"/>
-								<property name="pmLastModified" type="string" value="1328559720689"/>
+								<property name="pmLastModified" type="string" value="1330442862925"/>
 							</properties>
 						</vpumlModel>
 						<vpumlModel id="GV_SKqyGAqACCg30" modelType="UseCaseRank">
@@ -47,7 +47,7 @@
 								<property htmlValue="" name="documentation" type="htmlString" value=""/>
 								<property name="pmAuthor" type="string" value="RedFox"/>
 								<property name="pmCreateDateTime" type="string" value="1328559159960"/>
-								<property name="pmLastModified" type="string" value="1328559720689"/>
+								<property name="pmLastModified" type="string" value="1330442862925"/>
 							</properties>
 						</vpumlModel>
 						<vpumlModel id="GV_SKqyGAqACCg39" modelType="UseCaseRank">
@@ -57,7 +57,7 @@
 								<property htmlValue="" name="documentation" type="htmlString" value=""/>
 								<property name="pmAuthor" type="string" value="RedFox"/>
 								<property name="pmCreateDateTime" type="string" value="1328559159960"/>
-								<property name="pmLastModified" type="string" value="1328559720689"/>
+								<property name="pmLastModified" type="string" value="1330442862925"/>
 							</properties>
 						</vpumlModel>
 					</vpumlChildModels>
@@ -79,7 +79,7 @@
 								<property htmlValue="" name="documentation" type="htmlString" value=""/>
 								<property name="pmAuthor" type="string" value="RedFox"/>
 								<property name="pmCreateDateTime" type="string" value="1328559159961"/>
-								<property name="pmLastModified" type="string" value="1328559720690"/>
+								<property name="pmLastModified" type="string" value="1330442862926"/>
 								<property name="attributeFormDefault" type="int" value="0"/>
 								<property name="elementFormDefault" type="int" value="0"/>
 								<property name="targetNamespace" type="string" value="http://www.w3.org/2001/XMLSchema"/>
@@ -139,7 +139,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159961"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="mV_SKqyGAqACCg4Z" modelType="XSDSimpleType">
@@ -150,7 +150,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159961"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="mV_SKqyGAqACCg4i" modelType="XSDSimpleType">
@@ -161,7 +161,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159961"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="mV_SKqyGAqACCg4r" modelType="XSDSimpleType">
@@ -172,7 +172,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159961"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="mV_SKqyGAqACCg40" modelType="XSDSimpleType">
@@ -183,7 +183,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159961"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="mV_SKqyGAqACCg49" modelType="XSDSimpleType">
@@ -194,7 +194,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159961"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="WV_SKqyGAqACCg5G" modelType="XSDSimpleType">
@@ -205,7 +205,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159962"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="WV_SKqyGAqACCg5P" modelType="XSDSimpleType">
@@ -216,7 +216,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159962"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="WV_SKqyGAqACCg5Y" modelType="XSDSimpleType">
@@ -227,7 +227,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159962"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="WV_SKqyGAqACCg5h" modelType="XSDSimpleType">
@@ -238,7 +238,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159962"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="WV_SKqyGAqACCg5q" modelType="XSDSimpleType">
@@ -249,7 +249,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159962"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="WV_SKqyGAqACCg5z" modelType="XSDSimpleType">
@@ -260,7 +260,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159962"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="WV_SKqyGAqACCg58" modelType="XSDSimpleType">
@@ -271,7 +271,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159962"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="WV_SKqyGAqACCg6F" modelType="XSDSimpleType">
@@ -282,7 +282,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159963"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="2V_SKqyGAqACCg6O" modelType="XSDSimpleType">
@@ -293,7 +293,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159963"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="2V_SKqyGAqACCg6X" modelType="XSDSimpleType">
@@ -304,7 +304,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159963"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="2V_SKqyGAqACCg6g" modelType="XSDSimpleType">
@@ -315,7 +315,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159963"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="2V_SKqyGAqACCg6p" modelType="XSDSimpleType">
@@ -326,7 +326,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159963"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="2V_SKqyGAqACCg6y" modelType="XSDSimpleType">
@@ -337,7 +337,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159963"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="2V_SKqyGAqACCg67" modelType="XSDSimpleType">
@@ -348,7 +348,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159963"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="2V_SKqyGAqACCg7E" modelType="XSDSimpleType">
@@ -359,7 +359,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159963"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="OV_SKqyGAqACCg7N" modelType="XSDSimpleType">
@@ -370,7 +370,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159964"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="OV_SKqyGAqACCg7W" modelType="XSDSimpleType">
@@ -381,7 +381,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159964"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="OV_SKqyGAqACCg7f" modelType="XSDSimpleType">
@@ -392,7 +392,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159964"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="OV_SKqyGAqACCg7o" modelType="XSDSimpleType">
@@ -403,7 +403,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159964"/>
-										<property name="pmLastModified" type="string" value="1328559720690"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="OV_SKqyGAqACCg7x" modelType="XSDSimpleType">
@@ -414,7 +414,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159964"/>
-										<property name="pmLastModified" type="string" value="1328559720691"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="OV_SKqyGAqACCg76" modelType="XSDSimpleType">
@@ -425,7 +425,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159964"/>
-										<property name="pmLastModified" type="string" value="1328559720691"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="OV_SKqyGAqACCg8D" modelType="XSDSimpleType">
@@ -436,7 +436,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159964"/>
-										<property name="pmLastModified" type="string" value="1328559720691"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="OV_SKqyGAqACCg8M" modelType="XSDSimpleType">
@@ -447,7 +447,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159964"/>
-										<property name="pmLastModified" type="string" value="1328559720691"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="uV_SKqyGAqACCg8V" modelType="XSDSimpleType">
@@ -458,7 +458,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159965"/>
-										<property name="pmLastModified" type="string" value="1328559720691"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="uV_SKqyGAqACCg8e" modelType="XSDSimpleType">
@@ -469,7 +469,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159965"/>
-										<property name="pmLastModified" type="string" value="1328559720691"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="uV_SKqyGAqACCg8n" modelType="XSDSimpleType">
@@ -480,7 +480,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159965"/>
-										<property name="pmLastModified" type="string" value="1328559720691"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="uV_SKqyGAqACCg8w" modelType="XSDSimpleType">
@@ -491,7 +491,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159965"/>
-										<property name="pmLastModified" type="string" value="1328559720691"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="uV_SKqyGAqACCg85" modelType="XSDSimpleType">
@@ -502,7 +502,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159965"/>
-										<property name="pmLastModified" type="string" value="1328559720691"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="uV_SKqyGAqACCg9C" modelType="XSDSimpleType">
@@ -513,7 +513,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159965"/>
-										<property name="pmLastModified" type="string" value="1328559720691"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="uV_SKqyGAqACCg9L" modelType="XSDSimpleType">
@@ -524,7 +524,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159965"/>
-										<property name="pmLastModified" type="string" value="1328559720691"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="uV_SKqyGAqACCg9U" modelType="XSDSimpleType">
@@ -535,7 +535,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159965"/>
-										<property name="pmLastModified" type="string" value="1328559720691"/>
+										<property name="pmLastModified" type="string" value="1330442862926"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="eV_SKqyGAqACCg9d" modelType="XSDSimpleType">
@@ -546,7 +546,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159966"/>
-										<property name="pmLastModified" type="string" value="1328559720691"/>
+										<property name="pmLastModified" type="string" value="1330442862927"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="eV_SKqyGAqACCg9m" modelType="XSDSimpleType">
@@ -557,7 +557,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159966"/>
-										<property name="pmLastModified" type="string" value="1328559720691"/>
+										<property name="pmLastModified" type="string" value="1330442862927"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="eV_SKqyGAqACCg9v" modelType="XSDSimpleType">
@@ -568,7 +568,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159966"/>
-										<property name="pmLastModified" type="string" value="1328559720691"/>
+										<property name="pmLastModified" type="string" value="1330442862927"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="eV_SKqyGAqACCg94" modelType="XSDSimpleType">
@@ -579,7 +579,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159966"/>
-										<property name="pmLastModified" type="string" value="1328559720691"/>
+										<property name="pmLastModified" type="string" value="1330442862927"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="eV_SKqyGAqACCg.B" modelType="XSDSimpleType">
@@ -590,7 +590,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159966"/>
-										<property name="pmLastModified" type="string" value="1328559720691"/>
+										<property name="pmLastModified" type="string" value="1330442862927"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="eV_SKqyGAqACCg.K" modelType="XSDSimpleType">
@@ -601,7 +601,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159966"/>
-										<property name="pmLastModified" type="string" value="1328559720691"/>
+										<property name="pmLastModified" type="string" value="1330442862927"/>
 									</properties>
 								</vpumlModel>
 								<vpumlModel id="eV_SKqyGAqACCg.T" modelType="XSDSimpleType">
@@ -612,7 +612,7 @@
 										<property htmlValue="" name="documentation" type="htmlString" value=""/>
 										<property name="pmAuthor" type="string" value="RedFox"/>
 										<property name="pmCreateDateTime" type="string" value="1328559159966"/>
-										<property name="pmLastModified" type="string" value="1328559720691"/>
+										<property name="pmLastModified" type="string" value="1330442862927"/>
 									</properties>
 								</vpumlModel>
 							</vpumlChildModels>
@@ -895,7 +895,7 @@
 								<property name="modelType" type="string" value="ValueSpecification"/>
 								<property htmlValue="" name="documentation" type="htmlString" value=""/>
 								<property name="pmCreateDateTime" type="string" value="1328559159971"/>
-								<property name="pmLastModified" type="string" value="1328559720695"/>
+								<property name="pmLastModified" type="string" value="1330442862932"/>
 							</properties>
 						</vpumlModel>
 						<vpumlModel id="P1_SKqyGAqACChkO" modelType="ValueSpecification">
@@ -905,10 +905,50 @@
 								<property htmlValue="" name="documentation" type="htmlString" value=""/>
 								<property name="pmAuthor" type="string" value="RedFox"/>
 								<property name="pmCreateDateTime" type="string" value="1328559160060"/>
-								<property name="pmLastModified" type="string" value="1328559720695"/>
+								<property name="pmLastModified" type="string" value="1330442862932"/>
 							</properties>
 						</vpumlModel>
 					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="TYDJI6yGAqAAZSUe" modelType="GeneratedBPIDs">
+					<properties>
+						<property name="name" type="string" value="GeneratedBPIDs"/>
+						<property name="modelType" type="string" value="GeneratedBPIDs"/>
+						<property name="lastNumericValue" type="int" value="0"/>
+						<property name="_bpIDPrefix" type="string" value=""/>
+						<property name="_bpIDSuffix" type="string" value=""/>
+						<property name="_bpIDDigits" type="int" value="-1"/>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="S4DJI6yGAqAAZSVV" modelType="GeneratedUseCaseIDs">
+					<properties>
+						<property name="name" type="string" value="GeneratedUseCaseIDs"/>
+						<property name="modelType" type="string" value="GeneratedUseCaseIDs"/>
+						<property name="lastNumericValue" type="int" value="0"/>
+						<property name="_useCaseIDPrefix" type="string" value=""/>
+						<property name="_useCaseIDSuffix" type="string" value=""/>
+						<property name="_useCaseIDDigits" type="int" value="-1"/>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="d4DJI6yGAqAAZSVX" modelType="GeneratedActorIDs">
+					<properties>
+						<property name="name" type="string" value="GeneratedActorIDs"/>
+						<property name="modelType" type="string" value="GeneratedActorIDs"/>
+						<property name="lastNumericValue" type="int" value="0"/>
+						<property name="_actorIDPrefix" type="string" value=""/>
+						<property name="_actorIDSuffix" type="string" value=""/>
+						<property name="_actorIDDigits" type="int" value="-1"/>
+					</properties>
+				</vpumlModel>
+				<vpumlModel id="P4DJI6yGAqAAZSVZ" modelType="GeneratedReqIDs">
+					<properties>
+						<property name="name" type="string" value="GeneratedReqIDs"/>
+						<property name="modelType" type="string" value="GeneratedReqIDs"/>
+						<property name="lastNumericValue" type="int" value="0"/>
+						<property name="_reqIDPrefix" type="string" value=""/>
+						<property name="_reqIDSuffix" type="string" value=""/>
+						<property name="_reqIDNumOfDigits" type="int" value="-1"/>
+					</properties>
 				</vpumlModel>
 			</vpumlChildModels>
 		</xmi:Extension>
@@ -942,6 +982,8 @@
 						<ownedAttribute aggregation="shared" association="Xe_06qyGAqACClhl" isDerived="false" isNavigable="true" name="tanks" type="8GPyKqyGAqACCh4u" xmi:id="Xe_06qyGAqACClho" xmi:type="uml:Property">
 							<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 								<associationEnd/>
+								<unique xmi:value="true"/>
+								<ordered xmi:value="false"/>
 								<qualifier name="" xmi:id="Xe_06qyGAqACClhp" xmi:type="qualifier"/>
 							</xmi:Extension>
 							<lowerValue value="5" xmi:id="Xe_06qyGAqACClho_multiplicity_lowerValue" xmi:type="uml:LiteralString"/>
@@ -957,6 +999,8 @@
 						<ownedAttribute aggregation="shared" association="FRaM6qyGAqACCnCi" isDerived="false" isNavigable="true" name="myTank" type="8GPyKqyGAqACCh4u" xmi:id="FRaM6qyGAqACCnCl" xmi:type="uml:Property">
 							<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 								<associationEnd/>
+								<unique xmi:value="true"/>
+								<ordered xmi:value="false"/>
 								<qualifier name="" xmi:id="FRaM6qyGAqACCnCm" xmi:type="qualifier"/>
 							</xmi:Extension>
 							<lowerValue value="1" xmi:id="FRaM6qyGAqACCnCl_multiplicity_lowerValue" xmi:type="uml:LiteralString"/>
@@ -978,6 +1022,10 @@
 						<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 							<isRoot xmi:value="false"/>
 							<modelType value="Class"/>
+							<javaFinal xmi:value="false"/>
+							<javaStatic xmi:value="false"/>
+							<javaInterface xmi:value="true"/>
+							<hasInterfaceStereotype xmi:value="true"/>
 							<businessModel xmi:value="false"/>
 							<subdiagram xmi:value="Y_VG6qyGAqACCr0a"/>
 						</xmi:Extension>
@@ -986,7 +1034,7 @@
 							<ownedParameter kind="inout" name="angle" type="double_id" xmi:id="1brC6qyGAqACClY0" xmi:type="uml:Parameter"/>
 							<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 								<returnTypeDocumentation xmi:value=""/>
-								<modelTransition to=""/>
+								<modelTransition from="" to=""/>
 							</xmi:Extension>
 						</ownedOperation>
 						<ownedOperation isAbstract="false" isLeaf="false" isQuery="false" name="fire" ownerScope="instance" visibility="public" xmi:id="ilqE6qyGAqACCiaG" xmi:type="uml:Operation">
@@ -1065,12 +1113,16 @@
 						<ownedAttribute aggregation="none" isDerived="false" name="id" ownerScope="instance" type="int_id" visibility="private" xmi:id="SN0s6qyGAqACCrCa" xmi:type="uml:Property">
 							<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 								<attribute/>
+								<unique xmi:value="true"/>
+								<ordered xmi:value="false"/>
 								<isVisble xmi:value="true"/>
 							</xmi:Extension>
 						</ownedAttribute>
 						<ownedAttribute aggregation="none" isDerived="false" name="dateOfCreation" ownerScope="instance" visibility="private" xmi:id="xtss6qyGAqACCrFI" xmi:type="uml:Property">
 							<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 								<attribute/>
+								<unique xmi:value="true"/>
+								<ordered xmi:value="false"/>
 								<isVisble xmi:value="true"/>
 							</xmi:Extension>
 							<defaultValue value="Date" xmi:id="xtss6qyGAqACCrFI_initialValue" xmi:type="uml:LiteralString"/>
@@ -1078,6 +1130,8 @@
 						<ownedAttribute aggregation="composite" association="ypUKKqyGAqACCiB5" isDerived="false" isNavigable="true" name="korpus" type="EpUKKqyGAqACCiBI" xmi:id="ypUKKqyGAqACCiB8" xmi:type="uml:Property">
 							<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 								<associationEnd/>
+								<unique xmi:value="true"/>
+								<ordered xmi:value="false"/>
 								<qualifier name="" xmi:id="ypUKKqyGAqACCiB9" xmi:type="qualifier"/>
 							</xmi:Extension>
 							<lowerValue value="1" xmi:id="ypUKKqyGAqACCiB8_multiplicity_lowerValue" xmi:type="uml:LiteralString"/>
@@ -1086,6 +1140,8 @@
 						<ownedAttribute aggregation="composite" association="uTMKKqyGAqACCiFm" isDerived="false" isNavigable="true" name="dulo" type="iTMKKqyGAqACCiE1" xmi:id="uTMKKqyGAqACCiFp" xmi:type="uml:Property">
 							<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 								<associationEnd/>
+								<unique xmi:value="true"/>
+								<ordered xmi:value="false"/>
 								<qualifier name="" xmi:id="uTMKKqyGAqACCiFq" xmi:type="qualifier"/>
 							</xmi:Extension>
 							<lowerValue value="1" xmi:id="uTMKKqyGAqACCiFp_multiplicity_lowerValue" xmi:type="uml:LiteralString"/>
@@ -1094,6 +1150,8 @@
 						<ownedAttribute aggregation="shared" association="a5SKKqyGAqACCiML" isDerived="false" isNavigable="true" name="snaryads" type="k5SKKqyGAqACCiLa" xmi:id="a5SKKqyGAqACCiMO" xmi:type="uml:Property">
 							<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 								<associationEnd/>
+								<unique xmi:value="true"/>
+								<ordered xmi:value="false"/>
 								<qualifier name="" xmi:id="a5SKKqyGAqACCiMP" xmi:type="qualifier"/>
 							</xmi:Extension>
 							<lowerValue value="0" xmi:id="a5SKKqyGAqACCiMO_multiplicity_lowerValue" xmi:type="uml:LiteralString"/>
@@ -1117,14 +1175,14 @@
 							<ownedParameter direction="return" isOrdered="false" isUnique="true" type="void_id" xmi:id=".7bKKqyGAqACCiqF_return" xmi:type="uml:Parameter"/>
 							<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 								<returnTypeDocumentation xmi:value=""/>
-								<modelTransition to="(PRvS6qyGAqACCpZl,ZAXC6qyGAqACCl1E:vRvS6qyGAqACCpaA)"/>
+								<modelTransition from="" to="(PRvS6qyGAqACCpZl,ZAXC6qyGAqACCl1E:vRvS6qyGAqACCpaA)"/>
 							</xmi:Extension>
 						</ownedOperation>
 						<ownedOperation isAbstract="false" isLeaf="false" isQuery="false" name="right" ownerScope="instance" visibility="public" xmi:id="LwPKKqyGAqACCiq_" xmi:type="uml:Operation">
 							<ownedParameter direction="return" isOrdered="false" isUnique="true" type="void_id" xmi:id="LwPKKqyGAqACCiq__return" xmi:type="uml:Parameter"/>
 							<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 								<returnTypeDocumentation xmi:value=""/>
-								<modelTransition to="(06PS6qyGAqACCpWg,ZAXC6qyGAqACCl1E:M6PS6qyGAqACCpW7)"/>
+								<modelTransition from="" to="(06PS6qyGAqACCpWg,ZAXC6qyGAqACCl1E:M6PS6qyGAqACCpW7)"/>
 							</xmi:Extension>
 						</ownedOperation>
 						<ownedOperation isAbstract="false" isLeaf="false" isQuery="false" name="up" ownerScope="instance" visibility="public" xmi:id="vfvKKqyGAqACCisG" xmi:type="uml:Operation">
@@ -1137,13 +1195,14 @@
 							<ownedParameter direction="return" isOrdered="false" isUnique="true" type="void_id" xmi:id="qqAqKqyGAqACCitk_return" xmi:type="uml:Parameter"/>
 							<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 								<returnTypeDocumentation xmi:value=""/>
+								<modelTransition to="(iFypI6yGAqAAZSZ_,ENCpI6yGAqAAZSVk:iFypI6yGAqAAZSaa)"/>
 							</xmi:Extension>
 						</ownedOperation>
 						<ownedOperation isAbstract="false" isLeaf="false" isQuery="false" name="currentPosition" ownerScope="instance" visibility="public" xmi:id="YfiqKqyGAqACCjGX" xmi:type="uml:Operation">
 							<ownedParameter direction="return" isOrdered="false" isUnique="true" type="YX4qKqyGAqACCiyU" xmi:id="YfiqKqyGAqACCjGX_return" xmi:type="uml:Parameter"/>
 							<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 								<returnTypeDocumentation xmi:value=""/>
-								<modelTransition to="(gNji6qyGAqACCmyN,ZAXC6qyGAqACCl1E:QNji6qyGAqACCmyo),(XvdS6qyGAqACCo6a,ZAXC6qyGAqACCl1E:XvdS6qyGAqACCo61)"/>
+								<modelTransition from="" to="(gNji6qyGAqACCmyN,ZAXC6qyGAqACCl1E:QNji6qyGAqACCmyo),(XvdS6qyGAqACCo6a,ZAXC6qyGAqACCl1E:XvdS6qyGAqACCo61)"/>
 							</xmi:Extension>
 						</ownedOperation>
 						<ownedOperation isAbstract="false" isLeaf="false" isQuery="false" name="fire" ownerScope="instance" visibility="public" xmi:id="zYQE6qyGAqACChIb" xmi:type="uml:Operation">
@@ -1170,6 +1229,8 @@
 						<ownedAttribute aggregation="none" isDerived="false" name="weight" ownerScope="instance" type="double_id" visibility="private" xmi:id="it2KKqyGAqACCidX" xmi:type="uml:Property">
 							<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 								<attribute/>
+								<unique xmi:value="true"/>
+								<ordered xmi:value="false"/>
 								<isVisble xmi:value="true"/>
 							</xmi:Extension>
 						</ownedAttribute>
@@ -1183,12 +1244,16 @@
 						<ownedAttribute aggregation="none" isDerived="false" name="x" ownerScope="instance" type="double_id" visibility="public" xmi:id="suUqKqyGAqACCi4q" xmi:type="uml:Property">
 							<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 								<attribute/>
+								<unique xmi:value="true"/>
+								<ordered xmi:value="false"/>
 								<isVisble xmi:value="true"/>
 							</xmi:Extension>
 						</ownedAttribute>
 						<ownedAttribute aggregation="none" isDerived="false" name="y" ownerScope="instance" type="double_id" visibility="public" xmi:id="oUsqKqyGAqACCi6Q" xmi:type="uml:Property">
 							<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 								<attribute/>
+								<unique xmi:value="true"/>
+								<ordered xmi:value="false"/>
 								<isVisble xmi:value="true"/>
 							</xmi:Extension>
 						</ownedAttribute>
@@ -1251,9 +1316,12 @@
 			<ownedBehavior name="rotateDulo" xmi:id="QwXC6qyGAqACCl1I" xmi:type="uml:Interaction">
 				<lifeline coveredBy="gNji6qyGAqACCmyO XvdS6qyGAqACCo6b 06PS6qyGAqACCpWh PRvS6qyGAqACCpZm qjQy6qyGAqACCpeW 26Ri6qyGAqACCmef PKvi6qyGAqACCnHJ nqDS6qyGAqACCo.q" name="" represents="zNCi6qyGAqACCmHd_represents" xmi:id="zNCi6qyGAqACCmHd" xmi:type="uml:Lifeline">
 					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<unique xmi:value="true"/>
+						<ordered xmi:value="false"/>
 						<active xmi:value="false"/>
 						<stopped xmi:value="false"/>
 						<multiObject xmi:value="false"/>
+						<multiplicityDetail name="" ordered="false" unique="true" xmi:id="XdZRI6yGAqAAZRkN" xmi:type="multiplicity"/>
 						<activation name="Activation" type="false" xmi:id="76Ri6qyGAqACCmf1" xmi:type="activation"/>
 						<activation name="Activation" type="false" xmi:id="1fdS6qyGAqACCo8a" xmi:type="activation"/>
 						<lifeline/>
@@ -1282,7 +1350,7 @@
 						<toActivation>
 							<activation xmi:value="mNji6qyGAqACCmzD"/>
 						</toActivation>
-						<modelTransition from="(Kr6yKqyGAqACChkg:jQ5E6qyGAqACCkGA:aVlE6qyGAqACCkHI:iTMKKqyGAqACCiE1$YfiqKqyGAqACCjGX)"/>
+						<modelTransition from="(Kr6yKqyGAqACChkg:jQ5E6qyGAqACCkGA:aVlE6qyGAqACCkHI:iTMKKqyGAqACCiE1$YfiqKqyGAqACCjGX)" to=""/>
 					</xmi:Extension>
 				</message>
 				<message messageSort="reply" name="" receiveEvent="PKvi6qyGAqACCnHJ" sendEvent="PKvi6qyGAqACCnHI" xmi:id="PKvi6qyGAqACCnHH" xmi:type="uml:Message">
@@ -1307,7 +1375,7 @@
 						<toActivation>
 							<activation xmi:value="76PS6qyGAqACCpYq"/>
 						</toActivation>
-						<modelTransition from="(Kr6yKqyGAqACChkg:jQ5E6qyGAqACCkGA:aVlE6qyGAqACCkHI:iTMKKqyGAqACCiE1$LwPKKqyGAqACCiq_)"/>
+						<modelTransition from="(Kr6yKqyGAqACChkg:jQ5E6qyGAqACCkGA:aVlE6qyGAqACCkHI:iTMKKqyGAqACCiE1$LwPKKqyGAqACCiq_)" to=""/>
 					</xmi:Extension>
 				</message>
 				<message messageSort="synchCall" name="" receiveEvent="PRvS6qyGAqACCpZn" sendEvent="PRvS6qyGAqACCpZm" xmi:id="PRvS6qyGAqACCpZl" xmi:type="uml:Message">
@@ -1320,7 +1388,7 @@
 						<toActivation>
 							<activation xmi:value="1xvS6qyGAqACCpbz"/>
 						</toActivation>
-						<modelTransition from="(Kr6yKqyGAqACChkg:jQ5E6qyGAqACCkGA:aVlE6qyGAqACCkHI:iTMKKqyGAqACCiE1$.7bKKqyGAqACCiqF)"/>
+						<modelTransition from="(Kr6yKqyGAqACChkg:jQ5E6qyGAqACCkGA:aVlE6qyGAqACCkHI:iTMKKqyGAqACCiE1$.7bKKqyGAqACCiqF)" to=""/>
 					</xmi:Extension>
 				</message>
 				<message messageSort="synchCall" name="" receiveEvent="XvdS6qyGAqACCo6c" sendEvent="XvdS6qyGAqACCo6b" xmi:id="XvdS6qyGAqACCo6a" xmi:type="uml:Message">
@@ -1333,7 +1401,7 @@
 						<toActivation>
 							<activation xmi:value="DfdS6qyGAqACCo8t"/>
 						</toActivation>
-						<modelTransition from="(Kr6yKqyGAqACChkg:jQ5E6qyGAqACCkGA:aVlE6qyGAqACCkHI:iTMKKqyGAqACCiE1$YfiqKqyGAqACCjGX)"/>
+						<modelTransition from="(Kr6yKqyGAqACChkg:jQ5E6qyGAqACCkGA:aVlE6qyGAqACCkHI:iTMKKqyGAqACCiE1$YfiqKqyGAqACCjGX)" to=""/>
 					</xmi:Extension>
 				</message>
 				<message messageSort="reply" name="" receiveEvent="nqDS6qyGAqACCo.q" sendEvent="nqDS6qyGAqACCo.p" xmi:id="nqDS6qyGAqACCo.o" xmi:type="uml:Message">
@@ -1364,9 +1432,12 @@
 				<ownedAttribute name="" type="8hfyKqyGAqACCh8G" xmi:id="zNCi6qyGAqACCmHd_represents"/>
 				<lifeline coveredBy="PKvi6qyGAqACCnHI nqDS6qyGAqACCo.p gNji6qyGAqACCmyP XvdS6qyGAqACCo6c M6PS6qyGAqACCpWi PRvS6qyGAqACCpZn" name="" represents="91ji6qyGAqACCmxY_represents" xmi:id="91ji6qyGAqACCmxY" xmi:type="uml:Lifeline">
 					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<unique xmi:value="true"/>
+						<ordered xmi:value="false"/>
 						<active xmi:value="false"/>
 						<stopped xmi:value="false"/>
 						<multiObject xmi:value="false"/>
+						<multiplicityDetail name="" ordered="false" unique="true" xmi:id="3dZRI6yGAqAAZRkQ" xmi:type="multiplicity"/>
 						<activation name="Activation" type="false" xmi:id="mNji6qyGAqACCmzD" xmi:type="activation"/>
 						<activation name="Activation" type="false" xmi:id="DfdS6qyGAqACCo8t" xmi:type="activation"/>
 						<activation name="Activation" type="false" xmi:id="76PS6qyGAqACCpYq" xmi:type="activation"/>
@@ -1427,92 +1498,191 @@
 					</operand>
 				</fragment>
 			</ownedBehavior>
+			<ownedBehavior name="newseq" xmi:id="HNCpI6yGAqAAZSVn" xmi:type="uml:Interaction">
+				<lifeline coveredBy="iFypI6yGAqAAZSaA" name="" represents="n.SpI6yGAqAAZSXQ_represents" xmi:id="n.SpI6yGAqAAZSXQ" xmi:type="uml:Lifeline">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<active xmi:value="false"/>
+						<stopped xmi:value="false"/>
+						<multiObject xmi:value="false"/>
+						<activation name="Activation" type="false" xmi:id="x1ypI6yGAqAAZSay" xmi:type="activation"/>
+						<lifeline/>
+					</xmi:Extension>
+				</lifeline>
+				<message messageSort="synchCall" name="" receiveEvent="iFypI6yGAqAAZSaB" sendEvent="iFypI6yGAqAAZSaA" xmi:id="iFypI6yGAqAAZSZ_" xmi:type="uml:Message">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<number xmi:value="1"/>
+						<asynshronous xmi:value="false"/>
+						<fromActivation>
+							<activation xmi:value="x1ypI6yGAqAAZSay"/>
+						</fromActivation>
+						<toActivation>
+							<activation xmi:value="j1ypI6yGAqAAZSbC"/>
+						</toActivation>
+						<modelTransition from="(Kr6yKqyGAqACChkg:jQ5E6qyGAqACCkGA:aVlE6qyGAqACCkHI:iTMKKqyGAqACCiE1$qqAqKqyGAqACCitk)"/>
+					</xmi:Extension>
+				</message>
+				<message messageSort="synchCall" name="thugLife" receiveEvent="g_vpI6yGAqAAZTEj" sendEvent="g_vpI6yGAqAAZTEi" xmi:id="g_vpI6yGAqAAZTEh" xmi:type="uml:Message">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<number xmi:value="1.1"/>
+						<asynshronous xmi:value="false"/>
+						<fromActivation>
+							<activation xmi:value="j1ypI6yGAqAAZSbC"/>
+						</fromActivation>
+						<toActivation>
+							<activation xmi:value="CAfpI6yGAqAAZTGJ"/>
+						</toActivation>
+					</xmi:Extension>
+				</message>
+				<message messageSort="synchCall" name="_25toLife" receiveEvent="5IQZI6yGAqAAZTMY" sendEvent="5IQZI6yGAqAAZTMX" xmi:id="5IQZI6yGAqAAZTMW" xmi:type="uml:Message">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<number xmi:value="1.2"/>
+						<asynshronous xmi:value="false"/>
+						<fromActivation>
+							<activation xmi:value="j1ypI6yGAqAAZSbC"/>
+						</fromActivation>
+						<toActivation>
+							<activation xmi:value="soQZI6yGAqAAZTNx"/>
+						</toActivation>
+					</xmi:Extension>
+				</message>
+				<fragment covered="n.SpI6yGAqAAZSXQ" event="iFypI6yGAqAAZSaA_signature" message="iFypI6yGAqAAZSZ_" xmi:id="iFypI6yGAqAAZSaA" xmi:type="uml:MessageOccurrenceSpecification"/>
+				<fragment covered="P5ypI6yGAqAAZSZK" event="defaultEventOfMessageOccurrency" message="iFypI6yGAqAAZSZ_" xmi:id="iFypI6yGAqAAZSaB" xmi:type="uml:MessageOccurrenceSpecification"/>
+				<ownedAttribute name="" type="8GPyKqyGAqACCh4u" xmi:id="n.SpI6yGAqAAZSXQ_represents"/>
+				<lifeline coveredBy="g_vpI6yGAqAAZTEi 5IQZI6yGAqAAZTMX iFypI6yGAqAAZSaB" name="" represents="P5ypI6yGAqAAZSZK_represents" xmi:id="P5ypI6yGAqAAZSZK" xmi:type="uml:Lifeline">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<active xmi:value="false"/>
+						<stopped xmi:value="false"/>
+						<multiObject xmi:value="false"/>
+						<activation name="Activation" type="false" xmi:id="j1ypI6yGAqAAZSbC" xmi:type="activation"/>
+						<lifeline/>
+					</xmi:Extension>
+				</lifeline>
+				<fragment covered="P5ypI6yGAqAAZSZK" event="defaultEventOfMessageOccurrency" message="g_vpI6yGAqAAZTEh" xmi:id="g_vpI6yGAqAAZTEi" xmi:type="uml:MessageOccurrenceSpecification"/>
+				<fragment covered="tfvpI6yGAqAAZTDs" event="defaultEventOfMessageOccurrency" message="g_vpI6yGAqAAZTEh" xmi:id="g_vpI6yGAqAAZTEj" xmi:type="uml:MessageOccurrenceSpecification"/>
+				<fragment covered="P5ypI6yGAqAAZSZK" event="defaultEventOfMessageOccurrency" message="5IQZI6yGAqAAZTMW" xmi:id="5IQZI6yGAqAAZTMX" xmi:type="uml:MessageOccurrenceSpecification"/>
+				<fragment covered="tfvpI6yGAqAAZTDs" event="defaultEventOfMessageOccurrency" message="5IQZI6yGAqAAZTMW" xmi:id="5IQZI6yGAqAAZTMY" xmi:type="uml:MessageOccurrenceSpecification"/>
+				<ownedAttribute name="" type="iTMKKqyGAqACCiE1" xmi:id="P5ypI6yGAqAAZSZK_represents"/>
+				<lifeline coveredBy="g_vpI6yGAqAAZTEj 5IQZI6yGAqAAZTMY" name="2pac" represents="tfvpI6yGAqAAZTDs_represents" xmi:id="tfvpI6yGAqAAZTDs" xmi:type="uml:Lifeline">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<active xmi:value="false"/>
+						<stopped xmi:value="false"/>
+						<multiObject xmi:value="false"/>
+						<activation name="Activation" type="false" xmi:id="CAfpI6yGAqAAZTGJ" xmi:type="activation"/>
+						<activation name="Activation" type="false" xmi:id="soQZI6yGAqAAZTNx" xmi:type="activation"/>
+						<lifeline/>
+					</xmi:Extension>
+				</lifeline>
+				<ownedAttribute name="2pac" xmi:id="tfvpI6yGAqAAZTDs_represents"/>
+			</ownedBehavior>
 		</packagedElement>
 		<packagedElement operation="YfiqKqyGAqACCjGX" xmi:id="gNji6qyGAqACCmyO_signature" xmi:type="uml:CallEvent"/>
 		<packagedElement xmi:id="defaultEventOfMessageOccurrency" xmi:type="uml:AnyReceiveEvent"/>
 		<packagedElement operation="YfiqKqyGAqACCjGX" xmi:id="XvdS6qyGAqACCo6b_signature" xmi:type="uml:CallEvent"/>
 		<packagedElement operation="LwPKKqyGAqACCiq_" xmi:id="06PS6qyGAqACCpWh_signature" xmi:type="uml:CallEvent"/>
 		<packagedElement operation=".7bKKqyGAqACCiqF" xmi:id="PRvS6qyGAqACCpZm_signature" xmi:type="uml:CallEvent"/>
+		<packagedElement operation="qqAqKqyGAqACCitk" xmi:id="iFypI6yGAqAAZSaA_signature" xmi:type="uml:CallEvent"/>
 		<packagedElement client="8hfyKqyGAqACCh8G" name="" realizingClassifier="8GPyKqyGAqACCh4u" supplier="8GPyKqyGAqACCh4u" xmi:id="2hfyKqyGAqACCh83" xmi:type="uml:Realization"/>
-		<packagedElement isAbstract="false" isDerived="false" isLeaf="false" memberEnd="ypUKKqyGAqACCiB6 ypUKKqyGAqACCiB8" name="" xmi:id="ypUKKqyGAqACCiB5" xmi:type="uml:Association">
-			<ownedEnd aggregation="none" association="ypUKKqyGAqACCiB5" isDerived="false" isNavigable="true" name="" type="8hfyKqyGAqACCh8G" xmi:id="ypUKKqyGAqACCiB6" xmi:type="uml:Property">
-				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
-					<associationEnd/>
-					<qualifier name="" xmi:id="ypUKKqyGAqACCiB7" xmi:type="qualifier"/>
-				</xmi:Extension>
-			</ownedEnd>
-		</packagedElement>
-		<packagedElement isAbstract="false" isDerived="false" isLeaf="false" memberEnd="uTMKKqyGAqACCiFn uTMKKqyGAqACCiFp" name="" xmi:id="uTMKKqyGAqACCiFm" xmi:type="uml:Association">
-			<ownedEnd aggregation="none" association="uTMKKqyGAqACCiFm" isDerived="false" isNavigable="true" name="" type="8hfyKqyGAqACCh8G" xmi:id="uTMKKqyGAqACCiFn" xmi:type="uml:Property">
-				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
-					<associationEnd/>
-					<qualifier name="" xmi:id="uTMKKqyGAqACCiFo" xmi:type="qualifier"/>
-				</xmi:Extension>
-			</ownedEnd>
-		</packagedElement>
-		<packagedElement isAbstract="false" isDerived="false" isLeaf="false" memberEnd="NscKKqyGAqACCiIf NscKKqyGAqACCiIh" name="" xmi:id="NscKKqyGAqACCiIe" xmi:type="uml:Association">
-			<ownedEnd aggregation="none" association="NscKKqyGAqACCiIe" isDerived="false" isNavigable="true" type="EpUKKqyGAqACCiBI" xmi:id="NscKKqyGAqACCiIf" xmi:type="uml:Property">
-				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
-					<associationEnd/>
-					<qualifier name="" xmi:id="NscKKqyGAqACCiIg" xmi:type="qualifier"/>
-				</xmi:Extension>
-			</ownedEnd>
-			<ownedEnd aggregation="composite" association="NscKKqyGAqACCiIe" isDerived="false" isNavigable="true" type="hscKKqyGAqACCiHt" xmi:id="NscKKqyGAqACCiIh" xmi:type="uml:Property">
-				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
-					<associationEnd/>
-					<qualifier name="" xmi:id="NscKKqyGAqACCiIi" xmi:type="qualifier"/>
-				</xmi:Extension>
-			</ownedEnd>
-		</packagedElement>
-		<packagedElement isAbstract="false" isDerived="false" isLeaf="false" memberEnd="a5SKKqyGAqACCiMM a5SKKqyGAqACCiMO" name="" xmi:id="a5SKKqyGAqACCiML" xmi:type="uml:Association">
-			<ownedEnd aggregation="none" association="a5SKKqyGAqACCiML" isDerived="false" isNavigable="true" name="" type="8hfyKqyGAqACCh8G" xmi:id="a5SKKqyGAqACCiMM" xmi:type="uml:Property">
-				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
-					<associationEnd/>
-					<qualifier name="" xmi:id="a5SKKqyGAqACCiMN" xmi:type="qualifier"/>
-				</xmi:Extension>
-			</ownedEnd>
-		</packagedElement>
-		<packagedElement isAbstract="false" isDerived="false" isLeaf="false" memberEnd="ujOqKqyGAqACCkTX ujOqKqyGAqACCkTZ" name="" xmi:id="ujOqKqyGAqACCkTW" xmi:type="uml:Association">
-			<ownedEnd aggregation="none" association="ujOqKqyGAqACCkTW" isDerived="false" isNavigable="true" type="iTMKKqyGAqACCiE1" xmi:id="ujOqKqyGAqACCkTX" xmi:type="uml:Property">
-				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
-					<associationEnd/>
-					<qualifier name="" xmi:id="ujOqKqyGAqACCkTY" xmi:type="qualifier"/>
-				</xmi:Extension>
-			</ownedEnd>
-			<ownedEnd aggregation="none" association="ujOqKqyGAqACCkTW" isDerived="false" isNavigable="true" type="YX4qKqyGAqACCiyU" xmi:id="ujOqKqyGAqACCkTZ" xmi:type="uml:Property">
-				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
-					<associationEnd/>
-					<qualifier name="" xmi:id="ujOqKqyGAqACCkTa" xmi:type="qualifier"/>
-				</xmi:Extension>
-			</ownedEnd>
-		</packagedElement>
 		<packagedElement isAbstract="false" isDerived="false" isLeaf="false" memberEnd="Xe_06qyGAqACClhm Xe_06qyGAqACClho" name="" xmi:id="Xe_06qyGAqACClhl" xmi:type="uml:Association">
-			<ownedEnd aggregation="none" association="Xe_06qyGAqACClhl" isDerived="false" isNavigable="true" name="" type="0rXk6qyGAqACCkvB" xmi:id="Xe_06qyGAqACClhm" xmi:type="uml:Property">
+			<ownedEnd aggregation="none" association="Xe_06qyGAqACClhl" isDerived="false" name="" type="0rXk6qyGAqACCkvB" xmi:id="Xe_06qyGAqACClhm" xmi:type="uml:Property">
 				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 					<associationEnd/>
+					<unique xmi:value="true"/>
+					<ordered xmi:value="false"/>
 					<qualifier name="" xmi:id="Xe_06qyGAqACClhn" xmi:type="qualifier"/>
 				</xmi:Extension>
 			</ownedEnd>
 		</packagedElement>
 		<packagedElement isAbstract="false" isDerived="false" isLeaf="false" memberEnd="FRaM6qyGAqACCnCj FRaM6qyGAqACCnCl" name="" xmi:id="FRaM6qyGAqACCnCi" xmi:type="uml:Association">
-			<ownedEnd aggregation="none" association="FRaM6qyGAqACCnCi" isDerived="false" isNavigable="true" name="" type="iH0M6qyGAqACCm1." xmi:id="FRaM6qyGAqACCnCj" xmi:type="uml:Property">
+			<ownedEnd aggregation="none" association="FRaM6qyGAqACCnCi" isDerived="false" name="" type="iH0M6qyGAqACCm1." xmi:id="FRaM6qyGAqACCnCj" xmi:type="uml:Property">
 				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 					<associationEnd/>
+					<unique xmi:value="true"/>
+					<ordered xmi:value="false"/>
 					<qualifier name="" xmi:id="FRaM6qyGAqACCnCk" xmi:type="qualifier"/>
 				</xmi:Extension>
 			</ownedEnd>
 		</packagedElement>
 		<packagedElement isAbstract="false" isDerived="false" isLeaf="false" memberEnd=".hJM6qyGAqACCoy8 .hJM6qyGAqACCoy." name="" xmi:id=".hJM6qyGAqACCoy7" xmi:type="uml:Association">
-			<ownedEnd aggregation="none" association=".hJM6qyGAqACCoy7" isDerived="false" isNavigable="true" type="iH0M6qyGAqACCm1." xmi:id=".hJM6qyGAqACCoy8" xmi:type="uml:Property">
+			<ownedEnd aggregation="none" association=".hJM6qyGAqACCoy7" isDerived="false" name="" type="iH0M6qyGAqACCm1." xmi:id=".hJM6qyGAqACCoy8" xmi:type="uml:Property">
 				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 					<associationEnd/>
+					<unique xmi:value="true"/>
+					<ordered xmi:value="false"/>
 					<qualifier name="" xmi:id=".hJM6qyGAqACCoy9" xmi:type="qualifier"/>
 				</xmi:Extension>
 			</ownedEnd>
-			<ownedEnd aggregation="none" association=".hJM6qyGAqACCoy7" isDerived="false" isNavigable="true" type="0rXk6qyGAqACCkvB" xmi:id=".hJM6qyGAqACCoy." xmi:type="uml:Property">
+			<ownedEnd aggregation="none" association=".hJM6qyGAqACCoy7" isDerived="false" name="" type="0rXk6qyGAqACCkvB" xmi:id=".hJM6qyGAqACCoy." xmi:type="uml:Property">
 				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 					<associationEnd/>
+					<unique xmi:value="true"/>
+					<ordered xmi:value="false"/>
 					<qualifier name="" xmi:id=".hJM6qyGAqACCoy_" xmi:type="qualifier"/>
+				</xmi:Extension>
+			</ownedEnd>
+		</packagedElement>
+		<packagedElement isAbstract="false" isDerived="false" isLeaf="false" memberEnd="ypUKKqyGAqACCiB6 ypUKKqyGAqACCiB8" name="" xmi:id="ypUKKqyGAqACCiB5" xmi:type="uml:Association">
+			<ownedEnd aggregation="none" association="ypUKKqyGAqACCiB5" isDerived="false" name="" type="8hfyKqyGAqACCh8G" xmi:id="ypUKKqyGAqACCiB6" xmi:type="uml:Property">
+				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+					<associationEnd/>
+					<unique xmi:value="true"/>
+					<ordered xmi:value="false"/>
+					<qualifier name="" xmi:id="ypUKKqyGAqACCiB7" xmi:type="qualifier"/>
+				</xmi:Extension>
+			</ownedEnd>
+		</packagedElement>
+		<packagedElement isAbstract="false" isDerived="false" isLeaf="false" memberEnd="uTMKKqyGAqACCiFn uTMKKqyGAqACCiFp" name="" xmi:id="uTMKKqyGAqACCiFm" xmi:type="uml:Association">
+			<ownedEnd aggregation="none" association="uTMKKqyGAqACCiFm" isDerived="false" name="" type="8hfyKqyGAqACCh8G" xmi:id="uTMKKqyGAqACCiFn" xmi:type="uml:Property">
+				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+					<associationEnd/>
+					<unique xmi:value="true"/>
+					<ordered xmi:value="false"/>
+					<qualifier name="" xmi:id="uTMKKqyGAqACCiFo" xmi:type="qualifier"/>
+				</xmi:Extension>
+			</ownedEnd>
+		</packagedElement>
+		<packagedElement isAbstract="false" isDerived="false" isLeaf="false" memberEnd="NscKKqyGAqACCiIf NscKKqyGAqACCiIh" name="" xmi:id="NscKKqyGAqACCiIe" xmi:type="uml:Association">
+			<ownedEnd aggregation="none" association="NscKKqyGAqACCiIe" isDerived="false" name="" type="EpUKKqyGAqACCiBI" xmi:id="NscKKqyGAqACCiIf" xmi:type="uml:Property">
+				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+					<associationEnd/>
+					<unique xmi:value="true"/>
+					<ordered xmi:value="false"/>
+					<qualifier name="" xmi:id="NscKKqyGAqACCiIg" xmi:type="qualifier"/>
+				</xmi:Extension>
+			</ownedEnd>
+			<ownedEnd aggregation="composite" association="NscKKqyGAqACCiIe" isDerived="false" name="" type="hscKKqyGAqACCiHt" xmi:id="NscKKqyGAqACCiIh" xmi:type="uml:Property">
+				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+					<associationEnd/>
+					<unique xmi:value="true"/>
+					<ordered xmi:value="false"/>
+					<qualifier name="" xmi:id="NscKKqyGAqACCiIi" xmi:type="qualifier"/>
+				</xmi:Extension>
+			</ownedEnd>
+		</packagedElement>
+		<packagedElement isAbstract="false" isDerived="false" isLeaf="false" memberEnd="a5SKKqyGAqACCiMM a5SKKqyGAqACCiMO" name="" xmi:id="a5SKKqyGAqACCiML" xmi:type="uml:Association">
+			<ownedEnd aggregation="none" association="a5SKKqyGAqACCiML" isDerived="false" name="" type="8hfyKqyGAqACCh8G" xmi:id="a5SKKqyGAqACCiMM" xmi:type="uml:Property">
+				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+					<associationEnd/>
+					<unique xmi:value="true"/>
+					<ordered xmi:value="false"/>
+					<qualifier name="" xmi:id="a5SKKqyGAqACCiMN" xmi:type="qualifier"/>
+				</xmi:Extension>
+			</ownedEnd>
+		</packagedElement>
+		<packagedElement isAbstract="false" isDerived="false" isLeaf="false" memberEnd="ujOqKqyGAqACCkTX ujOqKqyGAqACCkTZ" name="" xmi:id="ujOqKqyGAqACCkTW" xmi:type="uml:Association">
+			<ownedEnd aggregation="none" association="ujOqKqyGAqACCkTW" isDerived="false" name="" type="iTMKKqyGAqACCiE1" xmi:id="ujOqKqyGAqACCkTX" xmi:type="uml:Property">
+				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+					<associationEnd/>
+					<unique xmi:value="true"/>
+					<ordered xmi:value="false"/>
+					<qualifier name="" xmi:id="ujOqKqyGAqACCkTY" xmi:type="qualifier"/>
+				</xmi:Extension>
+			</ownedEnd>
+			<ownedEnd aggregation="none" association="ujOqKqyGAqACCkTW" isDerived="false" name="" type="YX4qKqyGAqACCiyU" xmi:id="ujOqKqyGAqACCkTZ" xmi:type="uml:Property">
+				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+					<associationEnd/>
+					<unique xmi:value="true"/>
+					<ordered xmi:value="false"/>
+					<qualifier name="" xmi:id="ujOqKqyGAqACCkTa" xmi:type="qualifier"/>
 				</xmi:Extension>
 			</ownedEnd>
 		</packagedElement>
@@ -1673,12 +1843,22 @@
 				<diagram/>
 			</xmi:Extension>
 		</packagedElement>
+		<packagedElement name="" xmi:id="JDZRI6yGAqAAZRlj" xmi:type="uml:Constraint"/>
+		<packagedElement name="" xmi:id="pDZRI6yGAqAAZRlk" xmi:type="uml:Constraint"/>
+		<packagedElement name="" xmi:id="ZDZRI6yGAqAAZRll" xmi:type="uml:Constraint"/>
+		<packagedElement name="" xmi:id="ZDZRI6yGAqAAZRlm" xmi:type="uml:Constraint"/>
+		<packagedElement name="" xmi:id="5DZRI6yGAqAAZRln" xmi:type="uml:Constraint"/>
+		<packagedElement name="" xmi:id="FDZRI6yGAqAAZRlo" xmi:type="uml:Constraint"/>
+		<packagedElement name="" xmi:id="FDZRI6yGAqAAZRlp" xmi:type="uml:Constraint"/>
+		<packagedElement name="" xmi:id="lDZRI6yGAqAAZRlq" xmi:type="uml:Constraint"/>
+		<packagedElement name="" xmi:id="VDZRI6yGAqAAZRlr" xmi:type="uml:Constraint"/>
+		<packagedElement name="" xmi:id="VDZRI6yGAqAAZRls" xmi:type="uml:Constraint"/>
 		<uml:Diagram diagramType="ClassDiagram" documentation="" name="com.tank.component" toolName="Visual Paradigm for UML" xmi:id="bHcyKqyGAqACChkX">
 			<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 				<properties>
 					<apmAuthor value="Gleb Mikhailenko"/>
 					<apmCreateDateTime value="1328559222308"/>
-					<apmLastModified value="1328611123570"/>
+					<apmLastModified value="1330443157027"/>
 					<ashowPackageNameStyle value="0"/>
 					<ashowConnectorName value="0"/>
 					<apaintConnectorThroughLabel value="0"/>
@@ -1705,8 +1885,8 @@
 					<amaximized value="false"/>
 					<ax value="0"/>
 					<ay value="0"/>
-					<awidth value="0"/>
-					<aheight value="0"/>
+					<awidth value="889"/>
+					<aheight value="762"/>
 					<aparentModel value="aVlE6qyGAqACCkHI"/>
 					<a_globalPaletteOption value="true"/>
 					<a_alwaysShowReferenceAndSubdiagramResource value="false"/>
@@ -1870,7 +2050,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-3"/>
 							<acreatorDiagramType value="ClassDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
@@ -1969,7 +2149,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-5"/>
 							<acreatorDiagramType value="ClassDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
@@ -2086,7 +2266,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-7"/>
 							<acreatorDiagramType value="ClassDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
@@ -2202,7 +2382,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-9"/>
 							<acreatorDiagramType value="ClassDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
@@ -2317,7 +2497,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-11"/>
 							<acreatorDiagramType value="ClassDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
@@ -2433,7 +2613,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-13"/>
 							<acreatorDiagramType value="ClassDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
@@ -2482,11 +2662,12 @@
 				<properties>
 					<apmAuthor value="Gleb Mikhailenko"/>
 					<apmCreateDateTime value="1328606759417"/>
-					<apmLastModified value="1328611269030"/>
+					<apmLastModified value="1330443015351"/>
 					<ashowPackageNameStyle value="0"/>
 					<ashowConnectorName value="0"/>
 					<apaintConnectorThroughLabel value="0"/>
 					<ashowActivityStateNodeCaption value="0"/>
+					<adocumentation value=""/>
 					<aeditable value="true"/>
 					<afollowDiagramParentElement value="true"/>
 					<aautoFitShapesSize value="false"/>
@@ -2508,8 +2689,8 @@
 					<amaximized value="false"/>
 					<ax value="0"/>
 					<ay value="0"/>
-					<awidth value="0"/>
-					<aheight value="0"/>
+					<awidth value="889"/>
+					<aheight value="762"/>
 					<aparentModel value="Yw5E6qyGAqACCkGJ"/>
 					<a_globalPaletteOption value="true"/>
 					<a_alwaysShowReferenceAndSubdiagramResource value="false"/>
@@ -2669,7 +2850,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-3"/>
 							<acreatorDiagramType value="ClassDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
@@ -2721,7 +2902,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="4"/>
+							<azOrder value="8"/>
 							<acreatorDiagramType value="ClassDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
@@ -2786,7 +2967,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-5"/>
 							<acreatorDiagramType value="ClassDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
@@ -2838,7 +3019,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-6"/>
 							<acreatorDiagramType value="ClassDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
@@ -2887,11 +3068,12 @@
 				<properties>
 					<apmAuthor value="Gleb Mikhailenko"/>
 					<apmCreateDateTime value="1328608944166"/>
-					<apmLastModified value="1328609864594"/>
+					<apmLastModified value="1330442996636"/>
 					<ashowPackageNameStyle value="0"/>
 					<ashowConnectorName value="0"/>
 					<apaintConnectorThroughLabel value="0"/>
 					<ashowActivityStateNodeCaption value="0"/>
+					<adocumentation value=""/>
 					<aeditable value="true"/>
 					<afollowDiagramParentElement value="true"/>
 					<aautoFitShapesSize value="false"/>
@@ -2913,8 +3095,8 @@
 					<amaximized value="false"/>
 					<ax value="0"/>
 					<ay value="0"/>
-					<awidth value="0"/>
-					<aheight value="0"/>
+					<awidth value="889"/>
+					<aheight value="762"/>
 					<a_globalPaletteOption value="true"/>
 					<a_alwaysShowReferenceAndSubdiagramResource value="false"/>
 					<alocked value="false"/>
@@ -3006,7 +3188,7 @@
 						<properties>
 							<abackground value="Cr:0,0,0,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-3"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3102,7 +3284,7 @@
 						<properties>
 							<abackground value="Cr:0,0,0,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-6"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3166,7 +3348,7 @@
 						<properties>
 							<abackground value="Cr:0,0,0,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-8"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3200,7 +3382,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,0"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="16"/>
+							<azOrder value="14"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3230,7 +3412,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="14"/>
+							<azOrder value="12"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3260,7 +3442,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,0"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="12"/>
+							<azOrder value="8"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3291,7 +3473,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="10"/>
+							<azOrder value="6"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3321,7 +3503,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="8"/>
+							<azOrder value="2"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3351,7 +3533,7 @@
 						<properties>
 							<abackground value="Cr:0,0,0,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-14"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3385,7 +3567,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="6"/>
+							<azOrder value="16"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3415,7 +3597,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="4"/>
+							<azOrder value="10"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3445,7 +3627,7 @@
 						<properties>
 							<abackground value="Cr:0,0,0,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-17"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3479,7 +3661,7 @@
 						<properties>
 							<abackground value="Cr:0,0,0,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-18"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3513,7 +3695,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="2"/>
+							<azOrder value="4"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3543,7 +3725,7 @@
 						<properties>
 							<abackground value="Cr:0,0,0,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-20"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3607,7 +3789,7 @@
 						<properties>
 							<abackground value="Cr:0,0,0,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-22"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3635,12 +3817,12 @@
 				</uml:DiagramElement>
 			</uml:Diagram.element>
 		</uml:Diagram>
-		<uml:Diagram diagramType="StateDiagram" documentation="" name="Tank" toolName="Visual Paradigm for UML" xmi:id="Y_VG6qyGAqACCr0a">
+		<uml:Diagram diagramType="InteractionDiagram" documentation="" name="newseq" toolName="Visual Paradigm for UML" xmi:id="ENCpI6yGAqAAZSVk">
 			<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 				<properties>
 					<apmAuthor value="Gleb Mikhailenko"/>
-					<apmCreateDateTime value="1328610979782"/>
-					<apmLastModified value="1329055280734"/>
+					<apmCreateDateTime value="1330442996488"/>
+					<apmLastModified value="1330443226205"/>
 					<ashowPackageNameStyle value="0"/>
 					<ashowConnectorName value="0"/>
 					<apaintConnectorThroughLabel value="0"/>
@@ -3668,6 +3850,380 @@
 					<ay value="0"/>
 					<awidth value="889"/>
 					<aheight value="740"/>
+					<a_globalPaletteOption value="true"/>
+					<a_alwaysShowReferenceAndSubdiagramResource value="false"/>
+					<alocked value="false"/>
+					<ainitializeDiagramForCreate value="true"/>
+					<ashowDefaultPackage value="false"/>
+					<ashowParameterNamesInMessageOperationSignature value="true"/>
+					<ashowArgumentsInMessagesOperationSignature value="true"/>
+					<ashowMessagesOperationSignature value="false"/>
+					<ainteractionLifeLinePresentationOption value="0"/>
+					<a_rootFrame value="HNCpI6yGAqAAZSVn"/>
+					<ashowSequenceNumbers value="true"/>
+					<ashowActivations value="true"/>
+					<adisplayLifeLinesAsRobustnessAnalysisIcon value="0"/>
+					<ashowMessageStereotype value="true"/>
+					<asequenceNumberHandling value="0"/>
+					<asequenceNumbering value="0"/>
+					<a_requestRecalculateSequenceNumbers value="false"/>
+				</properties>
+			</xmi:Extension>
+			<uml:Diagram.element>
+				<uml:DiagramElement geometry="100,40,60,300" preferredShapeType="InteractionLifeLine" subject="n.SpI6yGAqAAZSXQ" xmi:id="n.SpI6yGAqAAZSXP">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="100,40,60,15"/>
+						<captionVisible value="true"/>
+						<captionSide value="12"/>
+						<properties>
+							<abackground value="Cr:122,207,245,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="12"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<adisplayStereotypeIcon value="false"/>
+							<aoverrideAppearanceWithStereotypeIcon value="true"/>
+							<arequestSetSizeOption value="0"/>
+							<aparentConnectorHeaderLength value="40"/>
+							<aparentConnectorLineLength value="10"/>
+							<aconnectToPoint value="true"/>
+							<aparentConnectorDTheta value="0.0"/>
+							<aconnectionPointType value="2"/>
+							<amodelElementNameAlignment value="9"/>
+							<arequestDefaultSize value="false"/>
+							<arequestFitSize value="false"/>
+							<arequestFitSizeFromCenter value="false"/>
+							<aparentFrame value="HNCpI6yGAqAAZSVn"/>
+							<ashowClassifier value="true"/>
+						</properties>
+					</xmi:Extension>
+					<elementFill color1="Cr:122,207,245,255" color2="" style="1" transparency="0" type="1"/>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+				<uml:DiagramElement geometry="260,40,60,300" preferredShapeType="InteractionLifeLine" subject="P5ypI6yGAqAAZSZK" xmi:id="35ypI6yGAqAAZSZJ">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="260,40,60,15"/>
+						<captionVisible value="true"/>
+						<captionSide value="12"/>
+						<properties>
+							<abackground value="Cr:122,207,245,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="10"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<adisplayStereotypeIcon value="false"/>
+							<aoverrideAppearanceWithStereotypeIcon value="true"/>
+							<arequestSetSizeOption value="0"/>
+							<aparentConnectorHeaderLength value="40"/>
+							<aparentConnectorLineLength value="10"/>
+							<aconnectToPoint value="true"/>
+							<aparentConnectorDTheta value="0.0"/>
+							<aconnectionPointType value="2"/>
+							<amodelElementNameAlignment value="9"/>
+							<arequestDefaultSize value="false"/>
+							<arequestFitSize value="false"/>
+							<arequestFitSizeFromCenter value="false"/>
+							<aparentFrame value="HNCpI6yGAqAAZSVn"/>
+							<ashowClassifier value="true"/>
+						</properties>
+					</xmi:Extension>
+					<elementFill color1="Cr:122,207,245,255" color2="" style="1" transparency="0" type="1"/>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+				<uml:DiagramElement geometry="134,150;286,150;" preferredShapeType="Message" subject="iFypI6yGAqAAZSZ_" xmi:id="iFypI6yGAqAAZSaa">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="194,128,66,15"/>
+						<captionVisible value="true"/>
+						<captionSide value="1"/>
+						<properties>
+							<abackground value="Cr:0,0,0,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="-1"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<aconnectorStyle value="3"/>
+							<aconnectorLineJumps value="4"/>
+							<aconnectorLabelOrientation value="4"/>
+							<afromShapeXDiff value="0"/>
+							<afromShapeYDiff value="0"/>
+							<atoShapeXDiff value="0"/>
+							<atoShapeYDiff value="0"/>
+							<afromConnectType value="0"/>
+							<atoConnectType value="0"/>
+							<auseFromShapeCenter value="true"/>
+							<auseToShapeCenter value="true"/>
+							<afromPinType value="1"/>
+							<atoPinType value="1"/>
+							<arequestRebuild value="false"/>
+							<ashowConnectorName value="2"/>
+							<apaintThroughLabel value="2"/>
+							<afolded value="false"/>
+						</properties>
+					</xmi:Extension>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+				<uml:DiagramElement geometry="126,150,8,186" preferredShapeType="Activation" subject="x1ypI6yGAqAAZSay" xmi:id="x1ypI6yGAqAAZSax">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="0,0,8,12"/>
+						<captionVisible value="false"/>
+						<captionSide value="7"/>
+						<properties>
+							<abackground value="Cr:122,207,245,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="8"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<adisplayStereotypeIcon value="false"/>
+							<aoverrideAppearanceWithStereotypeIcon value="true"/>
+							<arequestSetSizeOption value="0"/>
+							<aparentConnectorHeaderLength value="40"/>
+							<aparentConnectorLineLength value="10"/>
+							<aconnectToPoint value="true"/>
+							<aparentConnectorDTheta value="0.0"/>
+							<aconnectionPointType value="2"/>
+							<amodelElementNameAlignment value="9"/>
+							<arequestDefaultSize value="false"/>
+							<arequestFitSize value="false"/>
+							<arequestFitSizeFromCenter value="false"/>
+						</properties>
+					</xmi:Extension>
+					<elementFill color1="Cr:122,207,245,255" color2="" style="1" transparency="0" type="1"/>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+				<uml:DiagramElement geometry="286,150,8,174" preferredShapeType="Activation" subject="j1ypI6yGAqAAZSbC" xmi:id="j1ypI6yGAqAAZSbB">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="286,150,8,160"/>
+						<captionVisible value="false"/>
+						<captionSide value="7"/>
+						<properties>
+							<abackground value="Cr:122,207,245,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="6"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<adisplayStereotypeIcon value="false"/>
+							<aoverrideAppearanceWithStereotypeIcon value="true"/>
+							<arequestSetSizeOption value="0"/>
+							<aparentConnectorHeaderLength value="40"/>
+							<aparentConnectorLineLength value="10"/>
+							<aconnectToPoint value="true"/>
+							<aparentConnectorDTheta value="0.0"/>
+							<aconnectionPointType value="2"/>
+							<amodelElementNameAlignment value="9"/>
+							<arequestDefaultSize value="false"/>
+							<arequestFitSize value="false"/>
+							<arequestFitSizeFromCenter value="false"/>
+						</properties>
+					</xmi:Extension>
+					<elementFill color1="Cr:122,207,245,255" color2="" style="1" transparency="0" type="1"/>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+				<uml:DiagramElement geometry="390,40,60,300" preferredShapeType="InteractionLifeLine" subject="tfvpI6yGAqAAZTDs" xmi:id="tfvpI6yGAqAAZTDr">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="390,40,60,15"/>
+						<captionVisible value="true"/>
+						<captionSide value="12"/>
+						<properties>
+							<abackground value="Cr:122,207,245,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="4"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<adisplayStereotypeIcon value="false"/>
+							<aoverrideAppearanceWithStereotypeIcon value="true"/>
+							<arequestSetSizeOption value="0"/>
+							<aparentConnectorHeaderLength value="40"/>
+							<aparentConnectorLineLength value="10"/>
+							<aconnectToPoint value="true"/>
+							<aparentConnectorDTheta value="0.0"/>
+							<aconnectionPointType value="2"/>
+							<amodelElementNameAlignment value="9"/>
+							<arequestDefaultSize value="false"/>
+							<arequestFitSize value="false"/>
+							<arequestFitSizeFromCenter value="false"/>
+							<aparentFrame value="HNCpI6yGAqAAZSVn"/>
+							<ashowClassifier value="true"/>
+						</properties>
+					</xmi:Extension>
+					<elementFill color1="Cr:122,207,245,255" color2="" style="1" transparency="0" type="1"/>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+				<uml:DiagramElement geometry="294,200;416,200;" preferredShapeType="Message" subject="g_vpI6yGAqAAZTEh" xmi:id="g_vpI6yGAqAAZTE8">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="315,180,81,15"/>
+						<captionVisible value="true"/>
+						<captionSide value="1"/>
+						<properties>
+							<abackground value="Cr:0,0,0,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="-1"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<aconnectorStyle value="3"/>
+							<aconnectorLineJumps value="4"/>
+							<aconnectorLabelOrientation value="4"/>
+							<afromShapeXDiff value="0"/>
+							<afromShapeYDiff value="0"/>
+							<atoShapeXDiff value="0"/>
+							<atoShapeYDiff value="0"/>
+							<afromConnectType value="0"/>
+							<atoConnectType value="0"/>
+							<auseFromShapeCenter value="true"/>
+							<auseToShapeCenter value="true"/>
+							<afromPinType value="1"/>
+							<atoPinType value="1"/>
+							<arequestRebuild value="false"/>
+							<ashowConnectorName value="2"/>
+							<apaintThroughLabel value="2"/>
+							<afolded value="false"/>
+						</properties>
+					</xmi:Extension>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+				<uml:DiagramElement geometry="416,200,8,12" preferredShapeType="Activation" subject="CAfpI6yGAqAAZTGJ" xmi:id="CAfpI6yGAqAAZTGI">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="0,0,8,12"/>
+						<captionVisible value="false"/>
+						<captionSide value="7"/>
+						<properties>
+							<abackground value="Cr:122,207,245,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="2"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<adisplayStereotypeIcon value="false"/>
+							<aoverrideAppearanceWithStereotypeIcon value="true"/>
+							<arequestSetSizeOption value="0"/>
+							<aparentConnectorHeaderLength value="40"/>
+							<aparentConnectorLineLength value="10"/>
+							<aconnectToPoint value="true"/>
+							<aparentConnectorDTheta value="0.0"/>
+							<aconnectionPointType value="2"/>
+							<amodelElementNameAlignment value="9"/>
+							<arequestDefaultSize value="false"/>
+							<arequestFitSize value="false"/>
+							<arequestFitSizeFromCenter value="false"/>
+						</properties>
+					</xmi:Extension>
+					<elementFill color1="Cr:122,207,245,255" color2="" style="1" transparency="0" type="1"/>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+				<uml:DiagramElement geometry="294,300;416,300;" preferredShapeType="Message" subject="5IQZI6yGAqAAZTMW" xmi:id="FIQZI6yGAqAAZTMx">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="311,278,87,15"/>
+						<captionVisible value="true"/>
+						<captionSide value="1"/>
+						<properties>
+							<abackground value="Cr:0,0,0,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="-1"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<aconnectorStyle value="3"/>
+							<aconnectorLineJumps value="4"/>
+							<aconnectorLabelOrientation value="4"/>
+							<afromShapeXDiff value="0"/>
+							<afromShapeYDiff value="0"/>
+							<atoShapeXDiff value="0"/>
+							<atoShapeYDiff value="0"/>
+							<afromConnectType value="0"/>
+							<atoConnectType value="0"/>
+							<auseFromShapeCenter value="true"/>
+							<auseToShapeCenter value="true"/>
+							<afromPinType value="1"/>
+							<atoPinType value="1"/>
+							<arequestRebuild value="false"/>
+							<ashowConnectorName value="2"/>
+							<apaintThroughLabel value="2"/>
+							<afolded value="false"/>
+						</properties>
+					</xmi:Extension>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+				<uml:DiagramElement geometry="416,300,8,12" preferredShapeType="Activation" subject="soQZI6yGAqAAZTNx" xmi:id="soQZI6yGAqAAZTNw">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="0,0,8,12"/>
+						<captionVisible value="false"/>
+						<captionSide value="7"/>
+						<properties>
+							<abackground value="Cr:122,207,245,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="0"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<adisplayStereotypeIcon value="false"/>
+							<aoverrideAppearanceWithStereotypeIcon value="true"/>
+							<arequestSetSizeOption value="0"/>
+							<aparentConnectorHeaderLength value="40"/>
+							<aparentConnectorLineLength value="10"/>
+							<aconnectToPoint value="true"/>
+							<aparentConnectorDTheta value="0.0"/>
+							<aconnectionPointType value="2"/>
+							<amodelElementNameAlignment value="9"/>
+							<arequestDefaultSize value="false"/>
+							<arequestFitSize value="false"/>
+							<arequestFitSizeFromCenter value="false"/>
+						</properties>
+					</xmi:Extension>
+					<elementFill color1="Cr:122,207,245,255" color2="" style="1" transparency="0" type="1"/>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+			</uml:Diagram.element>
+		</uml:Diagram>
+		<uml:Diagram diagramType="StateDiagram" documentation="" name="Tank" toolName="Visual Paradigm for UML" xmi:id="Y_VG6qyGAqACCr0a">
+			<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+				<properties>
+					<apmAuthor value="Gleb Mikhailenko"/>
+					<apmCreateDateTime value="1328610979782"/>
+					<apmLastModified value="1330442302103"/>
+					<ashowPackageNameStyle value="0"/>
+					<ashowConnectorName value="0"/>
+					<apaintConnectorThroughLabel value="0"/>
+					<ashowActivityStateNodeCaption value="0"/>
+					<adocumentation value=""/>
+					<aeditable value="true"/>
+					<afollowDiagramParentElement value="true"/>
+					<aautoFitShapesSize value="false"/>
+					<ashowTaggedValues value="false"/>
+					<ashowStereotypes value="true"/>
+					<ashowConstraints value="false"/>
+					<aalignToGrid value="true"/>
+					<agridVisible value="false"/>
+					<agridWidth value="10"/>
+					<agridHeight value="10"/>
+					<agridColor value="Cr:192,192,192,255"/>
+					<adiagramBackground value="Cr:255,255,255,255"/>
+					<aconnectorStyle value="1"/>
+					<aconnectorLineJumps value="0"/>
+					<aconnectionPointStyle value="0"/>
+					<aconnectorLabelOrientation value="0"/>
+					<amodelElementNameAlignment value="4"/>
+					<azoomRatio value="1.0"/>
+					<amaximized value="false"/>
+					<ax value="0"/>
+					<ay value="0"/>
+					<awidth value="889"/>
+					<aheight value="762"/>
 					<aparentModel value="8GPyKqyGAqACCh4u"/>
 					<a_globalPaletteOption value="true"/>
 					<a_alwaysShowReferenceAndSubdiagramResource value="false"/>
@@ -3756,7 +4312,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-3"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3860,7 +4416,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-6"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3894,7 +4450,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-7"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3928,7 +4484,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-8"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -3992,7 +4548,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-10"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -4061,7 +4617,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-12"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -4095,7 +4651,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-13"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -4129,7 +4685,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-14"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -4163,7 +4719,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-15"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -4197,7 +4753,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-16"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -4230,11 +4786,12 @@
 				<properties>
 					<apmAuthor value="Gleb Mikhailenko"/>
 					<apmCreateDateTime value="1328607843136"/>
-					<apmLastModified value="1328611122256"/>
+					<apmLastModified value="1330442692903"/>
 					<ashowPackageNameStyle value="0"/>
 					<ashowConnectorName value="0"/>
 					<apaintConnectorThroughLabel value="0"/>
 					<ashowActivityStateNodeCaption value="0"/>
+					<adocumentation value=""/>
 					<aeditable value="true"/>
 					<afollowDiagramParentElement value="true"/>
 					<aautoFitShapesSize value="false"/>
@@ -4256,8 +4813,8 @@
 					<amaximized value="false"/>
 					<ax value="0"/>
 					<ay value="0"/>
-					<awidth value="0"/>
-					<aheight value="0"/>
+					<awidth value="889"/>
+					<aheight value="762"/>
 					<a_globalPaletteOption value="true"/>
 					<a_alwaysShowReferenceAndSubdiagramResource value="false"/>
 					<alocked value="false"/>
@@ -4584,7 +5141,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-11"/>
 							<acreatorDiagramType value="ObjectDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
@@ -4618,7 +5175,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-12"/>
 							<acreatorDiagramType value="ObjectDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
@@ -4652,7 +5209,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-13"/>
 							<acreatorDiagramType value="ObjectDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
@@ -4686,7 +5243,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-14"/>
 							<acreatorDiagramType value="ObjectDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
@@ -4720,7 +5277,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-15"/>
 							<acreatorDiagramType value="ObjectDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
@@ -4754,7 +5311,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-16"/>
 							<acreatorDiagramType value="ObjectDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
@@ -4788,7 +5345,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-17"/>
 							<acreatorDiagramType value="ObjectDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
@@ -4853,7 +5410,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-19"/>
 							<acreatorDiagramType value="ObjectDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
@@ -4887,7 +5444,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-20"/>
 							<acreatorDiagramType value="ObjectDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
@@ -4921,7 +5478,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
+							<azOrder value="-21"/>
 							<acreatorDiagramType value="ObjectDiagram"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
