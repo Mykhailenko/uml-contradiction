@@ -12,6 +12,9 @@ import com.uml.contradiction.model.cclass.Dependency;
 import com.uml.contradiction.model.cclass.Generalization;
 import com.uml.contradiction.model.cclass.Realization;
 import com.uml.contradiction.model.sequence.Interaction;
+import com.uml.contradiction.model.sequence.InteractionElement;
+import com.uml.contradiction.model.sequence.LifeLine;
+import com.uml.contradiction.model.sequence.Message;
 import com.uml.contradiction.model.sequence.SequenceGraph;
 import com.uml.contradiction.common.DiagramType;
 
@@ -47,7 +50,7 @@ public class TestShell {
 //		File file = new File("main\\Test xmi.uml");
 		
 		XMIConverter.reset();
-		XMIConverter.setFile(file);
+		XMIConverter.setFile(file2);
 				
 		
 		try {
@@ -95,8 +98,27 @@ public class TestShell {
 	public static void printSequenceGraf () {			
 		List<Interaction> interList = SequenceGraph.getInteractions();
 						
-		for(Interaction intr : interList)			
-			System.out.println(intr);
+		for(Interaction intr : interList)	{		
+			System.out.println(intr);		
+			
+			
+			
+			List<LifeLine> lifeLines = intr.getLifeLines();
+			if(lifeLines != null){
+				System.out.println("lifelines::::");
+				for(LifeLine lf : lifeLines)
+					System.out.println(lf);
+			}
+					
+			List<InteractionElement> inElems = intr.getChilds();
+			if(inElems != null){
+				System.out.println("messages::::");
+			
+				for(InteractionElement inEL : inElems)
+					if(inEL.getClass() == Message.class)
+						System.out.println(inEL);
+			}
+		}
 	}
 	
 }

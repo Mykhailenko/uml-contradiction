@@ -40,18 +40,26 @@ extends CoreParserImpl implements CoreParser{
 	private Map<String, Dependency> dependenciesWithId = new LinkedHashMap <String, Dependency>();
 	private Map<String, Realization> realizationsWithId = new LinkedHashMap <String, Realization>();
 	private Map<String, Generalization> generalizationsWithId = new LinkedHashMap <String, Generalization>();
+	private Map<String, MMethod> methodsWithId = new LinkedHashMap <String, MMethod>();
 	
 	private Package rootPackage;
 	Element umlModelElRoot;
 	
 	ClassParsHelper classParsHelper;  //содержит помощника для разбора класса
 	CommonClDiagrHelper commonClDiagrHelper; //содержит общего помощника для класс диаграмм
+		
+	public Map<String, CClass> getClassesWithId() {
+		return classesWithId;
+	}
+	public Map<String, MMethod> getMethodsWithId() {
+		return methodsWithId;
+	}
 	
 	public ClassParser() {
 		super();
 		
 		classParsHelper = new ClassParsHelper(classesWithId, assocesWithId, 
-				constraintsWithRef, stereotypesWithRefClass);
+				constraintsWithRef, stereotypesWithRefClass, methodsWithId);
 		commonClDiagrHelper = new CommonClDiagrHelper();
 	}
 	//создаем ClassDiagram для каждого id
