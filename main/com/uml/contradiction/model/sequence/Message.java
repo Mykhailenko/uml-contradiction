@@ -1,5 +1,5 @@
 package com.uml.contradiction.model.sequence;
-public class Message implements InteractionElement {
+public class Message extends InteractionElement {
 
 	private MessageSort messageSort;
 	private MessageKind messageKind;
