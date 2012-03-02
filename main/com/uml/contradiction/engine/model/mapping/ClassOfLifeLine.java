@@ -6,7 +6,7 @@ import java.util.List;
 import com.uml.contradiction.engine.model.mapping.exception.MappingException;
 import com.uml.contradiction.model.sequence.LifeLine;
 
-public class ClassOfLifeLineMapping implements Mapping {
+public class ClassOfLifeLine implements Mapping {
 
 	@Override
 	public List map(List list) throws MappingException {

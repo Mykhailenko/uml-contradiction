@@ -3,18 +3,18 @@ package com.uml.contradiction.engine.model.mapping;
 import java.util.List;
 
 import com.uml.contradiction.engine.model.mapping.exception.MappingException;
-import com.uml.contradiction.model.cclass.CClass;
+import com.uml.contradiction.model.object.OObject;
 
-public class AttributeClassMapping implements Mapping {
+public class AttributeObject implements Mapping {
 
 	@Override
-	public List map(List args) throws MappingException {
+	public List map(List args) throws MappingException{
 		assert args != null;
 		assert args.size() == 1 : "bad size";
 		Object element = args.get(0);
-		if(element instanceof CClass){
-			CClass cClass = (CClass) element;
-			return cClass.getAttributes();
+		if(element instanceof OObject){
+			OObject oobject = (OObject) element;
+			return oobject.getAttributes();
 		}else{
 			throw new MappingException("Unexpected type: " + element.getClass().toString());
 		}

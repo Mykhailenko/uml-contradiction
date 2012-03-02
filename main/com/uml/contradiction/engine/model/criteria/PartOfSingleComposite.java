@@ -7,10 +7,10 @@ import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
-import com.uml.contradiction.engine.model.mapping.ClassObjectMapping;
-import com.uml.contradiction.engine.model.mapping.CompositeEndAssociationMapping;
-import com.uml.contradiction.engine.model.predicate.PredicateCorrectCompositeMultiplicity;
-import com.uml.contradiction.engine.model.predicate.PredicateIsEqualName;
+import com.uml.contradiction.engine.model.mapping.ClassObject;
+import com.uml.contradiction.engine.model.mapping.CompositeEndAssociation;
+import com.uml.contradiction.engine.model.predicate.CorrectCompositeMultiplicity;
+import com.uml.contradiction.engine.model.predicate.IsEqualName;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPCompositions;
 import com.uml.contradiction.engine.model.rightPart.simple.RPObjects;
@@ -31,14 +31,14 @@ public class PartOfSingleComposite extends Criterion {
 		quantifier2.setBoundVariable(Variable.e);
 		ComplexRightPart rightPart = new ComplexRightPart();
 		rightPart.getBoundVariables().add(Variable.a);
-		rightPart.getNestedMappings().add(new CompositeEndAssociationMapping());
+		rightPart.getNestedMappings().add(new CompositeEndAssociation());
 		quantifier2.setRightPart(rightPart);
 		getQuantifiers().add(quantifier2);		
 	
 		BoundedPredicate boundedPredicate = new BoundedPredicate();
 		boundedPredicate.getBoundVariable().add(Variable.e);
 		boundedPredicate.setNegative(false);
-		boundedPredicate.setPredicate(new PredicateCorrectCompositeMultiplicity());
+		boundedPredicate.setPredicate(new CorrectCompositeMultiplicity());
 		getBoundedPredicates().add(boundedPredicate);	
 	
 	}

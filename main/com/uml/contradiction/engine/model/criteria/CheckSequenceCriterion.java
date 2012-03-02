@@ -4,9 +4,9 @@ import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
-import com.uml.contradiction.engine.model.mapping.ClassOfLifeLineMapping;
-import com.uml.contradiction.engine.model.mapping.LifeLineFromInteractionMapping;
-import com.uml.contradiction.engine.model.mapping.MessagesOfLifeLineInteractionMapping;
+import com.uml.contradiction.engine.model.mapping.ClassOfLifeLine;
+import com.uml.contradiction.engine.model.mapping.LifeLineFromInteraction;
+import com.uml.contradiction.engine.model.mapping.MessagesOfLifeLineInteraction;
 import com.uml.contradiction.engine.model.predicate.MessageBelongToClass;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPInteraction;
@@ -26,7 +26,7 @@ public class CheckSequenceCriterion extends Criterion {
 		quantifier1.setBoundVariable(Variable.l);
 		ComplexRightPart rightPart1 = new ComplexRightPart();
 		rightPart1.getBoundVariables().add(Variable.i);
-		rightPart1.getNestedMappings().add(new LifeLineFromInteractionMapping());
+		rightPart1.getNestedMappings().add(new LifeLineFromInteraction());
 		quantifier1.setRightPart(rightPart1);
 		getQuantifiers().add(quantifier1);
 		
@@ -35,7 +35,7 @@ public class CheckSequenceCriterion extends Criterion {
 		quantifier2.setBoundVariable(Variable.c);
 		ComplexRightPart rightPart2 = new ComplexRightPart();
 		rightPart2.getBoundVariables().add(Variable.l);
-		rightPart2.getNestedMappings().add(new ClassOfLifeLineMapping());
+		rightPart2.getNestedMappings().add(new ClassOfLifeLine());
 		quantifier2.setRightPart(rightPart2);
 		getQuantifiers().add(quantifier2);
 		
@@ -45,7 +45,7 @@ public class CheckSequenceCriterion extends Criterion {
 		ComplexRightPart rightPart3 = new ComplexRightPart();
 		rightPart3.getBoundVariables().add(Variable.l);
 		rightPart3.getBoundVariables().add(Variable.i);
-		rightPart3.getNestedMappings().add(new MessagesOfLifeLineInteractionMapping());
+		rightPart3.getNestedMappings().add(new MessagesOfLifeLineInteraction());
 		quantifier3.setRightPart(rightPart3);
 		getQuantifiers().add(quantifier3);
 		

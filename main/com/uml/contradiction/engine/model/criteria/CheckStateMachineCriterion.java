@@ -4,8 +4,8 @@ import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
-import com.uml.contradiction.engine.model.mapping.ClassOfStateMachine;
-import com.uml.contradiction.engine.model.mapping.TriggersOfStateMachine;
+import com.uml.contradiction.engine.model.mapping.ClassOfState;
+import com.uml.contradiction.engine.model.mapping.TriggersOfState;
 import com.uml.contradiction.engine.model.predicate.TriggerBelongToClass;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPStateMachines;
@@ -25,7 +25,7 @@ public class CheckStateMachineCriterion extends Criterion{
 		quantifier1.setBoundVariable(Variable.c);
 		ComplexRightPart rightPart1 = new ComplexRightPart();
 		rightPart1.getBoundVariables().add(Variable.s);
-		rightPart1.getNestedMappings().add(new ClassOfStateMachine());
+		rightPart1.getNestedMappings().add(new ClassOfState());
 		quantifier1.setRightPart(rightPart1);
 		getQuantifiers().add(quantifier1);
 		
@@ -34,7 +34,7 @@ public class CheckStateMachineCriterion extends Criterion{
 		quantifier2.setBoundVariable(Variable.t);
 		ComplexRightPart rightPart2 = new ComplexRightPart();
 		rightPart2.getBoundVariables().add(Variable.s);
-		rightPart2.getNestedMappings().add(new TriggersOfStateMachine());
+		rightPart2.getNestedMappings().add(new TriggersOfState());
 		quantifier2.setRightPart(rightPart2);
 		getQuantifiers().add(quantifier2);
 		

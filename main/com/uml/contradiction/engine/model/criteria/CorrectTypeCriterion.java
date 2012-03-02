@@ -4,11 +4,11 @@ import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
-import com.uml.contradiction.engine.model.mapping.AttributeClassMapping;
-import com.uml.contradiction.engine.model.mapping.AttributeObjectMapping;
-import com.uml.contradiction.engine.model.mapping.ClassObjectMapping;
-import com.uml.contradiction.engine.model.predicate.PredicateIsEqualName;
-import com.uml.contradiction.engine.model.predicate.PredicateValueCorrectType;
+import com.uml.contradiction.engine.model.mapping.AttributeClass;
+import com.uml.contradiction.engine.model.mapping.AttributeObject;
+import com.uml.contradiction.engine.model.mapping.ClassObject;
+import com.uml.contradiction.engine.model.predicate.IsEqualName;
+import com.uml.contradiction.engine.model.predicate.ValueCorrectType;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPObjects;
 
@@ -26,7 +26,7 @@ public class CorrectTypeCriterion extends Criterion {
 		quantifier1.setBoundVariable(Variable.a);
 		ComplexRightPart complexRightPart1 = new ComplexRightPart();
 		complexRightPart1.getBoundVariables().add(Variable.o);
-		complexRightPart1.getNestedMappings().add(new AttributeObjectMapping());
+		complexRightPart1.getNestedMappings().add(new AttributeObject());
 		quantifier1.setRightPart(complexRightPart1);
 		getQuantifiers().add(quantifier1);
 		
@@ -35,21 +35,21 @@ public class CorrectTypeCriterion extends Criterion {
 		quantifier2.setBoundVariable(Variable.c);
 		ComplexRightPart complexRightPart2 = new ComplexRightPart();
 		complexRightPart2.getBoundVariables().add(Variable.o);
-		complexRightPart2.getNestedMappings().add(new AttributeClassMapping());
-		complexRightPart2.getNestedMappings().add(new ClassObjectMapping());
+		complexRightPart2.getNestedMappings().add(new AttributeClass());
+		complexRightPart2.getNestedMappings().add(new ClassObject());
 		quantifier2.setRightPart(complexRightPart2);
 		getQuantifiers().add(quantifier2);
 		
 		BoundedPredicate boundedPredicate = new BoundedPredicate();
 		boundedPredicate.getBoundVariable().add(Variable.a);
 		boundedPredicate.getBoundVariable().add(Variable.c);
-		boundedPredicate.setPredicate(new PredicateIsEqualName());
+		boundedPredicate.setPredicate(new IsEqualName());
 		getBoundedPredicates().add(boundedPredicate);
 		
 		BoundedPredicate boundedPredicate2 = new BoundedPredicate();
 		boundedPredicate2.getBoundVariable().add(Variable.a);
 		boundedPredicate2.getBoundVariable().add(Variable.c);
-		boundedPredicate2.setPredicate(new PredicateValueCorrectType());
+		boundedPredicate2.setPredicate(new ValueCorrectType());
 		getBoundedPredicates().add(boundedPredicate2);
 	}
 	@Override

@@ -9,7 +9,7 @@ import com.uml.contradiction.model.NamedElement;
 import com.uml.contradiction.model.cclass.AssociationEnd;
 import com.uml.contradiction.model.cclass.Multiplicity;
 
-public class PredicateCorrectCompositeMultiplicity implements Predicate{
+public class CorrectCompositeMultiplicity implements Predicate{
 
 	private static final Logger LOGGER = Logger.getRootLogger();
 	

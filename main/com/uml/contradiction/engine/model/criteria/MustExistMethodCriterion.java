@@ -8,8 +8,8 @@ import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
 import com.uml.contradiction.engine.model.mapping.Mapping;
-import com.uml.contradiction.engine.model.mapping.MethodClassMapping;
-import com.uml.contradiction.engine.model.mapping.TargetMessageMapping;
+import com.uml.contradiction.engine.model.mapping.MethodClass;
+import com.uml.contradiction.engine.model.mapping.TargetMessage;
 import com.uml.contradiction.engine.model.predicate.MessageBelongToMethod;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.QuantifierRightPart;
@@ -30,8 +30,8 @@ public class MustExistMethodCriterion extends Criterion {
 		ComplexRightPart rightPart = new ComplexRightPart();
 		rightPart.getBoundVariables().add(Variable.m);
 		List<Mapping> nestedMappings = new LinkedList<Mapping>();
-		nestedMappings.add(new MethodClassMapping());
-		nestedMappings.add(new TargetMessageMapping());
+		nestedMappings.add(new MethodClass());
+		nestedMappings.add(new TargetMessage());
 		rightPart.setNestedMappings(nestedMappings);
 		quantifier1.setRightPart(rightPart);
 		

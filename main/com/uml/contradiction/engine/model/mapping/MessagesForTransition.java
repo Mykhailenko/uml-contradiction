@@ -11,7 +11,7 @@ import com.uml.contradiction.model.sequence.Message;
 import com.uml.contradiction.model.sequence.SequenceGraph;
 import com.uml.contradiction.model.statemachine.Transition;
 
-public class MessagesForTransitionMapping implements Mapping {
+public class MessagesForTransition implements Mapping {
 
 	@Override
 	public List map(List list) throws MappingException {
