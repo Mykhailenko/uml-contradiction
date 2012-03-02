@@ -1,5 +1,8 @@
 package com.uml.contradiction.model.sequence;
-public class Message implements InteractionElement {
+
+import com.uml.contradiction.model.statemachine.Trigger;
+
+public class Message extends InteractionElement {
 
 	private MessageSort messageSort;
 	private MessageKind messageKind;
@@ -7,7 +10,17 @@ public class Message implements InteractionElement {
 	private Event recieveEvent;
 	private String methodName;
 	private int paramCount;
+	private Interaction interaction;
+	public boolean compareWithTransition(Trigger trigger){
+		if(methodName.equals(trigger.getMethodName()) &&
+				paramCount == trigger.getParamCount()){
+			return true;
+		}else{
+			return true;
+		}
+	}
 	public void parseStr(String str){
+//		System.out.println("There are " + str);
 		// i suppose to get some like that 'ololoName(param1,param2)' or 'disable()' or 'enable' 
 		if(str.contains("(")){ // first or second case
 			methodName = str.substring(0, str.indexOf("(")).trim();
@@ -72,5 +85,14 @@ public class Message implements InteractionElement {
 	public Type getType() {
 		return Type.MESSAGE;
 	}
+
+	public Interaction getInteraction() {
+		return interaction;
+	}
+
+	public void setInteraction(Interaction interaction) {
+		this.interaction = interaction;
+	}
+	
 	
 }

@@ -12,6 +12,7 @@ public class Transition implements Edge{
 	private TransitionKind kind;
 	private List<Trigger> triggers;
 	private Guard guard;
+	private StateMachine stateMachine;
 	public Vertex getTarget() {
 		return target;
 	}
@@ -45,6 +46,12 @@ public class Transition implements Edge{
 
 	public EdgeType getType() {
 		return EdgeType.TRANSITION;
+	}
+	public StateMachine getStateMachine() {
+		return stateMachine;
+	}
+	public void setStateMachine(StateMachine stateMachine) {
+		this.stateMachine = stateMachine;
 	}
 	
 }

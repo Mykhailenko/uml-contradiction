@@ -1,6 +1,7 @@
 package com.uml.contradiction.converter.core.sequence;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,8 +11,12 @@ import org.apache.log4j.Logger;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import com.uml.contradiction.converter.core.CoreParserImpl;
+import com.uml.contradiction.converter.core.ParsersTool;
 import com.uml.contradiction.converter.core.classes.CommonClDiagrHelper;
 import com.uml.contradiction.model.cclass.CClass;
+import com.uml.contradiction.model.cclass.MMethod;
+import com.uml.contradiction.model.cclass.Parameter;
 import com.uml.contradiction.model.common.*;
 import com.uml.contradiction.model.sequence.*;
 
@@ -22,6 +27,7 @@ public class SequenceParsHelper {
 	private Map<String, LifeLine> lifelinesWithId;
 	private Map<String, Event> eventsWithId;
 	private Map<String, Message> messagesWithId;
+	private Map<String, String> referencesOnClassId;
 	
 	public SequenceParsHelper(Map<String, Interaction> interactionsFrWithId,
 			Map<String, LifeLine> lifelinesWithId,
@@ -32,18 +38,45 @@ public class SequenceParsHelper {
 		this.lifelinesWithId = lifelinesWithId;
 		this.eventsWithId = eventsWithId;
 		this.messagesWithId = messagesWithId;
+		
+		referencesOnClassId = new LinkedHashMap<String, String>();
 	}
 	
 	public LifeLine parseLifeline(Element lifeLine) {
 		LifeLine lifeln = new LifeLine();
-		CClass includedClass;
-		lifeln.setName(lifeLine.getAttribute("name"));
-		
-		//lifeln.setCclass(includedClass);		
+		CClass referClass;
+		String lifelnName = lifeLine.getAttribute("name");
+		if(!lifelnName.equals(""))
+			lifeln.setName(lifelnName);
+		else{
+			String idOwnAttr = lifeLine.getAttribute("represents");
+			String refOnClass = referencesOnClassId.get(idOwnAttr);
+			if(refOnClass != null){
+				referClass = ParsersTool.getInstanceClassParser().getClassesWithId().get(refOnClass);
+				if(referClass != null)
+					lifeln.setCclass(referClass);
+				else
+					logger.info("reference on unknown cclass");
+			}
+		}
+				
 		return lifeln;
 	}
 	
 	public void parseAllLifelines(Element frameEl) {
+		
+		NodeList ownedAttrs = frameEl.getElementsByTagName("ownedAttribute");
+		//работаем с вложенными ссылками жизненных линий на классы
+		for (int k = 0; k < ownedAttrs.getLength(); k++) {
+			Element ownedAttrEl = (Element)ownedAttrs.item(k);			
+			if(ownedAttrEl.getParentNode() == frameEl)
+			{
+				String idownAtr = ownedAttrEl.getAttribute("xmi:id");
+				String refOnClass = ownedAttrEl.getAttribute("type");
+				if(!refOnClass.equals(""))
+					referencesOnClassId.put(idownAtr, refOnClass);
+			}
+		}		
 		NodeList includedLifelines = frameEl.getElementsByTagName("lifeline");
 		//работаем с вложенными жизненными линиями
 		for (int k = 0; k < includedLifelines.getLength(); k++) {
@@ -112,6 +145,35 @@ public class SequenceParsHelper {
 		if(messSort.equals("synchCall"))  
 			curMess.setMessageSort(MessageSort.SYNCH_CALL);
 		
+		if(messSort.equals("reply"))  
+			curMess.setMessageSort(MessageSort.ASYNCH_SIGNAL);
+		
+		//получаем ссылку на метод из сообщения
+		CoreParserImpl coreParse = new CoreParserImpl();
+		Element extens = (Element)messElem.getElementsByTagName("xmi:Extension").item(0);
+		String methodStr = coreParse.getAttrByNameAndTag(extens, "modelTransition", "from");
+		int index;
+		MMethod refMethod = null;
+		if(methodStr != null){
+			//for (int i = methodStr.length(); i!=0 || methodStr.in[i] != "$"; i--) {
+			index = methodStr.indexOf("$");
+			if(index != -1){
+				String id4Meth = methodStr.substring(index+1, methodStr.length()-1);
+				if(id4Meth != null){
+					refMethod = ParsersTool.getInstanceClassParser().getMethodsWithId().get(id4Meth);
+					if(refMethod != null){
+						curMess.setMethodName(refMethod.getName());
+						List<Parameter> parameters = refMethod.getParameters();
+						int paramCount;
+						if(parameters == null)
+							paramCount = 0;
+						else
+							paramCount = parameters.size();
+						curMess.setParamCount(paramCount);
+					}
+				}					
+			}
+		}	
 		
 		return curMess;
 	}
