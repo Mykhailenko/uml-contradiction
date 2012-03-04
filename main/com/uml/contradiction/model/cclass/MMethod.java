@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.uml.contradiction.model.common.Stereotype;
+import com.uml.contradiction.model.sequence.Message;
 
 public class MMethod {
 	private String name;
@@ -13,6 +14,14 @@ public class MMethod {
 	private String returnResult;
 	private String properties;
 	private Scope scope;
+	public boolean compareWithMessage(Message message){
+		if(name.equals(message.getMethodName()) &&
+				parameters.size() == message.getParamCount()){
+			return true;
+		}else{
+			return false;
+		}
+	}
 	public String getName() {
 		return name;
 	}
