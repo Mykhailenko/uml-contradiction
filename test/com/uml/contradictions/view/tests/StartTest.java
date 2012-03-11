@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.Test;
 
 import com.uml.contradiction.common.DiagramType;
+import com.uml.contradiction.engine.model.criteria.NaryNoAggregationOnly;
 import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.models.DiagramForChoise;
 import com.uml.contradiction.gui.panels.ContradictionsPanel;
@@ -62,7 +63,6 @@ public class StartTest {
 		ClassGraph.setAssociations(ass);
 		
 		///////////////////////////////////////
-		
 		
 		MainWindow mainWindow = new MainWindow();
 	

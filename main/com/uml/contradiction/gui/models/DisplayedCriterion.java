@@ -1,7 +1,10 @@
 package com.uml.contradiction.gui.models;
 
+import javax.swing.ImageIcon;
+
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.criteria.CriterionType;
+import com.uml.contradiction.gui.Images;
 
 public class DisplayedCriterion {
 	private Criterion criterion;
@@ -39,5 +42,9 @@ public class DisplayedCriterion {
 	}
 	public CriterionType getType() {
 		return this.criterion.getCriterionType();
+	}
+	
+	public ImageIcon getImg() {
+		return Images.getCriterionImage(this.criterion.getClass().getSimpleName());
 	}
 }

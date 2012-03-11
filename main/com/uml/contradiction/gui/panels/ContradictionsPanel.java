@@ -2,6 +2,7 @@ package com.uml.contradiction.gui.panels;
 
 
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -9,8 +10,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -22,6 +26,7 @@ import javax.swing.tree.TreePath;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.criteria.CriterionSuite;
 import com.uml.contradiction.engine.model.criteria.CriterionTypeSuite;
+import com.uml.contradiction.gui.Images;
 import com.uml.contradiction.gui.components.CheckTreeManager;
 import com.uml.contradiction.gui.listeners.ContrTreeListener;
 import com.uml.contradiction.gui.listeners.StartCheckListener;
@@ -36,6 +41,7 @@ public class ContradictionsPanel extends JPanel{
 	private final JTree tree = new JTree();
 	private final JTextArea description = new JTextArea();
 	private CheckTreeManager checkTreeManager;
+	private final JLabel imgLbl = new JLabel();
 	
 	public ContradictionsPanel() {
 		super();
@@ -70,17 +76,25 @@ public class ContradictionsPanel extends JPanel{
 		
 		startBut.addActionListener(new StartCheckListener());
 		
+		imgLbl.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		imgLbl.setBackground(Color.white);
+		imgLbl.setHorizontalAlignment(JLabel.CENTER);
+		imgLbl.setOpaque(true);
+		
 		this.setLayout(null);
-		treePanel.setBounds(0, 0, 300, 300);
-		descriptionPanel.setBounds(310, 0, 300, 300);
-		startBut.setBounds(10, 310, 100, 25);
+		treePanel.setBounds(0, 0, 300, 500);
+		descriptionPanel.setBounds(310, 0, 400, 100);
+		imgLbl.setBounds(310, 100, 400, 400);
+		startBut.setBounds(10, 510, 100, 25);
 		this.add(treePanel);
 		this.add(descriptionPanel);
 		this.add(startBut);
+		this.add(imgLbl);
 		
 		this.updateUI();
 		this.repaint();
 	}
+
 	
 	public void showDescription(Object object) {
 		
@@ -88,12 +102,20 @@ public class ContradictionsPanel extends JPanel{
 			this.description.setText(((DisplayedCriterion)object).getDesctiption());
 			this.description.repaint();
 			this.description.updateUI();
+			
+			this.imgLbl.setIcon(((DisplayedCriterion)object).getImg());
+			this.imgLbl.updateUI();
+			this.imgLbl.repaint();
+			
 			this.updateUI();
 		}
 		else {
 			this.description.setText("");
 			this.description.repaint();
 			this.description.updateUI();
+			this.imgLbl.setIcon(null);
+			this.imgLbl.updateUI();
+			this.imgLbl.repaint();
 			this.updateUI();			
 		}
 	}
