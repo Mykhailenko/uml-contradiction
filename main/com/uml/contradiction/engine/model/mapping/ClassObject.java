@@ -10,7 +10,7 @@ import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.cclass.ClassGraph;
 import com.uml.contradiction.model.object.OObject;
 
-public class ClassObjectMapping implements Mapping {
+public class ClassObject implements Mapping {
 	private static final Logger LOGGER = Logger.getRootLogger();
 	
 	@Override

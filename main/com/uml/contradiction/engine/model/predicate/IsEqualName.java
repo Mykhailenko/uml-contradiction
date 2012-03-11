@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
 import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
 import com.uml.contradiction.model.NamedElement;
 
-public class PredicateIsEqualName implements Predicate {
+public class IsEqualName implements Predicate {
 	private static final Logger LOGGER = Logger.getRootLogger();
 	/**
 	 * params - require a 2 element such of class Attribute (class or object)

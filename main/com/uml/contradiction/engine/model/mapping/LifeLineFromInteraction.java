@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
 import com.uml.contradiction.engine.model.mapping.exception.MappingException;
 import com.uml.contradiction.model.sequence.Interaction;
 
-public class LifeLineFromInteractionMapping implements Mapping {
+public class LifeLineFromInteraction implements Mapping {
 	private static final Logger LOGGER = Logger.getRootLogger();
 	@Override
 	public List map(List list) throws MappingException {

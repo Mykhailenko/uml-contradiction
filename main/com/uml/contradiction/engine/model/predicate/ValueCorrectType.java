@@ -9,7 +9,7 @@ import com.uml.contradiction.model.common.Type;
 import com.uml.contradiction.model.common.UMLType;
 import com.uml.contradiction.model.object.Attribute;
 
-public class PredicateValueCorrectType implements Predicate {
+public class ValueCorrectType implements Predicate {
 	private static final Logger LOGGER = Logger.getRootLogger();
 	/**
 	 * Method recieve 2 items in list; 

@@ -4,7 +4,7 @@ import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
-import com.uml.contradiction.engine.model.mapping.LifeLineFromInteractionMapping;
+import com.uml.contradiction.engine.model.mapping.LifeLineFromInteraction;
 import com.uml.contradiction.engine.model.predicate.IsExecutableLifeLine;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPInteractions;
@@ -23,7 +23,7 @@ public class ExecutableSequenceCriterion extends Criterion {
 		quantifier1.setBoundVariable(Variable.l);
 		ComplexRightPart rightPart = new ComplexRightPart();
 		rightPart.getBoundVariables().add(Variable.f);
-		rightPart.getNestedMappings().add(new LifeLineFromInteractionMapping());
+		rightPart.getNestedMappings().add(new LifeLineFromInteraction());
 		quantifier1.setRightPart(rightPart);
 		getQuantifiers().add(quantifier1);
 		

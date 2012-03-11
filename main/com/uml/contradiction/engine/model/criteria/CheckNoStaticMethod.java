@@ -11,13 +11,13 @@ import com.uml.contradiction.engine.model.mapping.Mapping;
 import com.uml.contradiction.engine.model.mapping.MethodClass;
 import com.uml.contradiction.engine.model.mapping.TargetMessage;
 import com.uml.contradiction.engine.model.predicate.MessageBelongToMethod;
+import com.uml.contradiction.engine.model.predicate.MessageMethodEqualName;
+import com.uml.contradiction.engine.model.predicate.MessageMethodStatic;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
-import com.uml.contradiction.engine.model.rightPart.QuantifierRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPMessages;
 
-public class MustExistMethodCriterion extends Criterion {
-	public MustExistMethodCriterion() {
-		super();
+public class CheckNoStaticMethod extends Criterion {
+	public CheckNoStaticMethod() {
 		Quantifier quantifier0 = new Quantifier();
 		quantifier0.setType(QuantifierType.ALL);
 		quantifier0.setBoundVariable(Variable.m);
@@ -34,18 +34,25 @@ public class MustExistMethodCriterion extends Criterion {
 		nestedMappings.add(new TargetMessage());
 		rightPart.setNestedMappings(nestedMappings);
 		quantifier1.setRightPart(rightPart);
+		getQuantifiers().add(quantifier1);
 		
-		BoundedPredicate boundedPredicate = new BoundedPredicate();
-		boundedPredicate.getBoundVariable().add(Variable.m);
-		boundedPredicate.getBoundVariable().add(Variable.o);
-		boundedPredicate.setPredicate(new MessageBelongToMethod());
-		getBoundedPredicates().add(boundedPredicate);
+		BoundedPredicate boundedPredicate0 = new BoundedPredicate();
+		boundedPredicate0.getBoundVariable().add(Variable.m);
+		boundedPredicate0.getBoundVariable().add(Variable.o);
+		boundedPredicate0.setPredicate(new MessageMethodEqualName());
+		getBoundedPredicates().add(boundedPredicate0);
+			
+		BoundedPredicate boundedPredicate1 = new BoundedPredicate();
+		boundedPredicate1.getBoundVariable().add(Variable.m);
+		boundedPredicate1.getBoundVariable().add(Variable.o);
+		boundedPredicate1.setPredicate(new MessageMethodStatic());
+		getBoundedPredicates().add(boundedPredicate1);
 	}
 	
 	
 	@Override
 	public int getInternalID() {
-		return -2;
+		return -1;
 	}
 
 	@Override

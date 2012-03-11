@@ -7,7 +7,7 @@ import com.uml.contradiction.engine.model.predicate.IsExecutableLifeLine;
 import com.uml.contradiction.model.sequence.Interaction;
 import com.uml.contradiction.model.sequence.LifeLine;
 
-public class MessagesOfLifeLineInteractionMapping implements Mapping {
+public class MessagesOfLifeLineInteraction implements Mapping {
 
 	@Override
 	public List map(List list) throws MappingException {

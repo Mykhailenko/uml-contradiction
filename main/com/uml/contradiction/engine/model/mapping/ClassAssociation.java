@@ -3,6 +3,8 @@ package com.uml.contradiction.engine.model.mapping;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.uml.contradiction.engine.model.mapping.exception.MappingException;
 import com.uml.contradiction.model.cclass.Association;
 import com.uml.contradiction.model.cclass.AssociationEnd;
@@ -10,7 +12,7 @@ import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.cclass.ClassGraph;
 import com.uml.contradiction.model.object.OObject;
 
-public class EndAssociationMapping implements Mapping {
+public class ClassAssociation implements Mapping {
 	
 	@Override
 	public List map(List args) throws MappingException {
@@ -19,11 +21,18 @@ public class EndAssociationMapping implements Mapping {
 		
 		Object element = args.get(0);
 		
-		if(element instanceof Association){
-			Association association = (Association) element;
-			List<AssociationEnd> res = new LinkedList<AssociationEnd>();
-			res.add(association.getEnd1());
-			res.add(association.getEnd2());
+		if(element instanceof CClass){
+			List<Association> associations = ClassGraph.getAssociations();
+			List<Association> res = new LinkedList<Association>();
+			
+			for(Association association : associations) {
+				AssociationEnd end1 = association.getEnd1();
+				AssociationEnd end2 = association.getEnd2();
+				
+				if(end1.getAssociatedClass().equals(element) || end2.getAssociatedClass().equals(element)){
+					res.add(association);
+				}
+			}
 			
 			return res;
 		}

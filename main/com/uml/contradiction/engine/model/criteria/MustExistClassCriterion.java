@@ -4,7 +4,7 @@ import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
-import com.uml.contradiction.engine.model.mapping.ClassObjectMapping;
+import com.uml.contradiction.engine.model.mapping.ClassObject;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPObjects;
 
@@ -23,7 +23,7 @@ public class MustExistClassCriterion extends Criterion {
 		quantifier2.setBoundVariable(Variable.c);
 		ComplexRightPart rightPart = new ComplexRightPart();
 		rightPart.getBoundVariables().add(Variable.o);
-		rightPart.getNestedMappings().add(new ClassObjectMapping());
+		rightPart.getNestedMappings().add(new ClassObject());
 		quantifier2.setRightPart(rightPart);
 		getQuantifiers().add(quantifier2);
 	}

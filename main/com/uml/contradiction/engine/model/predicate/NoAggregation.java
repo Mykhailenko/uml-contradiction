@@ -9,7 +9,7 @@ import com.uml.contradiction.model.NamedElement;
 import com.uml.contradiction.model.cclass.AggregationKind;
 import com.uml.contradiction.model.cclass.AssociationEnd;
 
-public class PredicateNoAggregation implements Predicate {
+public class NoAggregation implements Predicate {
 	private static final Logger LOGGER = Logger.getRootLogger();
 
 	@Override

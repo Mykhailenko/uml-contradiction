@@ -9,6 +9,7 @@ public class CriterionSuite {
 	public static List<Criterion> getAllCriterion(){
 		List<Criterion> result = new LinkedList<Criterion>();
 		result.add(new CheckEntryMethodsCriterion());
+		result.add(new CheckNoStaticMethod());
 		result.add(new CheckSequenceCriterion());
 		result.add(new CheckStateMachineCriterion());
 		result.add(new CorrectTypeCriterion());

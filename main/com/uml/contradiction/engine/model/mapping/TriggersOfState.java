@@ -8,7 +8,7 @@ import com.uml.contradiction.model.statemachine.StateMachine;
 import com.uml.contradiction.model.statemachine.Transition;
 import com.uml.contradiction.model.statemachine.Trigger;
 
-public class TriggersOfStateMachine implements Mapping {
+public class TriggersOfState implements Mapping {
 
 	@Override
 	public List map(List list) throws MappingException {

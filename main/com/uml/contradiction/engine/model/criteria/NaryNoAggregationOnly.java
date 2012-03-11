@@ -4,11 +4,11 @@ import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
-import com.uml.contradiction.engine.model.mapping.ClassAssociationMapping;
-import com.uml.contradiction.engine.model.mapping.CompositeEndAssociationMapping;
-import com.uml.contradiction.engine.model.mapping.EndAssociationMapping;
-import com.uml.contradiction.engine.model.predicate.PredicateCorrectCompositeMultiplicity;
-import com.uml.contradiction.engine.model.predicate.PredicateNoAggregation;
+import com.uml.contradiction.engine.model.mapping.ClassAssociation;
+import com.uml.contradiction.engine.model.mapping.CompositeEndAssociation;
+import com.uml.contradiction.engine.model.mapping.EndAssociation;
+import com.uml.contradiction.engine.model.predicate.CorrectCompositeMultiplicity;
+import com.uml.contradiction.engine.model.predicate.NoAggregation;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPCompositions;
 import com.uml.contradiction.engine.model.rightPart.simple.RPNaries;
@@ -29,7 +29,7 @@ public class NaryNoAggregationOnly extends Criterion {
 		quantifier2.setBoundVariable(Variable.a);
 		ComplexRightPart rightPart = new ComplexRightPart();
 		rightPart.getBoundVariables().add(Variable.c);
-		rightPart.getNestedMappings().add(new ClassAssociationMapping());
+		rightPart.getNestedMappings().add(new ClassAssociation());
 		quantifier2.setRightPart(rightPart);
 		getQuantifiers().add(quantifier2);		
 
@@ -38,14 +38,14 @@ public class NaryNoAggregationOnly extends Criterion {
 		quantifier3.setBoundVariable(Variable.e);
 		ComplexRightPart rightPart3 = new ComplexRightPart();
 		rightPart3.getBoundVariables().add(Variable.a);
-		rightPart3.getNestedMappings().add(new EndAssociationMapping());
+		rightPart3.getNestedMappings().add(new EndAssociation());
 		quantifier3.setRightPart(rightPart3);
 		getQuantifiers().add(quantifier3);		
 		
 		BoundedPredicate boundedPredicate = new BoundedPredicate();
 		boundedPredicate.getBoundVariable().add(Variable.e);
 		boundedPredicate.setNegative(false);
-		boundedPredicate.setPredicate(new PredicateNoAggregation());
+		boundedPredicate.setPredicate(new NoAggregation());
 		getBoundedPredicates().add(boundedPredicate);	
 	
 	}	
