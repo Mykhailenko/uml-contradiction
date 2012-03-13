@@ -97,6 +97,15 @@ public class CClass implements Vertex {
 		fullName = fullName + name;
 		return fullName;
 	}
+	public String getPackageName(){
+		String fName = getFullName();
+		int point = fName.lastIndexOf('.');
+		if(point == -1){
+			return fName;
+		}else{
+			return fName.substring(0, point);
+		}
+	}
 	public Vertex getParent() {
 		return parent;
 	}
