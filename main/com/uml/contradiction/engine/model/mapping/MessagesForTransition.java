@@ -28,7 +28,7 @@ public class MessagesForTransition implements Mapping {
 			for(InteractionElement ie : interaction.getChilds()){
 				if(ie.isMessage()){
 					Message message = (Message) ie;
-					CClass messageClass = message.getRecieveEvent().getCovered().getCclass();
+					CClass messageClass = message.getTarget().getcClass();
 					if(messageClass.equals(transitionClass)){
 						result.add(message);
 					}

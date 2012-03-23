@@ -19,7 +19,7 @@ public class TargetMessage implements Mapping {
 		Object element = list.get(0);
 		if(element instanceof Message){
 			Message message = (Message) element;
-			CClass cls = message.getRecieveEvent().getCovered().getCclass();
+			CClass cls = message.getTarget().getcClass();
 			if(cls == null){
 				return null;
 			}else{

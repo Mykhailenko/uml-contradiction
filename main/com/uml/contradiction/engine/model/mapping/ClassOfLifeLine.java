@@ -17,6 +17,6 @@ public class ClassOfLifeLine implements Mapping {
 			throw new MappingException("Unexpected type: " + first.getClass().toString());
 		}
 		LifeLine lifeLine = (LifeLine) first;
-		return Collections.singletonList(lifeLine.getCclass());
+		return Collections.singletonList(lifeLine.getcClass());
 	}
 }

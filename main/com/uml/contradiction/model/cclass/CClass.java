@@ -7,7 +7,6 @@ import com.uml.contradiction.model.Vertex;
 import com.uml.contradiction.model.VertexType;
 import com.uml.contradiction.model.common.Package;
 import com.uml.contradiction.model.common.Stereotype;
-import com.uml.contradiction.model.ocl.Constraint;
 
 public class CClass implements Vertex {
 	private String name;
@@ -15,7 +14,6 @@ public class CClass implements Vertex {
 	private Set<Stereotype> stereotypes;
 	private Visibility visibility;	
 	private boolean isAbstract;
-	private Constraint properties;
 	private List<Attribute> attributes;
 	private List<MMethod> methods;
 	@SuppressWarnings("rawtypes")
@@ -55,12 +53,6 @@ public class CClass implements Vertex {
 	}
 	public void setAbstract(boolean isAbstract) {
 		this.isAbstract = isAbstract;
-	}
-	public Constraint getProperties() {
-		return properties;
-	}
-	public void setProperties(Constraint properties) {
-		this.properties = properties;
 	}
 	public List<Attribute> getAttributes() {
 		return attributes;
@@ -117,7 +109,7 @@ public class CClass implements Vertex {
 		return "CClass [name=" + name 
 				+ ", fullName=" + getFullName()
 				+ ", stereotypes=" + stereotypes + ", visibility=" + visibility
-				+ ", isAbstract=" + isAbstract + ", properties=" + properties
+				+ ", isAbstract=" + isAbstract
 				+ ", attributes=" + attributes + ", methods=" + methods
 				+ ", templateParameters=" + templateParameters
 				+ ", requiredInterface=" + requiredInterface + "]";

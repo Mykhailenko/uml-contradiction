@@ -22,7 +22,7 @@ public class MessageMethodStatic implements Predicate {
 		}
 		Message message = (Message) first;
 		MMethod method = (MMethod) second;
-		if(message.getRecieveEvent().getCovered().isClassLifeLine() ==
+		if(message.getTarget().isClassLifeLine() ==
 				(method.getScope() == Scope.CLASSIFIER)){
 			return true;
 		}else{

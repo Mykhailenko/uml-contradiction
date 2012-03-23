@@ -26,7 +26,7 @@ public class IsExecutableLifeLine implements Predicate {
 		Interaction interaction = (Interaction) params.get(0);
 		LifeLine lifeLine = (LifeLine) params.get(1);
 		List<Message> messages = findAllMessagesTargetLifeLine(interaction, lifeLine);
-		StateMachine stateMachine = StateMachineGraph.findStateMachineByClassName(lifeLine.getCclass());
+		StateMachine stateMachine = StateMachineGraph.findStateMachineByClassName(lifeLine.getcClass());
 		if(stateMachine == null){
 			return true;// it means that inconsistence epsent tooday
 		}
@@ -55,7 +55,7 @@ public class IsExecutableLifeLine implements Predicate {
 			InteractionElement interactionElement = interaction.getChilds().get(i);
 			if(interactionElement instanceof Message){
 				Message message = (Message) interactionElement;
-				if(message.getRecieveEvent().getCovered().equals(lifeLine)){
+				if(message.getTarget().equals(lifeLine)){
 					messages.add(message);
 				}
 			}else {

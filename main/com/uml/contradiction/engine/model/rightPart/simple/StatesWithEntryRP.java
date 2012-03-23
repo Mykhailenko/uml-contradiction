@@ -16,7 +16,7 @@ public class StatesWithEntryRP implements QuantifierRightPart {
 	public List getSet(List<VariableValue> params) throws MappingException {
 		List<State> result = new LinkedList<State>();
 		for(StateMachine sm :StateMachineGraph.getStateMachines()){
-			for(State s : sm.getSubmachineState()){
+			for(State s : sm.getStates()){
 				if(s.getEntry() != null){
 					result.add(s);
 				}

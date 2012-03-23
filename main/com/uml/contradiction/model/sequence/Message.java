@@ -46,6 +46,19 @@ public class Message extends InteractionElement {
 	public void setParamCount(int paramCount) {
 		this.paramCount = paramCount;
 	}
+	
+	public LifeLine getSource() {
+		return source;
+	}
+	public void setSource(LifeLine source) {
+		this.source = source;
+	}
+	public LifeLine getTarget() {
+		return target;
+	}
+	public void setTarget(LifeLine target) {
+		this.target = target;
+	}
 	@Override
 	public String toString() {
 		return "Message [messageSort=" 

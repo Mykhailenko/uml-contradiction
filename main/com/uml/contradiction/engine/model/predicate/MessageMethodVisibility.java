@@ -24,8 +24,8 @@ public class MessageMethodVisibility implements Predicate {
 		}
 		Message message = (Message) first;
 		MMethod method = (MMethod) second;
-		CClass cClass0 = message.getSendEvent().getCovered().getCclass();
-		CClass cClass1 = message.getRecieveEvent().getCovered().getCclass();
+		CClass cClass0 = message.getSource().getcClass();
+		CClass cClass1 = message.getTarget().getcClass();
 		if(cClass1.getVisibility().equals(Visibility.PRIVATE) || cClass1.getVisibility().equals(Visibility.PROTECTED)){
 			return false;
 		}

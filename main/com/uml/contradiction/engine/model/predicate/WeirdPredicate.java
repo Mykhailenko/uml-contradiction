@@ -30,7 +30,7 @@ public class WeirdPredicate implements Predicate {
 			InteractionElement ie = message.getInteraction().getChilds().get(i);
 			if(ie.isMessage()){
 				Message message1 = (Message) ie;
-				CClass cls = message1.getRecieveEvent().getCovered().getCclass();
+				CClass cls = message1.getTarget().getcClass();
 				if(cls.equals(stateClass)){
 					if(message1.compareWithTransition(state.getEntry())){
 						return true;

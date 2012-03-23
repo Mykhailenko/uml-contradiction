@@ -1,13 +1,10 @@
 package com.uml.contradiction.model.cclass;
 
-import com.uml.contradiction.model.ocl.Constraint;
-
 public class AssociationEnd {
 	private String 			role;
 	private Multiplicity 	multiplicity;	
 	private AggregationKind aggregationKind;
 	private Visibility 		visibility;
-	private Constraint		constraint;
 	private boolean 		isDerived;
 	private Navigability 	navigability;
 	private CClass 			associatedClass;
@@ -42,12 +39,6 @@ public class AssociationEnd {
 	public void setVisibility(Visibility visibility) {
 		this.visibility = visibility;
 	}
-	public Constraint getConstraint() {
-		return constraint;
-	}
-	public void setConstraint(Constraint constraint) {
-		this.constraint = constraint;
-	}
 	public boolean isDerived() {
 		return isDerived;
 	}
@@ -64,7 +55,7 @@ public class AssociationEnd {
 	public String toString() {
 		return "AssociationEnd [role=" + role + ", multiplicity="
 				+ multiplicity + ", aggregationKind=" + aggregationKind
-				+ ", visibility=" + visibility + ", constraint=" + constraint
+				+ ", visibility=" + visibility 
 				+ ", isDerived=" + isDerived + ", navigability=" + navigability
 				+ ", associatedClass=" + associatedClass + "]";
 	}
