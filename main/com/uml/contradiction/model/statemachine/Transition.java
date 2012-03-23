@@ -9,7 +9,6 @@ import com.uml.contradiction.model.Vertex;
 public class Transition implements Edge{
 	private Vertex target;
 	private Vertex source;
-	private TransitionKind kind;
 	private List<Trigger> triggers;
 	private Guard guard;
 	private StateMachine stateMachine;
@@ -24,12 +23,6 @@ public class Transition implements Edge{
 	}
 	public void setSource(Vertex source) {
 		this.source = source;
-	}
-	public TransitionKind getKind() {
-		return kind;
-	}
-	public void setKind(TransitionKind kind) {
-		this.kind = kind;
 	}
 	public List<Trigger> getTriggers() {
 		return triggers;

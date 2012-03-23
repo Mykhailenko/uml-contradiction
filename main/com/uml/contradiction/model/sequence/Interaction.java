@@ -3,7 +3,6 @@ import java.util.*;
 
 public class Interaction extends InteractionElement {
 	private String name;
-	private List<Gate> gates;
 	private List<LifeLine> lifeLines;
 	private List<InteractionElement> childs;
 	public String getName() {
@@ -11,12 +10,6 @@ public class Interaction extends InteractionElement {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public List<Gate> getGates() {
-		return gates;
-	}
-	public void setGates(List<Gate> gates) {
-		this.gates = gates;
 	}
 	public List<LifeLine> getLifeLines() {
 		return lifeLines;
@@ -32,8 +25,7 @@ public class Interaction extends InteractionElement {
 	}
 	@Override
 	public String toString() {
-		return "Interaction [name=" + name + ", gates=" + gates
-				+ ", lifeLines=" + lifeLines + "\n\t, childs=" + childs + "]";
+		return "Interaction [name=" + name + ", lifeLines=" + lifeLines + "\n\t, childs=" + childs + "]";
 	}	
 	@Override
 	public Type getType() {

@@ -9,9 +9,9 @@ import com.uml.contradiction.model.cclass.CClass;
 public class StateMachineGraph {
 	private static List<StateMachine> stateMachines = new LinkedList<StateMachine>();
 	
-	public static StateMachine findStateMachineByClassName(CClass cСlass){
+	public static StateMachine findStateMachineByClassName(CClass cClass){
 		for(StateMachine stateMachine : stateMachines){
-			if(stateMachine.getcClass().equals(cСlass)){
+			if(stateMachine.getcClass().equals(cClass)){
 				return stateMachine;
 			}
 		}

@@ -1,49 +1,29 @@
 package com.uml.contradiction.model.sequence;
 
 import com.uml.contradiction.model.cclass.CClass;
+import com.uml.contradiction.model.object.OObject;
 
 public class LifeLine {
-	private String name;
-	private CClass cclass;
-	boolean isClassLifeLine;
-	String objectName;
-
-		public String getName() {
-		return name;
+	private CClass cClass;
+	private OObject oObject;
+	private boolean classLifeLine;
+	public CClass getcClass() {
+		return cClass;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setcClass(CClass cClass) {
+		this.cClass = cClass;
 	}
-
+	public OObject getoObject() {
+		return oObject;
+	}
+	public void setoObject(OObject oObject) {
+		this.oObject = oObject;
+	}
 	public boolean isClassLifeLine() {
-		return isClassLifeLine;
+		return classLifeLine;
 	}
-
-	public void setClassLifeLine(boolean isClassLifeLine) {
-		this.isClassLifeLine = isClassLifeLine;
+	public void setClassLifeLine(boolean classLifeLine) {
+		this.classLifeLine = classLifeLine;
 	}
-
-	public String getObjectName() {
-		return objectName;
-	}
-
-	public void setObjectName(String objectName) {
-		this.objectName = objectName;
-	}
-
-		public CClass getCclass() {
-		return cclass;
-	}
-
-	public void setCclass(CClass cclass) {
-		this.cclass = cclass;
-	}
-
-	@Override
-	public String toString() {
-		return "LifeLine [name=" + name + ", cclass=" + cclass
-				+ ", isClassLifeLine=" + isClassLifeLine + ", objectName="
-				+ objectName + "]";
-	}
+	
 }

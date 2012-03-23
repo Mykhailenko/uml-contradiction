@@ -7,30 +7,17 @@ import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.sequence.Message;
 
 public class StateMachine {
-	private List<Pseudostate> connectionPoint;
-	private List<State> submachineState;
+	private List<State> states;
 	private String name;
 	private CClass cClass;
 	private List<Transition> transitions;
-	public List<Transition> getTransitions() {
-		return transitions;
-	}
-	public void setTransitions(List<Transition> transitions) {
-		this.transitions = transitions;
-	}
-	public List<Pseudostate> getConnectionPoint() {
-		return connectionPoint;
-	}
-	public void setConnectionPoint(List<Pseudostate> connectionPoint) {
-		this.connectionPoint = connectionPoint;
-	}
-	public List<State> getSubmachineState() {
-		return submachineState;
-	}
-	public void setSubmachineState(List<State> submachineState) {
-		this.submachineState = submachineState;
-	}
 	
+	public List<State> getStates() {
+		return states;
+	}
+	public void setStates(List<State> states) {
+		this.states = states;
+	}
 	public String getName() {
 		return name;
 	}
@@ -42,6 +29,12 @@ public class StateMachine {
 	}
 	public void setcClass(CClass cClass) {
 		this.cClass = cClass;
+	}
+	public List<Transition> getTransitions() {
+		return transitions;
+	}
+	public void setTransitions(List<Transition> transitions) {
+		this.transitions = transitions;
 	}
 	public static List<Message> stayOnlyImportentMessages(StateMachine stateMachine, 
 			List<Message> messages){
