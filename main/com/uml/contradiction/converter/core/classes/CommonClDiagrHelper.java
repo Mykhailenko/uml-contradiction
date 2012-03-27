@@ -24,7 +24,7 @@ import com.uml.contradiction.model.common.Package;
 import com.uml.contradiction.model.common.Stereotype;
 import com.uml.contradiction.model.common.UMLClassStereotype;
 import com.uml.contradiction.model.common.UserStereotype;
-import com.uml.contradiction.model.ocl.Constraint;
+
 
 public class CommonClDiagrHelper {
 	private static final Logger logger = Logger.getLogger(CommonClDiagrHelper.class);
@@ -156,35 +156,35 @@ public class CommonClDiagrHelper {
 			return null;
 	}
 	
-	public void getConstraintsWithRef(Element umlModel, Map<String, Constraint> constraintsWithRef){
-		
-		try{
-			
-			NodeList rules = umlModel.getElementsByTagName("ownedRule");
-			int temp;
-			
-			for (temp = 0; temp < rules.getLength(); temp++) {
-													//разбор одного элемента
-				Element curRule = (Element)rules.item(temp);
-														
-				String strOfRefs = curRule.getAttribute("constrainedElement");
-				String[] idElems = strOfRefs.split(" ");
-				Constraint constr = null;		
-				
-				Element commentEl = (Element)curRule.getElementsByTagName("ownedComment").item(0);
-				if(commentEl != null){
-					Node body = commentEl.getElementsByTagName("body").item(0);
-					if(body != null)
-						constr = new Constraint(body.getTextContent());
-				}
-				for(int i =0; i< idElems.length; i++)
-					constraintsWithRef.put(idElems[i], constr);
-			}
-		}
-	catch (Exception e) {
-		e.printStackTrace();		
-	  }			
-	}
+//	public void getConstraintsWithRef(Element umlModel, Map<String, Constraint> constraintsWithRef){
+//		
+//		try{
+//			
+//			NodeList rules = umlModel.getElementsByTagName("ownedRule");
+//			int temp;
+//			
+//			for (temp = 0; temp < rules.getLength(); temp++) {
+//													//разбор одного элемента
+//				Element curRule = (Element)rules.item(temp);
+//														
+//				String strOfRefs = curRule.getAttribute("constrainedElement");
+//				String[] idElems = strOfRefs.split(" ");
+//				Constraint constr = null;		
+//				
+//				Element commentEl = (Element)curRule.getElementsByTagName("ownedComment").item(0);
+//				if(commentEl != null){
+//					Node body = commentEl.getElementsByTagName("body").item(0);
+//					if(body != null)
+//						constr = new Constraint(body.getTextContent());
+//				}
+//				for(int i =0; i< idElems.length; i++)
+//					constraintsWithRef.put(idElems[i], constr);
+//			}
+//		}
+//	catch (Exception e) {
+//		e.printStackTrace();		
+//	  }			
+//	}
 	
 	//добавление к класс диаграмме пакета, в котором она содержиться
 	public boolean putParentPackInClassDiadramm(Map<String, ClassDiagram> diagrClassWithId, Element umlModelEl, Package curUmlPackage)

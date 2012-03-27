@@ -19,7 +19,7 @@ import com.uml.contradiction.model.cclass.*;
 import com.uml.contradiction.model.common.*;
 import com.uml.contradiction.model.common.Package;
 import com.uml.contradiction.converter.core.*;
-import com.uml.contradiction.model.ocl.*;
+
 
 import org.apache.log4j.Logger;
 import org.w3c.dom.*;
@@ -36,7 +36,7 @@ extends CoreParserImpl implements CoreParser{
 	private Map<String, Package> packagesWithId = new LinkedHashMap <String, Package>();
 	
 	private Map<String, Set<Stereotype>> stereotypesWithRefClass = new LinkedHashMap <String, Set<Stereotype>>();
-	private Map<String, Constraint> constraintsWithRef = new LinkedHashMap <String, Constraint>();
+//	private Map<String, Constraint> constraintsWithRef = new LinkedHashMap <String, Constraint>();
 	private Map<String, Dependency> dependenciesWithId = new LinkedHashMap <String, Dependency>();
 	private Map<String, Realization> realizationsWithId = new LinkedHashMap <String, Realization>();
 	private Map<String, Generalization> generalizationsWithId = new LinkedHashMap <String, Generalization>();
@@ -59,7 +59,7 @@ extends CoreParserImpl implements CoreParser{
 		super();
 		
 		classParsHelper = new ClassParsHelper(classesWithId, assocesWithId, 
-				constraintsWithRef, stereotypesWithRefClass, methodsWithId);
+				 stereotypesWithRefClass, methodsWithId);
 		commonClDiagrHelper = new CommonClDiagrHelper();
 	}
 	//создаем ClassDiagram для каждого id
@@ -122,8 +122,8 @@ extends CoreParserImpl implements CoreParser{
 			//получаем стереотипы со ссылками на классы
 			commonClDiagrHelper.getStereotWithId(umlModelEl, stereotypesWithRefClass);
 			
-			//получаем ограничения со ссылками на элементы (мы их добавляем к атрибутм)
-			commonClDiagrHelper.getConstraintsWithRef(umlModelEl, constraintsWithRef);
+			//получаем ограничения со ссылками на элементы (мы их добавляем к атрибутам)
+//			commonClDiagrHelper.getConstraintsWithRef(umlModelEl, constraintsWithRef);
 			
 			//проход по всем элементам  HashMap
 //			if(!stereotypesWithRefClass.isEmpty()){

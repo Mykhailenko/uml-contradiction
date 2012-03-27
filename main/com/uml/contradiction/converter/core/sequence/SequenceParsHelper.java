@@ -25,18 +25,18 @@ public class SequenceParsHelper {
 	
 	private Map<String, Interaction> interactionsFrWithId;
 	private Map<String, LifeLine> lifelinesWithId;
-	private Map<String, Event> eventsWithId;
+	private Map<String, LifeLine> fragmentsWithLifeln;
 	private Map<String, Message> messagesWithId;
 	private Map<String, String> referencesOnClassId;
 	
 	public SequenceParsHelper(Map<String, Interaction> interactionsFrWithId,
 			Map<String, LifeLine> lifelinesWithId,
-			Map<String, Event> eventsWithId,
+			Map<String, LifeLine> fragmentsWithLifeln,
 			Map<String, Message> messagesWithId) {
 		super();
 		this.interactionsFrWithId = interactionsFrWithId;
 		this.lifelinesWithId = lifelinesWithId;
-		this.eventsWithId = eventsWithId;
+		this.fragmentsWithLifeln = fragmentsWithLifeln;
 		this.messagesWithId = messagesWithId;
 		
 		referencesOnClassId = new LinkedHashMap<String, String>();
@@ -47,16 +47,20 @@ public class SequenceParsHelper {
 		CClass referClass;
 		String lifelnName = lifeLine.getAttribute("name");
 		if(!lifelnName.equals(""))
-			lifeln.setName(lifelnName);
-		else{
+//			lifeln.setName(lifelnName);
+			System.out.println("What a fack&&&");
+		//находим класс, на который ссылаетс€ lifeline
+		if(lifeLine.hasAttribute("represents")){
 			String idOwnAttr = lifeLine.getAttribute("represents");
-			String refOnClass = referencesOnClassId.get(idOwnAttr);
-			if(refOnClass != null){
-				referClass = ParsersTool.getInstanceClassParser().getClassesWithId().get(refOnClass);
-				if(referClass != null)
-					lifeln.setCclass(referClass);
-				else
-					logger.info("reference on unknown cclass");
+			if(!idOwnAttr.equals("")){
+				String refOnClass = referencesOnClassId.get(idOwnAttr);
+				if(refOnClass != null){
+					referClass = ParsersTool.getInstanceClassParser().getClassesWithId().get(refOnClass);
+					if(referClass != null)
+						lifeln.setcClass(referClass);
+					else
+						logger.info("reference on unknown cclass");
+				}
 			}
 		}
 				
@@ -92,13 +96,7 @@ public class SequenceParsHelper {
 		}
 	}
 	
-	public Event parseEvent(Element eventEL) {
-		Event curEvent  = new Event();
-		String covd = eventEL.getAttribute("covered");
-		curEvent.setCovered(lifelinesWithId.get(covd));
-		
-		return curEvent;
-	}
+	//разбор фрагментов - промежуточное звено между lifeline  и message
 	public void parseAllInlaidEvents(Element frameEl) {
 		
 		NodeList events = frameEl.getElementsByTagName("fragment");
@@ -106,12 +104,14 @@ public class SequenceParsHelper {
 		for (int k = 0; k < events.getLength(); k++) {
 			Element eventEl = (Element)events.item(k);
 							
-			//получаем Event
-			Event curEvent  = new Event();
+			//получаем ccылку на lifeline
 			String covd = eventEl.getAttribute("covered");
-			curEvent.setCovered(lifelinesWithId.get(covd));
-			
-			eventsWithId.put(eventEl.getAttribute("xmi:id"), curEvent);			
+			LifeLine curLfln = lifelinesWithId.get(covd);
+			if(curLfln == null)
+				logger.error("There are no lifeline for fragment with id: " + covd);
+			else{
+				fragmentsWithLifeln.put(eventEl.getAttribute("xmi:id"), curLfln);
+			}						
 		}
 	}
 	
@@ -121,32 +121,32 @@ public class SequenceParsHelper {
 		String messageValue = messElem.getAttribute("name");
 		curMess.parseStr(messageValue);
 		
-		//получили Id получающего Event
-		String resEvId = messElem.getAttribute("receiveEvent");
-		Event resEvent = eventsWithId.get(resEvId);
+		//получили Id получающего Event (fragment)
+		String resEvId = messElem.getAttribute("receiveEvent");		
 		
-		if(resEvent != null)
-			resEvent.setMessage(curMess);		//” Event сослались на сообщение
+		//сообщение ссылаетс€ на lifeline
+		LifeLine resLifeline = fragmentsWithLifeln.get(resEvId);
+		
+		if(resLifeline != null)
+			curMess.setTarget(resLifeline);	///¬ сообщение сослались на получающее Event
 		else
 			logger.warn("recieve Event was not find before message");
-		curMess.setRecieveEvent(resEvent);	///¬ сообщение сослались на пол Event
-		
+				
 		//получили Id отправл€ющего Event
 		String sendEvId = messElem.getAttribute("sendEvent");
-		Event sendEvent = eventsWithId.get(sendEvId);
+		LifeLine sendLifeln = fragmentsWithLifeln.get(sendEvId);
 		
-		if(sendEvent != null)
-			sendEvent.setMessage(curMess);	
+		if(sendLifeln != null)
+			curMess.setSource(sendLifeln);
 		else
-			logger.warn("send Event was not find before message");	
-		curMess.setSendEvent(sendEvent);
+			logger.warn("send Event was not find before message");			
 		
-		String messSort = messElem.getAttribute("messageSort");
-		if(messSort.equals("synchCall"))  
-			curMess.setMessageSort(MessageSort.SYNCH_CALL);
-		
-		if(messSort.equals("reply"))  
-			curMess.setMessageSort(MessageSort.ASYNCH_SIGNAL);
+//		String messSort = messElem.getAttribute("messageSort");
+//		if(messSort.equals("synchCall"))  
+//			curMess.setMessageSort(MessageSort.SYNCH_CALL);
+//		
+//		if(messSort.equals("reply"))  
+//			curMess.setMessageSort(MessageSort.ASYNCH_SIGNAL);
 		
 		//получаем ссылку на метод из сообщени€
 		CoreParserImpl coreParse = new CoreParserImpl();
@@ -179,25 +179,14 @@ public class SequenceParsHelper {
 	}
 	public boolean checkedConnections(){
 		boolean flag = true;
-		Collection<Event> allEvs = eventsWithId.values();
 		Collection<Message> allMes = messagesWithId.values();
 		
-		for(Event eva : allEvs){
-			if(eva.getCovered() == null){
-				logger.error("not all events has covered lifeline");
-				flag = false;
-			}
-			if(eva.getMessage() == null){
-				logger.error("not all events has messages");
-				flag = false;
-			}
-		}
 		for(Message mes : allMes){
-			if(mes.getRecieveEvent() == null){
+			if(mes.getTarget() == null){
 				logger.error("not all messages has RecieveEvent");
 				flag = false;
 			}
-			if(mes.getSendEvent() == null){
+			if(mes.getSource() == null){
 				logger.error("not all events has SendEvent");
 				flag = false;
 			}

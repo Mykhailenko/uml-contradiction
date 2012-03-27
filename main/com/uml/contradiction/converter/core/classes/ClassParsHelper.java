@@ -26,13 +26,12 @@ import com.uml.contradiction.model.cclass.Parameter;
 import com.uml.contradiction.model.cclass.Scope;
 import com.uml.contradiction.model.cclass.Visibility;
 import com.uml.contradiction.model.common.*;
-import com.uml.contradiction.model.ocl.Constraint;
 
 			//помощник разбирает атрибуты классов и ассоциаций
 public class ClassParsHelper {
 	private Map<String, CClass> classesWithId;
 	private Map<String, Association> assocesWithId;
-	private Map<String, Constraint> constraintsWithRef;
+//	private Map<String, Constraint> constraintsWithRef;
 	private Map<String, Set<Stereotype>> stereotypesWithRefClass;
 	private Map<String, MMethod> methodsWithId;
 	
@@ -40,13 +39,13 @@ public class ClassParsHelper {
 	
 	public ClassParsHelper(Map<String, CClass> classesWithId,
 			Map<String, Association> assocesWithId,
-			Map<String, Constraint> constraintsWithRef,
+//			Map<String, Constraint> constraintsWithRef,
 			Map<String, Set<Stereotype>> stereotypesWithRefClass,
 			Map<String, MMethod> methodsWithId) {
 		super();
 		this.classesWithId = classesWithId;
 		this.assocesWithId = assocesWithId;
-		this.constraintsWithRef = constraintsWithRef;
+//		this.constraintsWithRef = constraintsWithRef;
 		this.stereotypesWithRefClass = stereotypesWithRefClass;
 		this.methodsWithId = methodsWithId;
 	}		
@@ -173,9 +172,9 @@ public class ClassParsHelper {
 					
 					attr_1.setType(getType(curAttrElem));
 										
-					Constraint constr = constraintsWithRef.get(attrId);
-					if(constr != null)
-						attr_1.setConstraints(constr);
+//					Constraint constr = constraintsWithRef.get(attrId);
+//					if(constr != null)
+//						attr_1.setConstraints(constr);
 					
 					attributes.add(attr_1);
 				}
@@ -306,9 +305,9 @@ public class ClassParsHelper {
 		if(visibty.equals("private")) assEnd.setVisibility(Visibility.PRIVATE);
 		if(visibty.equals("protected")) assEnd.setVisibility(Visibility.PROTECTED);
 
-		Constraint constr = constraintsWithRef.get(endElement.getAttribute("xmi:id"));
-		if(constr != null)
-			assEnd.setConstraint(constr);
+//		Constraint constr = constraintsWithRef.get(endElement.getAttribute("xmi:id"));
+//		if(constr != null)
+//			assEnd.setConstraint(constr);
 		
 					//ассоциируемый класс
 		String idAsocedClass = endElement.getAttribute("type");

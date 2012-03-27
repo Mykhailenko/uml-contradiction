@@ -26,7 +26,7 @@ extends CoreParserImpl implements CoreParser{
 	private Map<String, Interaction> interactionsFrWithId = new LinkedHashMap <String, Interaction>();
 	private Map<String, Interaction> interactsSequenceWithId = new LinkedHashMap <String, Interaction>();
 	private Map<String, LifeLine> lifelinesWithId = new LinkedHashMap <String, LifeLine>();
-	private Map<String, Event> eventsWithId = new LinkedHashMap <String, Event>();
+	private Map<String, LifeLine> fragmentsWithLifeln = new LinkedHashMap <String, LifeLine>();
 	private Map<String, Message> messagesWithId = new LinkedHashMap <String, Message>();
 
 	
@@ -36,7 +36,7 @@ extends CoreParserImpl implements CoreParser{
 		super();
 		
 		sequenceParsHelper = new SequenceParsHelper(interactionsFrWithId,
-				lifelinesWithId, eventsWithId, messagesWithId);
+				lifelinesWithId, fragmentsWithLifeln, messagesWithId);
 	}
 	
 	@Override
@@ -45,7 +45,7 @@ extends CoreParserImpl implements CoreParser{
 			NodeList sequencesFrame = umlModelEl.getElementsByTagName("ownedBehavior");
 			int temp;
 							//смотрим все sequence, даже вложенные пакеты в диаграмме классов
-										//и вдругие диаграммы
+										//и в другие диаграммы
 			for (temp = 0; temp < sequencesFrame.getLength(); temp++) {
 												//разбор одного элемента
 				Element curSequenceEl = (Element)sequencesFrame.item(temp);
@@ -150,17 +150,20 @@ extends CoreParserImpl implements CoreParser{
 								childs.add(parseFrame(includeInterInFrame));
 							}else{
 								//работаем с сообщением
-								if(includeInterInFrame.getTagName().equals("message")){					
-									List<InteractionElement> childs = curInteraction.getChilds();
-									
-									if(childs == null){
-										childs = new LinkedList<InteractionElement>();
-										curInteraction.setChilds(childs);
+								if(includeInterInFrame.getTagName().equals("message")){		
+									if(includeInterInFrame.getAttribute("xmi:type").equals("uml:Message"))
+									{
+										List<InteractionElement> childs = curInteraction.getChilds();
+										
+										if(childs == null){
+											childs = new LinkedList<InteractionElement>();
+											curInteraction.setChilds(childs);
+										}
+										Message mess = sequenceParsHelper.parseMessage(includeInterInFrame);
+										childs.add(mess);
+										
+										messagesWithId.put(includeInterInFrame.getAttribute("xmi:id"), mess);
 									}
-									Message mess = sequenceParsHelper.parseMessage(includeInterInFrame);
-									childs.add(mess);
-									
-									messagesWithId.put(includeInterInFrame.getAttribute("xmi:id"), mess);
 								}
 							}
 							

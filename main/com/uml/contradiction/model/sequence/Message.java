@@ -61,8 +61,7 @@ public class Message extends InteractionElement {
 	}
 	@Override
 	public String toString() {
-		return "Message [messageSort=" 
-				+ ", methodName=" + methodName + ", paramCount="
+		return "Message [ methodName=" + methodName + ", paramCount="
 				+ paramCount + "]";
 	}
 	@Override
