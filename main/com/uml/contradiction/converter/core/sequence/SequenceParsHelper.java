@@ -14,10 +14,9 @@ import org.w3c.dom.NodeList;
 import com.uml.contradiction.converter.core.CoreParserImpl;
 import com.uml.contradiction.converter.core.ParsersTool;
 import com.uml.contradiction.converter.core.classes.CommonClDiagrHelper;
-import com.uml.contradiction.model.cclass.CClass;
-import com.uml.contradiction.model.cclass.MMethod;
-import com.uml.contradiction.model.cclass.Parameter;
+import com.uml.contradiction.model.cclass.*;
 import com.uml.contradiction.model.common.*;
+import com.uml.contradiction.model.object.*;
 import com.uml.contradiction.model.sequence.*;
 
 public class SequenceParsHelper {
@@ -46,9 +45,7 @@ public class SequenceParsHelper {
 		LifeLine lifeln = new LifeLine();
 		CClass referClass;
 		String lifelnName = lifeLine.getAttribute("name");
-		if(!lifelnName.equals(""))
-//			lifeln.setName(lifelnName);
-			System.out.println("What a fack&&&");
+		
 		//находим класс, на который ссылается lifeline
 		if(lifeLine.hasAttribute("represents")){
 			String idOwnAttr = lifeLine.getAttribute("represents");
@@ -56,10 +53,66 @@ public class SequenceParsHelper {
 				String refOnClass = referencesOnClassId.get(idOwnAttr);
 				if(refOnClass != null){
 					referClass = ParsersTool.getInstanceClassParser().getClassesWithId().get(refOnClass);
-					if(referClass != null)
+					if(referClass != null){
 						lifeln.setcClass(referClass);
+						lifeln.setClassLifeLine(true);
+						
+						if(lifelnName.equals("")) //анонимный объект
+							lifeln.setAnonymObject(true);
+						else{	//конкретный объект
+							lifeln.setAnonymObject(false);
+							boolean isObj = false;
+							OObject ob1 = null;
+							List<OObject> objts = ObjectGraph.getObjects();
+							for (OObject ob : objts) {
+								if(ob.getName().equals(lifelnName)){
+									isObj = true;
+									ob1 = ob; 
+									break;
+								}
+							}
+							if(isObj) //если нашли
+								lifeln.setoObject(ob1);
+							else   //нет объекта с заданным именем 
+								lifeln.setName(lifelnName);							
+						}
+					}
 					else
 						logger.info("reference on unknown cclass");
+				}
+				else{		//если не ссылается на класс через средство VP
+					//возможна ссылка на сам класс
+					boolean isCls = false;
+					String[] arrS = lifelnName.split(":");
+					if(arrS.length > 2)
+						logger.error("can't be such name in lifeline");
+					else{
+						if(arrS.length == 1){
+							 List<CClass> clses = ClassGraph.getClasses();							 
+							 
+							CClass cl1 = null;
+							for (CClass cl : clses) {
+								String fullname = cl.getFullName();
+								int deleteDefPack = fullname.indexOf(".");
+								String withoutDefPack = fullname.substring(deleteDefPack+1);
+								if(withoutDefPack.equals(lifelnName)){
+									isCls = true;
+									cl1 = cl; 
+									break;
+								}
+							}
+							if(isCls) //если нашли класс
+								lifeln.setcClass(cl1);							
+						}
+					}
+					if(isCls)
+						lifeln.setClassLifeLine(true);
+					else {
+						//нет никаких ссылок
+						lifeln.setClassLifeLine(false);
+						if(!lifelnName.equals(""))
+							lifeln.setName(lifelnName);
+					}					
 				}
 			}
 		}
@@ -76,9 +129,11 @@ public class SequenceParsHelper {
 			if(ownedAttrEl.getParentNode() == frameEl)
 			{
 				String idownAtr = ownedAttrEl.getAttribute("xmi:id");
-				String refOnClass = ownedAttrEl.getAttribute("type");
-				if(!refOnClass.equals(""))
-					referencesOnClassId.put(idownAtr, refOnClass);
+				if(ownedAttrEl.hasAttribute("type")){
+					String refOnClass = ownedAttrEl.getAttribute("type");
+					if(!refOnClass.equals(""))
+						referencesOnClassId.put(idownAtr, refOnClass);
+				}
 			}
 		}		
 		NodeList includedLifelines = frameEl.getElementsByTagName("lifeline");

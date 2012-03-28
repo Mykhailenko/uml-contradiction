@@ -197,7 +197,7 @@ extends CoreParserImpl implements CoreParser{
 			//добавление к класс диаграмме пакета в котором она содержиться
 			commonClDiagrHelper.putParentPackInClassDiadramm(diagrClassWithId, umlModelEl, curUmlPackage);
 		}
-		else
+		else  //корневой пакет
 			curUmlPackage.setName("[[default package]]");
 		
 		//установливаем родительский пакет
