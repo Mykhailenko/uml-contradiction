@@ -103,19 +103,31 @@ public class SequenceParsHelper {
 		//работаем с вложенными фрагментами Events
 		for (int k = 0; k < events.getLength(); k++) {
 			Element eventEl = (Element)events.item(k);
-							
-			//получаем ccылку на lifeline
-			String covd = eventEl.getAttribute("covered");
-			LifeLine curLfln = lifelinesWithId.get(covd);
-			if(curLfln == null)
-				logger.error("There are no lifeline for fragment with id: " + covd);
-			else{
-				fragmentsWithLifeln.put(eventEl.getAttribute("xmi:id"), curLfln);
-			}						
+				
+			//рассматриваем фрагменты тольео для сообщений
+			//для комбинрованных фрагментов берем только их внутренность
+			String frag = eventEl.getAttribute("xmi:type");
+			if(frag.equals("uml:MessageOccurrenceSpecification")){
+				
+				//получаем ccылку на lifeline
+				String covd = eventEl.getAttribute("covered");
+				LifeLine curLfln = lifelinesWithId.get(covd);
+				if(curLfln == null)
+					logger.error("There are no lifeline for fragment with id: " + covd);
+				else{
+					fragmentsWithLifeln.put(eventEl.getAttribute("xmi:id"), curLfln);
+				}	
+			}
 		}
 	}
 	
 	public Message parseMessage(Element messElem) {
+		
+		//не рассматриваем возвратные сообщения
+		String messSort = messElem.getAttribute("messageSort");
+		if(messSort.equals("reply")) 
+			return null;
+		
 		Message curMess = new Message();
 		
 		String messageValue = messElem.getAttribute("name");

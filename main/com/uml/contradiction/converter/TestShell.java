@@ -42,15 +42,16 @@ public class TestShell {
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\7))) Seq_s from frame and package.uml");
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\8.5. Nested class.uml");
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\9.3 Realization without end.uml");
-		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\9.5 AssocClass.uml");
+//		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\9.5 AssocClass.uml");
 		
+		File file = new File("D:\\Programming\\vpworkspace\\Experiments\\For understand\\start 1.uml");
 		
 		File file2 = new File("g.uml");
 		
 //		File file = new File("main\\Test xmi.uml");
 		
 		XMIConverter.reset();
-		XMIConverter.setFile(file2);
+		XMIConverter.setFile(file);
 				
 		
 		try {

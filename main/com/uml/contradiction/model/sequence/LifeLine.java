@@ -3,7 +3,7 @@ package com.uml.contradiction.model.sequence;
 import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.object.OObject;
 
-public class LifeLine {
+public class LifeLine {	
 	private CClass cClass;
 	private OObject oObject;
 	private boolean classLifeLine;
@@ -26,4 +26,14 @@ public class LifeLine {
 		this.classLifeLine = classLifeLine;
 	}
 	
+	@Override
+	public String toString() {
+		String s = new String("LifeLine [");
+		if(cClass != null)
+			s += "cClassName=" + cClass.getName();
+		if(oObject != null)
+			s += ", oObjectName=" + oObject.getName();
+		s += ", classLifeLine=" + classLifeLine + "]";
+		return s;
+	}
 }

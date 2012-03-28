@@ -160,9 +160,10 @@ extends CoreParserImpl implements CoreParser{
 											curInteraction.setChilds(childs);
 										}
 										Message mess = sequenceParsHelper.parseMessage(includeInterInFrame);
-										childs.add(mess);
-										
-										messagesWithId.put(includeInterInFrame.getAttribute("xmi:id"), mess);
+										if(mess != null){
+											childs.add(mess);										
+											messagesWithId.put(includeInterInFrame.getAttribute("xmi:id"), mess);
+										}
 									}
 								}
 							}
