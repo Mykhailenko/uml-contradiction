@@ -20,6 +20,7 @@ import com.uml.contradiction.common.DiagramType;
 import com.uml.contradiction.converter.core.*;
 import com.uml.contradiction.converter.core.classes.ClassParser;
 import com.uml.contradiction.converter.core.sequence.SequenceParser;
+import com.uml.contradiction.converter.core.object.ObjectParser;
 
 public class XMIConverter {
 	private static File file = null;
@@ -65,6 +66,10 @@ private static final Logger LOGGER = Logger.getRootLogger();
 		ClassParser clPars = ParsersTool.getInstanceClassParser();
 		clPars.parse(umlModelEl);	
 		clPars.makeResult();
+		
+		ObjectParser objPars = ParsersTool.getInstanceObjectParser();
+		objPars.parse(umlModelEl);
+		objPars.makeResult();
 		
 		SequenceParser seqPars = ParsersTool.getInstanceSequenceParser();
 		seqPars.parse(umlModelEl);

@@ -6,10 +6,11 @@ import com.uml.contradiction.model.Vertex;
 import com.uml.contradiction.model.VertexType;
 import com.uml.contradiction.model.cclass.CClass;
 
-public class OObject implements Vertex {
+public class OObject implements Vertex {	
+	private String name;
 	private List<CClass> classes;
 	private List<Attribute> attributes;
-	private String name;
+	
 	public List<CClass> getClasses() {
 		return classes;
 	}
@@ -32,5 +33,10 @@ public class OObject implements Vertex {
 	public VertexType getType() {
 		return VertexType.OBJECT;
 	}
-		
+	@Override
+	public String toString() {
+		return "OObject [name=" + name + ", classes=" + classes
+				+ ", attributes=" + attributes + "]";
+	}
+	
 }
