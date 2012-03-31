@@ -47,7 +47,7 @@ public class TestShell {
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\9.3 Realization without end.uml");
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\9.5 AssocClass.uml");
 		
-		File file = new File("D:\\Programming\\vpworkspace\\Experiments\\For understand\\obj classes2.uml");
+		File file = new File("D:\\Programming\\vpworkspace\\Experiments\\For understand\\obj difference3.uml");
 		
 		File file2 = new File("g.uml");
 		

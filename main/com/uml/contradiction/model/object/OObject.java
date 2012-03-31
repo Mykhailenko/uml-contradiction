@@ -36,8 +36,10 @@ public class OObject implements Vertex {
 	@Override
 	public String toString() {
 		String s = new String();
-		for(CClass cl : classes)
-			 s += cl.getName() + ", ";
+		if(classes != null){
+			for(CClass cl : classes)
+				s += cl.getName() + ", ";
+		}
 		return "OObject [name=" + name + "," + " classesName= "
 				+ s
 				+ ", attributes=" + attributes + "]";
