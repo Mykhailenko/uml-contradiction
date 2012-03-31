@@ -48,12 +48,12 @@ public class CorrectTypeCriterionTest {
 		c0.add(cClass);
 		object0.setClasses(c0);
 		
-		List<com.uml.contradiction.model.object.Attribute> lao = new LinkedList<com.uml.contradiction.model.object.Attribute>();
-		com.uml.contradiction.model.object.Attribute a0 = new com.uml.contradiction.model.object.Attribute();
+		List<com.uml.contradiction.model.object.AttributeObj> lao = new LinkedList<com.uml.contradiction.model.object.AttributeObj>();
+		com.uml.contradiction.model.object.AttributeObj a0 = new com.uml.contradiction.model.object.AttributeObj();
 		a0.setName("sex");
 		a0.setValue("true");
 		lao.add(a0);
-		com.uml.contradiction.model.object.Attribute a1 = new com.uml.contradiction.model.object.Attribute();
+		com.uml.contradiction.model.object.AttributeObj a1 = new com.uml.contradiction.model.object.AttributeObj();
 		a1.setName("crab");
 		a1.setValue("156");
 		lao.add(a1);
@@ -92,12 +92,12 @@ public class CorrectTypeCriterionTest {
 		c0.add(cClass);
 		object0.setClasses(c0);
 		
-		List<com.uml.contradiction.model.object.Attribute> lao = new LinkedList<com.uml.contradiction.model.object.Attribute>();
-		com.uml.contradiction.model.object.Attribute a0 = new com.uml.contradiction.model.object.Attribute();
+		List<com.uml.contradiction.model.object.AttributeObj> lao = new LinkedList<com.uml.contradiction.model.object.AttributeObj>();
+		com.uml.contradiction.model.object.AttributeObj a0 = new com.uml.contradiction.model.object.AttributeObj();
 		a0.setName("sex");
 		a0.setValue("1");
 		lao.add(a0);
-		com.uml.contradiction.model.object.Attribute a1 = new com.uml.contradiction.model.object.Attribute();
+		com.uml.contradiction.model.object.AttributeObj a1 = new com.uml.contradiction.model.object.AttributeObj();
 		a1.setName("crab");
 		a1.setValue("314");
 //		lao.add(a1);
