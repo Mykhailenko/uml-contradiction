@@ -11,6 +11,7 @@ import com.uml.contradiction.model.cclass.ClassGraph;
 import com.uml.contradiction.model.cclass.Dependency;
 import com.uml.contradiction.model.cclass.Generalization;
 import com.uml.contradiction.model.cclass.Realization;
+import com.uml.contradiction.model.object.Link;
 import com.uml.contradiction.model.object.OObject;
 import com.uml.contradiction.model.object.ObjectGraph;
 import com.uml.contradiction.model.sequence.Interaction;
@@ -103,9 +104,13 @@ public class TestShell {
 	
 	public static void printObjectGraf () {
 		List<OObject> object_s = ObjectGraph.getObjects();
+		List<Link> link_s = ObjectGraph.getLinks();
 		
 		for(OObject obj : object_s)			
 			System.out.println(obj);	
+		
+		for(Link lnk : link_s)			
+			System.out.println(lnk);
 	}
 	
 	public static void printSequenceGraf () {			

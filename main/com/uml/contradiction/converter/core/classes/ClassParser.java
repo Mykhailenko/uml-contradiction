@@ -41,6 +41,7 @@ extends CoreParserImpl implements CoreParser{
 	private Map<String, Realization> realizationsWithId = new LinkedHashMap <String, Realization>();
 	private Map<String, Generalization> generalizationsWithId = new LinkedHashMap <String, Generalization>();
 	private Map<String, MMethod> methodsWithId = new LinkedHashMap <String, MMethod>();
+	private Map<String, Attribute> attributesWithId = new LinkedHashMap <String, Attribute>();
 	
 	private Package rootPackage;
 	Element umlModelElRoot;
@@ -54,12 +55,15 @@ extends CoreParserImpl implements CoreParser{
 	public Map<String, MMethod> getMethodsWithId() {
 		return methodsWithId;
 	}
+	public Map<String, Attribute> getAttributesWithId() {
+		return attributesWithId;
+	}	
 	
 	public ClassParser() {
 		super();
 		
 		classParsHelper = new ClassParsHelper(classesWithId, assocesWithId, 
-				 stereotypesWithRefClass, methodsWithId);
+				 stereotypesWithRefClass, methodsWithId, attributesWithId);
 		commonClDiagrHelper = new CommonClDiagrHelper();
 	}
 	//создаем ClassDiagram для каждого id

@@ -9,7 +9,7 @@ import com.uml.contradiction.model.cclass.CClass;
 public class OObject implements Vertex {	
 	private String name;
 	private List<CClass> classes;
-	private List<Attribute> attributes;
+	private List<AttributeObj> attributes;
 	
 	public List<CClass> getClasses() {
 		return classes;
@@ -17,10 +17,10 @@ public class OObject implements Vertex {
 	public void setClasses(List<CClass> classes) {
 		this.classes = classes;
 	}
-	public List<Attribute> getAttributes() {
+	public List<AttributeObj> getAttributes() {
 		return attributes;
 	}
-	public void setAttributes(List<Attribute> attributes) {
+	public void setAttributes(List<AttributeObj> attributes) {
 		this.attributes = attributes;
 	}
 	public String getName() {
@@ -35,7 +35,11 @@ public class OObject implements Vertex {
 	}
 	@Override
 	public String toString() {
-		return "OObject [name=" + name + ", classes=" + classes
+		String s = new String();
+		for(CClass cl : classes)
+			 s += cl.getName() + ", ";
+		return "OObject [name=" + name + "," + " classesName= "
+				+ s
 				+ ", attributes=" + attributes + "]";
 	}
 	

@@ -34,6 +34,7 @@ public class ClassParsHelper {
 //	private Map<String, Constraint> constraintsWithRef;
 	private Map<String, Set<Stereotype>> stereotypesWithRefClass;
 	private Map<String, MMethod> methodsWithId;
+	private Map<String, Attribute> attributesWithId;
 	
 	private static final Logger LOGGER = Logger.getRootLogger();
 	
@@ -41,13 +42,15 @@ public class ClassParsHelper {
 			Map<String, Association> assocesWithId,
 //			Map<String, Constraint> constraintsWithRef,
 			Map<String, Set<Stereotype>> stereotypesWithRefClass,
-			Map<String, MMethod> methodsWithId) {
+			Map<String, MMethod> methodsWithId,
+			Map<String, Attribute> attributesWithId ) {
 		super();
 		this.classesWithId = classesWithId;
 		this.assocesWithId = assocesWithId;
 //		this.constraintsWithRef = constraintsWithRef;
 		this.stereotypesWithRefClass = stereotypesWithRefClass;
 		this.methodsWithId = methodsWithId;
+		this.attributesWithId = attributesWithId;
 	}		
 	
 	//get set
@@ -177,6 +180,8 @@ public class ClassParsHelper {
 //						attr_1.setConstraints(constr);
 					
 					attributes.add(attr_1);
+					
+					attributesWithId.put(attrId, attr_1);
 				}
 			}
 		}

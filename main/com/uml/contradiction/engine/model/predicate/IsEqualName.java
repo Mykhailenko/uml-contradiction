@@ -19,12 +19,12 @@ public class IsEqualName implements Predicate {
 			LOGGER.error("require list with 2 element");
 			throw new PredicatException("PredicateIsEqualName require by list with 2 element");
 		}
-		if((params.get(0) instanceof com.uml.contradiction.model.object.Attribute) == false &&
+		if((params.get(0) instanceof com.uml.contradiction.model.object.AttributeObj) == false &&
 				(params.get(0) instanceof com.uml.contradiction.model.cclass.Attribute) == false){
 			LOGGER.error("first element must be a Attribute " + params.get(0).getClass().toString());
 			throw new PredicatException("first element must be a Attribute");
 		}
-		if((params.get(1) instanceof com.uml.contradiction.model.object.Attribute) == false &&
+		if((params.get(1) instanceof com.uml.contradiction.model.object.AttributeObj) == false &&
 				(params.get(1) instanceof com.uml.contradiction.model.cclass.Attribute) == false){
 			LOGGER.error("second element must be a Attribute" + params.get(1).getClass().toString());
 			throw new PredicatException("second element must be a Attribute");

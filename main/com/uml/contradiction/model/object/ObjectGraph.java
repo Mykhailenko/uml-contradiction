@@ -6,6 +6,7 @@ import java.util.List;
 
 public class ObjectGraph {
 	private static List<OObject> objects = new LinkedList<OObject>()	;
+	private static List<Link> links = new LinkedList<Link>()	;
 
 	public static List<OObject> getObjects() {
 		return objects;
@@ -15,5 +16,10 @@ public class ObjectGraph {
 		ObjectGraph.objects = objects;
 	}
 
-	
+	public static List<Link> getLinks() {
+		return links;
+	}
+	public static void setLinks(List<Link> links) {
+		ObjectGraph.links = links;
+	}	
 }

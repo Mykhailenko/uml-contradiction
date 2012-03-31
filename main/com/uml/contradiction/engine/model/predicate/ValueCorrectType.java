@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
 import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
 import com.uml.contradiction.model.common.Type;
 import com.uml.contradiction.model.common.UMLType;
-import com.uml.contradiction.model.object.Attribute;
+import com.uml.contradiction.model.object.AttributeObj;
 
 public class ValueCorrectType implements Predicate {
 	private static final Logger LOGGER = Logger.getRootLogger();
@@ -24,7 +24,7 @@ public class ValueCorrectType implements Predicate {
 			throw new PredicatException("param size should equal 2, non " + params.size());
 		}
 		Object first = params.get(0);
-		if((first instanceof com.uml.contradiction.model.object.Attribute) == false){
+		if((first instanceof com.uml.contradiction.model.object.AttributeObj) == false){
 			LOGGER.error("first element : unexpected type " + first.getClass().toString());
 			throw new PredicatException("first element : unexpected type " + first.getClass().toString());
 		}
@@ -33,7 +33,7 @@ public class ValueCorrectType implements Predicate {
 			LOGGER.error("second element : unexpected type " + second.getClass().toString());
 			throw new PredicatException("second element : unexpected type " + second.getClass().toString());
 		}
-		com.uml.contradiction.model.object.Attribute objAttribute = (Attribute) first;
+		com.uml.contradiction.model.object.AttributeObj objAttribute = (AttributeObj) first;
 		com.uml.contradiction.model.cclass.Attribute classAttribute = (com.uml.contradiction.model.cclass.Attribute) second;
 		boolean result;
 		result = valueChecker(classAttribute.getType(), objAttribute.getValue());

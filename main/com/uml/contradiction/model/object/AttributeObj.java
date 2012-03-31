@@ -3,7 +3,7 @@ package com.uml.contradiction.model.object;
 import com.uml.contradiction.model.NamedElement;
 import com.uml.contradiction.model.cclass.*;
 
-public class Attribute implements NamedElement{
+public class AttributeObj implements NamedElement{
 	private String name;
 	private String value;
 	private Attribute refClassAttr;

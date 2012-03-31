@@ -25,5 +25,10 @@ public class LinkEnd {
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+	@Override
+	public String toString() {
+		return "LinkEnd [objectName=" + object.getName() + ", role=" + role + "]";
+	}
 	
 }

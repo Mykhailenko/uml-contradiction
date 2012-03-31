@@ -4,17 +4,20 @@ import com.uml.contradiction.model.Edge;
 import com.uml.contradiction.model.EdgeType;
 
 public class Link implements Edge {
-	private LinkEnd end1;
-	private LinkEnd end2;
 	private String 	name;
+	private LinkEnd end1;
+	private LinkEnd end2;	
 	
 	public Link(LinkEnd end1, LinkEnd end2, String name) {
 		super();
 		this.end1 = end1;
 		this.end2 = end2;
 		this.name = name;
+	}	
+	public Link() {
+		super();
 	}
-	
+
 	public LinkEnd getEnd1() {
 		return end1;
 	}
@@ -41,5 +44,10 @@ public class Link implements Edge {
 	
 	public EdgeType getType() {
 		return EdgeType.LINK;
+	}
+	@Override
+	public String toString() {
+		return "Link [name=" + name + ", end1=" + end1 + ", end2=" + end2 + "]";
 	}	
+	
 }
