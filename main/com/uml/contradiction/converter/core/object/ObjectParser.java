@@ -1,5 +1,6 @@
 package com.uml.contradiction.converter.core.object;
 
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,14 +14,27 @@ import com.uml.contradiction.converter.core.CoreParser;
 import com.uml.contradiction.converter.core.CoreParserImpl;
 import com.uml.contradiction.converter.core.ParsersTool;
 import com.uml.contradiction.converter.core.sequence.SequenceParsHelper;
+import com.uml.contradiction.model.cclass.Association;
 import com.uml.contradiction.model.cclass.CClass;
+import com.uml.contradiction.model.cclass.ClassDiagram;
+import com.uml.contradiction.model.cclass.ClassGraph;
+import com.uml.contradiction.model.common.Package;
 import com.uml.contradiction.model.object.OObject;
+import com.uml.contradiction.model.object.ObjectGraph;
 
 public class ObjectParser 
 extends CoreParserImpl implements CoreParser{
 	private static final Logger logger = Logger.getLogger(ObjectParser.class);
 	
 	private Map<String, OObject> objectsWithId = new LinkedHashMap <String, OObject>();
+	
+	public void makeResult() {
+		List<OObject> object_s = ObjectGraph.getObjects();
+		
+		Collection<OObject> collectObs = objectsWithId.values();
+		for(OObject obj : collectObs)		
+			object_s.add(obj);
+	}		
 	
 	public List<Object> parse(Element umlModelEl) {
 		
@@ -55,8 +69,6 @@ extends CoreParserImpl implements CoreParser{
 				}
 				
 				objectsWithId.put(idObj, obj);
-				
-				System.out.println(obj);
 			}
 		}
 		

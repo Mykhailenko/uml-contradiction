@@ -11,6 +11,8 @@ import com.uml.contradiction.model.cclass.ClassGraph;
 import com.uml.contradiction.model.cclass.Dependency;
 import com.uml.contradiction.model.cclass.Generalization;
 import com.uml.contradiction.model.cclass.Realization;
+import com.uml.contradiction.model.object.OObject;
+import com.uml.contradiction.model.object.ObjectGraph;
 import com.uml.contradiction.model.sequence.Interaction;
 import com.uml.contradiction.model.sequence.InteractionElement;
 import com.uml.contradiction.model.sequence.LifeLine;
@@ -62,6 +64,8 @@ public class TestShell {
 		//печатаем ClassDiagram
 		printClassGraf();
 		
+		printObjectGraf();
+		
 		printSequenceGraf();
 	}
 	public static void printClassGraf () {
@@ -96,6 +100,14 @@ public class TestShell {
 //		for(ClassDiagram clds : clDiagrams)			
 //			System.out.println(clds);
 	}	
+	
+	public static void printObjectGraf () {
+		List<OObject> object_s = ObjectGraph.getObjects();
+		
+		for(OObject obj : object_s)			
+			System.out.println(obj);	
+	}
+	
 	public static void printSequenceGraf () {			
 		List<Interaction> interList = SequenceGraph.getInteractions();
 						
