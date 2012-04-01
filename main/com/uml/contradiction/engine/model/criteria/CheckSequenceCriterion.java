@@ -1,12 +1,12 @@
 package com.uml.contradiction.engine.model.criteria;
 
-import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
 import com.uml.contradiction.engine.model.mapping.ClassOfLifeLine;
 import com.uml.contradiction.engine.model.mapping.LifeLineFromInteraction;
 import com.uml.contradiction.engine.model.mapping.MessagesOfLifeLineInteraction;
+import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
 import com.uml.contradiction.engine.model.predicate.MessageBelongToClass;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPInteraction;
@@ -53,7 +53,7 @@ public class CheckSequenceCriterion extends Criterion {
 		boundedPredicate.setPredicate(new MessageBelongToClass());
 		boundedPredicate.getBoundVariable().add(Variable.m);
 		boundedPredicate.getBoundVariable().add(Variable.c);
-		getBoundedPredicates().add(boundedPredicate);
+		setFormula(boundedPredicate);
 		
 	}
 		

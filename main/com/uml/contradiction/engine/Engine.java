@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.HistoryItem;
 import com.uml.contradiction.engine.model.HistoryPlainItem;
 import com.uml.contradiction.engine.model.Quantifier;
@@ -14,6 +13,7 @@ import com.uml.contradiction.engine.model.VariableValue;
 import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.mapping.exception.MappingException;
+import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
 import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
 
 public class Engine {
@@ -39,7 +39,7 @@ public class Engine {
 			wholeHistory.add(historyItem);
 			verify(historyItem , 1);
 		}
-		// тут мы имеем "консервативную историю". Осталось её санализировать
+		// пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ". пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		
 		VerificationResult result = analyseHistory();
 		return result;
@@ -71,20 +71,7 @@ public class Engine {
 			}
 		}else{
 			List<VariableValue> currentVariables = parentHistoryItem.getPlainHistory();
-			boolean result = true;
-			for(int i = 0; i < criterion.getBoundedPredicates().size(); ++i){
-				BoundedPredicate boundedPredicate = criterion.getBoundedPredicates().get(i);
-				result = evaluetePredicate(boundedPredicate, currentVariables);
-				if(result == false){
-					break;
-				}
-			}
-			if(criterion.isNegative()){
-				result = !result;
-			}
-			if(result == false && criterion.getBoundedPredicates().size() == 1){
-				parentHistoryItem.setFailDescription(criterion.getBoundedPredicates().get(0).getPredicate().getFailDescription());
-			}
+			boolean result = criterion.getFormula().predict(currentVariables);
 			parentHistoryItem.setSuccess(result);
 		}
 	}
@@ -125,8 +112,8 @@ public class Engine {
 			}
 			break;
 		}
-		// а тут мы должны в случае плохого исхода составить историю лишь из плохих результатов
-		// пока сделаем бедово
+		// пїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		if(result.isFail()){
 			result.setFailHistory(createPlainFailHistory());
 		}
@@ -195,35 +182,6 @@ public class Engine {
 		}else{
 			return historyItem.isSuccess();
 		}
-	}
-
-	
-	private boolean evaluetePredicate(BoundedPredicate boundedPredicate, List<VariableValue> currentVariables){
-		List<Object> vars = new LinkedList<Object>();
-		for(int i = 0; i < boundedPredicate.getBoundVariable().size(); ++i){
-			vars.add(findVV(currentVariables, boundedPredicate.getBoundVariable().get(i)));
-		}
-		boolean result = false;
-		try {
-			result = boundedPredicate.getPredicate().predict(vars);
-		} catch (PredicatException e) {
-			LOGGER.error(e.getMessage());
-		}
-		if(boundedPredicate.isNegative()){
-			result = !result;
-		}
-		return result;
-	}
-	private Object findVV(List<VariableValue> list, Variable variable){
-		for(VariableValue variableValue : list){
-			LOGGER.debug("" + variableValue.variable + " = " + variableValue.value.getClass().toString());
-		}
-		for(VariableValue variableValue : list){
-			if(variableValue.variable.equals(variable)){
-				return variableValue.value;
-			}
-		}
-		return null;
 	}
 	public Engine(Criterion criterion) {
 		this.criterion = criterion;

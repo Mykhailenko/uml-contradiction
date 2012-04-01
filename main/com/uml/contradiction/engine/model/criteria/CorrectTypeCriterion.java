@@ -1,14 +1,16 @@
 package com.uml.contradiction.engine.model.criteria;
 
-import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
 import com.uml.contradiction.engine.model.mapping.AttributeClass;
 import com.uml.contradiction.engine.model.mapping.AttributeObject;
 import com.uml.contradiction.engine.model.mapping.ClassObject;
+import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
+import com.uml.contradiction.engine.model.predicate.Brackets;
 import com.uml.contradiction.engine.model.predicate.IsEqualName;
 import com.uml.contradiction.engine.model.predicate.ValueCorrectType;
+import com.uml.contradiction.engine.model.predicate.Brackets.OperationType;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPObjects;
 
@@ -39,18 +41,21 @@ public class CorrectTypeCriterion extends Criterion {
 		complexRightPart2.getNestedMappings().add(new ClassObject());
 		quantifier2.setRightPart(complexRightPart2);
 		getQuantifiers().add(quantifier2);
+		Brackets brackets = new Brackets();
+		brackets.setType(OperationType.AND);
 		
 		BoundedPredicate boundedPredicate = new BoundedPredicate();
 		boundedPredicate.getBoundVariable().add(Variable.a);
 		boundedPredicate.getBoundVariable().add(Variable.c);
 		boundedPredicate.setPredicate(new IsEqualName());
-		getBoundedPredicates().add(boundedPredicate);
+		brackets.getFormulas().add(boundedPredicate);
 		
 		BoundedPredicate boundedPredicate2 = new BoundedPredicate();
 		boundedPredicate2.getBoundVariable().add(Variable.a);
 		boundedPredicate2.getBoundVariable().add(Variable.c);
 		boundedPredicate2.setPredicate(new ValueCorrectType());
-		getBoundedPredicates().add(boundedPredicate2);
+		brackets.getFormulas().add(boundedPredicate2);
+		setFormula(brackets);
 	}
 	@Override
 	public int getInternalID() {

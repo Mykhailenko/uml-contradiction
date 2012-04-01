@@ -1,12 +1,12 @@
 package com.uml.contradiction.engine.model.criteria;
 
-import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
 import com.uml.contradiction.engine.model.mapping.AttributeClass;
 import com.uml.contradiction.engine.model.mapping.AttributeObject;
 import com.uml.contradiction.engine.model.mapping.ClassObject;
+import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
 import com.uml.contradiction.engine.model.predicate.IsEqualName;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPObjects;
@@ -44,7 +44,7 @@ public class SimpleCriterion extends Criterion {
 		boundedPredicate.getBoundVariable().add(Variable.c);
 		boundedPredicate.setNegative(false);
 		boundedPredicate.setPredicate(new IsEqualName());
-		getBoundedPredicates().add(boundedPredicate);
+		setFormula(boundedPredicate);
 		
 	}
 	@Override

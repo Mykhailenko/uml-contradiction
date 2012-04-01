@@ -36,11 +36,11 @@ public class MustExistMethodCriterionTest {
 		Interaction interaction = SequenceGraph.getInteractions().get(1);
 		for(LifeLine ll : interaction.getLifeLines()){
 			System.out.println(ll.getName());
-			if(ll.getCclass() == null){
-				System.out.println("there null cclass");
-			}else{
-				System.out.println(ll.getCclass().getFullName());
-			}
+//			if(ll.getCclass() == null){
+//				System.out.println("there null cclass");
+//			}else{
+//				System.out.println(ll.getCclass().getFullName());
+//			}
 		}
 //		for(InteractionElement ie : interaction.getChilds()){
 //			Message message = (Message) ie;

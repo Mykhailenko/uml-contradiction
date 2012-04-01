@@ -1,11 +1,11 @@
 package com.uml.contradiction.engine.model.criteria;
 
-import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
 import com.uml.contradiction.engine.model.mapping.MessagesForTransition;
 import com.uml.contradiction.engine.model.mapping.TransitionToState;
+import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
 import com.uml.contradiction.engine.model.predicate.WeirdPredicate;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.StatesWithEntryRP;
@@ -40,7 +40,7 @@ public class CheckEntryMethodsCriterion extends Criterion {
 		boundedPredicate.getBoundVariable().add(Variable.s);
 		boundedPredicate.getBoundVariable().add(Variable.m);
 		boundedPredicate.setPredicate(new WeirdPredicate());
-		getBoundedPredicates().add(boundedPredicate);
+		setFormula(boundedPredicate);
 	}
 		
 	

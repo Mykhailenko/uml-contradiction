@@ -1,12 +1,12 @@
 package com.uml.contradiction.engine.model.criteria;
 
-import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
 import com.uml.contradiction.engine.model.mapping.ClassAssociation;
 import com.uml.contradiction.engine.model.mapping.CompositeEndAssociation;
 import com.uml.contradiction.engine.model.mapping.EndAssociation;
+import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
 import com.uml.contradiction.engine.model.predicate.CorrectCompositeMultiplicity;
 import com.uml.contradiction.engine.model.predicate.NoAggregation;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
@@ -46,7 +46,7 @@ public class NaryNoAggregationOnly extends Criterion {
 		boundedPredicate.getBoundVariable().add(Variable.e);
 		boundedPredicate.setNegative(false);
 		boundedPredicate.setPredicate(new NoAggregation());
-		getBoundedPredicates().add(boundedPredicate);	
+		setFormula(boundedPredicate);	
 	
 	}	
 	

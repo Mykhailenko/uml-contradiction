@@ -3,16 +3,18 @@ package com.uml.contradiction.engine.model.criteria;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
 import com.uml.contradiction.engine.model.mapping.Mapping;
 import com.uml.contradiction.engine.model.mapping.MethodClass;
 import com.uml.contradiction.engine.model.mapping.TargetMessage;
+import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
+import com.uml.contradiction.engine.model.predicate.Brackets;
 import com.uml.contradiction.engine.model.predicate.MessageBelongToMethod;
 import com.uml.contradiction.engine.model.predicate.MessageMethodEqualName;
 import com.uml.contradiction.engine.model.predicate.MessageMethodStatic;
+import com.uml.contradiction.engine.model.predicate.Brackets.OperationType;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPMessages;
 
@@ -35,18 +37,21 @@ public class CheckNoStaticMethod extends Criterion {
 		rightPart.setNestedMappings(nestedMappings);
 		quantifier1.setRightPart(rightPart);
 		getQuantifiers().add(quantifier1);
+		Brackets brackets = new Brackets();
+		brackets.setType(OperationType.AND);
 		
 		BoundedPredicate boundedPredicate0 = new BoundedPredicate();
 		boundedPredicate0.getBoundVariable().add(Variable.m);
 		boundedPredicate0.getBoundVariable().add(Variable.o);
 		boundedPredicate0.setPredicate(new MessageMethodEqualName());
-		getBoundedPredicates().add(boundedPredicate0);
+		brackets.getFormulas().add(boundedPredicate0);
 			
 		BoundedPredicate boundedPredicate1 = new BoundedPredicate();
 		boundedPredicate1.getBoundVariable().add(Variable.m);
 		boundedPredicate1.getBoundVariable().add(Variable.o);
 		boundedPredicate1.setPredicate(new MessageMethodStatic());
-		getBoundedPredicates().add(boundedPredicate1);
+		brackets.getFormulas().add(boundedPredicate1);
+		setFormula(brackets);
 	}
 	
 	

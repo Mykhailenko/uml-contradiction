@@ -3,13 +3,13 @@ package com.uml.contradiction.engine.model.criteria;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
 import com.uml.contradiction.engine.model.mapping.Mapping;
 import com.uml.contradiction.engine.model.mapping.MethodClass;
 import com.uml.contradiction.engine.model.mapping.TargetMessage;
+import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
 import com.uml.contradiction.engine.model.predicate.MessageBelongToMethod;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.QuantifierRightPart;
@@ -39,7 +39,7 @@ public class MustExistMethodCriterion extends Criterion {
 		boundedPredicate.getBoundVariable().add(Variable.m);
 		boundedPredicate.getBoundVariable().add(Variable.o);
 		boundedPredicate.setPredicate(new MessageBelongToMethod());
-		getBoundedPredicates().add(boundedPredicate);
+		setFormula(boundedPredicate);
 	}
 	
 	

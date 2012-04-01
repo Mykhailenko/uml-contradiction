@@ -1,11 +1,11 @@
 package com.uml.contradiction.engine.model.criteria;
 
-import com.uml.contradiction.engine.model.BoundedPredicate;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
 import com.uml.contradiction.engine.model.mapping.ClassOfState;
 import com.uml.contradiction.engine.model.mapping.TriggersOfState;
+import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
 import com.uml.contradiction.engine.model.predicate.TriggerBelongToClass;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPStateMachines;
@@ -42,7 +42,7 @@ public class CheckStateMachineCriterion extends Criterion{
 		boundedPredicate.getBoundVariable().add(Variable.t);
 		boundedPredicate.getBoundVariable().add(Variable.c);
 		boundedPredicate.setPredicate(new TriggerBelongToClass());
-		getBoundedPredicates().add(boundedPredicate);
+		setFormula(boundedPredicate);
 	}
 	
 	
