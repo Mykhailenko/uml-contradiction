@@ -153,7 +153,7 @@ extends CoreParserImpl implements CoreParser{
 		StateMachine stateMach = null;		
 		Map<State, List<Transition>> choiceSourceWithStates = new LinkedHashMap <State, List<Transition>>();
 		Map<State, List<Transition>> choiceTargetWithStates = new LinkedHashMap <State, List<Transition>>();
-		
+		boolean flag = true;
 		
 		for (int i = 0; i < transNodes.getLength(); i++) {
 			Element transElem = (Element)transNodes.item(i);
@@ -174,11 +174,12 @@ extends CoreParserImpl implements CoreParser{
 				State stTarget = statesWithId.get(idTarget);
 				
 				if(stSource == null){	
+					flag = false;
 					stSourceChoice = choicesWithId.get(idSource);
 					if(stSourceChoice == null)
 						logger.error("No source state for transition");
 					else{	//если исходный конец choice
-						stSource = stSourceChoice;
+//						stSource = stSourceChoice;
 						System.out.println("aaaaaaaaaaaaaa\n");
 						
 						List<Transition> transList = choiceSourceWithStates.get(stSource);
@@ -194,12 +195,13 @@ extends CoreParserImpl implements CoreParser{
 					}
 				}else{
 					if(stTarget == null){
+						flag = false;
 						stTargetChoice = choicesWithId.get(idTarget);
 						
 						if(stTargetChoice == null)
 							logger.error("No target state for transition");
 						else{    	//если конечный конец choice
-							stTarget = stTargetChoice;
+//							stTarget = stTargetChoice;
 							
 							List<Transition> transList = choiceTargetWithStates.get(stTarget);
 							if(transList == null){
@@ -214,66 +216,94 @@ extends CoreParserImpl implements CoreParser{
 						}
 					}
 				}
-				 //оба конца нормальные
+				
 				curTrans.setSource(stSource);
-				curTrans.setTarget(stTarget);
+				curTrans.setTarget(stTarget);			
 				
-				stateMach = stSource.getStateMachine();
-				curTrans.setStateMachine(stateMach);
-				
-				List<Transition> transOfStM = stateMach.getTransitions();
-
-				if(transOfStM == null){
-					transOfStM = new LinkedList<Transition>();
-					stateMach.setTransitions(transOfStM);
+				if(stSource != null)
+					stateMach = stSource.getStateMachine();
+				else{
+					if(stTarget != null)
+						stateMach = stTarget.getStateMachine();					
 				}
-				transOfStM.add(curTrans);
-				
-				stateMach = null;
-				//триггеры для Transition
-				if(triggersTransWithId != null ){
-					NodeList nodesTrig = transElem.getElementsByTagName("trigger");
-					for (int t = 0; t < nodesTrig.getLength(); t++) {
-						Element refTrigElem = (Element)nodesTrig.item(t);
-						String idTrig = refTrigElem.getAttribute("event");
-						
-						Trigger trig = triggersTransWithId.get(idTrig);
-						
-						List<Trigger> trigs4Tran = curTrans.getTriggers();
-						
-						if(trigs4Tran == null){
-							trigs4Tran = new LinkedList<Trigger>();
-							curTrans.setTriggers(trigs4Tran);
+				if(stateMach != null){
+					curTrans.setStateMachine(stateMach);
+					
+					if(flag){
+						List<Transition> transOfStM = stateMach.getTransitions();
+		
+						if(transOfStM == null){
+							transOfStM = new LinkedList<Transition>();
+							stateMach.setTransitions(transOfStM);
 						}
-						trigs4Tran.add(trig);
+						transOfStM.add(curTrans);
 					}
+					
+					stateMach = null;
+					//триггеры для Transition
+					if(triggersTransWithId != null ){
+						NodeList nodesTrig = transElem.getElementsByTagName("trigger");
+						for (int t = 0; t < nodesTrig.getLength(); t++) {
+							Element refTrigElem = (Element)nodesTrig.item(t);
+							String idTrig = refTrigElem.getAttribute("event");
+							
+							Trigger trig = triggersTransWithId.get(idTrig);
+							
+							List<Trigger> trigs4Tran = curTrans.getTriggers();
+							
+							if(trigs4Tran == null){
+								trigs4Tran = new LinkedList<Trigger>();
+								curTrans.setTriggers(trigs4Tran);
+							}
+							trigs4Tran.add(trig);
+						}
+					}
+					//Guard для Transition
+					Element ownRule = (Element)transElem.getElementsByTagName("ownedRule").item(0);
+					String connt = getAttrByNameAndTag(ownRule, "specification", "body");
+					if(connt != null)
+						if(!connt.equals("")){
+							Guard grd = new Guard();
+							grd.setConstraint(connt);
+							curTrans.setGuard(grd);
+						}
+					if(flag) //оба конца нормальные
+						transitionsWithId.put(idTrans, curTrans);
 				}
-				//Guard для Transition
-				Element ownRule = (Element)transElem.getElementsByTagName("ownedRule").item(0);
-				String connt = getAttrByNameAndTag(ownRule, "specification", "body");
-				if(connt != null)
-					if(!connt.equals("")){
-						Guard grd = new Guard();
-						grd.setConstraint(connt);
-						curTrans.setGuard(grd);
-					}
-				
-				transitionsWithId.put(idTrans, curTrans);
 			}
 		}
 		
-		//проход по всем элементам  HashMap
-//		if(!choiceSourceWithStates.isEmpty()){
-//			
-//			System.out.println("Size " + choiceSourceWithStates.size());
-//					
-//			for(State key : choiceSourceWithStates.keySet()){
-//				System.out.println("Key : " + key + "\n Stereotypes:");
-//				List<Transition> sts = choiceSourceWithStates.get(key);
-//				for(Transition cls : sts)
-//					System.out.println(cls);
-//			}		
-//		}
+		//проход по всем элементам  HashMap для Choice
+		if(!choiceSourceWithStates.isEmpty()){
+			//для всех choice
+			for(State key : choiceSourceWithStates.keySet()){
+				List<Transition> toChoiceTrans = choiceTargetWithStates.get(key);				
+				List<Transition> fromChoiceTrs = choiceSourceWithStates.get(key);
+				//для каждого входящего в Сhoice подставляем множество выходящих transitions
+				for(Transition trTo : toChoiceTrans)
+					for(Transition trFrom : fromChoiceTrs){
+						Transition curTrans = new Transition();
+						curTrans.setName(trFrom.getName());
+						curTrans.setTarget(trFrom.getTarget());
+						curTrans.setGuard(trFrom.getGuard());
+						curTrans.setStateMachine(trFrom.getStateMachine());
+						curTrans.setTriggers(trFrom.getTriggers());
+						
+						curTrans.setSource(trTo.getSource());
+						
+						StateMachine stateM = trFrom.getStateMachine();
+						if(stateM != null){
+							List<Transition> transOfStM = stateM.getTransitions();
+							
+							if(transOfStM == null){
+								transOfStM = new LinkedList<Transition>();
+								stateM.setTransitions(transOfStM);
+							}
+							transOfStM.add(curTrans);
+						}
+					}
+			}		
+		}
 //		
 //		//проход по всем элементам  HashMap
 //		if(!choiceTargetWithStates.isEmpty()){
