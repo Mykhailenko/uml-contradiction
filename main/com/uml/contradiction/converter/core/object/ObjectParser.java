@@ -30,6 +30,13 @@ extends CoreParserImpl implements CoreParser{
 	private Map<String, OObject> objectsWithId = new LinkedHashMap <String, OObject>();
 	private Map<String, Link> linksWithId = new LinkedHashMap <String, Link>();
 	
+	public Map<String, OObject> getObjectsWithId() {
+		return objectsWithId;
+	}
+	public Map<String, Link> getLinksWithId() {
+		return linksWithId;
+	}
+
 	public void makeResult() {
 		List<OObject> object_s = ObjectGraph.getObjects();
 		List<Link> link_s = ObjectGraph.getLinks();

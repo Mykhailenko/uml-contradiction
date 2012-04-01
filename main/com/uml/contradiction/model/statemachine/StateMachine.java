@@ -58,4 +58,9 @@ public class StateMachine {
 			return false;
 		}
 	}
+	@Override
+	public String toString() {
+		return "StateMachine [name=" + name + " states=" + states  
+				+ ", cClass=" + cClass.getFullName() + ", transitions=" + transitions + "]";
+	}
 }
