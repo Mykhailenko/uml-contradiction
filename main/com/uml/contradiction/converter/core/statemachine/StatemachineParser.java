@@ -36,6 +36,8 @@ extends CoreParserImpl implements CoreParser{
 	public List<Object> parse(Element umlModelEl) {
 		makeStates(umlModelEl);
 		
+		makeTransitions(umlModelEl);
+				
 		return null;
 	}
 	
@@ -46,9 +48,12 @@ extends CoreParserImpl implements CoreParser{
 		
 		for (int i = 0; i < packNodes.getLength(); i++) {
 			Element packElem = (Element)packNodes.item(i);
+			String stateType = packElem.getAttribute("xmi:type");
 			
 			//рассматриваем packagedElement для состояний в классах
-			if(packElem.getAttribute("xmi:type").equals("uml:State"))
+			if(stateType.equals("uml:State") 
+					|| stateType.equals("uml:Pseudostate")
+					|| stateType.equals("uml:FinalState"))
 			{
 				Element parentClass = (Element)packElem.getParentNode();
 				String idParClass = parentClass.getAttribute("xmi:id");
@@ -72,6 +77,7 @@ extends CoreParserImpl implements CoreParser{
 				
 				State curState = new State();
 				curState.setName(packElem.getAttribute("name"));
+				String idState = packElem.getAttribute("xmi:id");
 				if(stateMach != null){
 					curState.setStateMachine(stateMach);
 					
@@ -84,7 +90,50 @@ extends CoreParserImpl implements CoreParser{
 					statesOfStM.add(curState);
 				}else
 					logger.error("No statemachine for state");
+				
+				statesWithId.put(idState, curState);
 			}
 		}
+	}
+	private void  makeTransitions(Element umlModelEl) {
+		NodeList transNodes = umlModelEl.getElementsByTagName("transition");
+		StateMachine stateMach = null;		
+		
+		for (int i = 0; i < transNodes.getLength(); i++) {
+			Element transElem = (Element)transNodes.item(i);
+			
+			//рассматриваем transition
+			if(transElem.getAttribute("xmi:type").equals("uml:Transition"))
+			{
+				Transition curTrans = new Transition();
+//				curTrans.setName(transElem.getAttribute("name"));
+				String idTrans = transElem.getAttribute("xmi:id");
+				String idSource = transElem.getAttribute("source");
+				String idTarget = transElem.getAttribute("target");
+				
+				State stSource = statesWithId.get(idSource);
+				State stTarget = statesWithId.get(idTarget);
+				if(stSource == null || stTarget == null)
+					logger.error("No states for transition");
+				else{
+					curTrans.setSource(stSource);
+					curTrans.setTarget(stTarget);
+					
+					stateMach = stSource.getStateMachine();
+					curTrans.setStateMachine(stateMach);
+					
+					List<Transition> transOfStM = stateMach.getTransitions();
+
+					if(transOfStM == null){
+						transOfStM = new LinkedList<Transition>();
+						stateMach.setTransitions(transOfStM);
+					}
+					transOfStM.add(curTrans);
+				}
+				stateMach = null;
+				transitionsWithId.put(idTrans, curTrans);
+			}
 		}
+	}
+	
 }

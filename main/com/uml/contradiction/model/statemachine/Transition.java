@@ -7,11 +7,7 @@ import com.uml.contradiction.model.EdgeType;
 import com.uml.contradiction.model.Vertex;
 
 public class Transition implements Edge{
-	@Override
-	public String toString() {
-		return "Transition [target=" + target + ", source=" + source
-				+ ", triggers=" + triggers + ", guard=" + guard + "]";
-	}
+	
 	private Vertex target;
 	private Vertex source;
 	private List<Trigger> triggers;
@@ -51,5 +47,9 @@ public class Transition implements Edge{
 	public void setStateMachine(StateMachine stateMachine) {
 		this.stateMachine = stateMachine;
 	}
-	
+	@Override
+	public String toString() {
+		return "Transition [target=" + target + ", source=" + source
+				+ ", triggers=" + triggers + ", guard=" + guard + "]";
+	}
 }

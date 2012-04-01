@@ -60,7 +60,7 @@ public class StateMachine {
 	}
 	@Override
 	public String toString() {
-		return "StateMachine [name=" + name + " states=" + states  
-				+ ", cClass=" + cClass.getFullName() + ", transitions=" + transitions + "]";
+		return "StateMachine [name=" + name  + ", cClass=" + cClass.getFullName()
+				 + "\n\t, states=" + states  + "\n\t, transitions=" + transitions + "]";
 	}
 }
