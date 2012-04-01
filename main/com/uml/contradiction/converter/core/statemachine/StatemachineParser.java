@@ -179,8 +179,6 @@ extends CoreParserImpl implements CoreParser{
 					if(stSourceChoice == null)
 						logger.error("No source state for transition");
 					else{	//если исходный конец choice
-//						stSource = stSourceChoice;
-						System.out.println("aaaaaaaaaaaaaa\n");
 						
 						List<Transition> transList = choiceSourceWithStates.get(stSource);
 						if(transList == null){
@@ -201,8 +199,7 @@ extends CoreParserImpl implements CoreParser{
 						if(stTargetChoice == null)
 							logger.error("No target state for transition");
 						else{    	//если конечный конец choice
-//							stTarget = stTargetChoice;
-							
+	
 							List<Transition> transList = choiceTargetWithStates.get(stTarget);
 							if(transList == null){
 								transList = new LinkedList<Transition>();
@@ -304,19 +301,6 @@ extends CoreParserImpl implements CoreParser{
 					}
 			}		
 		}
-//		
-//		//проход по всем элементам  HashMap
-//		if(!choiceTargetWithStates.isEmpty()){
-//			
-//			System.out.println("Size " + choiceTargetWithStates.size());
-//					
-//			for(State key : choiceTargetWithStates.keySet()){
-//				System.out.println("Key : " + key + "\n Stereotypes:");
-//				List<Transition> sts = choiceTargetWithStates.get(key);
-//				for(Transition cls : sts)
-//					System.out.println(cls);
-//			}		
-//		}
 	}
 	
 	private void  getAllTriggers(Element umlModelEl) {
