@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.w3c.dom.Element;
@@ -25,7 +26,8 @@ extends CoreParserImpl implements CoreParser{
 	private Map<String, Transition> transitionsWithId = new LinkedHashMap <String, Transition>();
 	private Map<String, StateMachine> stMachinesWithId = new LinkedHashMap <String, StateMachine>();
 	private Map<String, Trigger> triggersTransWithId = new LinkedHashMap <String, Trigger>();
-	
+	private Map<String, State> choicesWithId = new LinkedHashMap <String, State>();
+		
 	public void makeResult() {
 		List<StateMachine> stateMach_s = StateMachineGraph.getStateMachines();
 		
@@ -83,13 +85,16 @@ extends CoreParserImpl implements CoreParser{
 				if(stateMach != null){
 					curState.setStateMachine(stateMach);
 					
-					List<State> statesOfStM = stateMach.getStates();
-					
-					if(statesOfStM == null){
-						statesOfStM = new LinkedList<State>();
-						stateMach.setStates(statesOfStM);
+					if(!packElem.getAttribute("kind").equals("choice")){ //если выбор state
+						
+						List<State> statesOfStM = stateMach.getStates();
+						
+						if(statesOfStM == null){
+							statesOfStM = new LinkedList<State>();
+							stateMach.setStates(statesOfStM);
+						}
+						statesOfStM.add(curState);
 					}
-					statesOfStM.add(curState);
 				}else
 					logger.error("No statemachine for state");
 				
@@ -134,15 +139,21 @@ extends CoreParserImpl implements CoreParser{
 						
 						curState.setDdo(trig);
 					}
-				}				
+				}			
 				
-				statesWithId.put(idState, curState);
+				if(packElem.getAttribute("kind").equals("choice")) //если выбор state
+					choicesWithId.put(idState, curState);
+				else
+					statesWithId.put(idState, curState);
 			}
 		}
 	}
 	private void  makeTransitions(Element umlModelEl) {
 		NodeList transNodes = umlModelEl.getElementsByTagName("transition");
 		StateMachine stateMach = null;		
+		Map<State, List<Transition>> choiceSourceWithStates = new LinkedHashMap <State, List<Transition>>();
+		Map<State, List<Transition>> choiceTargetWithStates = new LinkedHashMap <State, List<Transition>>();
+		
 		
 		for (int i = 0; i < transNodes.getLength(); i++) {
 			Element transElem = (Element)transNodes.item(i);
@@ -150,6 +161,9 @@ extends CoreParserImpl implements CoreParser{
 			//рассматриваем transition
 			if(transElem.getAttribute("xmi:type").equals("uml:Transition"))
 			{
+				State stSourceChoice = null;
+				State stTargetChoice = null;
+				
 				Transition curTrans = new Transition();
 				curTrans.setName(transElem.getAttribute("name"));
 				String idTrans = transElem.getAttribute("xmi:id");
@@ -158,23 +172,63 @@ extends CoreParserImpl implements CoreParser{
 				
 				State stSource = statesWithId.get(idSource);
 				State stTarget = statesWithId.get(idTarget);
-				if(stSource == null || stTarget == null)
-					logger.error("No states for transition");
-				else{
-					curTrans.setSource(stSource);
-					curTrans.setTarget(stTarget);
-					
-					stateMach = stSource.getStateMachine();
-					curTrans.setStateMachine(stateMach);
-					
-					List<Transition> transOfStM = stateMach.getTransitions();
-
-					if(transOfStM == null){
-						transOfStM = new LinkedList<Transition>();
-						stateMach.setTransitions(transOfStM);
+				
+				if(stSource == null){	
+					stSourceChoice = choicesWithId.get(idSource);
+					if(stSourceChoice == null)
+						logger.error("No source state for transition");
+					else{	//если исходный конец choice
+						stSource = stSourceChoice;
+						System.out.println("aaaaaaaaaaaaaa\n");
+						
+						List<Transition> transList = choiceSourceWithStates.get(stSource);
+						if(transList == null){
+							transList = new LinkedList<Transition>();
+							transList.add(curTrans);
+							choiceSourceWithStates.put(stSource, transList);
+						}
+						else{
+							transList.add(curTrans);								
+						}
+						
 					}
-					transOfStM.add(curTrans);
+				}else{
+					if(stTarget == null){
+						stTargetChoice = choicesWithId.get(idTarget);
+						
+						if(stTargetChoice == null)
+							logger.error("No target state for transition");
+						else{    	//если конечный конец choice
+							stTarget = stTargetChoice;
+							
+							List<Transition> transList = choiceTargetWithStates.get(stTarget);
+							if(transList == null){
+								transList = new LinkedList<Transition>();
+								transList.add(curTrans);
+								choiceTargetWithStates.put(stTarget, transList);
+							}
+							else{
+								transList.add(curTrans);								
+							}
+							
+						}
+					}
 				}
+				 //оба конца нормальные
+				curTrans.setSource(stSource);
+				curTrans.setTarget(stTarget);
+				
+				stateMach = stSource.getStateMachine();
+				curTrans.setStateMachine(stateMach);
+				
+				List<Transition> transOfStM = stateMach.getTransitions();
+
+				if(transOfStM == null){
+					transOfStM = new LinkedList<Transition>();
+					stateMach.setTransitions(transOfStM);
+				}
+				transOfStM.add(curTrans);
+				
 				stateMach = null;
 				//триггеры для Transition
 				if(triggersTransWithId != null ){
@@ -207,6 +261,32 @@ extends CoreParserImpl implements CoreParser{
 				transitionsWithId.put(idTrans, curTrans);
 			}
 		}
+		
+		//проход по всем элементам  HashMap
+//		if(!choiceSourceWithStates.isEmpty()){
+//			
+//			System.out.println("Size " + choiceSourceWithStates.size());
+//					
+//			for(State key : choiceSourceWithStates.keySet()){
+//				System.out.println("Key : " + key + "\n Stereotypes:");
+//				List<Transition> sts = choiceSourceWithStates.get(key);
+//				for(Transition cls : sts)
+//					System.out.println(cls);
+//			}		
+//		}
+//		
+//		//проход по всем элементам  HashMap
+//		if(!choiceTargetWithStates.isEmpty()){
+//			
+//			System.out.println("Size " + choiceTargetWithStates.size());
+//					
+//			for(State key : choiceTargetWithStates.keySet()){
+//				System.out.println("Key : " + key + "\n Stereotypes:");
+//				List<Transition> sts = choiceTargetWithStates.get(key);
+//				for(Transition cls : sts)
+//					System.out.println(cls);
+//			}		
+//		}
 	}
 	
 	private void  getAllTriggers(Element umlModelEl) {
