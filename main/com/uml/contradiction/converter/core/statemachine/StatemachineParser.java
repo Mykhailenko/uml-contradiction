@@ -151,7 +151,7 @@ extends CoreParserImpl implements CoreParser{
 			if(transElem.getAttribute("xmi:type").equals("uml:Transition"))
 			{
 				Transition curTrans = new Transition();
-//				curTrans.setName(transElem.getAttribute("name"));
+				curTrans.setName(transElem.getAttribute("name"));
 				String idTrans = transElem.getAttribute("xmi:id");
 				String idSource = transElem.getAttribute("source");
 				String idTarget = transElem.getAttribute("target");

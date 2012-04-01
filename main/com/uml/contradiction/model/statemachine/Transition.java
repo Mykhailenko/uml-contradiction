@@ -7,6 +7,7 @@ import com.uml.contradiction.model.EdgeType;
 import com.uml.contradiction.model.Vertex;
 
 public class Transition implements Edge{
+	private String name;
 	
 	private Vertex target;
 	private Vertex source;
@@ -49,7 +50,13 @@ public class Transition implements Edge{
 	}
 	@Override
 	public String toString() {
-		return "Transition [target=" + target + ", source=" + source
+		return "Transition [name=" +  name + ", target=" + target + ", source=" + source
 				+ ", triggers=" + triggers + ", guard=" + guard + "]";
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }
