@@ -24,6 +24,7 @@ extends CoreParserImpl implements CoreParser{
 	private Map<String, State> statesWithId = new LinkedHashMap <String, State>();
 	private Map<String, Transition> transitionsWithId = new LinkedHashMap <String, Transition>();
 	private Map<String, StateMachine> stMachinesWithId = new LinkedHashMap <String, StateMachine>();
+	private Map<String, Trigger> triggersTransWithId = new LinkedHashMap <String, Trigger>();
 	
 	public void makeResult() {
 		List<StateMachine> stateMach_s = StateMachineGraph.getStateMachines();
@@ -35,6 +36,7 @@ extends CoreParserImpl implements CoreParser{
 
 	public List<Object> parse(Element umlModelEl) {
 		makeStates(umlModelEl);
+		getAllTriggers(umlModelEl);
 		
 		makeTransitions(umlModelEl);
 				
@@ -91,6 +93,51 @@ extends CoreParserImpl implements CoreParser{
 				}else
 					logger.error("No statemachine for state");
 				
+				//разбор тригерров
+				NodeList entryNodes = packElem.getElementsByTagName("entry");
+				if(entryNodes.getLength() != 0){	
+					System.out.println("Fauckkkkkkkkkkkkkkkkkkkkkkkkk\n\n\n");
+					Trigger trig = new Trigger();
+					Element entryElem = (Element)entryNodes.item(0);
+					if(entryElem.getAttribute("xmi:type").equals("uml:Activity"))
+					{
+						String nameActivity = entryElem.getAttribute("name");
+						System.out.println("Fau22\n\n\n");
+						
+						trig.setMethodName(nameActivity);
+						NodeList paramNodes = entryElem.getElementsByTagName("ownedParameter");
+						trig.setParamCount(paramNodes.getLength());
+						
+						curState.setEntry(trig);
+					}
+				}
+				NodeList exitNodes = packElem.getElementsByTagName("exit");
+				if(exitNodes.getLength() != 0){			
+					Trigger trig = new Trigger();
+					Element exitElem = (Element)exitNodes.item(0);
+					if(exitElem.getAttribute("xmi:type").equals("uml:Activity")){
+						String nameActivity = exitElem.getAttribute("name");
+						trig.setMethodName(nameActivity);
+						NodeList paramNodes = exitElem.getElementsByTagName("ownedParameter");
+						trig.setParamCount(paramNodes.getLength());
+						
+						curState.setExit(trig);
+					}
+				}
+				NodeList doNodes = packElem.getElementsByTagName("doActivity");
+				if(doNodes.getLength() != 0){			
+					Trigger trig = new Trigger();
+					Element doElem = (Element)doNodes.item(0);
+					if((doElem.getAttribute("xmi:type")).equals("uml:Activity")){
+						String nameActivity = doElem.getAttribute("name");
+						trig.setMethodName(nameActivity);
+						NodeList paramNodes = doElem.getElementsByTagName("ownedParameter");
+						trig.setParamCount(paramNodes.getLength());
+						
+						curState.setDdo(trig);
+					}
+				}				
+				
 				statesWithId.put(idState, curState);
 			}
 		}
@@ -131,9 +178,56 @@ extends CoreParserImpl implements CoreParser{
 					transOfStM.add(curTrans);
 				}
 				stateMach = null;
+				//триггеры для Transition
+				if(triggersTransWithId != null ){
+					NodeList nodesTrig = transElem.getElementsByTagName("trigger");
+					for (int t = 0; t < nodesTrig.getLength(); t++) {
+						Element refTrigElem = (Element)nodesTrig.item(t);
+						String idTrig = refTrigElem.getAttribute("event");
+						
+						Trigger trig = triggersTransWithId.get(idTrig);
+						
+						List<Trigger> trigs4Tran = curTrans.getTriggers();
+						
+						if(trigs4Tran == null){
+							trigs4Tran = new LinkedList<Trigger>();
+							curTrans.setTriggers(trigs4Tran);
+						}
+						trigs4Tran.add(trig);
+					}
+				}
+				//Guard для Transition
+				Element ownRule = (Element)transElem.getElementsByTagName("ownedRule").item(0);
+				String connt = getAttrByNameAndTag(ownRule, "specification", "body");
+				if(connt != null)
+					if(!connt.equals("")){
+						Guard grd = new Guard();
+						grd.setConstraint(connt);
+						curTrans.setGuard(grd);
+					}
+				
 				transitionsWithId.put(idTrans, curTrans);
 			}
 		}
 	}
-	
+	private void  getAllTriggers(Element umlModelEl) {
+		NodeList trigsNodes = umlModelEl.getElementsByTagName("packagedElement");
+		
+		for (int i = 0; i < trigsNodes.getLength(); i++) {
+			Element trigElem = (Element)trigsNodes.item(i);
+			
+			//рассматриваем trigger
+			if(trigElem.getAttribute("xmi:type").equals("uml:AnyReceiveEvent"))
+			{
+				Trigger trig = new Trigger();
+				String idTrig = trigElem.getAttribute("xmi:id");
+	//скорей всего не так
+				String nameTrig = trigElem.getAttribute("name");
+				trig.setMethodName(nameTrig);
+				trig.setParamCount(0);
+				
+				triggersTransWithId.put(idTrig, trig);
+			}
+		}
+	}
 }
