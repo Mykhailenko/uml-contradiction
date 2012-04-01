@@ -8,6 +8,7 @@ import com.uml.contradiction.gui.models.DisplayedCriterion;
 public class CriterionSuite {
 	public static List<Criterion> getAllCriterion(){
 		List<Criterion> result = new LinkedList<Criterion>();
+		result.add(new CheckAttributeOrAssociate());
 		result.add(new CheckEntryMethodsCriterion());
 		result.add(new CheckNoStaticMethod());
 		result.add(new CheckSequenceCriterion());
