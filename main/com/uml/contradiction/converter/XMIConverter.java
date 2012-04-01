@@ -21,6 +21,7 @@ import com.uml.contradiction.converter.core.*;
 import com.uml.contradiction.converter.core.classes.ClassParser;
 import com.uml.contradiction.converter.core.sequence.SequenceParser;
 import com.uml.contradiction.converter.core.object.ObjectParser;
+import com.uml.contradiction.converter.core.statemachine.StatemachineParser;
 
 public class XMIConverter {
 	private static File file = null;
@@ -72,11 +73,12 @@ private static final Logger LOGGER = Logger.getRootLogger();
 		objPars.makeResult();
 		
 		SequenceParser seqPars = ParsersTool.getInstanceSequenceParser();
-		seqPars.parse(umlModelEl);
-		
-		
+		seqPars.parse(umlModelEl);		
 		seqPars.makeResult();
-			
+		
+		StatemachineParser stMPars = ParsersTool.getInstanceStatemachineParser();
+		stMPars.parse(umlModelEl);		
+		stMPars.makeResult();			
 		
 		return Collections.emptyList();
 	}

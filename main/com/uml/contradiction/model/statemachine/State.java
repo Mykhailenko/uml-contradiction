@@ -45,5 +45,9 @@ public class State implements Vertex{
 	public VertexType getType() {
 		return VertexType.STATE;
 	}
-	
+	@Override
+	public String toString() {
+		return "State [name=" + name + ", entry=" + entry + ", ddo=" + ddo
+				+ ", exit=" + exit + "]";
+	}
 }

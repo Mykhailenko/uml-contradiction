@@ -30,6 +30,13 @@ extends CoreParserImpl implements CoreParser{
 	private Map<String, OObject> objectsWithId = new LinkedHashMap <String, OObject>();
 	private Map<String, Link> linksWithId = new LinkedHashMap <String, Link>();
 	
+	public Map<String, OObject> getObjectsWithId() {
+		return objectsWithId;
+	}
+	public Map<String, Link> getLinksWithId() {
+		return linksWithId;
+	}
+
 	public void makeResult() {
 		List<OObject> object_s = ObjectGraph.getObjects();
 		List<Link> link_s = ObjectGraph.getLinks();
@@ -45,6 +52,14 @@ extends CoreParserImpl implements CoreParser{
 	
 	public List<Object> parse(Element umlModelEl) {
 		
+		makeObjects(umlModelEl);
+		
+		makeLinks(umlModelEl);
+		
+		return null;
+	}
+	
+	private void makeObjects(Element umlModelEl){
 		NodeList packNodes = umlModelEl.getElementsByTagName("packagedElement");
 		
 		for (int i = 0; i < packNodes.getLength(); i++) {
@@ -137,9 +152,6 @@ extends CoreParserImpl implements CoreParser{
 				}
 			}
 		}
-		makeLinks(umlModelEl);
-		
-		return null;
 	}
 	
 	private void makeLinks(Element umlModelEl){
@@ -171,6 +183,9 @@ extends CoreParserImpl implements CoreParser{
 						
 						OObject obj1 = objectsWithId.get(idRefCls1);
 						OObject obj2 = objectsWithId.get(idRefCls2);
+						
+						if(obj1 == null || obj2 == null)
+							logger.error("We have link with end on no object (obj = null)");
 						
 						Link link = new Link(new LinkEnd(obj1), new LinkEnd(obj2), nameLnk);
 						linksWithId.put(idLink, link);

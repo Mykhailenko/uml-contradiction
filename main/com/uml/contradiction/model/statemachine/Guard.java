@@ -8,4 +8,9 @@ public class Guard {
 	public void setConstraint(String constraint) {
 		this.constraint = constraint;
 	}
+	@Override
+	public String toString() {
+		return "Guard [constraint=" + constraint + "]";
+	}
+	
 }

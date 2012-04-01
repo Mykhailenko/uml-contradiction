@@ -34,4 +34,10 @@ public class Trigger {
 		return null;
 		
 	}
+	@Override
+	public String toString() {
+		return "Trigger [methodName=" + methodName + ", paramCount="
+				+ paramCount + "]";
+	}
+	
 }
