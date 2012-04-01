@@ -96,14 +96,12 @@ extends CoreParserImpl implements CoreParser{
 				//разбор тригерров
 				NodeList entryNodes = packElem.getElementsByTagName("entry");
 				if(entryNodes.getLength() != 0){	
-					System.out.println("Fauckkkkkkkkkkkkkkkkkkkkkkkkk\n\n\n");
 					Trigger trig = new Trigger();
 					Element entryElem = (Element)entryNodes.item(0);
 					if(entryElem.getAttribute("xmi:type").equals("uml:Activity"))
 					{
 						String nameActivity = entryElem.getAttribute("name");
-						System.out.println("Fau22\n\n\n");
-						
+											
 						trig.setMethodName(nameActivity);
 						NodeList paramNodes = entryElem.getElementsByTagName("ownedParameter");
 						trig.setParamCount(paramNodes.getLength());
@@ -210,6 +208,7 @@ extends CoreParserImpl implements CoreParser{
 			}
 		}
 	}
+	
 	private void  getAllTriggers(Element umlModelEl) {
 		NodeList trigsNodes = umlModelEl.getElementsByTagName("packagedElement");
 		
@@ -219,12 +218,11 @@ extends CoreParserImpl implements CoreParser{
 			//рассматриваем trigger
 			if(trigElem.getAttribute("xmi:type").equals("uml:AnyReceiveEvent"))
 			{
-				Trigger trig = new Trigger();
+				Trigger trig;
 				String idTrig = trigElem.getAttribute("xmi:id");
-	//скорей всего не так
+
 				String nameTrig = trigElem.getAttribute("name");
-				trig.setMethodName(nameTrig);
-				trig.setParamCount(0);
+				trig = Trigger.createTrigger(nameTrig);				
 				
 				triggersTransWithId.put(idTrig, trig);
 			}

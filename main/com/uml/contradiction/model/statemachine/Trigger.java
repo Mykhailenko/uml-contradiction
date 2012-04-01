@@ -16,7 +16,7 @@ public class Trigger {
 		this.paramCount = paramCount;
 	}
 	public static Trigger createTrigger(String str){
-		Trigger result = null;
+		Trigger result = new Trigger();
 		// i suppose to get some like that 'ololoName(param1,param2)' or 'disable()' or 'enable' 
 		if(str.contains("(")){ // first or second case
 			result.methodName = str.substring(0, str.indexOf("(")).trim();
@@ -31,7 +31,7 @@ public class Trigger {
 			result.methodName = str;
 			result.paramCount = 0;
 		}
-		return null;
+		return result;
 		
 	}
 	@Override
