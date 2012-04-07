@@ -1,0 +1,1420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xmlns:untitled_profile="http:///schemas/untitled_profile/0" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http:///schemas/untitled_profile/0 olya.profile.uml#3bL_sWyD.AACARjg_content">
+	<uml:Model name="untitled" xmi:id="3bL_sWyD.AACARjg">
+		<xmi:Documentation exportedFromDifferentName="false" xmi:Exporter="Visual Paradigm for UML" xmi:ExporterVersion="7.0.0"/>
+		<profileApplication xmi:id="3bL_sWyD.AACARjg_3bL_sWyD.AACARjg_content_profileApplication">
+			<eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML" xmi:id="3bL_sWyD.AACARjg_3bL_sWyD.AACARjg_content_annotations">
+				<references href="olya.profile.uml#3bL_sWyD.AACARjg_content" xmi:type="ecore:EPackage"/>
+			</eAnnotations>
+			<appliedProfile href="olya.profile.uml#3bL_sWyD.AACARjg_profile"/>
+		</profileApplication>
+		<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+			<projectProperties>
+				<projectProperty name="author" value=""/>
+				<projectProperty name="company" value=""/>
+				<projectProperty name="description" value=""/>
+			</projectProperties>
+			<vpumlChildModels>
+				<vpumlModel id="vbL_sWyD.AACARk7" modelType="UseCasePropConfig">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="UseCasePropConfig"/>
+						<property htmlValue="" name="documentation" type="htmlString" value=""/>
+						<property name="pmAuthor" type="string" value="tas"/>
+						<property name="pmCreateDateTime" type="string" value="1333822180797"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="vbL_sWyD.AACARlE"/>
+						<modelRef value="vbL_sWyD.AACARlN"/>
+						<modelRef value="vbL_sWyD.AACARlW"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="vbL_sWyD.AACARlE" modelType="UseCaseRank">
+							<properties>
+								<property name="name" type="string" value="Low"/>
+								<property name="modelType" type="string" value="UseCaseRank"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="tas"/>
+								<property name="pmCreateDateTime" type="string" value="1333822180797"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="vbL_sWyD.AACARlN" modelType="UseCaseRank">
+							<properties>
+								<property name="name" type="string" value="Medium"/>
+								<property name="modelType" type="string" value="UseCaseRank"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="tas"/>
+								<property name="pmCreateDateTime" type="string" value="1333822180797"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="vbL_sWyD.AACARlW" modelType="UseCaseRank">
+							<properties>
+								<property name="name" type="string" value="High"/>
+								<property name="modelType" type="string" value="UseCaseRank"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="tas"/>
+								<property name="pmCreateDateTime" type="string" value="1333822180797"/>
+							</properties>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="fbL_sWyD.AACARlf" modelType="WSDLContainer">
+					<properties>
+						<property name="name" type="string" value="WSDLContainer"/>
+						<property name="modelType" type="string" value="WSDLContainer"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="fbL_sWyD.AACARlg"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="fbL_sWyD.AACARlg" modelType="XSDSchema">
+							<properties>
+								<property name="name" type="string" value="http://www.w3.org/2001/XMLSchema"/>
+								<property name="modelType" type="string" value="XSDSchema"/>
+								<property name="import" type="boolean" value="false"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmAuthor" type="string" value="tas"/>
+								<property name="pmCreateDateTime" type="string" value="1333822180798"/>
+								<property name="attributeFormDefault" type="int" value="0"/>
+								<property name="elementFormDefault" type="int" value="0"/>
+								<property name="targetNamespace" type="string" value="http://www.w3.org/2001/XMLSchema"/>
+							</properties>
+							<vpumlChildModelRefs>
+								<modelRef value="fbL_sWyD.AACARlp"/>
+								<modelRef value="fbL_sWyD.AACARly"/>
+								<modelRef value="fbL_sWyD.AACARl7"/>
+								<modelRef value="fbL_sWyD.AACARmE"/>
+								<modelRef value="_bL_sWyD.AACARmN"/>
+								<modelRef value="_bL_sWyD.AACARmW"/>
+								<modelRef value="_bL_sWyD.AACARmf"/>
+								<modelRef value="_bL_sWyD.AACARmo"/>
+								<modelRef value="_bL_sWyD.AACARmx"/>
+								<modelRef value="_bL_sWyD.AACARm6"/>
+								<modelRef value="A7L_sWyD.AACARnD"/>
+								<modelRef value="A7L_sWyD.AACARnM"/>
+								<modelRef value="A7L_sWyD.AACARnV"/>
+								<modelRef value="A7L_sWyD.AACARne"/>
+								<modelRef value="A7L_sWyD.AACARnn"/>
+								<modelRef value="g7L_sWyD.AACARnw"/>
+								<modelRef value="g7L_sWyD.AACARn5"/>
+								<modelRef value="g7L_sWyD.AACARoC"/>
+								<modelRef value="g7L_sWyD.AACARoL"/>
+								<modelRef value="g7L_sWyD.AACARoU"/>
+								<modelRef value="g7L_sWyD.AACARod"/>
+								<modelRef value="Q7L_sWyD.AACARom"/>
+								<modelRef value="Q7L_sWyD.AACARov"/>
+								<modelRef value="Q7L_sWyD.AACARo4"/>
+								<modelRef value="Q7L_sWyD.AACARpB"/>
+								<modelRef value="Q7L_sWyD.AACARpK"/>
+								<modelRef value="Q7L_sWyD.AACARpT"/>
+								<modelRef value="w7L_sWyD.AACARpc"/>
+								<modelRef value="w7L_sWyD.AACARpl"/>
+								<modelRef value="w7L_sWyD.AACARpu"/>
+								<modelRef value="w7L_sWyD.AACARp3"/>
+								<modelRef value="w7L_sWyD.AACARqA"/>
+								<modelRef value="w7L_sWyD.AACARqJ"/>
+								<modelRef value="I7L_sWyD.AACARqS"/>
+								<modelRef value="I7L_sWyD.AACARqb"/>
+								<modelRef value="I7L_sWyD.AACARqk"/>
+								<modelRef value="I7L_sWyD.AACARqt"/>
+								<modelRef value="I7L_sWyD.AACARq2"/>
+								<modelRef value="I7L_sWyD.AACARq_"/>
+								<modelRef value="I7L_sWyD.AACARrI"/>
+								<modelRef value="o7L_sWyD.AACARrR"/>
+								<modelRef value="o7L_sWyD.AACARra"/>
+								<modelRef value="o7L_sWyD.AACARrj"/>
+								<modelRef value="o7L_sWyD.AACARrs"/>
+							</vpumlChildModelRefs>
+							<vpumlChildModels>
+								<vpumlModel id="fbL_sWyD.AACARlp" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="ENTITIES"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180798"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="fbL_sWyD.AACARly" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="ENTITY"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180798"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="fbL_sWyD.AACARl7" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="ID"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180798"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="fbL_sWyD.AACARmE" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="IDREF"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180798"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="_bL_sWyD.AACARmN" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="IDREFS"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180799"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="_bL_sWyD.AACARmW" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="NCName"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180799"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="_bL_sWyD.AACARmf" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="NMTOKEN"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180799"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="_bL_sWyD.AACARmo" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="NMTOKENS"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180799"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="_bL_sWyD.AACARmx" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="NOTATION"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180799"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="_bL_sWyD.AACARm6" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="Name"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180800"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="A7L_sWyD.AACARnD" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="QName"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180800"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="A7L_sWyD.AACARnM" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="anyURI"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180800"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="A7L_sWyD.AACARnV" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="base64Binary"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180800"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="A7L_sWyD.AACARne" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="boolean"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180800"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="A7L_sWyD.AACARnn" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="byte"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180800"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="g7L_sWyD.AACARnw" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="date"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180801"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="g7L_sWyD.AACARn5" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="dateTime"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180801"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="g7L_sWyD.AACARoC" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="decimal"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180801"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="g7L_sWyD.AACARoL" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="double"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180801"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="g7L_sWyD.AACARoU" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="duration"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180801"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="g7L_sWyD.AACARod" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="float"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180801"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="Q7L_sWyD.AACARom" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="gDay"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180802"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="Q7L_sWyD.AACARov" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="gMonth"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180802"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="Q7L_sWyD.AACARo4" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="gMonthDay"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180802"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="Q7L_sWyD.AACARpB" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="gYear"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180802"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="Q7L_sWyD.AACARpK" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="gYearMonth"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180802"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="Q7L_sWyD.AACARpT" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="hexBinary"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180803"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="w7L_sWyD.AACARpc" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="int"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180803"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="w7L_sWyD.AACARpl" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="integer"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180803"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="w7L_sWyD.AACARpu" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="language"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180803"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="w7L_sWyD.AACARp3" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="long"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180803"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="w7L_sWyD.AACARqA" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="negativeInteger"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180803"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="w7L_sWyD.AACARqJ" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="nonNegativeInteger"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180803"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="I7L_sWyD.AACARqS" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="nonPositiveInteger"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180804"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="I7L_sWyD.AACARqb" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="normalizedString"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180804"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="I7L_sWyD.AACARqk" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="positiveInteger"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180804"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="I7L_sWyD.AACARqt" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="short"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180804"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="I7L_sWyD.AACARq2" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="string"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180804"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="I7L_sWyD.AACARq_" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="time"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180804"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="I7L_sWyD.AACARrI" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="token"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180805"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="o7L_sWyD.AACARrR" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="unsignedByte"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180805"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="o7L_sWyD.AACARra" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="unsignedInt"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180805"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="o7L_sWyD.AACARrj" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="unsignedLong"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180805"/>
+									</properties>
+								</vpumlModel>
+								<vpumlModel id="o7L_sWyD.AACARrs" modelType="XSDSimpleType">
+									<properties>
+										<property name="name" type="string" value="unsignedShort"/>
+										<property name="modelType" type="string" value="XSDSimpleType"/>
+										<property name="import" type="boolean" value="false"/>
+										<property htmlValue="" name="documentation" type="htmlString" value=""/>
+										<property name="pmAuthor" type="string" value="tas"/>
+										<property name="pmCreateDateTime" type="string" value="1333822180805"/>
+									</properties>
+								</vpumlModel>
+							</vpumlChildModels>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="o7L_sWyD.AACARr1" modelType="PMStatusContainer">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="PMStatusContainer"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="o7L_sWyD.AACARr2"/>
+						<modelRef value="Y7L_sWyD.AACARr3"/>
+						<modelRef value="Y7L_sWyD.AACARr4"/>
+						<modelRef value="Y7L_sWyD.AACARr5"/>
+						<modelRef value="Y7L_sWyD.AACARr6"/>
+						<modelRef value="Y7L_sWyD.AACARr7"/>
+						<modelRef value="47L_sWyD.AACARr8"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="o7L_sWyD.AACARr2" modelType="PMStatus">
+							<properties>
+								<property name="name" type="string" value="Proposed"/>
+								<property name="modelType" type="string" value="PMStatus"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="Y7L_sWyD.AACARr3" modelType="PMStatus">
+							<properties>
+								<property name="name" type="string" value="Approved"/>
+								<property name="modelType" type="string" value="PMStatus"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="Y7L_sWyD.AACARr4" modelType="PMStatus">
+							<properties>
+								<property name="name" type="string" value="Planned"/>
+								<property name="modelType" type="string" value="PMStatus"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="Y7L_sWyD.AACARr5" modelType="PMStatus">
+							<properties>
+								<property name="name" type="string" value="Designed"/>
+								<property name="modelType" type="string" value="PMStatus"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="Y7L_sWyD.AACARr6" modelType="PMStatus">
+							<properties>
+								<property name="name" type="string" value="Implemented"/>
+								<property name="modelType" type="string" value="PMStatus"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="Y7L_sWyD.AACARr7" modelType="PMStatus">
+							<properties>
+								<property name="name" type="string" value="Tested"/>
+								<property name="modelType" type="string" value="PMStatus"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="47L_sWyD.AACARr8" modelType="PMStatus">
+							<properties>
+								<property name="name" type="string" value="Deployed"/>
+								<property name="modelType" type="string" value="PMStatus"/>
+							</properties>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="47L_sWyD.AACARr9" modelType="PMDifficultyContainer">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="PMDifficultyContainer"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="47L_sWyD.AACARr."/>
+						<modelRef value="47L_sWyD.AACARr_"/>
+						<modelRef value="47L_sWyD.AACARsA"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="47L_sWyD.AACARr." modelType="PMDifficulty">
+							<properties>
+								<property name="name" type="string" value="Easy"/>
+								<property name="modelType" type="string" value="PMDifficulty"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="47L_sWyD.AACARr_" modelType="PMDifficulty">
+							<properties>
+								<property name="name" type="string" value="Medium"/>
+								<property name="modelType" type="string" value="PMDifficulty"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="47L_sWyD.AACARsA" modelType="PMDifficulty">
+							<properties>
+								<property name="name" type="string" value="Difficult"/>
+								<property name="modelType" type="string" value="PMDifficulty"/>
+							</properties>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="47L_sWyD.AACARsB" modelType="PMPriorityContainer">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="PMPriorityContainer"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="47L_sWyD.AACARsC"/>
+						<modelRef value="47L_sWyD.AACARsD"/>
+						<modelRef value="47L_sWyD.AACARsE"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="47L_sWyD.AACARsC" modelType="PMPriority">
+							<properties>
+								<property name="name" type="string" value="Low"/>
+								<property name="modelType" type="string" value="PMPriority"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="47L_sWyD.AACARsD" modelType="PMPriority">
+							<properties>
+								<property name="name" type="string" value="Medium"/>
+								<property name="modelType" type="string" value="PMPriority"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="47L_sWyD.AACARsE" modelType="PMPriority">
+							<properties>
+								<property name="name" type="string" value="High"/>
+								<property name="modelType" type="string" value="PMPriority"/>
+							</properties>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="E7L_sWyD.AACARsF" modelType="PMVersionContainer">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="PMVersionContainer"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="E7L_sWyD.AACARsG"/>
+						<modelRef value="E7L_sWyD.AACARsH"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="E7L_sWyD.AACARsG" modelType="PMVersion">
+							<properties>
+								<property name="name" type="string" value="1.0"/>
+								<property name="modelType" type="string" value="PMVersion"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="E7L_sWyD.AACARsH" modelType="PMVersion">
+							<properties>
+								<property name="name" type="string" value="2.0"/>
+								<property name="modelType" type="string" value="PMVersion"/>
+							</properties>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="E7L_sWyD.AACARsI" modelType="PMIterationContainer">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="PMIterationContainer"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="E7L_sWyD.AACARsJ"/>
+						<modelRef value="E7L_sWyD.AACARsK"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="E7L_sWyD.AACARsJ" modelType="PMIteration">
+							<properties>
+								<property name="name" type="string" value="Iteration 1"/>
+								<property name="modelType" type="string" value="PMIteration"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="E7L_sWyD.AACARsK" modelType="PMIteration">
+							<properties>
+								<property name="name" type="string" value="Iteration 2"/>
+								<property name="modelType" type="string" value="PMIteration"/>
+							</properties>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="E7L_sWyD.AACARsL" modelType="PMPhaseContainer">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="PMPhaseContainer"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="E7L_sWyD.AACARsM"/>
+						<modelRef value="E7L_sWyD.AACARsN"/>
+						<modelRef value="k7L_sWyD.AACARsO"/>
+						<modelRef value="k7L_sWyD.AACARsP"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="E7L_sWyD.AACARsM" modelType="PMPhase">
+							<properties>
+								<property name="name" type="string" value="Inception"/>
+								<property name="modelType" type="string" value="PMPhase"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="E7L_sWyD.AACARsN" modelType="PMPhase">
+							<properties>
+								<property name="name" type="string" value="Elaboration"/>
+								<property name="modelType" type="string" value="PMPhase"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="k7L_sWyD.AACARsO" modelType="PMPhase">
+							<properties>
+								<property name="name" type="string" value="Construction"/>
+								<property name="modelType" type="string" value="PMPhase"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="k7L_sWyD.AACARsP" modelType="PMPhase">
+							<properties>
+								<property name="name" type="string" value="Transition"/>
+								<property name="modelType" type="string" value="PMPhase"/>
+							</properties>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="k7L_sWyD.AACARsQ" modelType="PMDisciplineContainer">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="PMDisciplineContainer"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="k7L_sWyD.AACARsR"/>
+						<modelRef value="k7L_sWyD.AACARsS"/>
+						<modelRef value="k7L_sWyD.AACARsT"/>
+						<modelRef value="U7L_sWyD.AACARsU"/>
+						<modelRef value="U7L_sWyD.AACARsV"/>
+						<modelRef value="U7L_sWyD.AACARsW"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="k7L_sWyD.AACARsR" modelType="PMDiscipline">
+							<properties>
+								<property name="name" type="string" value="Business Modeling"/>
+								<property name="modelType" type="string" value="PMDiscipline"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="k7L_sWyD.AACARsS" modelType="PMDiscipline">
+							<properties>
+								<property name="name" type="string" value="Requirements"/>
+								<property name="modelType" type="string" value="PMDiscipline"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="k7L_sWyD.AACARsT" modelType="PMDiscipline">
+							<properties>
+								<property name="name" type="string" value="Analysis &amp; Design"/>
+								<property name="modelType" type="string" value="PMDiscipline"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="U7L_sWyD.AACARsU" modelType="PMDiscipline">
+							<properties>
+								<property name="name" type="string" value="Implementation"/>
+								<property name="modelType" type="string" value="PMDiscipline"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="U7L_sWyD.AACARsV" modelType="PMDiscipline">
+							<properties>
+								<property name="name" type="string" value="Testing"/>
+								<property name="modelType" type="string" value="PMDiscipline"/>
+							</properties>
+						</vpumlModel>
+						<vpumlModel id="U7L_sWyD.AACARsW" modelType="PMDiscipline">
+							<properties>
+								<property name="name" type="string" value="QA &amp; Maintenance"/>
+								<property name="modelType" type="string" value="PMDiscipline"/>
+							</properties>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+				<vpumlModel id="U7L_sWyD.AACARsX" modelType="PMAuthorContainer">
+					<properties>
+						<property name="name" type="string" value=""/>
+						<property name="modelType" type="string" value="PMAuthorContainer"/>
+						<property modelRef="U7L_sWyD.AACARsY" name="defaultValue" type="modelRef"/>
+					</properties>
+					<vpumlChildModelRefs>
+						<modelRef value="U7L_sWyD.AACARsY"/>
+					</vpumlChildModelRefs>
+					<vpumlChildModels>
+						<vpumlModel id="U7L_sWyD.AACARsY" modelType="ValueSpecification">
+							<properties>
+								<property name="name" type="string" value="tas"/>
+								<property name="modelType" type="string" value="ValueSpecification"/>
+								<property htmlValue="" name="documentation" type="htmlString" value=""/>
+								<property name="pmCreateDateTime" type="string" value="1333822180810"/>
+							</properties>
+						</vpumlModel>
+					</vpumlChildModels>
+				</vpumlModel>
+			</vpumlChildModels>
+		</xmi:Extension>
+		<packagedElement isAbstract="false" isActive="false" isLeaf="false" name="Girl" visibility="public" xmi:id="ntv_sWyD.AACASRw" xmi:type="uml:Class">
+			<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+				<isRoot xmi:value="false"/>
+				<modelType value="Class"/>
+				<businessModel xmi:value="false"/>
+				<subdiagram xmi:value="iCYAcWyD.AACASfr"/>
+			</xmi:Extension>
+			<ownedOperation isAbstract="false" isLeaf="false" isQuery="false" name="love" ownerScope="instance" visibility="public" xmi:id="Y5gAcWyD.AACASTj" xmi:type="uml:Operation">
+				<ownedParameter direction="return" isOrdered="false" isUnique="true" xmi:id="Y5gAcWyD.AACASTj_return" xmi:type="uml:Parameter"/>
+				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+					<returnTypeDocumentation xmi:value=""/>
+				</xmi:Extension>
+			</ownedOperation>
+			<ownedOperation isAbstract="false" isLeaf="false" isQuery="false" name="die" ownerScope="instance" visibility="public" xmi:id="VhQAcWyD.AACASUJ" xmi:type="uml:Operation">
+				<ownedParameter direction="return" isOrdered="false" isUnique="true" xmi:id="VhQAcWyD.AACASUJ_return" xmi:type="uml:Parameter"/>
+				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+					<returnTypeDocumentation xmi:value=""/>
+				</xmi:Extension>
+			</ownedOperation>
+			<ownedOperation isAbstract="false" isLeaf="false" isQuery="false" name="foreverAlone" ownerScope="instance" visibility="public" xmi:id="xhwAcWyD.AACASVI" xmi:type="uml:Operation">
+				<ownedParameter direction="return" isOrdered="false" isUnique="true" xmi:id="xhwAcWyD.AACASVI_return" xmi:type="uml:Parameter"/>
+				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+					<returnTypeDocumentation xmi:value=""/>
+				</xmi:Extension>
+			</ownedOperation>
+			<packagedElement kind="initial" name="Initial" xmi:id="PKYAcWyD.AACASfy" xmi:type="uml:Pseudostate">
+				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+					<initialPseudostate/>
+				</xmi:Extension>
+			</packagedElement>
+			<packagedElement name="S1" xmi:id="Ug4AcWyD.AACAShM" xmi:type="uml:State">
+				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+					<state2/>
+				</xmi:Extension>
+			</packagedElement>
+			<packagedElement name="S2" xmi:id="3JEAcWyD.AACASjF" xmi:type="uml:State">
+				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+					<state2/>
+				</xmi:Extension>
+			</packagedElement>
+			<packagedElement name="S3" xmi:id="aecAcWyD.AACAS0E" xmi:type="uml:State">
+				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+					<state2/>
+				</xmi:Extension>
+			</packagedElement>
+			<packagedElement name="DS" xmi:id="wJCAcWyD.AACAS1." xmi:type="uml:State">
+				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+					<state2/>
+				</xmi:Extension>
+			</packagedElement>
+		</packagedElement>
+		<packagedElement xmi:id="stateMachine_id" xmi:type="uml:StateMachine">
+			<region xmi:id="stateMachine_region_id" xmi:type="uml:Region">
+				<transition guard=".g4AcWyD.AACASiM_guard" name="" source="PKYAcWyD.AACASfy" target="Ug4AcWyD.AACAShM" xmi:id=".g4AcWyD.AACASiM" xmi:type="uml:Transition">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<transition2/>
+					</xmi:Extension>
+					<ownedRule xmi:id=".g4AcWyD.AACASiM_guard" xmi:type="uml:Constraint">
+						<specification body="" xmi:id=".g4AcWyD.AACASiM_guard_spec" xmi:type="uml:OpaqueExpression"/>
+					</ownedRule>
+				</transition>
+				<transition guard="8pEAcWyD.AACASkF_guard" name="love()" source="Ug4AcWyD.AACAShM" target="3JEAcWyD.AACASjF" xmi:id="8pEAcWyD.AACASkF" xmi:type="uml:Transition">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<transition2/>
+					</xmi:Extension>
+					<ownedRule xmi:id="8pEAcWyD.AACASkF_guard" xmi:type="uml:Constraint">
+						<specification body="" xmi:id="8pEAcWyD.AACASkF_guard_spec" xmi:type="uml:OpaqueExpression"/>
+					</ownedRule>
+				</transition>
+				<transition guard="recAcWyD.AACAS1E_guard" name="die()" source="3JEAcWyD.AACASjF" target="aecAcWyD.AACAS0E" xmi:id="recAcWyD.AACAS1E" xmi:type="uml:Transition">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<transition2/>
+					</xmi:Extension>
+					<ownedRule xmi:id="recAcWyD.AACAS1E_guard" xmi:type="uml:Constraint">
+						<specification body="" xmi:id="recAcWyD.AACAS1E_guard_spec" xmi:type="uml:OpaqueExpression"/>
+					</ownedRule>
+				</transition>
+				<transition guard="6JCAcWyD.AACAS2._guard" name="die" source="aecAcWyD.AACAS0E" target="wJCAcWyD.AACAS1." xmi:id="6JCAcWyD.AACAS2." xmi:type="uml:Transition">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<transition2/>
+					</xmi:Extension>
+					<ownedRule xmi:id="6JCAcWyD.AACAS2._guard" xmi:type="uml:Constraint">
+						<specification body="" xmi:id="6JCAcWyD.AACAS2._guard_spec" xmi:type="uml:OpaqueExpression"/>
+					</ownedRule>
+				</transition>
+			</region>
+			<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+				<diagram/>
+			</xmi:Extension>
+		</packagedElement>
+		<uml:Diagram diagramType="ClassDiagram" documentation="" name="Class Diagram1" toolName="Visual Paradigm for UML" xmi:id="gBb_sWyD.AACASRn">
+			<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+				<properties>
+					<apmAuthor value="tas"/>
+					<apmCreateDateTime value="1333822187519"/>
+					<apmLastModified value="1333822252180"/>
+					<ashowPackageNameStyle value="0"/>
+					<ashowConnectorName value="0"/>
+					<apaintConnectorThroughLabel value="0"/>
+					<ashowActivityStateNodeCaption value="0"/>
+					<aeditable value="true"/>
+					<afollowDiagramParentElement value="true"/>
+					<aautoFitShapesSize value="false"/>
+					<ashowTaggedValues value="false"/>
+					<ashowStereotypes value="true"/>
+					<ashowConstraints value="false"/>
+					<aalignToGrid value="true"/>
+					<agridVisible value="false"/>
+					<agridWidth value="10"/>
+					<agridHeight value="10"/>
+					<agridColor value="Cr:192,192,192,255"/>
+					<adiagramBackground value="Cr:255,255,255,255"/>
+					<aconnectorStyle value="1"/>
+					<aconnectorLineJumps value="0"/>
+					<aconnectionPointStyle value="0"/>
+					<aconnectorLabelOrientation value="0"/>
+					<amodelElementNameAlignment value="4"/>
+					<azoomRatio value="1.0"/>
+					<amaximized value="true"/>
+					<ax value="0"/>
+					<ay value="0"/>
+					<awidth value="1075"/>
+					<aheight value="737"/>
+					<a_globalPaletteOption value="true"/>
+					<a_alwaysShowReferenceAndSubdiagramResource value="false"/>
+					<alocked value="false"/>
+					<ainitializeDiagramForCreate value="true"/>
+					<ashowDefaultPackage value="true"/>
+					<ashowAttributeGetterSetter value="false"/>
+					<ashowTemplateInfoOfGeneralizationAndRealization value="false"/>
+					<asuppressImplied1MultiplicityForAttributeAndAssociationEnd value="false"/>
+					<ashowClassEmptyCompartments value="2"/>
+					<ashowAttributesCodeDetails value="2"/>
+					<ashowAttributesType value="1"/>
+					<ashowOperationsParameters value="1"/>
+					<ashowOperationsReturnType value="1"/>
+					<ashowOperationsCodeDetails value="2"/>
+					<ashowParametersCodeDetails value="2"/>
+					<ashowEllipsisForUnshownClassMembers value="2"/>
+					<ageneralizationSetNotation value="2"/>
+				</properties>
+			</xmi:Extension>
+			<uml:Diagram.element>
+				<uml:DiagramElement geometry="180,170,100,70" preferredShapeType="Class" subject="ntv_sWyD.AACASRw" xmi:id="ltv_sWyD.AACASRv">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="0,0,100,14"/>
+						<captionVisible value="true"/>
+						<captionSide value="12"/>
+						<properties>
+							<abackground value="Cr:122,207,245,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="0"/>
+							<acreatorDiagramType value="ClassDiagram"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<adisplayStereotypeIcon value="false"/>
+							<aoverrideAppearanceWithStereotypeIcon value="true"/>
+							<arequestSetSizeOption value="0"/>
+							<aparentConnectorHeaderLength value="40"/>
+							<aparentConnectorLineLength value="10"/>
+							<aconnectToPoint value="true"/>
+							<aparentConnectorDTheta value="0.0"/>
+							<aconnectionPointType value="2"/>
+							<amodelElementNameAlignment value="9"/>
+							<arequestDefaultSize value="false"/>
+							<arequestFitSize value="false"/>
+							<arequestFitSizeFromCenter value="false"/>
+							<adisplayAsRobustnessAnalysisIcon value="true"/>
+							<avisibilityStyle value="1"/>
+							<ashowAttributeType value="1"/>
+							<ashowOperationType value="1"/>
+							<amSwTpPts value="true"/>
+							<ashowOwner value="false"/>
+							<alshRfAts value="true"/>
+							<amShDrAt value="false"/>
+							<akShDrOp value="false"/>
+							<akSwCsMbSt value="true"/>
+							<ashowClassMemberConstraints value="true"/>
+							<alShCmMl value="false"/>
+							<ashowOperationParameterDirection value="false"/>
+							<ashowOperationRaisedExceptions value="false"/>
+							<ashowParameterNameInOperationSignature value="true"/>
+							<ashowOperationTemplateParameters value="false"/>
+							<ashowOperationProperties value="false"/>
+							<awpMbs value="false"/>
+							<aattributeSortType value="0"/>
+							<aoperationSortType value="0"/>
+							<ashowInitialAttributeValue value="true"/>
+							<ashowOperationSignature value="true"/>
+							<ainterfaceBall value="false"/>
+							<ashowEmptyCompartments value="0"/>
+							<ashowEllipsisForUnshownMembers value="0"/>
+							<ashowAttributesCodeDetails value="0"/>
+							<ashowOperationsCodeDetails value="0"/>
+							<ashowParametersCodeDetails value="0"/>
+							<ashowTypeOption value="0"/>
+							<ashowOwnerOption value="0"/>
+							<ashowAttributesType value="0"/>
+							<ashowOperationsParameters value="0"/>
+							<ashowOperationsReturnType value="0"/>
+						</properties>
+					</xmi:Extension>
+					<elementFill color1="Cr:122,207,245,255" color2="" style="1" transparency="0" type="1"/>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+			</uml:Diagram.element>
+		</uml:Diagram>
+		<uml:Diagram diagramType="StateDiagram" documentation="" name="Girl" toolName="Visual Paradigm for UML" xmi:id="iCYAcWyD.AACASfr">
+			<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+				<properties>
+					<apmAuthor value="tas"/>
+					<apmCreateDateTime value="1333822252049"/>
+					<apmLastModified value="1333822357239"/>
+					<ashowPackageNameStyle value="0"/>
+					<ashowConnectorName value="0"/>
+					<apaintConnectorThroughLabel value="0"/>
+					<ashowActivityStateNodeCaption value="0"/>
+					<aeditable value="true"/>
+					<afollowDiagramParentElement value="true"/>
+					<aautoFitShapesSize value="false"/>
+					<ashowTaggedValues value="false"/>
+					<ashowStereotypes value="true"/>
+					<ashowConstraints value="false"/>
+					<aalignToGrid value="true"/>
+					<agridVisible value="false"/>
+					<agridWidth value="10"/>
+					<agridHeight value="10"/>
+					<agridColor value="Cr:192,192,192,255"/>
+					<adiagramBackground value="Cr:255,255,255,255"/>
+					<aconnectorStyle value="1"/>
+					<aconnectorLineJumps value="0"/>
+					<aconnectionPointStyle value="0"/>
+					<aconnectorLabelOrientation value="0"/>
+					<amodelElementNameAlignment value="4"/>
+					<azoomRatio value="1.0"/>
+					<amaximized value="true"/>
+					<ax value="0"/>
+					<ay value="0"/>
+					<awidth value="1075"/>
+					<aheight value="737"/>
+					<aparentModel value="ntv_sWyD.AACASRw"/>
+					<a_globalPaletteOption value="true"/>
+					<a_alwaysShowReferenceAndSubdiagramResource value="false"/>
+					<alocked value="false"/>
+					<ainitializeDiagramForCreate value="false"/>
+					<ashowDefaultPackage value="false"/>
+					<astateUseNameTab value="2"/>
+					<a_showRegionName value="2"/>
+					<aprotocolStateMachine value="false"/>
+					<ashowTransitionEffectBody value="false"/>
+					<a_showTransitionOperation value="false"/>
+					<a_showTransitionTriggers value="true"/>
+				</properties>
+			</xmi:Extension>
+			<uml:Diagram.element>
+				<uml:DiagramElement geometry="440,50,20,20" preferredShapeType="InitialPseudoState" subject="PKYAcWyD.AACASfy" xmi:id="PKYAcWyD.AACASfx">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="440,50,20,20"/>
+						<captionVisible value="false"/>
+						<captionSide value="7"/>
+						<properties>
+							<abackground value="Cr:0,0,0,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="8"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<adisplayStereotypeIcon value="false"/>
+							<aoverrideAppearanceWithStereotypeIcon value="true"/>
+							<arequestSetSizeOption value="0"/>
+							<aparentConnectorHeaderLength value="40"/>
+							<aparentConnectorLineLength value="10"/>
+							<aconnectToPoint value="true"/>
+							<aparentConnectorDTheta value="0.0"/>
+							<aconnectionPointType value="1"/>
+							<amodelElementNameAlignment value="9"/>
+							<arequestDefaultSize value="false"/>
+							<arequestFitSize value="false"/>
+							<arequestFitSizeFromCenter value="false"/>
+						</properties>
+					</xmi:Extension>
+					<elementFill color1="Cr:0,0,0,255" color2="" style="1" transparency="0" type="1"/>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+				<uml:DiagramElement geometry="400,180,80,40" preferredShapeType="State2" subject="Ug4AcWyD.AACAShM" xmi:id="Ug4AcWyD.AACAShL">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="400,180,80,14"/>
+						<captionVisible value="true"/>
+						<captionSide value="12"/>
+						<properties>
+							<abackground value="Cr:122,207,245,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="6"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<adisplayStereotypeIcon value="false"/>
+							<aoverrideAppearanceWithStereotypeIcon value="true"/>
+							<arequestSetSizeOption value="0"/>
+							<aparentConnectorHeaderLength value="40"/>
+							<aparentConnectorLineLength value="10"/>
+							<aconnectToPoint value="true"/>
+							<aparentConnectorDTheta value="0.0"/>
+							<aconnectionPointType value="2"/>
+							<amodelElementNameAlignment value="9"/>
+							<arequestDefaultSize value="false"/>
+							<arequestFitSize value="false"/>
+							<arequestFitSizeFromCenter value="false"/>
+							<a0SwIta value="true"/>
+							<a1SwItt value="true"/>
+							<auseNameTab value="0"/>
+							<aregionOrientation value="0"/>
+							<ashowRegionName value="0"/>
+						</properties>
+					</xmi:Extension>
+					<elementFill color1="Cr:122,207,245,255" color2="" style="1" transparency="0" type="1"/>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+				<uml:DiagramElement geometry="450,68;450,179;" preferredShapeType="Transition2" subject=".g4AcWyD.AACASiM" xmi:id="hg4AcWyD.AACASiV">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="440,123,20,0"/>
+						<captionVisible value="true"/>
+						<captionSide value="1"/>
+						<properties>
+							<abackground value="Cr:122,207,245,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="-1"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<aconnectorStyle value="3"/>
+							<aconnectorLineJumps value="4"/>
+							<aconnectorLabelOrientation value="4"/>
+							<afromShapeXDiff value="0"/>
+							<afromShapeYDiff value="0"/>
+							<atoShapeXDiff value="0"/>
+							<atoShapeYDiff value="0"/>
+							<afromConnectType value="0"/>
+							<atoConnectType value="0"/>
+							<auseFromShapeCenter value="true"/>
+							<auseToShapeCenter value="true"/>
+							<afromPinType value="1"/>
+							<atoPinType value="1"/>
+							<arequestRebuild value="false"/>
+							<ashowConnectorName value="2"/>
+							<apaintThroughLabel value="2"/>
+							<ashowOperation value="0"/>
+						</properties>
+					</xmi:Extension>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+				<uml:DiagramElement geometry="120,210,80,40" preferredShapeType="State2" subject="3JEAcWyD.AACASjF" xmi:id="3JEAcWyD.AACASjE">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="120,210,80,14"/>
+						<captionVisible value="true"/>
+						<captionSide value="12"/>
+						<properties>
+							<abackground value="Cr:122,207,245,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="4"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<adisplayStereotypeIcon value="false"/>
+							<aoverrideAppearanceWithStereotypeIcon value="true"/>
+							<arequestSetSizeOption value="0"/>
+							<aparentConnectorHeaderLength value="40"/>
+							<aparentConnectorLineLength value="10"/>
+							<aconnectToPoint value="true"/>
+							<aparentConnectorDTheta value="0.0"/>
+							<aconnectionPointType value="2"/>
+							<amodelElementNameAlignment value="9"/>
+							<arequestDefaultSize value="false"/>
+							<arequestFitSize value="false"/>
+							<arequestFitSizeFromCenter value="false"/>
+							<a0SwIta value="true"/>
+							<a1SwItt value="true"/>
+							<auseNameTab value="0"/>
+							<aregionOrientation value="0"/>
+							<ashowRegionName value="0"/>
+						</properties>
+					</xmi:Extension>
+					<elementFill color1="Cr:122,207,245,255" color2="" style="1" transparency="0" type="1"/>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+				<uml:DiagramElement geometry="399,219;200,219;" preferredShapeType="Transition2" subject="8pEAcWyD.AACASkF" xmi:id="8pEAcWyD.AACASkO">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="290,219,52,14"/>
+						<captionVisible value="true"/>
+						<captionSide value="1"/>
+						<properties>
+							<abackground value="Cr:122,207,245,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="-1"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<aconnectorStyle value="3"/>
+							<aconnectorLineJumps value="4"/>
+							<aconnectorLabelOrientation value="4"/>
+							<afromShapeXDiff value="0"/>
+							<afromShapeYDiff value="0"/>
+							<atoShapeXDiff value="0"/>
+							<atoShapeYDiff value="0"/>
+							<afromConnectType value="0"/>
+							<atoConnectType value="0"/>
+							<auseFromShapeCenter value="true"/>
+							<auseToShapeCenter value="true"/>
+							<afromPinType value="1"/>
+							<atoPinType value="1"/>
+							<arequestRebuild value="false"/>
+							<ashowConnectorName value="2"/>
+							<apaintThroughLabel value="2"/>
+							<ashowOperation value="0"/>
+						</properties>
+					</xmi:Extension>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+				<uml:DiagramElement geometry="230,340,80,40" preferredShapeType="State2" subject="aecAcWyD.AACAS0E" xmi:id="aecAcWyD.AACAS0D">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="230,340,80,14"/>
+						<captionVisible value="true"/>
+						<captionSide value="12"/>
+						<properties>
+							<abackground value="Cr:122,207,245,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="2"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<adisplayStereotypeIcon value="false"/>
+							<aoverrideAppearanceWithStereotypeIcon value="true"/>
+							<arequestSetSizeOption value="0"/>
+							<aparentConnectorHeaderLength value="40"/>
+							<aparentConnectorLineLength value="10"/>
+							<aconnectToPoint value="true"/>
+							<aparentConnectorDTheta value="0.0"/>
+							<aconnectionPointType value="2"/>
+							<amodelElementNameAlignment value="9"/>
+							<arequestDefaultSize value="false"/>
+							<arequestFitSize value="false"/>
+							<arequestFitSizeFromCenter value="false"/>
+							<a0SwIta value="true"/>
+							<a1SwItt value="true"/>
+							<auseNameTab value="0"/>
+							<aregionOrientation value="0"/>
+							<ashowRegionName value="0"/>
+						</properties>
+					</xmi:Extension>
+					<elementFill color1="Cr:122,207,245,255" color2="" style="1" transparency="0" type="1"/>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+				<uml:DiagramElement geometry="199,250;231,340;" preferredShapeType="Transition2" subject="recAcWyD.AACAS1E" xmi:id="recAcWyD.AACAS1N">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="204,294,45,14"/>
+						<captionVisible value="true"/>
+						<captionSide value="1"/>
+						<properties>
+							<abackground value="Cr:122,207,245,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="-1"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<aconnectorStyle value="3"/>
+							<aconnectorLineJumps value="4"/>
+							<aconnectorLabelOrientation value="4"/>
+							<afromShapeXDiff value="0"/>
+							<afromShapeYDiff value="0"/>
+							<atoShapeXDiff value="0"/>
+							<atoShapeYDiff value="0"/>
+							<afromConnectType value="0"/>
+							<atoConnectType value="0"/>
+							<auseFromShapeCenter value="true"/>
+							<auseToShapeCenter value="true"/>
+							<afromPinType value="1"/>
+							<atoPinType value="1"/>
+							<arequestRebuild value="false"/>
+							<ashowConnectorName value="2"/>
+							<apaintThroughLabel value="2"/>
+							<ashowOperation value="0"/>
+						</properties>
+					</xmi:Extension>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+				<uml:DiagramElement geometry="420,290,80,40" preferredShapeType="State2" subject="wJCAcWyD.AACAS1." xmi:id="wJCAcWyD.AACAS19">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="420,290,80,14"/>
+						<captionVisible value="true"/>
+						<captionSide value="12"/>
+						<properties>
+							<abackground value="Cr:122,207,245,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="0"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<adisplayStereotypeIcon value="false"/>
+							<aoverrideAppearanceWithStereotypeIcon value="true"/>
+							<arequestSetSizeOption value="0"/>
+							<aparentConnectorHeaderLength value="40"/>
+							<aparentConnectorLineLength value="10"/>
+							<aconnectToPoint value="true"/>
+							<aparentConnectorDTheta value="0.0"/>
+							<aconnectionPointType value="2"/>
+							<amodelElementNameAlignment value="9"/>
+							<arequestDefaultSize value="false"/>
+							<arequestFitSize value="false"/>
+							<arequestFitSizeFromCenter value="false"/>
+							<a0SwIta value="true"/>
+							<a1SwItt value="true"/>
+							<auseNameTab value="0"/>
+							<aregionOrientation value="0"/>
+							<ashowRegionName value="0"/>
+						</properties>
+					</xmi:Extension>
+					<elementFill color1="Cr:122,207,245,255" color2="" style="1" transparency="0" type="1"/>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+				<uml:DiagramElement geometry="310,341;420,329;" preferredShapeType="Transition2" subject="6JCAcWyD.AACAS2." xmi:id="6JCAcWyD.AACAS3H">
+					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+						<captionBounds value="355,335,37,14"/>
+						<captionVisible value="true"/>
+						<captionSide value="1"/>
+						<properties>
+							<abackground value="Cr:122,207,245,255"/>
+							<aforeground value="Cr:0,0,0,255"/>
+							<azOrder value="-1"/>
+							<aselectable value="true"/>
+							<arequestResetCaption value="false"/>
+							<arequestResetCaptionSize value="false"/>
+							<aconnectorStyle value="3"/>
+							<aconnectorLineJumps value="4"/>
+							<aconnectorLabelOrientation value="4"/>
+							<afromShapeXDiff value="0"/>
+							<afromShapeYDiff value="0"/>
+							<atoShapeXDiff value="0"/>
+							<atoShapeYDiff value="0"/>
+							<afromConnectType value="0"/>
+							<atoConnectType value="0"/>
+							<auseFromShapeCenter value="true"/>
+							<auseToShapeCenter value="true"/>
+							<afromPinType value="1"/>
+							<atoPinType value="1"/>
+							<arequestRebuild value="false"/>
+							<ashowConnectorName value="2"/>
+							<apaintThroughLabel value="2"/>
+							<ashowOperation value="0"/>
+						</properties>
+					</xmi:Extension>
+					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
+					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
+				</uml:DiagramElement>
+			</uml:Diagram.element>
+		</uml:Diagram>
+	</uml:Model>
+</xmi:XMI>

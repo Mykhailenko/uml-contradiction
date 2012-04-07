@@ -19,6 +19,9 @@ public class TriggersOfState implements Mapping {
 			StateMachine stateMachine = (StateMachine) first;
 			List<Trigger> result = new LinkedList<Trigger>();
 			for(Transition transition : stateMachine.getTransitions()){
+				assert transition != null : "transition is null";
+				System.out.println(transition);
+				assert transition.getTriggers() != null : "triggers is null";
 				result.addAll(transition.getTriggers());
 			}
 			return result;
