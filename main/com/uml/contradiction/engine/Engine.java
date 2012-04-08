@@ -48,6 +48,7 @@ public class Engine {
 	@SuppressWarnings("unchecked")
 	private void verify(HistoryItem parentHistoryItem, int currentIndex) {
 		assert currentIndex > 0 : "Bad index";
+		System.out.println("verify...");
 		if(currentIndex < criterion.getQuantifiers().size()){
 			Quantifier quantifier = criterion.getQuantifiers().get(currentIndex);
 			List<Object> set = null;
@@ -58,7 +59,13 @@ public class Engine {
 			} 
 			assert set != null;
 			if(set.isEmpty()){
-				parentHistoryItem.setSuccess(false);
+//				parentHistoryItem.setSuccess(false);
+				HistoryItem historyItem = new HistoryItem();
+				historyItem.getVariableValue().variable = quantifier.getBoundVariable();
+				historyItem.getVariableValue().value = null;
+				historyItem.setParent(parentHistoryItem);
+				parentHistoryItem.getChildren().add(historyItem);
+				verify(historyItem, currentIndex+1);
 			}
 			for(int i = 0; i < set.size(); ++i){
 				Object o = set.get(i);
@@ -72,6 +79,7 @@ public class Engine {
 		}else{
 			List<VariableValue> currentVariables = parentHistoryItem.getPlainHistory();
 			boolean result = criterion.getFormula().predict(currentVariables);
+			System.out.println("cr=" + result);
 			parentHistoryItem.setSuccess(result);
 		}
 	}

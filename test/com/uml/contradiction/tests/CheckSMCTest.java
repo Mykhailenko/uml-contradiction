@@ -24,6 +24,8 @@ public class CheckSMCTest {
 		Criterion criterion = new CheckStateMachineCriterion();
 		Engine engine = new Engine(criterion);
 		VerificationResult result = engine.verify();
+		
+		System.out.println("res= "+ result.isGood() + "his=" + result.getFailHistory().size());
 		assertTrue(result.isFail());
 	}
 }

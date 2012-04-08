@@ -1,5 +1,6 @@
 package com.uml.contradiction.model.statemachine;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import com.uml.contradiction.model.Edge;
@@ -11,7 +12,7 @@ public class Transition implements Edge{
 	
 	private Vertex target;
 	private Vertex source;
-	private List<Trigger> triggers;
+	private List<Trigger> triggers = new LinkedList<Trigger>();
 	private Guard guard;
 	private StateMachine stateMachine;
 	public Vertex getTarget() {
