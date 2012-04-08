@@ -57,6 +57,13 @@ public class Transition implements Edge{
 	public String getName() {
 		return name;
 	}
+	public String getShortName(){
+		if(name.indexOf('(') != -1){
+			return name.substring(0, name.indexOf('('));
+		}else{
+			return name;
+		}
+	}
 	public void setName(String name) {
 		this.name = name;
 	}

@@ -946,11 +946,12 @@
 					<state2/>
 				</xmi:Extension>
 			</packagedElement>
-			<packagedElement name="DS" xmi:id="wJCAcWyD.AACAS1." xmi:type="uml:State">
-				<xmi:Extension xmi:Extender="Visual Paradigm for UML">
-					<state2/>
-				</xmi:Extension>
-			</packagedElement>
+		</packagedElement>
+		<packagedElement name="love" xmi:id="UBSMiWyD.AACAS7a" xmi:type="uml:CallEvent"/>
+		<packagedElement name="love" xmi:id=".JKMiWyD.AACAS7n" xmi:type="uml:AnyReceiveEvent">
+			<xmi:Extension xmi:Extender="Visual Paradigm for UML">
+				<type value="message event"/>
+			</xmi:Extension>
 		</packagedElement>
 		<packagedElement xmi:id="stateMachine_id" xmi:type="uml:StateMachine">
 			<region xmi:id="stateMachine_region_id" xmi:type="uml:Region">
@@ -966,6 +967,7 @@
 					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 						<transition2/>
 					</xmi:Extension>
+					<trigger event=".JKMiWyD.AACAS7n" xmi:id="8pEAcWyD.AACASkF_.JKMiWyD.AACAS7n"/>
 					<ownedRule xmi:id="8pEAcWyD.AACASkF_guard" xmi:type="uml:Constraint">
 						<specification body="" xmi:id="8pEAcWyD.AACASkF_guard_spec" xmi:type="uml:OpaqueExpression"/>
 					</ownedRule>
@@ -976,14 +978,6 @@
 					</xmi:Extension>
 					<ownedRule xmi:id="recAcWyD.AACAS1E_guard" xmi:type="uml:Constraint">
 						<specification body="" xmi:id="recAcWyD.AACAS1E_guard_spec" xmi:type="uml:OpaqueExpression"/>
-					</ownedRule>
-				</transition>
-				<transition guard="6JCAcWyD.AACAS2._guard" name="lol" source="aecAcWyD.AACAS0E" target="wJCAcWyD.AACAS1." xmi:id="6JCAcWyD.AACAS2." xmi:type="uml:Transition">
-					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
-						<transition2/>
-					</xmi:Extension>
-					<ownedRule xmi:id="6JCAcWyD.AACAS2._guard" xmi:type="uml:Constraint">
-						<specification body="" xmi:id="6JCAcWyD.AACAS2._guard_spec" xmi:type="uml:OpaqueExpression"/>
 					</ownedRule>
 				</transition>
 			</region>
@@ -1113,7 +1107,7 @@
 			<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 				<properties>
 					<apmCreateDateTime value="1333822252049"/>
-					<apmLastModified value="1333871149252"/>
+					<apmLastModified value="1333878813899"/>
 					<ashowPackageNameStyle value="0"/>
 					<ashowConnectorName value="0"/>
 					<apaintConnectorThroughLabel value="0"/>
@@ -1164,7 +1158,7 @@
 						<properties>
 							<abackground value="Cr:0,0,0,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="8"/>
+							<azOrder value="6"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -1194,7 +1188,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="6"/>
+							<azOrder value="4"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -1263,7 +1257,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="4"/>
+							<azOrder value="2"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -1292,7 +1286,7 @@
 				</uml:DiagramElement>
 				<uml:DiagramElement geometry="399,219;200,219;" preferredShapeType="Transition2" subject="8pEAcWyD.AACASkF" xmi:id="8pEAcWyD.AACASkO">
 					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
-						<captionBounds value="290,219,52,14"/>
+						<captionBounds value="279,219,75,14"/>
 						<captionVisible value="true"/>
 						<captionSide value="1"/>
 						<properties>
@@ -1332,7 +1326,7 @@
 						<properties>
 							<abackground value="Cr:122,207,245,255"/>
 							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="2"/>
+							<azOrder value="0"/>
 							<aselectable value="true"/>
 							<arequestResetCaption value="false"/>
 							<arequestResetCaptionSize value="false"/>
@@ -1362,75 +1356,6 @@
 				<uml:DiagramElement geometry="199,250;231,340;" preferredShapeType="Transition2" subject="recAcWyD.AACAS1E" xmi:id="recAcWyD.AACAS1N">
 					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
 						<captionBounds value="204,294,45,14"/>
-						<captionVisible value="true"/>
-						<captionSide value="1"/>
-						<properties>
-							<abackground value="Cr:122,207,245,255"/>
-							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="-1"/>
-							<aselectable value="true"/>
-							<arequestResetCaption value="false"/>
-							<arequestResetCaptionSize value="false"/>
-							<aconnectorStyle value="3"/>
-							<aconnectorLineJumps value="4"/>
-							<aconnectorLabelOrientation value="4"/>
-							<afromShapeXDiff value="0"/>
-							<afromShapeYDiff value="0"/>
-							<atoShapeXDiff value="0"/>
-							<atoShapeYDiff value="0"/>
-							<afromConnectType value="0"/>
-							<atoConnectType value="0"/>
-							<auseFromShapeCenter value="true"/>
-							<auseToShapeCenter value="true"/>
-							<afromPinType value="1"/>
-							<atoPinType value="1"/>
-							<arequestRebuild value="false"/>
-							<ashowConnectorName value="2"/>
-							<apaintThroughLabel value="2"/>
-							<ashowOperation value="0"/>
-						</properties>
-					</xmi:Extension>
-					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
-					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
-				</uml:DiagramElement>
-				<uml:DiagramElement geometry="420,290,80,40" preferredShapeType="State2" subject="wJCAcWyD.AACAS1." xmi:id="wJCAcWyD.AACAS19">
-					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
-						<captionBounds value="420,290,80,14"/>
-						<captionVisible value="true"/>
-						<captionSide value="12"/>
-						<properties>
-							<abackground value="Cr:122,207,245,255"/>
-							<aforeground value="Cr:0,0,0,255"/>
-							<azOrder value="0"/>
-							<aselectable value="true"/>
-							<arequestResetCaption value="false"/>
-							<arequestResetCaptionSize value="false"/>
-							<adisplayStereotypeIcon value="false"/>
-							<aoverrideAppearanceWithStereotypeIcon value="true"/>
-							<arequestSetSizeOption value="0"/>
-							<aparentConnectorHeaderLength value="40"/>
-							<aparentConnectorLineLength value="10"/>
-							<aconnectToPoint value="true"/>
-							<aparentConnectorDTheta value="0.0"/>
-							<aconnectionPointType value="2"/>
-							<amodelElementNameAlignment value="9"/>
-							<arequestDefaultSize value="false"/>
-							<arequestFitSize value="false"/>
-							<arequestFitSizeFromCenter value="false"/>
-							<a0SwIta value="true"/>
-							<a1SwItt value="true"/>
-							<auseNameTab value="0"/>
-							<aregionOrientation value="0"/>
-							<ashowRegionName value="0"/>
-						</properties>
-					</xmi:Extension>
-					<elementFill color1="Cr:122,207,245,255" color2="" style="1" transparency="0" type="1"/>
-					<elementFont bold="false" color="Cr:0,0,0,255" italic="false" name="Dialog" size="11" style="0"/>
-					<elementLine color="Cr:0,0,0,255" style="1" transparency="0" weight="1.0"/>
-				</uml:DiagramElement>
-				<uml:DiagramElement geometry="310,341;420,329;" preferredShapeType="Transition2" subject="6JCAcWyD.AACAS2." xmi:id="6JCAcWyD.AACAS3H">
-					<xmi:Extension xmi:Extender="Visual Paradigm for UML">
-						<captionBounds value="355,335,33,14"/>
 						<captionVisible value="true"/>
 						<captionSide value="1"/>
 						<properties>

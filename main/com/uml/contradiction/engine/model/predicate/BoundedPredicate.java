@@ -49,6 +49,7 @@ public class BoundedPredicate implements Formula{
 				result = predicate.predict(vars);
 			}
 		} catch (PredicatException e) {
+			System.out.println(e);
 		}
 		if(negative){
 			result = !result;
