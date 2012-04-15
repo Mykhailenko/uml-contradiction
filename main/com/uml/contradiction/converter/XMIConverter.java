@@ -25,14 +25,25 @@ import com.uml.contradiction.converter.core.statemachine.StatemachineParser;
 
 public class XMIConverter {
 	private static File file = null;
+	public static boolean setFileAndParse(File file){
+		reset();
+		setFile(file);
+		try {
+			parse();
+		} catch (Exception e) {
+//			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
 	public static void setFile(File file){
 		assert file != null;
 		XMIConverter.file = file;
 	}
 	
-private static final Logger LOGGER = Logger.getRootLogger();
+	private static final Logger LOGGER = Logger.getRootLogger();
 	
-				//возврат родителя смысловой части
+				//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	private static Node startParse (File fXmlFile) {		
 		NodeList nList;		
 		try{
@@ -61,7 +72,7 @@ private static final Logger LOGGER = Logger.getRootLogger();
 	public static List<Object> parse() throws Exception{
 		assert XMIConverter.file != null : "file should be assigned before";
 		
-		Element umlModelEl = (Element)startParse(file); //начало разбора
+		Element umlModelEl = (Element)startParse(file); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		
 		
 		ClassParser clPars = ParsersTool.getInstanceClassParser();

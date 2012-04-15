@@ -36,7 +36,7 @@ import com.uml.contradiction.gui.models.DisplayedCriterionType;
 import com.uml.contradiction.gui.vocabularies.english.DiagrPanelVoc;
 
 public class ContradictionsPanel extends JPanel{
-	private final JButton startBut = new JButton("Start");
+	private final JButton startBut = new JButton("Verify");
 	private final JButton backBut = new JButton("<< Back");
 	private final JTree tree = new JTree();
 	private final JTextArea description = new JTextArea();
@@ -70,10 +70,18 @@ public class ContradictionsPanel extends JPanel{
 		
 		tree.setModel(model);
 		this.checkTreeManager = new CheckTreeManager(tree);
+		
+		JLabel selectLabel = new JLabel("Select contradictions:");
+		selectLabel.setBounds(10, 0, 400, 20);
+		this.add(selectLabel);
+		
 		JScrollPane treePanel = new JScrollPane(tree);
 		JScrollPane descriptionPanel = new JScrollPane(description);
 		description.setEditable(false);
-		
+		description.setOpaque(false);
+		descriptionPanel.setBorder(null);
+		description.setBorder(null);
+		descriptionPanel.setOpaque(false);
 		startBut.addActionListener(new StartCheckListener());
 		
 		imgLbl.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -82,9 +90,16 @@ public class ContradictionsPanel extends JPanel{
 		imgLbl.setOpaque(true);
 		
 		this.setLayout(null);
-		treePanel.setBounds(0, 0, 300, 500);
-		descriptionPanel.setBounds(310, 0, 400, 100);
-		imgLbl.setBounds(310, 100, 400, 400);
+		treePanel.setBounds(10, 20, 290, 480);
+		JLabel desLabel = new JLabel("Description:");
+		desLabel.setBounds(310, 0, 400, 20);
+		this.add(desLabel);
+		descriptionPanel.setBounds(310, 20, 400, 120);
+		
+		JLabel imgLabel = new JLabel("Image:");
+		imgLabel.setBounds(310, 140, 400, 20);
+		this.add(imgLabel);
+		imgLbl.setBounds(310, 160, 400, 340);
 		startBut.setBounds(10, 510, 100, 25);
 		this.add(treePanel);
 		this.add(descriptionPanel);

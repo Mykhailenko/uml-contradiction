@@ -26,6 +26,7 @@ public class ExecutableSequenceCriterion extends Criterion {
 		rightPart.getNestedMappings().add(new LifeLineFromInteraction());
 		quantifier1.setRightPart(rightPart);
 		getQuantifiers().add(quantifier1);
+		
 		BoundedPredicate boundedPredicate = new BoundedPredicate();
 		boundedPredicate.getBoundVariable().add(Variable.f);
 		boundedPredicate.getBoundVariable().add(Variable.l);
