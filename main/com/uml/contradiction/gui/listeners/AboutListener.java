@@ -39,6 +39,8 @@ public class AboutListener implements ActionListener {
 				"Shatalov Y.V.\n"+
 				"Mykhailenko H.H.";
 		JTextPane txt = new JTextPane();
+		txt.setEditable(false);
+		txt.setFocusable(false);
 		StyledDocument doc = txt.getStyledDocument();
 		SimpleAttributeSet sas = new SimpleAttributeSet();
 		StyleConstants.setAlignment(sas, StyleConstants.ALIGN_CENTER);
