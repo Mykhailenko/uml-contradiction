@@ -71,7 +71,7 @@ public class ContradictionsPanel extends JPanel{
 		tree.setModel(model);
 		this.checkTreeManager = new CheckTreeManager(tree);
 		
-		JLabel selectLabel = new JLabel("Select contradictions:");
+		JLabel selectLabel = new JLabel("Contradictions:");
 		selectLabel.setBounds(10, 0, 400, 20);
 		this.add(selectLabel);
 		
@@ -84,7 +84,7 @@ public class ContradictionsPanel extends JPanel{
 		descriptionPanel.setOpaque(false);
 		startBut.addActionListener(new StartCheckListener());
 		
-		imgLbl.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		imgLbl.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		imgLbl.setBackground(Color.white);
 		imgLbl.setHorizontalAlignment(JLabel.CENTER);
 		imgLbl.setOpaque(true);

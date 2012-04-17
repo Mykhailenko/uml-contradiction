@@ -22,6 +22,7 @@ public class MyMenuBar extends JMenuBar {
 		fileMenu.add(loadXMI);
 		
 		JMenuItem save = new JMenuItem("Save");
+		save.setEnabled(false);
 		fileMenu.add(save);
 		
 		fileMenu.addSeparator();
@@ -39,6 +40,7 @@ public class MyMenuBar extends JMenuBar {
 		this.add(fileMenu);
 		
 		JMenu view = new JMenu("View");
+		view.setEnabled(false);
 		
 		this.add(view);
 		
@@ -49,6 +51,7 @@ public class MyMenuBar extends JMenuBar {
 		help.add(about);
 		
 		JMenuItem helpContent = new JMenuItem("Help Content");
+		helpContent.setEnabled(false);
 		help.add(helpContent);
 		
 		this.add(help);
