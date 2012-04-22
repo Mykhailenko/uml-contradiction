@@ -16,7 +16,7 @@ import com.uml.contradiction.engine.model.mapping.exception.MappingException;
 import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
 import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
 
-public class Engine {
+public class Checker {
 	private static final Logger LOGGER = Logger.getRootLogger();
 	private Criterion criterion;
 	private List<HistoryItem> wholeHistory;
@@ -191,7 +191,7 @@ public class Engine {
 			return historyItem.isSuccess();
 		}
 	}
-	public Engine(Criterion criterion) {
+	public Checker(Criterion criterion) {
 		this.criterion = criterion;
 		this.wholeHistory = new LinkedList<HistoryItem>();
 	}

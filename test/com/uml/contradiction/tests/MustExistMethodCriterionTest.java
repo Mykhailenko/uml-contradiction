@@ -5,7 +5,7 @@ import java.io.File;
 import org.junit.Test;
 
 import com.uml.contradiction.converter.XMIConverter;
-import com.uml.contradiction.engine.Engine;
+import com.uml.contradiction.engine.Checker;
 import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.criteria.MustExistMethodCriterion;

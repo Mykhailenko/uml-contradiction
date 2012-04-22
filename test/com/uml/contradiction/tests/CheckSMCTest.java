@@ -5,7 +5,7 @@ import java.io.File;
 import org.junit.Test;
 
 import com.uml.contradiction.converter.XMIConverter;
-import com.uml.contradiction.engine.Engine;
+import com.uml.contradiction.engine.Checker;
 import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.CheckStateMachineCriterion;
 import com.uml.contradiction.engine.model.criteria.Criterion;
@@ -22,7 +22,7 @@ public class CheckSMCTest {
 			e.printStackTrace();
 		}
 		Criterion criterion = new CheckStateMachineCriterion();
-		Engine engine = new Engine(criterion);
+		Checker engine = new Checker(criterion);
 		VerificationResult result = engine.verify();
 		
 		System.out.println("res= "+ result.isGood() + "his=" + result.getFailHistory().size());
