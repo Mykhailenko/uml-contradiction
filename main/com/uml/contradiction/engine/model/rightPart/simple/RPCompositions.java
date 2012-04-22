@@ -5,13 +5,13 @@ import java.util.List;
 
 import com.uml.contradiction.engine.model.VariableValue;
 import com.uml.contradiction.engine.model.mapping.exception.MappingException;
-import com.uml.contradiction.engine.model.rightPart.SimpleRightPart;
+import com.uml.contradiction.engine.model.rightPart.QuantifierRightPart;
 import com.uml.contradiction.model.cclass.AggregationKind;
 import com.uml.contradiction.model.cclass.Association;
 import com.uml.contradiction.model.cclass.AssociationEnd;
 import com.uml.contradiction.model.cclass.ClassGraph;
 
-public class RPCompositions extends SimpleRightPart {
+public class RPCompositions implements QuantifierRightPart{
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
