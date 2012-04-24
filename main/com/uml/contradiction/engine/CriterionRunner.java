@@ -11,7 +11,7 @@ public class CriterionRunner extends Thread {
 	}
 	@Override
 	public void run() {
-		Engine engine = new Engine(criterion);
+		Checker engine = new Checker(criterion);
 		result = engine.verify();
 	}
 	public VerificationResult getResult() {

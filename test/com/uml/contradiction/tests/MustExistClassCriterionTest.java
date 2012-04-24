@@ -9,7 +9,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
-import com.uml.contradiction.engine.Engine;
+import com.uml.contradiction.engine.Checker;
 import com.uml.contradiction.engine.model.HistoryPlainItem;
 import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.Criterion;
@@ -49,7 +49,7 @@ public class MustExistClassCriterionTest {
 		
 		/////
 		Criterion criterion = new MustExistClassCriterion();
-		Engine engine = new Engine(criterion);
+		Checker engine = new Checker(criterion);
 		VerificationResult verificationResult = engine.verify();
 		assert verificationResult != null : "verificationResult == null";
 		LOGGER.info("isFail = " + verificationResult.isFail());

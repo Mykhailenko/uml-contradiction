@@ -58,4 +58,21 @@ public class StateMachine {
 			return false;
 		}
 	}
+	@Override
+	public String toString() {
+		String s = new String("\n\t, states=");
+		if(states != null){
+			for(State st : states)
+				s += "\n\t    " + st + ", ";
+		}
+		
+		s += "\n\t, transitions=";
+		if(states != null){
+			for(Transition tr : transitions)
+				s += "\n\t    " + tr + ", ";
+		}
+		
+		return "StateMachine [name=" + name  + ", cClass=" + cClass.getFullName()
+				 + s + "]";
+	}
 }

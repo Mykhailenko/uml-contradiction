@@ -6,9 +6,8 @@ import java.util.List;
 import com.uml.contradiction.engine.model.mapping.exception.MappingException;
 import com.uml.contradiction.model.statemachine.StateMachine;
 import com.uml.contradiction.model.statemachine.Transition;
-import com.uml.contradiction.model.statemachine.Trigger;
 
-public class TriggersOfState implements Mapping {
+public class TransitionOfState implements Mapping {
 
 	@Override
 	public List map(List list) throws MappingException {
@@ -17,16 +16,13 @@ public class TriggersOfState implements Mapping {
 		Object first = list.get(0);
 		if(first instanceof StateMachine){
 			StateMachine stateMachine = (StateMachine) first;
-			List<Trigger> result = new LinkedList<Trigger>();
+			List<Transition> result = new LinkedList<Transition>();
 			for(Transition transition : stateMachine.getTransitions()){
 				assert transition != null : "transition is null";
-				System.out.println(transition);
-				assert transition.getTriggers() != null : "triggers is null";
-				result.addAll(transition.getTriggers());
+				result.add(transition);
 			}
 			return result;
 		}
 		return null;
 	}
-
 }

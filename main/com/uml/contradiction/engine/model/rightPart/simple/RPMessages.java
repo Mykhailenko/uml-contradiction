@@ -5,13 +5,13 @@ import java.util.List;
 
 import com.uml.contradiction.engine.model.VariableValue;
 import com.uml.contradiction.engine.model.mapping.exception.MappingException;
-import com.uml.contradiction.engine.model.rightPart.SimpleRightPart;
+import com.uml.contradiction.engine.model.rightPart.QuantifierRightPart;
 import com.uml.contradiction.model.sequence.Interaction;
 import com.uml.contradiction.model.sequence.InteractionElement;
 import com.uml.contradiction.model.sequence.Message;
 import com.uml.contradiction.model.sequence.SequenceGraph;
 
-public class RPMessages extends SimpleRightPart {
+public class RPMessages implements QuantifierRightPart {
 	@SuppressWarnings("rawtypes")
 	@Override
 	public List getSet(List<VariableValue> params) throws MappingException {

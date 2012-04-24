@@ -27,7 +27,7 @@ import com.uml.contradiction.model.cclass.Scope;
 import com.uml.contradiction.model.cclass.Visibility;
 import com.uml.contradiction.model.common.*;
 
-			//помощник разбирает атрибуты классов и ассоциаций
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 public class ClassParsHelper {
 	private Map<String, CClass> classesWithId;
 	private Map<String, Association> assocesWithId;
@@ -72,23 +72,23 @@ public class ClassParsHelper {
 		CoreParserImpl corePars = new CoreParserImpl();
 		
 		Element extension = (Element)curClElem.getElementsByTagName("xmi:Extension").item(0);
-		//если N-арная ассоциация
+		//пїЅпїЅпїЅпїЅ N-пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		if(extension.getParentNode() == curClElem){
 			String modelVal = corePars.getAttrByNameAndTag(extension, "modelType", "value");
 			if(modelVal.equals("NARY"))
 				curCClass = new NaryAssociationClass();
 		}
-			//если класс- ассоциация
+			//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		if(curClElem.getAttribute("xmi:type").equals("uml:AssociationClass")){
 			curCClass = new AssociationClass();
-			//получаем ассоциацию внутри класса
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 			if(extension.getParentNode() == curClElem){
 				String nameAssoc = corePars.getAttrByNameAndTag(extension, "association", "name");	
 				String idAssoc = corePars.getAttrByNameAndTag(extension, "association", "xmi:id");	
 				if(idAssoc != null){
 					Association ass = new Association();
 					ass.setName(nameAssoc);
-					//добавляем ассоциацию в общий контейнер и в класс-ассоциацию
+					//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 					assocesWithId.put(idAssoc, ass);
 					((AssociationClass) curCClass).setAssociation(ass);
 				}
@@ -96,7 +96,7 @@ public class ClassParsHelper {
 		}
 		
 							
-		//заполняем поля CClass
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ CClass
 		String id4class = curClElem.getAttribute("xmi:id");
 		
 		if(stereotypesWithRefClass.get(id4class) != null)
@@ -115,15 +115,15 @@ public class ClassParsHelper {
 		if(isAbstract.equals("true")) curCClass.setAbstract(true);
 		
 		
-		//разбор атрибутов		
+		//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ		
 		List<Attribute> attributes = getAttr4Class(curClElem);
 		curCClass.setAttributes(attributes);
 		
-		//разбор методов
+		//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		List<MMethod> methods = getMethods4Class(curClElem);
 		curCClass.setMethods(methods);
 		
-		//вставляем класс и его ID в map
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ ID пїЅ map
 		classesWithId.put(id4class, curCClass);
 
 		return curCClass;	
@@ -140,12 +140,12 @@ public class ClassParsHelper {
 			
 			Element curAttrElem = (Element)attrList.item(k);	
 			
-			//проверка что будем рассматривать только непосредственных потомков
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if((Element)curAttrElem.getParentNode() == classElement)
 			{
 				Attribute attr_1 = new Attribute();
 							
-					//проверка что это не ownedAttribute для роли
+					//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ ownedAttribute пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 				if(!curAttrElem.hasAttribute("association"))
 				{			
 					String attrId = curAttrElem.getAttribute("xmi:id");
@@ -224,7 +224,7 @@ public class ClassParsHelper {
 		for(int k=0; k<methdsList.getLength(); k++){			
 			Element curMethElem = (Element)methdsList.item(k);
 			
-			//проверка что будем рассматривать только непосредственных потомков
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if((Element)curMethElem.getParentNode() == classElement)
 			{
 				MMethod meth_1 = new MMethod();
@@ -245,13 +245,13 @@ public class ClassParsHelper {
 				if(stereotypesWithRefClass.get(idMeth) != null)
 					meth_1.setStereotypes(stereotypesWithRefClass.get(idMeth));
 				
-				//разбор параметров
-				List<Parameter> params = null;
+				//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+				List<Parameter> params = new LinkedList<Parameter>();
 				NodeList parametersList = curMethElem.getElementsByTagName("ownedParameter");
 				for (int i = 0; i < parametersList.getLength(); i++) {
 					Element curParam = (Element)parametersList.item(i);
 					
-					//возвращаемое значение
+					//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 					if(curParam.getAttribute("direction").equals("return")){
 						if(curParam.hasAttribute("type")){
 							String typeVal = curParam.getAttribute("type");
@@ -266,9 +266,6 @@ public class ClassParsHelper {
 						}
 					}
 					if(curParam.hasAttribute("kind")){
-						if(params == null)
-							params = new LinkedList<Parameter>();
-						
 						Parameter par = new Parameter();
 						
 						if(curParam.hasAttribute("name"))
@@ -288,7 +285,7 @@ public class ClassParsHelper {
 		}
 		return methods;
 	}
-				//конец для ассоциации
+				//пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	public AssociationEnd getEnd4Assoc(Element endElement){
 		AssociationEnd assEnd = new AssociationEnd();
 		
@@ -314,13 +311,13 @@ public class ClassParsHelper {
 //		if(constr != null)
 //			assEnd.setConstraint(constr);
 		
-					//ассоциируемый класс
+					//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		String idAsocedClass = endElement.getAttribute("type");
 		CClass assCClass = classesWithId.get(idAsocedClass);
 		if(assCClass != null)
 			assEnd.setAssociatedClass(assCClass);
 		
-		//кратности
+		//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		Multiplicity multipl = getMultiplicity(endElement); 
 		
 		if(multipl != null)

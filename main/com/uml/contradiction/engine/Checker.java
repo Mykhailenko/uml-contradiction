@@ -16,7 +16,7 @@ import com.uml.contradiction.engine.model.mapping.exception.MappingException;
 import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
 import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
 
-public class Engine {
+public class Checker {
 	private static final Logger LOGGER = Logger.getRootLogger();
 	private Criterion criterion;
 	private List<HistoryItem> wholeHistory;
@@ -48,6 +48,7 @@ public class Engine {
 	@SuppressWarnings("unchecked")
 	private void verify(HistoryItem parentHistoryItem, int currentIndex) {
 		assert currentIndex > 0 : "Bad index";
+		System.out.println("verify...");
 		if(currentIndex < criterion.getQuantifiers().size()){
 			Quantifier quantifier = criterion.getQuantifiers().get(currentIndex);
 			List<Object> set = null;
@@ -58,7 +59,13 @@ public class Engine {
 			} 
 			assert set != null;
 			if(set.isEmpty()){
-				parentHistoryItem.setSuccess(false);
+//				parentHistoryItem.setSuccess(false);
+				HistoryItem historyItem = new HistoryItem();
+				historyItem.getVariableValue().variable = quantifier.getBoundVariable();
+				historyItem.getVariableValue().value = null;
+				historyItem.setParent(parentHistoryItem);
+				parentHistoryItem.getChildren().add(historyItem);
+				verify(historyItem, currentIndex+1);
 			}
 			for(int i = 0; i < set.size(); ++i){
 				Object o = set.get(i);
@@ -72,6 +79,7 @@ public class Engine {
 		}else{
 			List<VariableValue> currentVariables = parentHistoryItem.getPlainHistory();
 			boolean result = criterion.getFormula().predict(currentVariables);
+			System.out.println("cr=" + result);
 			parentHistoryItem.setSuccess(result);
 		}
 	}
@@ -183,7 +191,7 @@ public class Engine {
 			return historyItem.isSuccess();
 		}
 	}
-	public Engine(Criterion criterion) {
+	public Checker(Criterion criterion) {
 		this.criterion = criterion;
 		this.wholeHistory = new LinkedList<HistoryItem>();
 	}

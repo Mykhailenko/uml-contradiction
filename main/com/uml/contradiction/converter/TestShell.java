@@ -19,6 +19,7 @@ import com.uml.contradiction.model.sequence.InteractionElement;
 import com.uml.contradiction.model.sequence.LifeLine;
 import com.uml.contradiction.model.sequence.Message;
 import com.uml.contradiction.model.sequence.SequenceGraph;
+import com.uml.contradiction.model.statemachine.*;
 import com.uml.contradiction.common.DiagramType;
 
 import java.io.File;
@@ -47,7 +48,7 @@ public class TestShell {
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\9.3 Realization without end.uml");
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\9.5 AssocClass.uml");
 		
-		File file = new File("D:\\Programming\\vpworkspace\\Experiments\\For understand\\obj difference3.uml");
+		File file = new File("D:\\Programming\\vpworkspace\\Experiments\\For understand\\state Choice 5.uml");
 		
 		File file2 = new File("g.uml");
 		
@@ -68,6 +69,8 @@ public class TestShell {
 		printObjectGraf();
 		
 		printSequenceGraf();
+		
+		printStateMachineGraf();
 	}
 	public static void printClassGraf () {
 		List<CClass> class_s = ClassGraph.getClasses();
@@ -138,5 +141,10 @@ public class TestShell {
 			}
 		}
 	}
-	
+	public static void printStateMachineGraf () {
+		List<StateMachine> stateMach_s = StateMachineGraph.getStateMachines();
+			
+		for(StateMachine stm : stateMach_s)			
+			System.out.println(stm);	
+	}
 }
