@@ -32,7 +32,8 @@
 			<fileset dir="build" excludes="**/*.uml"/>
 			<fileset dir="." includes="images/**"/>
 			<zipfileset includes="**/*.class" src="lib/log4j-1.2.16.jar"/>
-			
+			<zipfileset includes="**/*.class" src="lib/poi-3.8-20120326.jar"/>
+			<zipfileset includes="**/*.class" src="lib/poi-scratchpad-3.8-20120326.jar"/>
 			<manifest>
 				<attribute name="Main-Class" value="com.uml.contradiction.gui.Client"/>
 			</manifest>
