@@ -3,12 +3,12 @@ package com.uml.contradiction.model.statemachine;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.uml.contradiction.model.Diagram;
 import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.sequence.Message;
 
-public class StateMachine {
+public class StateMachine extends Diagram{
 	private List<State> states;
-	private String name;
 	private CClass cClass;
 	private List<Transition> transitions;
 	
@@ -17,12 +17,6 @@ public class StateMachine {
 	}
 	public void setStates(List<State> states) {
 		this.states = states;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
 	}
 	public CClass getcClass() {
 		return cClass;

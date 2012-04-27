@@ -3,24 +3,19 @@ package com.uml.contradiction.model.cclass;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.uml.contradiction.model.Diagram;
 import com.uml.contradiction.model.common.Package;
 
 
 
-public class ClassDiagram {
-	private String name;
+public class ClassDiagram extends Diagram{
 	private List<CClass> classes;
 	private List<Association> associations;
 	private List<Dependency> dependencies;
 	private List<Realization> realizations;
 	private List<Generalization> generalizations ;
 	private Package parentPackageElement;
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+
 	public List<CClass> getClasses() {
 		return classes;
 	}
