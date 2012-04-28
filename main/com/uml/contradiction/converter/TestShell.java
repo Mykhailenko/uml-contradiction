@@ -50,18 +50,19 @@ public class TestShell {
 		
 		File file = new File("D:\\Programming\\vpworkspace\\Experiments\\For understand\\state Choice 5.uml");
 		
-		File file2 = new File("g.uml");
+		File file2 = new File("oa.uml");
 		
 //		File file = new File("main\\Test xmi.uml");
 		
 		XMIConverter.reset();
-		XMIConverter.setFile(file);
+		XMIConverter.setFile(file2);
 				
 		
 		try {
 			XMIConverter.parse();
 		} catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("Fuckkkkkkkkkkkkkkkkkkkkk\n\n");
 		}
 		//печатаем ClassDiagram
 		printClassGraf();

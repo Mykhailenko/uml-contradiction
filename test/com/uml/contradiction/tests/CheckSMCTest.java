@@ -19,7 +19,8 @@ public class CheckSMCTest {
 		try {
 			XMIConverter.parse();
 		} catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("Fuckkkkkkkkkkkkkkkkkkkkk\n\n");
 		}
 		Criterion criterion = new CheckStateMachineCriterion();
 		Engine engine = new Engine(criterion);
