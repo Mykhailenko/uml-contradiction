@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 
 import com.uml.contradiction.converter.XMIConverter;
 import com.uml.contradiction.gui.Client;
+import com.uml.contradiction.gui.components.CheckTreeManager;
 import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.models.DiagramForChoise;
 
@@ -32,6 +33,8 @@ public class LoadXMIScenery {
 				PanelsController.diagramsPanel.setFromDiagrams(availableDiagram);
 				XMIConverter.parse();
 				Client.setXmiLoaded(true);
+				Client.getClient().loadedNoOneSelected();
+				CheckTreeManager.checkState();
 			} catch (Exception e) {
 				LOGGER.error(e.getMessage());
 			}

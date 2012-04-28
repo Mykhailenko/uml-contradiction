@@ -24,7 +24,6 @@ public class StartCheckScenery {
 	
 	public static void run(List<DefaultMutableTreeNode> nodes) {
 		System.out.println("CheckScenery");
-		ContradictionsPanel contrPanel = PanelsController.contradictionsPanel;
 		VerificationResultsPanel resPanel = PanelsController.resultsPanel;
 		
 		DefaultMutableTreeNode newRoot = getSelectedTree(nodes);

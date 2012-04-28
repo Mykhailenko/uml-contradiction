@@ -26,6 +26,7 @@ import javax.swing.tree.TreePath;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.criteria.CriterionSuite;
 import com.uml.contradiction.engine.model.criteria.CriterionTypeSuite;
+import com.uml.contradiction.gui.GUIState;
 import com.uml.contradiction.gui.Images;
 import com.uml.contradiction.gui.components.CheckTreeManager;
 import com.uml.contradiction.gui.listeners.ContrTreeListener;
@@ -35,7 +36,7 @@ import com.uml.contradiction.gui.models.DisplayedCriterion;
 import com.uml.contradiction.gui.models.DisplayedCriterionType;
 import com.uml.contradiction.gui.vocabularies.english.DiagrPanelVoc;
 
-public class ContradictionsPanel extends JPanel{
+public class ContradictionsPanel extends JPanel implements GUIState{
 	private final JButton startBut = new JButton("Verify");
 	private final JButton backBut = new JButton("<< Back");
 	private final JTree tree = new JTree();
@@ -67,10 +68,8 @@ public class ContradictionsPanel extends JPanel{
 		}
 		
 		tree.addTreeSelectionListener(new ContrTreeListener());
-		
 		tree.setModel(model);
 		this.checkTreeManager = new CheckTreeManager(tree);
-		
 		JLabel selectLabel = new JLabel("Contradictions:");
 		selectLabel.setBounds(10, 0, 400, 20);
 		this.add(selectLabel);
@@ -90,16 +89,16 @@ public class ContradictionsPanel extends JPanel{
 		imgLbl.setOpaque(true);
 		
 		this.setLayout(null);
-		treePanel.setBounds(10, 20, 290, 480);
+		treePanel.setBounds(10, 20, 360, 480);
 		JLabel desLabel = new JLabel("Description:");
-		desLabel.setBounds(310, 0, 400, 20);
+		desLabel.setBounds(380, 0, 400, 20);
 		this.add(desLabel);
-		descriptionPanel.setBounds(310, 20, 400, 120);
+		descriptionPanel.setBounds(380, 20, 400, 120);
 		
 		JLabel imgLabel = new JLabel("Image:");
-		imgLabel.setBounds(310, 140, 400, 20);
+		imgLabel.setBounds(380, 140, 400, 20);
 		this.add(imgLabel);
-		imgLbl.setBounds(310, 160, 400, 340);
+		imgLbl.setBounds(380, 160, 400, 340);
 		startBut.setBounds(10, 510, 100, 25);
 		this.add(treePanel);
 		this.add(descriptionPanel);
@@ -152,6 +151,31 @@ public class ContradictionsPanel extends JPanel{
 	
 	public JTree getTree() {
 		return tree;
+	}
+
+	@Override
+	public void started() {
+		startBut.setEnabled(false);
+		checkTreeManager.getSelectionModel().clearSelection();
+		
+	}
+
+	@Override
+	public void loadedNoOneSelected() {
+		startBut.setEnabled(false);
+		
+	}
+
+	@Override
+	public void loadedOneSelected() {
+		startBut.setEnabled(true);
+		
+	}
+
+	@Override
+	public void verified() {
+		startBut.setEnabled(false);
+		
 	}
 	
 }

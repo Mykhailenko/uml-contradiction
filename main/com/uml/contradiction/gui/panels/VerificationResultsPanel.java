@@ -18,6 +18,7 @@ import javax.swing.tree.DefaultTreeModel;
 import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.criteria.result.ResultTemplate;
+import com.uml.contradiction.gui.GUIState;
 import com.uml.contradiction.gui.components.CheckTreeManager;
 import com.uml.contradiction.gui.components.ResCellRenderer;
 import com.uml.contradiction.gui.listeners.FailDiagrListListener;
@@ -26,7 +27,7 @@ import com.uml.contradiction.gui.listeners.ResultsTreeListener;
 import com.uml.contradiction.gui.models.DisplayedCriterion;
 import com.uml.contradiction.gui.models.DisplayedCriterionType;
 
-public class VerificationResultsPanel extends JPanel {
+public class VerificationResultsPanel extends JPanel implements GUIState {
 	private final JButton printBut = new JButton("Print");
 	private final JButton backBut = new JButton("<< Back");
 	private final JTree tree = new JTree();
@@ -165,6 +166,30 @@ public class VerificationResultsPanel extends JPanel {
 
 	public JList getDiagrams() {
 		return diagrams;
+	}
+
+	@Override
+	public void started() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void loadedNoOneSelected() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void loadedOneSelected() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void verified() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

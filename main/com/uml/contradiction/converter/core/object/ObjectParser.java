@@ -65,7 +65,7 @@ extends CoreParserImpl implements CoreParser{
 		for (int i = 0; i < packNodes.getLength(); i++) {
 			Element packObjElem = (Element)packNodes.item(i);
 			
-			//рассматриваем packagedElement для объектов
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ packagedElement пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(packObjElem.getAttribute("xmi:type").equals("uml:InstanceSpecification"))
 			{
 				NodeList listClassifiers = packObjElem.getElementsByTagName("classifier");			
@@ -77,7 +77,7 @@ extends CoreParserImpl implements CoreParser{
 					typeMod = new String("");
 				
 				if(!typeMod.equals("Link"))
-				{			//рассматриваем именно объект
+				{			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 					OObject obj = new OObject();
 					String idObj = packObjElem.getAttribute("xmi:id");
 					String nameObj = packObjElem.getAttribute("name");
@@ -87,7 +87,7 @@ extends CoreParserImpl implements CoreParser{
 					
 					if(listClassifiers.getLength() != 0){
 										
-						//ссылка на класс
+						//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 						NodeList classList = packObjElem.getElementsByTagName("classifier");
 						for (int k = 0; k < classList.getLength(); k++) {
 							Element classElem = (Element)classList.item(k);
@@ -103,18 +103,12 @@ extends CoreParserImpl implements CoreParser{
 									if(referClass == null)
 										logger.error("The object has reference on class, but no such class");
 									else{
-										List<CClass> classesOfObj = obj.getClasses();
-										
-										if(classesOfObj == null){
-											classesOfObj = new LinkedList<CClass>();
-											obj.setClasses(classesOfObj);
-										}
-										classesOfObj.add(referClass);
+										obj.setClasses(referClass);
 									}
 								}
 							}
 						
-						//ссылка на атрибут
+						//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 						NodeList attrList = packObjElem.getElementsByTagName("slot");
 						for (int j = 0; j < attrList.getLength(); j++) {
 							Element attrElem = (Element)attrList.item(j);
@@ -160,7 +154,7 @@ extends CoreParserImpl implements CoreParser{
 			for (int i = 0; i < packNodes.getLength(); i++) {
 				Element packObjElem = (Element)packNodes.item(i);
 				
-				//рассматриваем packagedElement для объектов
+				//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ packagedElement пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				if(packObjElem.getAttribute("xmi:type").equals("uml:InstanceSpecification"))
 				{
 					NodeList listExtensions = packObjElem.getElementsByTagName("xmi:Extension");
@@ -173,7 +167,7 @@ extends CoreParserImpl implements CoreParser{
 					
 					if(typeMod.equals("Link"))
 					{	
-						//packagedElement - связь объектов						
+						//packagedElement - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ						
 						String idLink = packObjElem.getAttribute("xmi:id");
 						String nameLnk = packObjElem.getAttribute("name");
 						if(nameLnk.equals(""))

@@ -80,5 +80,12 @@ public class ClassGraph {
 	public static void setGeneralizations(List<Generalization> generalizations) {
 		ClassGraph.generalizations = generalizations;
 	}
-	
+	public static void clear(){
+		classDiagrams.clear();
+		classes.clear();
+		associations.clear();
+		dependencies.clear();
+		generalizations.clear();
+		realizations.clear();
+	}
 }

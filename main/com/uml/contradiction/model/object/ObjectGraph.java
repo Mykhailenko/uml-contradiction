@@ -33,5 +33,9 @@ public class ObjectGraph {
 	public static void setObjectDiagrams(List<ObjectDiagram> objectDiagrams) {
 		ObjectGraph.objectDiagrams = objectDiagrams;
 	}	
-	
+	public static void clear(){
+		objectDiagrams.clear();
+		objects.clear();
+		links.clear();
+	}
 }

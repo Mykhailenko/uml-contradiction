@@ -2,12 +2,19 @@ package com.uml.contradiction.gui.components;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 import javax.swing.JCheckBox;
 import javax.swing.JTree;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
+
+import com.uml.contradiction.gui.Client;
+import com.uml.contradiction.gui.controllers.PanelsController;
+import com.uml.contradiction.gui.panels.ContradictionsPanel;
+import com.uml.contradiction.gui.sceneries.StartCheckScenery;
 
 public class CheckTreeManager extends MouseAdapter implements TreeSelectionListener{ 
     private CheckTreeSelectionModel selectionModel; 
@@ -39,9 +46,22 @@ public class CheckTreeManager extends MouseAdapter implements TreeSelectionListe
                 selectionModel.addSelectionPath(path); 
         } finally{ 
             selectionModel.addTreeSelectionListener(this); 
-            tree.treeDidChange(); 
+            tree.treeDidChange();
+            checkState();
         } 
     } 
+    public static void checkState(){
+    	if(Client.getClient().isLoadedNoOne() || Client.getClient().isLoadedOne()){
+	    	ContradictionsPanel panel = PanelsController.contradictionsPanel;
+			List<DefaultMutableTreeNode> nodes = panel.getSelectedNodes();
+			if(nodes == null || nodes.size() == 0) {
+				Client.getClient().loadedNoOneSelected();
+			}
+			else {
+				Client.getClient().loadedOneSelected();
+			}
+    	}
+    }
  
     public CheckTreeSelectionModel getSelectionModel(){ 
         return selectionModel; 

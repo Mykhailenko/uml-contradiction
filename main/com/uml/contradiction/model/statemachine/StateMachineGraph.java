@@ -24,4 +24,7 @@ public class StateMachineGraph {
 	public static void setStateMachines(List<StateMachine> stateMachines) {
 		StateMachineGraph.stateMachines = stateMachines;
 	}
+	public static void clear(){
+		stateMachines.clear();
+	}
 }

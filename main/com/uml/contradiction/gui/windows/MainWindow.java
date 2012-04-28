@@ -4,12 +4,15 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
-import javax.swing.JMenuBar;
 
+import com.uml.contradiction.gui.GUIState;
+import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.listeners.ExitListener;
 import com.uml.contradiction.gui.menu.MyMenuBar;
 
-public class MainWindow extends JFrame {
+public class MainWindow extends JFrame implements GUIState{
+	private static final long serialVersionUID = 2504948215343067408L;
+	private MyMenuBar menuBar;
 	public MainWindow() {
 		this.setTitle("UML contradictions");
 		this.setSize(800, 600);
@@ -25,8 +28,29 @@ public class MainWindow extends JFrame {
 			}
 			
 		});
-		MyMenuBar menuBar = new MyMenuBar();
+		menuBar = new MyMenuBar();
 		this.setJMenuBar(menuBar);
 		
+	}
+
+	@Override
+	public void started() {
+		menuBar.started();
+		PanelsController.showPanel(PanelsController.contradictionsPanel);
+	}
+
+	@Override
+	public void loadedNoOneSelected() {
+		menuBar.loadedNoOneSelected();
+	}
+
+	@Override
+	public void loadedOneSelected() {
+		menuBar.loadedOneSelected();
+	}
+
+	@Override
+	public void verified() {
+		menuBar.verified();
 	}
 }
