@@ -10,6 +10,7 @@ import com.uml.contradiction.gui.GUIState;
 import com.uml.contradiction.gui.listeners.AboutListener;
 import com.uml.contradiction.gui.listeners.ExitListener;
 import com.uml.contradiction.gui.listeners.ExportToDOC;
+import com.uml.contradiction.gui.listeners.ExportToTXT;
 import com.uml.contradiction.gui.listeners.LoadXMIListener;
 import com.uml.contradiction.gui.listeners.ResetListener;
 
@@ -35,7 +36,7 @@ public class MyMenuBar extends JMenuBar implements GUIState{
 		
 		export = new JMenu("Export");
 		exportToTXT = new JMenuItem("to TXT");
-		exportToTXT.setEnabled(false);
+		exportToTXT.addActionListener(new ExportToTXT());
 		export.add(exportToTXT);
 		
 		exportToDOC = new JMenuItem("to DOC");

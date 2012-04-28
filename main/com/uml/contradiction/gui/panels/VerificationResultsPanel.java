@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -59,14 +60,27 @@ public class VerificationResultsPanel extends JPanel implements GUIState {
 		this.diagrams.addListSelectionListener(new FailDiagrListListener());
 		
 		treePanel.setBounds(10, 20, 360, 480);
-		descriptionPanel.setBounds(380, 20, 400, 120);
+		descriptionPanel.setBounds(380, 160, 400, 340);
 		backBut.setBounds(10, 510, 100, 25);
-		listPanel.setBounds(380, 160, 400, 340);
+		listPanel.setBounds(380, 20, 400, 120);
 		
 		this.add(listPanel);
 		this.add(treePanel);
 		this.add(descriptionPanel);
 		this.add(backBut);
+		
+		JLabel label0 = new JLabel("Criterions:");
+		label0.setBounds(10, 0, 400, 20);
+		this.add(label0);
+		
+		JLabel label1 = new JLabel("Diagrams:");
+		label1.setBounds(380, 0, 400, 20);
+		this.add(label1);
+		
+		JLabel label2 = new JLabel("Description:");
+		label2.setBounds(380, 140, 400, 20);
+		this.add(label2);
+		
 	}
 	
 	public void setSelectedDiagrams(DefaultMutableTreeNode root) {

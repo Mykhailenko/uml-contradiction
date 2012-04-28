@@ -70,7 +70,7 @@ public class ContradictionsPanel extends JPanel implements GUIState{
 		tree.addTreeSelectionListener(new ContrTreeListener());
 		tree.setModel(model);
 		this.checkTreeManager = new CheckTreeManager(tree);
-		JLabel selectLabel = new JLabel("Contradictions:");
+		JLabel selectLabel = new JLabel("Criterions:");
 		selectLabel.setBounds(10, 0, 400, 20);
 		this.add(selectLabel);
 		
