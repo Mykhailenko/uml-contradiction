@@ -89,6 +89,8 @@ public class ContradictionsPanel extends JPanel{
 		imgLbl.setHorizontalAlignment(JLabel.CENTER);
 		imgLbl.setOpaque(true);
 		
+		
+		
 		this.setLayout(null);
 		treePanel.setBounds(10, 20, 290, 480);
 		JLabel desLabel = new JLabel("Description:");
