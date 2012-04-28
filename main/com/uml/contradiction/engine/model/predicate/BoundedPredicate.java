@@ -41,16 +41,29 @@ public class BoundedPredicate implements Formula{
 			vars.add(findVV(variableValues, boundVariable.get(i)));
 		}
 		boolean result = false;
+		
 		try {
-			result = predicate.predict(vars);
+			if(isNullExist(vars)){
+				result = false;
+			}else{
+				result = predicate.predict(vars);
+			}
 		} catch (PredicatException e) {
+			System.out.println(e);
 		}
 		if(negative){
 			result = !result;
 		}
 		return result;
 	}
-
+	private boolean isNullExist(List<Object> list){
+		for(Object o : list){
+			if(o == null){
+				return true;
+			}
+		}
+		return false;
+	}
 	private Object findVV(List<VariableValue> list, Variable variable){
 		for(VariableValue variableValue : list){
 			if(variableValue.variable.equals(variable)){

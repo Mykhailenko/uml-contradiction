@@ -7,7 +7,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
-import com.uml.contradiction.engine.Engine;
+import com.uml.contradiction.engine.Checker;
 import com.uml.contradiction.engine.model.HistoryPlainItem;
 import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.SimpleCriterion;
@@ -51,7 +51,7 @@ public class EngineTest {
 		
 		/////
 		SimpleCriterion simpleCriterion = new SimpleCriterion();
-		Engine engine = new Engine(simpleCriterion);
+		Checker engine = new Checker(simpleCriterion);
 		VerificationResult verificationResult = engine.verify();
 		assert verificationResult != null : "verificationResult == null";
 		LOGGER.info("isGood = " + verificationResult.isGood());
@@ -92,7 +92,7 @@ public class EngineTest {
 		
 		/////
 		SimpleCriterion simpleCriterion = new SimpleCriterion();
-		Engine engine = new Engine(simpleCriterion);
+		Checker engine = new Checker(simpleCriterion);
 		VerificationResult verificationResult = engine.verify();
 		assert verificationResult != null : "verificationResult == null";
 		LOGGER.info("isGood = " + verificationResult.isGood());

@@ -9,7 +9,7 @@
 		<mkdir dir="${build}"/>
 	</target>
 	<target name="compile" depends="init">
-		<javac srcdir="${src}" destdir="${build}"	/>
+		<javac srcdir="${src}" destdir="${build}" classpath="lib/log4j-1.2.16.jar"/>
 	</target>
 	<target name="run" depends="compile">
 		
@@ -26,5 +26,17 @@
 			access="private"
 			sourcepath="main"
 		/>
+	</target>
+	<target name="jar" depends="init,compile">
+		<jar destfile="diplom.jar">
+			<fileset dir="build" excludes="**/*.uml"/>
+			<fileset dir="." includes="images/**"/>
+			<zipfileset includes="**/*.class" src="lib/log4j-1.2.16.jar"/>
+			<zipfileset includes="**/*.class" src="lib/poi-3.8-20120326.jar"/>
+			<zipfileset includes="**/*.class" src="lib/poi-scratchpad-3.8-20120326.jar"/>
+			<manifest>
+				<attribute name="Main-Class" value="com.uml.contradiction.gui.Client"/>
+			</manifest>
+		</jar>
 	</target>
 </project>

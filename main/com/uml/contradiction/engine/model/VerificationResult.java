@@ -1,5 +1,6 @@
 package com.uml.contradiction.engine.model;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import com.uml.contradiction.engine.model.criteria.Criterion;
@@ -7,7 +8,7 @@ import com.uml.contradiction.engine.model.criteria.Criterion;
 public class VerificationResult {
 	private Criterion criterion;
 	private boolean good = false;
-	private List<HistoryPlainItem> failHistory;
+	private List<HistoryPlainItem> failHistory = new LinkedList<HistoryPlainItem>();
 	public Criterion getCriterion() {
 		return criterion;
 	}

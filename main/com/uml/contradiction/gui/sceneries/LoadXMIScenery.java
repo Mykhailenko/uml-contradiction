@@ -9,6 +9,7 @@ import javax.swing.JFileChooser;
 import org.apache.log4j.Logger;
 
 import com.uml.contradiction.converter.XMIConverter;
+import com.uml.contradiction.gui.Client;
 import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.models.DiagramForChoise;
 
@@ -29,6 +30,8 @@ public class LoadXMIScenery {
 				XMIConverter.setFile(file);
 				List<DiagramForChoise> availableDiagram = XMIConverter.getAvailableDiagram();
 				PanelsController.diagramsPanel.setFromDiagrams(availableDiagram);
+				XMIConverter.parse();
+				Client.setXmiLoaded(true);
 			} catch (Exception e) {
 				LOGGER.error(e.getMessage());
 			}

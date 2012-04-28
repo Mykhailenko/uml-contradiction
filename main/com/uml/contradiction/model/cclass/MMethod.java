@@ -1,5 +1,6 @@
 package com.uml.contradiction.model.cclass;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -10,7 +11,7 @@ public class MMethod {
 	private String name;
 	private Visibility visibility;
 	private Set<Stereotype> stereotypes;
-	private List<Parameter> parameters;
+	private List<Parameter> parameters = new LinkedList<Parameter>();
 	private String returnResult;
 	private String properties;
 	private Scope scope;

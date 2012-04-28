@@ -10,7 +10,7 @@ import javax.swing.tree.MutableTreeNode;
 
 import org.apache.log4j.Logger;
 
-import com.uml.contradiction.engine.Engine;
+import com.uml.contradiction.engine.Checker;
 import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.gui.controllers.PanelsController;
@@ -32,7 +32,7 @@ public class StartCheckScenery {
 		
 		for(Criterion crit:selectedCriterions) {
 			LOGGER.debug("checking criterion: " + crit);
-			Engine engine = new Engine(crit);
+			Checker engine = new Checker(crit);
 			VerificationResult result = engine.verify();
 			results.put(crit, result);
 		}
