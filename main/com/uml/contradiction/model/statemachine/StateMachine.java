@@ -7,7 +7,8 @@ import com.uml.contradiction.model.Diagram;
 import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.sequence.Message;
 
-public class StateMachine extends Diagram{
+public class StateMachine implements Diagram{
+	private String name;
 	private List<State> states;
 	private CClass cClass;
 	private List<Transition> transitions;
@@ -69,4 +70,12 @@ public class StateMachine extends Diagram{
 		return "StateMachine [name=" + name  + ", cClass=" + cClass.getFullName()
 				 + s + "]";
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
 }

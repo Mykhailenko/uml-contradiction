@@ -1,18 +1,32 @@
 package com.uml.contradiction.model.object;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import com.uml.contradiction.model.Diagram;
 
-public class ObjectDiagram extends Diagram{
-
-	private List<OObject> objects;
-
+public class ObjectDiagram implements Diagram{
+	private String name;
+	private List<OObject> objects = new LinkedList<OObject>();
+	private List<Link> links = new LinkedList<Link>();;
+	
 	public List<OObject> getObjects() {
 		return objects;
 	}
 	public void setObjects(List<OObject> objects) {
 		this.objects = objects;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public List<Link> getLinks() {
+		return links;
+	}
+	public void setLinks(List<Link> links) {
+		this.links = links;
 	}
 	 
 }

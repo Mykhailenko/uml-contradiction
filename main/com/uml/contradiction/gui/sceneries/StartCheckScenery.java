@@ -13,6 +13,7 @@ import org.apache.log4j.Logger;
 import com.uml.contradiction.engine.Checker;
 import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.Criterion;
+import com.uml.contradiction.engine.model.criteria.result.ResultTemplate;
 import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.models.DisplayedCriterion;
 import com.uml.contradiction.gui.panels.ContradictionsPanel;

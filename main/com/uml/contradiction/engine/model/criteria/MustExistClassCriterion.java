@@ -3,10 +3,15 @@ package com.uml.contradiction.engine.model.criteria;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
+import com.uml.contradiction.engine.model.criteria.result.MustExistClassTemplate;
+import com.uml.contradiction.engine.model.criteria.result.ResultTemplate;
 import com.uml.contradiction.engine.model.mapping.ClassObject;
 import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
+import com.uml.contradiction.engine.model.predicate.IsObjInsancetOfClass;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
+import com.uml.contradiction.engine.model.rightPart.simple.RPClasses;
 import com.uml.contradiction.engine.model.rightPart.simple.RPObjects;
+import com.uml.contradiction.tests.MustExistClassCriterionTest;
 
 public class MustExistClassCriterion extends Criterion {
 	public MustExistClassCriterion() {
@@ -17,15 +22,19 @@ public class MustExistClassCriterion extends Criterion {
 		quantifier.setBoundVariable(Variable.o);
 		quantifier.setRightPart(new RPObjects());
 		getQuantifiers().add(quantifier);
-		
+
 		Quantifier quantifier2 = new Quantifier();
 		quantifier2.setType(QuantifierType.ALONE);
 		quantifier2.setBoundVariable(Variable.c);
-		ComplexRightPart rightPart = new ComplexRightPart();
-		rightPart.getBoundVariables().add(Variable.o);
-		rightPart.getNestedMappings().add(new ClassObject());
-		quantifier2.setRightPart(rightPart);
-		getQuantifiers().add(quantifier2);
+		quantifier2.setRightPart(new RPClasses());
+		getQuantifiers().add(quantifier2);		
+		
+		BoundedPredicate pr = new BoundedPredicate();
+		pr.setPredicate(new IsObjInsancetOfClass());
+		pr.getBoundVariable().add(Variable.o);
+		pr.getBoundVariable().add(Variable.e);
+		
+		this.setFormula(pr);
 	}
 
 	@Override
@@ -36,5 +45,11 @@ public class MustExistClassCriterion extends Criterion {
 	@Override
 	public CriterionType getCriterionType() {
 		return CriterionType.CLASS_OBJECT;
+	}
+
+	@Override
+	public ResultTemplate getResultTemplate() {
+		// TODO Auto-generated method stub
+		return new MustExistClassTemplate();
 	}
 }

@@ -8,7 +8,8 @@ import com.uml.contradiction.model.common.Package;
 
 
 
-public class ClassDiagram extends Diagram{
+public class ClassDiagram implements Diagram{
+	private String name;
 	private List<CClass> classes;
 	private List<Association> associations;
 	private List<Dependency> dependencies;
@@ -60,6 +61,12 @@ public class ClassDiagram extends Diagram{
 				+ dependencies + "\n\t, realizations=" + realizations
 				+ "\n\t, generalizations=" + generalizations
 				+ "\n\t, parentPackageElement=" + parentPackageElement + "]";
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

@@ -12,7 +12,7 @@ import com.uml.contradiction.gui.menu.MyMenuBar;
 public class MainWindow extends JFrame {
 	public MainWindow() {
 		this.setTitle("UML contradictions");
-		this.setSize(730, 600);
+		this.setSize(800, 600);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 //		this.setLocation(100, 300);

@@ -23,6 +23,7 @@ import com.uml.contradiction.model.cclass.ClassGraph;
 import com.uml.contradiction.model.cclass.NaryAssociationClass;
 import com.uml.contradiction.model.common.UMLType;
 import com.uml.contradiction.model.object.OObject;
+import com.uml.contradiction.model.object.ObjectDiagram;
 import com.uml.contradiction.model.object.ObjectGraph;
 
 public class StartTest {
@@ -63,6 +64,34 @@ public class StartTest {
 		ClassGraph.setAssociations(ass);
 		
 		///////////////////////////////////////
+		OObject ob1 = new OObject();
+		OObject ob2 = new OObject();
+		CClass cl1 = new CClass();
+		CClass cl2 = new CClass();
+		
+		cl1.setName("cl1");
+		
+		ob1.setClasses(cl1);
+		ob1.setName("ob1");	
+		ob2.setClasses(cl1);
+		
+		ObjectDiagram od = new ObjectDiagram();
+		od.setName("od1");
+		
+		List<OObject> obs = new LinkedList<OObject>();
+		List<ObjectDiagram> ods = new LinkedList<ObjectDiagram>();
+		
+		
+		obs.add(ob1);
+		obs.add(ob2);
+		od.setObjects(obs);
+		ods.add(od);
+		
+		ObjectGraph.setObjectDiagrams(ods);
+		
+		ObjectGraph.setObjects(obs);
+		
+		System.out.println(ObjectGraph.getObjects().size());
 		
 		MainWindow mainWindow = new MainWindow();
 	

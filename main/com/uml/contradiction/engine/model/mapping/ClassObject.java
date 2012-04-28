@@ -20,7 +20,7 @@ public class ClassObject implements Mapping {
 		Object element = args.get(0);
 		if(element instanceof OObject){
 			OObject oObject = (OObject) element;
-			CClass cls = oObject.getClasses().get(0);
+			CClass cls = oObject.getClasses();
 			if(cls == null){
 				LOGGER.info("Can't find class!");
 				return null;
