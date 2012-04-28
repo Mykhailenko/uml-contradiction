@@ -13,8 +13,9 @@ public class FailDiagrListListener implements ListSelectionListener{
 	public void valueChanged(ListSelectionEvent e) {
 		String diagrams = (String)(PanelsController.resultsPanel.getDiagrams().getSelectedValue());
 		List<String> descriptions = PanelsController.resultsPanel.getDescrByDiagrams().get(diagrams);
-		System.out.println(PanelsController.resultsPanel.getDescrByDiagrams().size());
-		PanelsController.resultsPanel.showDescription(descriptions);
+		if(descriptions != null) {
+			PanelsController.resultsPanel.showDescription(descriptions);
+		}
 	}
 	//PanelsController.resultsPanel
 }
