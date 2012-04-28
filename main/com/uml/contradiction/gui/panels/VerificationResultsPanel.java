@@ -58,10 +58,10 @@ public class VerificationResultsPanel extends JPanel implements GUIState {
 		
 		this.diagrams.addListSelectionListener(new FailDiagrListListener());
 		
-		treePanel.setBounds(0, 0, 300, 300);
-		descriptionPanel.setBounds(310, 160, 300, 150);
-		backBut.setBounds(10, 310, 150, 20);
-		listPanel.setBounds(310, 0, 300, 150);
+		treePanel.setBounds(10, 20, 360, 480);
+		descriptionPanel.setBounds(380, 20, 400, 120);
+		backBut.setBounds(10, 510, 100, 25);
+		listPanel.setBounds(380, 160, 400, 340);
 		
 		this.add(listPanel);
 		this.add(treePanel);
