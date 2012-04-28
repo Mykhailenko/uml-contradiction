@@ -55,7 +55,7 @@ public class ClassDiagram extends Diagram{
 
 	@Override
 	public String toString() {
-		return "ClassDiagram [name=" + name + "\n\t, classes=" + classes
+		return "ClassDiagram [name=" + getName() + "\n\t, classes=" + classes
 				+ "\n\t, associations=" + associations + "\n\t, dependencies="
 				+ dependencies + "\n\t, realizations=" + realizations
 				+ "\n\t, generalizations=" + generalizations

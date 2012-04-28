@@ -1,5 +1,10 @@
 package com.uml.contradiction.exporters;
 
 public interface Exporter {
-	void export(String [] results) throws Exception;
+	/**
+	 * Save to current folder file named 'result'.
+	 * @param verificationResults
+	 * @throws Exception
+	 */
+	void export(String [] verificationResults) throws Exception;
 }

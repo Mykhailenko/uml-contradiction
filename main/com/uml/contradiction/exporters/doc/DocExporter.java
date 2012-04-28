@@ -88,7 +88,7 @@ public class DocExporter implements Exporter {
         //run7.setItalic(true); 
         CharacterRun run9 = run8.insertAfter("Ch");
         **/
-		OutputStream out = new FileOutputStream(new File("new.doc"));
+		OutputStream out = new FileOutputStream(new File("result"));
 		doc.write(out);
 		out.flush();
 		out.close();

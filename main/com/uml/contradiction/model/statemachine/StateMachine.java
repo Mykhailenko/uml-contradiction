@@ -66,7 +66,7 @@ public class StateMachine extends Diagram{
 				s += "\n\t    " + tr + ", ";
 		}
 		
-		return "StateMachine [name=" + name  + ", cClass=" + cClass.getFullName()
+		return "StateMachine [name=" + getName()  + ", cClass=" + cClass.getFullName()
 				 + s + "]";
 	}
 }

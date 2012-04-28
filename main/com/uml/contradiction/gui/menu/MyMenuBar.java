@@ -8,6 +8,7 @@ import javax.swing.JMenuItem;
 
 import com.uml.contradiction.gui.listeners.AboutListener;
 import com.uml.contradiction.gui.listeners.ExitListener;
+import com.uml.contradiction.gui.listeners.ExportToDOC;
 import com.uml.contradiction.gui.listeners.LoadXMIListener;
 import com.uml.contradiction.gui.listeners.ResetListener;
 
@@ -21,9 +22,16 @@ public class MyMenuBar extends JMenuBar {
 		loadXMI.addActionListener(new LoadXMIListener());
 		fileMenu.add(loadXMI);
 		
-		JMenuItem save = new JMenuItem("Save");
-		save.setEnabled(false);
-		fileMenu.add(save);
+		JMenu export = new JMenu("Export");
+		JMenuItem exportToTXT = new JMenuItem("to TXT");
+		exportToTXT.setEnabled(false);
+		export.add(exportToTXT);
+		
+		JMenuItem exportToDOC = new JMenuItem("to DOC");
+		exportToDOC.addActionListener(new ExportToDOC());
+		export.add(exportToDOC);
+		
+		fileMenu.add(export);
 		
 		fileMenu.addSeparator();
 		
