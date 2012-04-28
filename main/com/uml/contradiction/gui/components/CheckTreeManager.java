@@ -30,6 +30,7 @@ public class CheckTreeManager extends MouseAdapter implements TreeSelectionListe
     } 
  
     public void mouseClicked(MouseEvent me){ 
+    	System.out.println("Selected!");
         TreePath path = tree.getPathForLocation(me.getX(), me.getY()); 
         if(path==null) 
             return; 

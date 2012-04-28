@@ -18,6 +18,7 @@ public class CriterionSuite {
 		result.add(new MustExistMethodCriterion());
 		result.add(new PartOfSingleComposite());
 		result.add(new ExecutableSequenceCriterion());
+		result.add(new NoUtilityInstances());
 		return result;
 	}
 
@@ -31,6 +32,7 @@ public class CriterionSuite {
 		result.add(new DisplayedCriterion(new MustExistMethodCriterion(), "MustExistMethodCriterion", "MustExistMethodCriterion"));
 		result.add(new DisplayedCriterion(new PartOfSingleComposite(), "PartOfSingleComposite", "PartOfSingleComposite"));
 		result.add(new DisplayedCriterion(new ExecutableSequenceCriterion(), "ExecutableSequenceCriterion", "ExecutableSequenceCriterion"));
+		result.add(new DisplayedCriterion(new NoUtilityInstances(), "NoUtilityInstances", "NoUtilityInstances"));
 		
 		return result;
 	}
