@@ -26,6 +26,8 @@ public class MyMenuBar extends JMenuBar implements GUIState{
 	JMenu help;
 	JMenuItem about;
 	JMenuItem helpContent;
+	JMenuItem project;
+	JMenuItem settings;
 	public MyMenuBar() {
 		super();
 		fileMenu = new JMenu("File");
@@ -44,6 +46,13 @@ public class MyMenuBar extends JMenuBar implements GUIState{
 		export.add(exportToDOC);
 		
 		fileMenu.add(export);
+		
+		project = new JMenuItem("Project");
+		fileMenu.add(project);
+		
+		settings = new JMenuItem("Settings");
+		settings.setEnabled(false);
+		fileMenu.add(settings);
 		
 		fileMenu.addSeparator();
 		
@@ -82,6 +91,7 @@ public class MyMenuBar extends JMenuBar implements GUIState{
 		loadXMI.setEnabled(true);
 		export.setEnabled(false);
 		reset.setEnabled(false);
+		project.setEnabled(false);
 	}
 
 	@Override
@@ -89,6 +99,7 @@ public class MyMenuBar extends JMenuBar implements GUIState{
 		loadXMI.setEnabled(false);
 		export.setEnabled(false);
 		reset.setEnabled(true);
+		project.setEnabled(true);
 	}
 
 	@Override
@@ -96,6 +107,7 @@ public class MyMenuBar extends JMenuBar implements GUIState{
 		loadXMI.setEnabled(false);
 		export.setEnabled(false);
 		reset.setEnabled(true);
+		project.setEnabled(true);
 	}
 
 	@Override
@@ -103,6 +115,7 @@ public class MyMenuBar extends JMenuBar implements GUIState{
 		loadXMI.setEnabled(false);
 		export.setEnabled(true);
 		reset.setEnabled(true);
+		project.setEnabled(true);
 	}
 	
 }
