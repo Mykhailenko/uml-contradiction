@@ -1,11 +1,13 @@
 package com.uml.contradiction.gui.windows;
 
+import java.awt.MenuBar;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
 
 import com.uml.contradiction.gui.GUIState;
+import com.uml.contradiction.gui.HotKeyBinder;
 import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.listeners.ExitListener;
 import com.uml.contradiction.gui.menu.MyMenuBar;
@@ -28,9 +30,13 @@ public class MainWindow extends JFrame implements GUIState{
 			}
 			
 		});
+		
 		menuBar = new MyMenuBar();
 		this.setJMenuBar(menuBar);
-		
+	}
+	
+	public MyMenuBar getMyMenuBar() {
+		return menuBar;
 	}
 
 	@Override

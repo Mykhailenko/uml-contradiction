@@ -26,6 +26,7 @@ public class AboutListener implements ActionListener {
 		JDialog dialog = new JDialog(Client.getMainWindow(), true);
 		dialog.setLayout(null);
 		dialog.setSize(300, 180);
+		dialog.setResizable(false);
 		dialog.setLocationRelativeTo(null);
 		dialog.setTitle("About");
 		

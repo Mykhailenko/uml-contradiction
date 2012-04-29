@@ -15,6 +15,7 @@ public class StartCheckListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		System.out.println("verirr");
 	//	StartCheckScenery.run();
 		ContradictionsPanel panel = PanelsController.contradictionsPanel;
 		List<DefaultMutableTreeNode> nodes = panel.getSelectedNodes();

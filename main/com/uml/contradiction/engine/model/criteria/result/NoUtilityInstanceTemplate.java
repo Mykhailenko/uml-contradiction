@@ -13,11 +13,10 @@ public class NoUtilityInstanceTemplate  extends ResultTemplate{
 	
 	@Override
 	public void fill(HistoryPlainItem hpi) {
-		
 		String s = new String();
 		CClass cl = (CClass)(hpi.getItems().get(0).value);
 		OObject ob = (OObject)(hpi.getItems().get(1).value);
-		s = "Trere is an object " + ob.getName() + " of class " + cl.getName() + " with stereotype <<utility>>.";
+		s = "Trere is an object " + ResultTemplate.ELEMENT_MARKER+ob.getName()+ResultTemplate.ELEMENT_MARKER + " of class " + ResultTemplate.ELEMENT_MARKER+cl.getName()+ResultTemplate.ELEMENT_MARKER + " with stereotype <<utility>>.";
 		
 		super.setDiagrams(hpi.getItems());
 		this.description = s;

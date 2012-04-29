@@ -4,12 +4,13 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
+import com.uml.contradiction.engine.model.GeneralResult;
 import com.uml.contradiction.exporters.Exporter;
 
 public class TxtExporter implements Exporter{
 
 	@Override
-	public void export(String[] verificationResults) throws Exception {
+	public void export(GeneralResult generalResult) throws Exception {
 		String filename = "result";
 		File file = new File(filename);
 		if(!file.exists()){
@@ -17,11 +18,11 @@ public class TxtExporter implements Exporter{
 		}
 		FileWriter fileWriter = new FileWriter(file);
 		PrintWriter out = new PrintWriter(fileWriter);
-		for(String s : verificationResults){
-			out.println(s);
-		}
+		out.println("gleb");
+		out.println("awesome");
 		out.flush();
 		out.close();
 	}
+
 
 }

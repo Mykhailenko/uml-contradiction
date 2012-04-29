@@ -1,11 +1,18 @@
 package com.uml.contradiction.gui.menu;
 
 
+import java.awt.event.ActionEvent;
+
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.JComponent;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
 
 import com.uml.contradiction.gui.GUIState;
+import com.uml.contradiction.gui.HotKeyBinder;
 import com.uml.contradiction.gui.listeners.AboutListener;
 import com.uml.contradiction.gui.listeners.ExitListener;
 import com.uml.contradiction.gui.listeners.ExportToDOC;
@@ -15,25 +22,26 @@ import com.uml.contradiction.gui.listeners.ResetListener;
 
 public class MyMenuBar extends JMenuBar implements GUIState{
 	private static final long serialVersionUID = -8023112033523408083L;
-	JMenu fileMenu;
-	JMenuItem loadXMI;
-	JMenu export;
-	JMenuItem exportToTXT;
-	JMenuItem exportToDOC;
-	JMenuItem reset;
-	JMenuItem exit;
-	JMenu view;
-	JMenu help;
-	JMenuItem about;
-	JMenuItem helpContent;
-	JMenuItem project;
-	JMenuItem settings;
+	private JMenu fileMenu;
+	private JMenuItem loadXMI;
+	private JMenu export;
+	private JMenuItem exportToTXT;
+	private JMenuItem exportToDOC;
+	private JMenuItem reset;
+	private JMenuItem exit;
+	private JMenu view;
+	private JMenu help;
+	private JMenuItem about;
+	private JMenuItem helpContent;
+	private JMenuItem project;
+	private JMenuItem settings;
 	public MyMenuBar() {
 		super();
 		fileMenu = new JMenu("File");
 
 		loadXMI = new JMenuItem("Load XMI");
 		loadXMI.addActionListener(new LoadXMIListener());
+		loadXMI.setMnemonic('o');
 		fileMenu.add(loadXMI);
 		
 		export = new JMenu("Export");
@@ -64,6 +72,7 @@ public class MyMenuBar extends JMenuBar implements GUIState{
 		
 		exit = new JMenuItem("Exit");
 		exit.addActionListener(new ExitListener());
+		exit.setMnemonic('x');
 		fileMenu.add(exit);
 		
 		this.add(fileMenu);
@@ -84,6 +93,44 @@ public class MyMenuBar extends JMenuBar implements GUIState{
 		help.add(helpContent);
 		
 		this.add(help);
+		
+		HotKeyBinder.addComponent(this);
+	}
+	
+	public JMenuItem getLoadXMI() {
+		return loadXMI;
+	}
+
+	public JMenuItem getExportToTXT() {
+		return exportToTXT;
+	}
+
+	public JMenuItem getExportToDOC() {
+		return exportToDOC;
+	}
+
+	public JMenuItem getReset() {
+		return reset;
+	}
+
+	public JMenuItem getExit() {
+		return exit;
+	}
+
+	public JMenuItem getAbout() {
+		return about;
+	}
+
+	public JMenuItem getHelpContent() {
+		return helpContent;
+	}
+
+	public JMenuItem getProject() {
+		return project;
+	}
+
+	public JMenuItem getSettings() {
+		return settings;
 	}
 
 	@Override

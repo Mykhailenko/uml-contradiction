@@ -12,23 +12,22 @@ import org.apache.poi.hwpf.usermodel.ParagraphProperties;
 import org.apache.poi.hwpf.usermodel.Range;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
+import com.uml.contradiction.engine.model.GeneralResult;
 import com.uml.contradiction.exporters.Exporter;
 
-public class DocExporter implements Exporter {
+public class DocExporterPOI implements Exporter {
 
 	@Override
-	public void export(String[] results) throws Exception {
+	public void export(GeneralResult generalResult) throws Exception {
 		File file = new File("resources"+File.separator+"sample.doc");
 		POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(file));
 		HWPFDocument doc = new HWPFDocument(fs);
 		Range range = doc.getRange();
 		Paragraph paragraph0 = range.insertAfter(new ParagraphProperties(), 0);
-		CharacterRun run0 = paragraph0.insertAfter(results[0]);
-		for(int i = 1; i < results.length; ++i){
+		CharacterRun run0 = paragraph0.insertAfter("gleb");
 			Paragraph paragraph = run0.insertAfter(new ParagraphProperties(), 0);
-			CharacterRun run = paragraph.insertAfter(results[i]);
+			CharacterRun run = paragraph.insertAfter("awesome");
 			run0 = run;
-		}
 		
 		/**
         // Get the Ramge object encapsulating the text for the entire document. 
@@ -93,5 +92,6 @@ public class DocExporter implements Exporter {
 		out.flush();
 		out.close();
 	}
+
 
 }

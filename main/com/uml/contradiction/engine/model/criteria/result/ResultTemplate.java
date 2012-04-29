@@ -22,6 +22,7 @@ public abstract class ResultTemplate {
 	protected List<Diagram> diagrams = new LinkedList<Diagram>();
 	protected List<DiagramType> diagrTypes = new LinkedList<DiagramType>();
 	protected String description;
+	public static String ELEMENT_MARKER = "!";
 	
 	public abstract void fill(HistoryPlainItem vars);
 	public abstract void setDiagrTypes();
