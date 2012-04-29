@@ -22,6 +22,7 @@ import com.uml.contradiction.model.sequence.LifeLine;
 import com.uml.contradiction.model.sequence.Message;
 import com.uml.contradiction.model.sequence.SequenceGraph;
 import com.uml.contradiction.model.statemachine.*;
+import com.uml.contradiction.model.*;
 import com.uml.contradiction.common.DiagramType;
 
 import java.io.File;
@@ -29,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Collections;
+
+import javax.swing.JTable.PrintMode;
 
 public class TestShell {
 	public static void main(String []argc){
@@ -75,7 +78,7 @@ public class TestShell {
 		
 		printStateMachineGraf();
 		
-		System.out.println(MetaData);
+		MetaData.printMetaData();
 	}
 	public static void printClassGraf () {
 		List<CClass> class_s = ClassGraph.getClasses();

@@ -5,6 +5,7 @@ public class MetaData {
 	private static String exporter;
 	private static String author;
 	private static String company;
+	private static String description;
 	private static String pmCreateDateTime;
 	private static String pmLastModified;
 	
@@ -31,6 +32,12 @@ public class MetaData {
 	}
 	public static void setCompany(String company) {
 		MetaData.company = company;
+	}	
+	public static String getDescription() {
+		return description;
+	}
+	public static void setDescription(String description) {
+		MetaData.description = description;
 	}
 	public static String getPmCreateDateTime() {
 		return pmCreateDateTime;
@@ -43,6 +50,11 @@ public class MetaData {
 	}
 	public static void setPmLastModified(String pmLastModified) {
 		MetaData.pmLastModified = pmLastModified;
+	}
+	public static void printMetaData(){
+		System.out.println("MetaData: , projectName= "+ projectName +
+				", exporter= "+ exporter + ", author= "+ author + ", company= " + company+
+				", description= "+ description +", pmCreateDateTime= "+ pmCreateDateTime + ", pmLastModified= "+ pmLastModified);		
 	}
 	
 }
