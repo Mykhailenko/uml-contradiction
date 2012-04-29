@@ -12,7 +12,7 @@ import javax.swing.tree.MutableTreeNode;
 import org.apache.log4j.Logger;
 
 import com.uml.contradiction.engine.Checker;
-import com.uml.contradiction.engine.RunCriterion;
+import com.uml.contradiction.engine.RunCriterions;
 import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.criteria.result.ResultTemplate;
@@ -35,7 +35,7 @@ public class StartCheckScenery {
 				DefaultMutableTreeNode newRoot = getSelectedTree(nodes);
 				List<Criterion> selectedCriterions = getSelectedCriterions(newRoot);
 				Map<Criterion, VerificationResult> results = new HashMap<Criterion, VerificationResult>();
-				RunCriterion runCriterion = new RunCriterion();
+				RunCriterions runCriterion = new RunCriterions();
 				List<VerificationResult> ver = runCriterion.run(selectedCriterions);
 				for(VerificationResult vr : ver){
 					results.put(vr.getCriterion(), vr);
