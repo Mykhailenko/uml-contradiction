@@ -3,33 +3,26 @@ package com.uml.contradiction.engine.model.predicate;
 import java.util.Arrays;
 import java.util.List;
 
+import com.uml.contradiction.engine.model.mapping.AttributeClass;
 import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
+import com.uml.contradiction.model.cclass.Attribute;
 import com.uml.contradiction.model.cclass.CClass;
-import com.uml.contradiction.model.common.Stereotype;
+import com.uml.contradiction.model.cclass.Scope;
 import com.uml.contradiction.model.common.UMLClassStereotype;
-import com.uml.contradiction.model.object.OObject;
 
-public class IsUtility implements Predicate{
+public class IsStaticAttribute implements Predicate{
 
 	@Override
 	public boolean predict(List params) throws PredicatException {
-		CClass cl = (CClass)(params.get(0));
-		
-		if(cl==null) {
+		if(params.get(0) == null) {
 			return false;
 		}
 		
-		if(cl.getStereotypes() == null)
+		Attribute attr = (Attribute)(params.get(0));
+		if(attr.getScope() == Scope.CLASSIFIER)
+			return true;
+		else
 			return false;
-		
-		List<Object> strs = Arrays.asList(cl.getStereotypes().toArray());
-		for(Object str:strs) {
-			if(str.equals(UMLClassStereotype.UTILITY)){
-				return true;
-			}
-		}
-		
-		return false;
 	}
 
 	@Override
