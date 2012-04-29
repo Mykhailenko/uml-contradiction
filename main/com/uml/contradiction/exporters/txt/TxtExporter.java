@@ -12,17 +12,16 @@ public class TxtExporter implements Exporter{
 	public void export(String[] verificationResults) throws Exception {
 		String filename = "result";
 		File file = new File(filename);
-		if(file.exists()){
-			FileWriter fileWriter = new FileWriter(file);
-			PrintWriter out = new PrintWriter(fileWriter);
-			for(String s : verificationResults){
-				out.println(s);
-			}
-			out.flush();
-			out.close();
-		}else{
-			throw new Exception("Can not create file");
+		if(!file.exists()){
+			file.createNewFile();
 		}
+		FileWriter fileWriter = new FileWriter(file);
+		PrintWriter out = new PrintWriter(fileWriter);
+		for(String s : verificationResults){
+			out.println(s);
+		}
+		out.flush();
+		out.close();
 	}
 
 }

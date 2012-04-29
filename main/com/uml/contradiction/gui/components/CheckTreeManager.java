@@ -49,6 +49,7 @@ public class CheckTreeManager extends MouseAdapter implements TreeSelectionListe
             selectionModel.addTreeSelectionListener(this); 
             tree.treeDidChange();
             checkState();
+            PanelsController.contradictionsPanel.updateState();
         } 
     } 
     public static void checkState(){

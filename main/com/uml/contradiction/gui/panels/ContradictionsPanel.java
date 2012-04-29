@@ -26,14 +26,17 @@ import javax.swing.tree.TreePath;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.criteria.CriterionSuite;
 import com.uml.contradiction.engine.model.criteria.CriterionTypeSuite;
+import com.uml.contradiction.gui.Client;
 import com.uml.contradiction.gui.GUIState;
 import com.uml.contradiction.gui.Images;
 import com.uml.contradiction.gui.components.CheckTreeManager;
+import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.listeners.ContrTreeListener;
 import com.uml.contradiction.gui.listeners.StartCheckListener;
 import com.uml.contradiction.gui.models.DiagramForChoise;
 import com.uml.contradiction.gui.models.DisplayedCriterion;
 import com.uml.contradiction.gui.models.DisplayedCriterionType;
+import com.uml.contradiction.gui.sceneries.StartCheckScenery;
 import com.uml.contradiction.gui.vocabularies.english.DiagrPanelVoc;
 
 public class ContradictionsPanel extends JPanel implements GUIState{
@@ -43,7 +46,7 @@ public class ContradictionsPanel extends JPanel implements GUIState{
 	private final JTextArea description = new JTextArea();
 	private CheckTreeManager checkTreeManager;
 	private final JLabel imgLbl = new JLabel();
-	
+	private JLabel numOfSelected;
 	public ContradictionsPanel() {
 		super();
 		createGUI();
@@ -109,8 +112,12 @@ public class ContradictionsPanel extends JPanel implements GUIState{
 		
 		this.updateUI();
 		this.repaint();
+		
+		numOfSelected = new JLabel("0 / " + CriterionSuite.getDisplayedCriterions().size() + " selected");
+		numOfSelected.setBounds(270, 510, 100, 25);
+		this.add(numOfSelected);
 	}
-
+	
 	
 	public void showDescription(Object object) {
 		
@@ -154,26 +161,39 @@ public class ContradictionsPanel extends JPanel implements GUIState{
 	public JTree getTree() {
 		return tree;
 	}
-
+	public String stringForLabelNumOfSelected(){
+		return "" + numberOfSelected() + " / " + CriterionSuite.getDisplayedCriterions().size() + " selected";
+	}
+	public int numberOfSelected(){
+		ContradictionsPanel panel = PanelsController.contradictionsPanel;
+		List<DefaultMutableTreeNode> nodes = panel.getSelectedNodes();
+		if(nodes == null || nodes.size() == 0) {
+			return 0;
+		}
+		else {
+			return StartCheckScenery.countOfSelectedCriterions(nodes);
+		}
+	}
+	public void updateState(){
+		numOfSelected.setText(stringForLabelNumOfSelected());
+	}
 	@Override
 	public void started() {
 		startBut.setEnabled(false);
 		checkTreeManager.getSelectionModel().clearSelection();
 		
 	}
-
+	
 	@Override
 	public void loadedNoOneSelected() {
 		startBut.setEnabled(false);
-		
 	}
-
+	
 	@Override
 	public void loadedOneSelected() {
 		startBut.setEnabled(true);
-		
 	}
-
+	
 	@Override
 	public void verified() {
 		startBut.setEnabled(false);

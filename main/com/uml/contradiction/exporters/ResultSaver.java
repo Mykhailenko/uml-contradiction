@@ -15,7 +15,7 @@ public class ResultSaver {
 		if(returnValue == JFileChooser.APPROVE_OPTION){
 			File file = chooser.getSelectedFile();
 			String [] results = new String[]{"gleb", "awesome"};
-			return ResultSaver.savep(results, file.getPath(), new DocExporter());
+			return ResultSaver.savep(results, file.getPath(), exporter);
 		}else{
 			return false;
 		}

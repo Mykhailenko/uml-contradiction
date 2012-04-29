@@ -1,6 +1,5 @@
 package com.uml.contradiction.gui.menu;
 
-import java.awt.MenuBar;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -15,6 +14,7 @@ import com.uml.contradiction.gui.listeners.LoadXMIListener;
 import com.uml.contradiction.gui.listeners.ResetListener;
 
 public class MyMenuBar extends JMenuBar implements GUIState{
+	private static final long serialVersionUID = -8023112033523408083L;
 	JMenu fileMenu;
 	JMenuItem loadXMI;
 	JMenu export;
