@@ -28,6 +28,7 @@ import com.uml.contradiction.engine.model.criteria.CriterionSuite;
 import com.uml.contradiction.engine.model.criteria.CriterionTypeSuite;
 import com.uml.contradiction.gui.Client;
 import com.uml.contradiction.gui.GUIState;
+import com.uml.contradiction.gui.HotKeyBinder;
 import com.uml.contradiction.gui.Images;
 import com.uml.contradiction.gui.components.CheckTreeManager;
 import com.uml.contradiction.gui.controllers.PanelsController;
@@ -40,7 +41,7 @@ import com.uml.contradiction.gui.sceneries.StartCheckScenery;
 import com.uml.contradiction.gui.vocabularies.english.DiagrPanelVoc;
 
 public class ContradictionsPanel extends JPanel implements GUIState{
-	private final JButton startBut = new JButton("Verify");
+	private final JButton verify = new JButton("Verify");
 	private final JButton backBut = new JButton("<< Back");
 	private final JTree tree = new JTree();
 	private final JTextArea description = new JTextArea();
@@ -84,7 +85,7 @@ public class ContradictionsPanel extends JPanel implements GUIState{
 		descriptionPanel.setBorder(null);
 		description.setBorder(null);
 		descriptionPanel.setOpaque(false);
-		startBut.addActionListener(new StartCheckListener());
+		verify.addActionListener(new StartCheckListener());
 		
 		imgLbl.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		imgLbl.setBackground(Color.white);
@@ -104,10 +105,10 @@ public class ContradictionsPanel extends JPanel implements GUIState{
 		imgLabel.setBounds(380, 140, 400, 20);
 		this.add(imgLabel);
 		imgLbl.setBounds(380, 160, 400, 340);
-		startBut.setBounds(10, 510, 100, 25);
+		verify.setBounds(10, 510, 100, 25);
 		this.add(treePanel);
 		this.add(descriptionPanel);
-		this.add(startBut);
+		this.add(verify);
 		this.add(imgLbl);
 		
 		this.updateUI();
@@ -116,8 +117,12 @@ public class ContradictionsPanel extends JPanel implements GUIState{
 		numOfSelected = new JLabel("0 / " + CriterionSuite.getDisplayedCriterions().size() + " selected");
 		numOfSelected.setBounds(270, 510, 100, 25);
 		this.add(numOfSelected);
+		
+		HotKeyBinder.addComponent(this);
 	}
-	
+	public JButton getVerify() {
+		return verify;
+	}
 	
 	public void showDescription(Object object) {
 		
@@ -142,7 +147,6 @@ public class ContradictionsPanel extends JPanel implements GUIState{
 			this.updateUI();			
 		}
 	}
-	
 	public List<DefaultMutableTreeNode> getSelectedNodes() {
 		List<DefaultMutableTreeNode> res = new LinkedList<DefaultMutableTreeNode>();
 		TreePath[] paths = checkTreeManager.getSelectionModel().getSelectionPaths(); 
@@ -179,24 +183,24 @@ public class ContradictionsPanel extends JPanel implements GUIState{
 	}
 	@Override
 	public void started() {
-		startBut.setEnabled(false);
+		verify.setEnabled(false);
 		checkTreeManager.getSelectionModel().clearSelection();
 		
 	}
 	
 	@Override
 	public void loadedNoOneSelected() {
-		startBut.setEnabled(false);
+		verify.setEnabled(false);
 	}
 	
 	@Override
 	public void loadedOneSelected() {
-		startBut.setEnabled(true);
+		verify.setEnabled(true);
 	}
 	
 	@Override
 	public void verified() {
-		startBut.setEnabled(false);
+		verify.setEnabled(false);
 		
 	}
 	

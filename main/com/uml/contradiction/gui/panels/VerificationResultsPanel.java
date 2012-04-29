@@ -20,6 +20,7 @@ import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.criteria.result.ResultTemplate;
 import com.uml.contradiction.gui.GUIState;
+import com.uml.contradiction.gui.HotKeyBinder;
 import com.uml.contradiction.gui.components.CheckTreeManager;
 import com.uml.contradiction.gui.components.ResCellRenderer;
 import com.uml.contradiction.gui.listeners.FailDiagrListListener;
@@ -43,6 +44,7 @@ public class VerificationResultsPanel extends JPanel implements GUIState {
 	public VerificationResultsPanel() {
 		super();
 		createGUI();
+		HotKeyBinder.addComponent(this);
 	}
 	
 	private void createGUI() {

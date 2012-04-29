@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.ListModel;
 
 import com.uml.contradiction.common.DiagramType;
+import com.uml.contradiction.gui.HotKeyBinder;
 import com.uml.contradiction.gui.listeners.diagramsChoise.ComboListener;
 import com.uml.contradiction.gui.models.DiagramForChoise;
 import com.uml.contradiction.gui.panels.diagramstypes.ViewedDiagramType;
@@ -38,6 +39,7 @@ public class DiagramsPanel extends JPanel {
 	public DiagramsPanel() {
 		super();
 		createGUI();
+		HotKeyBinder.addComponent(this);
 	}
 	
 	private void createGUI() {
