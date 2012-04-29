@@ -15,7 +15,7 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import com.uml.contradiction.engine.model.GeneralResult;
 import com.uml.contradiction.exporters.Exporter;
 
-public class DocExporter implements Exporter {
+public class DocExporterPOI implements Exporter {
 
 	@Override
 	public void export(GeneralResult generalResult) throws Exception {

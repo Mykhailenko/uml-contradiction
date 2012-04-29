@@ -6,7 +6,7 @@ import java.io.File;
 
 import com.uml.contradiction.engine.model.GeneralResult;
 import com.uml.contradiction.exporters.ResultSaver;
-import com.uml.contradiction.exporters.doc.DocExporter;
+import com.uml.contradiction.exporters.doc.DocExporterPOI;
 import com.uml.contradiction.exporters.txt.TxtExporter;
 
 public class ExportToTXT implements ActionListener {

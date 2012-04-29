@@ -5,7 +5,7 @@ import java.io.File;
 import javax.swing.JFileChooser;
 
 import com.uml.contradiction.engine.model.GeneralResult;
-import com.uml.contradiction.exporters.doc.DocExporter;
+import com.uml.contradiction.exporters.doc.DocExporterPOI;
 import com.uml.contradiction.gui.controllers.PanelsController;
 
 public class ResultSaver {
