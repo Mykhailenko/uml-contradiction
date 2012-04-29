@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
+import com.uml.contradiction.gui.Client;
 import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.panels.ContradictionsPanel;
 import com.uml.contradiction.gui.sceneries.StartCheckScenery;
@@ -22,6 +23,7 @@ public class StartCheckListener implements ActionListener {
 		}
 		else {
 			StartCheckScenery.run(nodes);
+			Client.getClient().verified();
 		}
 	}
 

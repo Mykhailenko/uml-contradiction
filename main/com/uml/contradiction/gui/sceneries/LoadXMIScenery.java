@@ -4,12 +4,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 
 import org.apache.log4j.Logger;
 
 import com.uml.contradiction.converter.XMIConverter;
 import com.uml.contradiction.gui.Client;
+import com.uml.contradiction.gui.components.CheckTreeManager;
+import com.uml.contradiction.gui.components.ProgressDialog;
 import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.models.DiagramForChoise;
 
@@ -24,14 +27,28 @@ public class LoadXMIScenery {
 		chooser.setMultiSelectionEnabled(false);
 		int returnValue = chooser.showOpenDialog(PanelsController.mainWindow);
 		if(returnValue == JFileChooser.APPROVE_OPTION){
-			File file = chooser.getSelectedFile();
+			final File file = chooser.getSelectedFile();
 			LOGGER.info("we choosed " + file.getName());
 			try {
-				XMIConverter.setFile(file);
-				List<DiagramForChoise> availableDiagram = XMIConverter.getAvailableDiagram();
-				PanelsController.diagramsPanel.setFromDiagrams(availableDiagram);
-				XMIConverter.parse();
-				Client.setXmiLoaded(true);
+				final JDialog dialog = new ProgressDialog("loading xmi...");
+				new Thread(new Runnable() {
+					@Override
+					public void run() {
+						try {
+							XMIConverter.setFile(file);
+							List<DiagramForChoise> availableDiagram = XMIConverter.getAvailableDiagram();
+							PanelsController.diagramsPanel.setFromDiagrams(availableDiagram);
+							XMIConverter.parse();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						Client.setXmiLoaded(true);
+						Client.getClient().loadedNoOneSelected();
+						CheckTreeManager.checkState();
+						dialog.setVisible(false);
+					}
+				}).start();
+				dialog.setVisible(true);
 			} catch (Exception e) {
 				LOGGER.error(e.getMessage());
 			}

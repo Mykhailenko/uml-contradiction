@@ -5,46 +5,54 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.JDialog;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.MutableTreeNode;
 
 import org.apache.log4j.Logger;
 
 import com.uml.contradiction.engine.Checker;
+import com.uml.contradiction.engine.RunCriterion;
 import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.Criterion;
+import com.uml.contradiction.engine.model.criteria.result.ResultTemplate;
+import com.uml.contradiction.gui.components.ProgressDialog;
 import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.models.DisplayedCriterion;
 import com.uml.contradiction.gui.panels.ContradictionsPanel;
 import com.uml.contradiction.gui.panels.VerificationResultsPanel;
-
 public class StartCheckScenery {
 	private static final Logger LOGGER = Logger.getRootLogger();
 	
-	public static void run(List<DefaultMutableTreeNode> nodes) {
+	public static void run(final List<DefaultMutableTreeNode> nodes) {
 		System.out.println("CheckScenery");
-		ContradictionsPanel contrPanel = PanelsController.contradictionsPanel;
-		VerificationResultsPanel resPanel = PanelsController.resultsPanel;
-		
-		DefaultMutableTreeNode newRoot = getSelectedTree(nodes);
-		List<Criterion> selectedCriterions = getSelectedCriterions(newRoot);
-		Map<Criterion, VerificationResult> results = new HashMap<Criterion, VerificationResult>();
-		
-		for(Criterion crit:selectedCriterions) {
-			LOGGER.debug("checking criterion: " + crit);
-			Checker engine = new Checker(crit);
-			VerificationResult result = engine.verify();
-			results.put(crit, result);
-		}
-		
-		resPanel.setResults(results);
-		resPanel.setSelectedDiagrams(newRoot);
-		PanelsController.showPanel(resPanel);
-		
+		final JDialog dialog = new ProgressDialog("verifying...");
+		new Thread( new Runnable() {
+			
+			@Override
+			public void run() {
+				VerificationResultsPanel resPanel = PanelsController.resultsPanel;
+				DefaultMutableTreeNode newRoot = getSelectedTree(nodes);
+				List<Criterion> selectedCriterions = getSelectedCriterions(newRoot);
+				Map<Criterion, VerificationResult> results = new HashMap<Criterion, VerificationResult>();
+				RunCriterion runCriterion = new RunCriterion();
+				List<VerificationResult> ver = runCriterion.run(selectedCriterions);
+				for(VerificationResult vr : ver){
+					results.put(vr.getCriterion(), vr);
+				}
+				resPanel.setResults(results);
+				resPanel.setSelectedDiagrams(newRoot);
+				PanelsController.showPanel(resPanel);
+				dialog.setVisible(false);
+			}
+		}).start();
+		dialog.setVisible(true);
 		
 		return;
 	}
-	
+	public static int countOfSelectedCriterions(List<DefaultMutableTreeNode> nodes){
+		return getSelectedCriterions(getSelectedTree(nodes)).size();
+	}
 	public static DefaultMutableTreeNode getSelectedTree(List<DefaultMutableTreeNode> selectedNodes) {
 		DefaultMutableTreeNode basicRoot = (DefaultMutableTreeNode) PanelsController.contradictionsPanel.getTree().getModel().getRoot();
 		if(selectedNodes.contains(basicRoot))

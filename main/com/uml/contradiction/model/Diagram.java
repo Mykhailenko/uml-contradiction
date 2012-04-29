@@ -1,15 +1,6 @@
 package com.uml.contradiction.model;
 
-public class Diagram {
-	private String name;
+public interface Diagram {
+	public String getName();
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	
 }

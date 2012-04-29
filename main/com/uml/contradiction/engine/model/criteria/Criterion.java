@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.uml.contradiction.engine.model.Quantifier;
+import com.uml.contradiction.engine.model.criteria.result.ResultTemplate;
 import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
 import com.uml.contradiction.engine.model.predicate.Formula;
 
@@ -25,6 +26,6 @@ public abstract class Criterion {
 	public void setFormula(Formula formula) {
 		this.formula = formula;
 	}
-	
+	public abstract ResultTemplate getResultTemplate();
 	
 }

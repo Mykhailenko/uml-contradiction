@@ -23,6 +23,8 @@ public class Checker {
 	private List<HistoryItem> failHistory;
 	@SuppressWarnings("unchecked")
 	public VerificationResult verify(){
+	
+		System.out.println("verify...");
 		Quantifier quantifier = criterion.getQuantifiers().get(0);
 		List<Object> firstSet = null;;
 		try {
@@ -32,6 +34,7 @@ public class Checker {
 		}
 		assert firstSet != null;
 		for(int i = 0; i < firstSet.size(); ++i){
+			System.out.println("FS");
 			Object o = firstSet.get(i);
 			HistoryItem historyItem = new HistoryItem();
 			historyItem.getVariableValue().variable = quantifier.getBoundVariable();

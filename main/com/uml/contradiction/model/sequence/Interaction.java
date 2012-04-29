@@ -1,7 +1,9 @@
 package com.uml.contradiction.model.sequence;
 import java.util.*;
 
-public class Interaction extends InteractionElement {
+import com.uml.contradiction.model.Diagram;
+
+public class Interaction extends InteractionElement implements Diagram{
 	private String name;
 	private List<LifeLine> lifeLines;
 	private List<InteractionElement> childs;

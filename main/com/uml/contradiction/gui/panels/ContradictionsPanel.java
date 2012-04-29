@@ -26,23 +26,27 @@ import javax.swing.tree.TreePath;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.criteria.CriterionSuite;
 import com.uml.contradiction.engine.model.criteria.CriterionTypeSuite;
+import com.uml.contradiction.gui.Client;
+import com.uml.contradiction.gui.GUIState;
 import com.uml.contradiction.gui.Images;
 import com.uml.contradiction.gui.components.CheckTreeManager;
+import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.listeners.ContrTreeListener;
 import com.uml.contradiction.gui.listeners.StartCheckListener;
 import com.uml.contradiction.gui.models.DiagramForChoise;
 import com.uml.contradiction.gui.models.DisplayedCriterion;
 import com.uml.contradiction.gui.models.DisplayedCriterionType;
+import com.uml.contradiction.gui.sceneries.StartCheckScenery;
 import com.uml.contradiction.gui.vocabularies.english.DiagrPanelVoc;
 
-public class ContradictionsPanel extends JPanel{
+public class ContradictionsPanel extends JPanel implements GUIState{
 	private final JButton startBut = new JButton("Verify");
 	private final JButton backBut = new JButton("<< Back");
 	private final JTree tree = new JTree();
 	private final JTextArea description = new JTextArea();
 	private CheckTreeManager checkTreeManager;
 	private final JLabel imgLbl = new JLabel();
-	
+	private JLabel numOfSelected;
 	public ContradictionsPanel() {
 		super();
 		createGUI();
@@ -67,11 +71,9 @@ public class ContradictionsPanel extends JPanel{
 		}
 		
 		tree.addTreeSelectionListener(new ContrTreeListener());
-		
 		tree.setModel(model);
 		this.checkTreeManager = new CheckTreeManager(tree);
-		
-		JLabel selectLabel = new JLabel("Contradictions:");
+		JLabel selectLabel = new JLabel("Criterions:");
 		selectLabel.setBounds(10, 0, 400, 20);
 		this.add(selectLabel);
 		
@@ -89,17 +91,19 @@ public class ContradictionsPanel extends JPanel{
 		imgLbl.setHorizontalAlignment(JLabel.CENTER);
 		imgLbl.setOpaque(true);
 		
+		
+		
 		this.setLayout(null);
-		treePanel.setBounds(10, 20, 290, 480);
+		treePanel.setBounds(10, 20, 360, 480);
 		JLabel desLabel = new JLabel("Description:");
-		desLabel.setBounds(310, 0, 400, 20);
+		desLabel.setBounds(380, 0, 400, 20);
 		this.add(desLabel);
-		descriptionPanel.setBounds(310, 20, 400, 120);
+		descriptionPanel.setBounds(380, 20, 400, 120);
 		
 		JLabel imgLabel = new JLabel("Image:");
-		imgLabel.setBounds(310, 140, 400, 20);
+		imgLabel.setBounds(380, 140, 400, 20);
 		this.add(imgLabel);
-		imgLbl.setBounds(310, 160, 400, 340);
+		imgLbl.setBounds(380, 160, 400, 340);
 		startBut.setBounds(10, 510, 100, 25);
 		this.add(treePanel);
 		this.add(descriptionPanel);
@@ -108,8 +112,12 @@ public class ContradictionsPanel extends JPanel{
 		
 		this.updateUI();
 		this.repaint();
+		
+		numOfSelected = new JLabel("0 / " + CriterionSuite.getDisplayedCriterions().size() + " selected");
+		numOfSelected.setBounds(270, 510, 100, 25);
+		this.add(numOfSelected);
 	}
-
+	
 	
 	public void showDescription(Object object) {
 		
@@ -152,6 +160,44 @@ public class ContradictionsPanel extends JPanel{
 	
 	public JTree getTree() {
 		return tree;
+	}
+	public String stringForLabelNumOfSelected(){
+		return "" + numberOfSelected() + " / " + CriterionSuite.getDisplayedCriterions().size() + " selected";
+	}
+	public int numberOfSelected(){
+		ContradictionsPanel panel = PanelsController.contradictionsPanel;
+		List<DefaultMutableTreeNode> nodes = panel.getSelectedNodes();
+		if(nodes == null || nodes.size() == 0) {
+			return 0;
+		}
+		else {
+			return StartCheckScenery.countOfSelectedCriterions(nodes);
+		}
+	}
+	public void updateState(){
+		numOfSelected.setText(stringForLabelNumOfSelected());
+	}
+	@Override
+	public void started() {
+		startBut.setEnabled(false);
+		checkTreeManager.getSelectionModel().clearSelection();
+		
+	}
+	
+	@Override
+	public void loadedNoOneSelected() {
+		startBut.setEnabled(false);
+	}
+	
+	@Override
+	public void loadedOneSelected() {
+		startBut.setEnabled(true);
+	}
+	
+	@Override
+	public void verified() {
+		startBut.setEnabled(false);
+		
 	}
 	
 }

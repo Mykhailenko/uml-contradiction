@@ -1,8 +1,14 @@
 package com.uml.contradiction.gui.panels;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -12,19 +18,27 @@ import javax.swing.tree.DefaultTreeModel;
 
 import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.Criterion;
+import com.uml.contradiction.engine.model.criteria.result.ResultTemplate;
+import com.uml.contradiction.gui.GUIState;
 import com.uml.contradiction.gui.components.CheckTreeManager;
 import com.uml.contradiction.gui.components.ResCellRenderer;
+import com.uml.contradiction.gui.listeners.FailDiagrListListener;
 import com.uml.contradiction.gui.listeners.ResPanelBackListener;
 import com.uml.contradiction.gui.listeners.ResultsTreeListener;
 import com.uml.contradiction.gui.models.DisplayedCriterion;
 import com.uml.contradiction.gui.models.DisplayedCriterionType;
 
-public class VerificationResultsPanel extends JPanel {
+public class VerificationResultsPanel extends JPanel implements GUIState {
 	private final JButton printBut = new JButton("Print");
 	private final JButton backBut = new JButton("<< Back");
 	private final JTree tree = new JTree();
 	private JTextArea description = new JTextArea();
+	private final DefaultListModel listModel = new DefaultListModel();
 	private Map<Criterion, VerificationResult> results;
+	private Map<String, List<String> > descrByDiagrams = new HashMap<String, List<String>>();
+	private final JList diagrams = new JList(listModel);
+	
+//	private Map<Criterion, List<ResultTemplate> > resultsDescr = new  HashMap<Criterion, List<ResultTemplate> >();
 	
 	public VerificationResultsPanel() {
 		super();
@@ -36,19 +50,37 @@ public class VerificationResultsPanel extends JPanel {
 		
 		JScrollPane treePanel = new JScrollPane(this.tree);
 		JScrollPane descriptionPanel = new JScrollPane(description);
+		JScrollPane listPanel = new JScrollPane(diagrams);		
 		
 		this.tree.addTreeSelectionListener(new ResultsTreeListener());
 		this.tree.setCellRenderer(new ResCellRenderer());
 		
 		this.backBut.addActionListener(new ResPanelBackListener());
 		
-		treePanel.setBounds(0, 0, 300, 300);
-		descriptionPanel.setBounds(310, 0, 300, 300);
-		backBut.setBounds(10, 310, 150, 20);
+		this.diagrams.addListSelectionListener(new FailDiagrListListener());
 		
+		treePanel.setBounds(10, 20, 360, 480);
+		descriptionPanel.setBounds(380, 160, 400, 340);
+		backBut.setBounds(10, 510, 100, 25);
+		listPanel.setBounds(380, 20, 400, 120);
+		
+		this.add(listPanel);
 		this.add(treePanel);
 		this.add(descriptionPanel);
 		this.add(backBut);
+		
+		JLabel label0 = new JLabel("Criterions:");
+		label0.setBounds(10, 0, 400, 20);
+		this.add(label0);
+		
+		JLabel label1 = new JLabel("Diagrams:");
+		label1.setBounds(380, 0, 400, 20);
+		this.add(label1);
+		
+		JLabel label2 = new JLabel("Description:");
+		label2.setBounds(380, 140, 400, 20);
+		this.add(label2);
+		
 	}
 	
 	public void setSelectedDiagrams(DefaultMutableTreeNode root) {
@@ -68,26 +100,110 @@ public class VerificationResultsPanel extends JPanel {
 	public void setResults(Map<Criterion, VerificationResult> results) {
 		this.results = results;
 	}
-	
+
 	public void showResult(DefaultMutableTreeNode node) {
 		System.out.println("Showing result");
+		this.listModel.removeAllElements();
+		this.descrByDiagrams.clear();
+		
 		if(!node.isLeaf()) {
 			this.description.setText("");
-			return;
+			
 		}
-		System.out.println("Showing result");
-		Criterion crit = (((DisplayedCriterion)node.getUserObject()).getCriterion());
-		VerificationResult res = results.get(crit);
+		else {
+			System.out.println("Showing result");
+			
+			Criterion crit = (((DisplayedCriterion)node.getUserObject()).getCriterion());
+			VerificationResult res = results.get(crit);
+			
+			if(res.isGood()) {
+				this.description.setText("Everything is correct");
+			}
+			else {
+				
+				List<ResultTemplate> descriptions = res.getResultTemplate();
+				
+				for(ResultTemplate rt : descriptions) {
+					String diagrams = rt.getDiagramsNames();
+					String description = rt.getDescription();
+					
+					if(!this.descrByDiagrams.containsKey(diagrams)){
+						System.out.println("Adding element " + diagrams);
+						List<String> descr= new LinkedList<String>();
+						System.out.println(descr);
+						descr.add(description);
+						System.out.println("PUTTED: " + diagrams + " " + description);
+						this.descrByDiagrams.put(diagrams, descr);
+						
+						this.listModel.addElement(diagrams);
+					}
+					else {
+						List<String> descr = this.descrByDiagrams.get(diagrams);
+						descr.add(description);
+					}
+				}
+			}
+		}
+		this.diagrams.updateUI();
+		this.diagrams.repaint();
+		this.updateUI();
+		this.repaint();
 		
-		showResultDescription(res);
-		
+		return;
 	}
 	
-	private void showResultDescription(VerificationResult res) {
-		this.description.setText(res.toString());
+	public void showDescription(List<String> descriptions) {
+		String text = new String();
+		
+		for(int i = 0; i < descriptions.size(); i++) {
+			text = text + "Contradiction " + String.valueOf(i+1) + ":\n";
+			text = text + descriptions.get(i);
+			text = text + "\n";
+		}
+		
+		this.description.setText(text);
+		this.updateUI();
+		this.repaint();
 	}
 	
 	public VerificationResult getResult(Criterion crit) {
 		return this.results.get(crit);
 	}
+
+	public Map<String, List<String>> getDescrByDiagrams() {
+		return descrByDiagrams;
+	}
+
+	public void setDescrByDiagrams(Map<String, List<String>> descrByDiagrams) {
+		this.descrByDiagrams = descrByDiagrams;
+	}
+
+	public JList getDiagrams() {
+		return diagrams;
+	}
+
+	@Override
+	public void started() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void loadedNoOneSelected() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void loadedOneSelected() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void verified() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }
