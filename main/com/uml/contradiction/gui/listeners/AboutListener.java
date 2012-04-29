@@ -15,6 +15,7 @@ import javax.swing.text.StyledDocument;
 
 
 import com.uml.contradiction.gui.Client;
+import com.uml.contradiction.gui.Properties;
 
 public class AboutListener implements ActionListener {
 
@@ -30,7 +31,7 @@ public class AboutListener implements ActionListener {
 		dialog.setLocationRelativeTo(null);
 		dialog.setTitle("About");
 		
-		String text = "UML Contradiction 0.1\n"+
+		String text = "UML Contradiction "+Properties.getVersion()+"\n"+
 				"tool was created by\n"+
 				"Zaretskaya I.T.\n" + 
 				"Kulankhina O.O.\n" +
