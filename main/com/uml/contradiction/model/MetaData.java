@@ -8,6 +8,15 @@ public class MetaData {
 	private static String description;
 	private static String pmCreateDateTime;
 	private static String pmLastModified;
+	public static void clear(){
+		projectName = null;
+		exporter = null;
+		author = null;
+		company = null;
+		description = null;
+		pmCreateDateTime = null;
+		pmLastModified = null;
+	}
 	
 	public static String getProjectName() {
 		return projectName;
@@ -56,5 +65,4 @@ public class MetaData {
 				", exporter= "+ exporter + ", author= "+ author + ", company= " + company+
 				", description= "+ description +", pmCreateDateTime= "+ pmCreateDateTime + ", pmLastModified= "+ pmLastModified);		
 	}
-	
 }
