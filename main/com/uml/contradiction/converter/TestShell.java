@@ -2,6 +2,7 @@ package com.uml.contradiction.converter;
 
 //import com.uml.contradiction.converter.core.ClassParser;
 import com.uml.contradiction.gui.models.DiagramForChoise;
+import com.uml.contradiction.model.MetaData;
 import com.uml.contradiction.model.VertexType;
 import com.uml.contradiction.model.cclass.Association;
 import com.uml.contradiction.model.cclass.AssociationClass;
@@ -73,6 +74,8 @@ public class TestShell {
 		printSequenceGraf();
 		
 		printStateMachineGraf();
+		
+		System.out.println(MetaData);
 	}
 	public static void printClassGraf () {
 		List<CClass> class_s = ClassGraph.getClasses();

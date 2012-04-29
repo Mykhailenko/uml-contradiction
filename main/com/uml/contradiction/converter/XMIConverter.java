@@ -13,7 +13,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.sun.xml.internal.ws.api.addressing.WSEndpointReference.Metadata;
 import com.uml.contradiction.gui.models.DiagramForChoise;
+import com.uml.contradiction.model.MetaData;
 import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.cclass.Association;
 import com.uml.contradiction.common.DiagramType;
@@ -61,9 +63,7 @@ public class XMIConverter {
 			  }
 		return null;
 		}
-
 	
-//	Hello world
 	public static List<DiagramForChoise> getAvailableDiagram() throws Exception{
 		assert XMIConverter.file != null : "file should be assigned before";
 		return Collections.emptyList();
@@ -74,7 +74,12 @@ public class XMIConverter {
 		
 		Element umlModelEl = (Element)startParse(file); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		
+		//метаданные
+		MetaData.setProjectName(umlModelEl.getAttribute("name"));
+		CoreParserImpl corePars = new CoreParserImpl();
+		corePars.getAttrByNameAndTag(umlModelEl, "xmi:Documentation", "xmi:Exporter");
 		
+		//распарсивание по типам диаграмм
 		ClassParser clPars = ParsersTool.getInstanceClassParser();
 		clPars.parse(umlModelEl);	
 		clPars.makeResult();
