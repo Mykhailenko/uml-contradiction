@@ -34,7 +34,6 @@ public class Checker {
 		}
 		assert firstSet != null;
 		for(int i = 0; i < firstSet.size(); ++i){
-			System.out.println("FS");
 			Object o = firstSet.get(i);
 			HistoryItem historyItem = new HistoryItem();
 			historyItem.getVariableValue().variable = quantifier.getBoundVariable();
