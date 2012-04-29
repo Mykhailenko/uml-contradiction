@@ -1,5 +1,6 @@
 package com.uml.contradiction.converter.core.statemachine;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -11,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import com.uml.contradiction.common.DiagramType;
 import com.uml.contradiction.converter.core.CoreParser;
 import com.uml.contradiction.converter.core.CoreParserImpl;
 import com.uml.contradiction.converter.core.ParsersTool;
@@ -37,6 +39,8 @@ extends CoreParserImpl implements CoreParser{
 	}		
 
 	public List<Object> parse(Element umlModelEl) {
+		getAllIdDiagrams(DiagramType.STATE_MACHINE, umlModelEl);
+		
 		makeStates(umlModelEl);
 		getAllTriggers(umlModelEl);
 		
@@ -45,6 +49,7 @@ extends CoreParserImpl implements CoreParser{
 		return null;
 	}
 	
+	//для состояний в классах
 	private void makeStates(Element umlModelEl){
 		NodeList packNodes = umlModelEl.getElementsByTagName("packagedElement");
 		StateMachine stateMach = null;		
@@ -59,26 +64,49 @@ extends CoreParserImpl implements CoreParser{
 					|| stateType.equals("uml:Pseudostate")
 					|| stateType.equals("uml:FinalState"))
 			{
-				Element parentClass = (Element)packElem.getParentNode();
+				//привязка StateMachine к классу
+				Element parentClass = (Element)packElem.getParentNode();	//элемент родитель - класс
+				//связывание диаграммы состояния с классом по ID
+				Element exts = (Element)parentClass.getElementsByTagName("xmi:Extension").item(0);
+				String stMachId = getAttrByNameAndTag(exts, "subdiagram", "xmi:value");
+				String stMachName = null;
+				
+				if(isIdInDiagrams(stMachId)){ //такая диаграмма есть
+					NodeList diagramAll = umlModelEl.getElementsByTagName("uml:Diagram");					
+										
+					for(int temp = 0; temp < diagramAll.getLength(); temp++){
+						Element curDiagr = (Element)diagramAll.item(temp);
+						
+						if(curDiagr.getAttribute("diagramType").equals("StateDiagram") &&
+								curDiagr.getAttribute("xmi:id").equals(stMachId))						
+							stMachName = curDiagr.getAttribute("name");						
+					}		
+				}else
+					logger.error("No diagramm in list ID");
+				
 				String idParClass = parentClass.getAttribute("xmi:id");
 				CClass class4StMach = classesWithId.get(idParClass);
 				if(class4StMach != null){	//создание StateMachine с привязкой  к классам
 					if(stateMach == null){
 						stateMach = new StateMachine();
 						stateMach.setcClass(class4StMach);
-						stMachinesWithId.put(idParClass, stateMach); //пока id класса для stateMachine
+						stateMach.setName(stMachName);
+						stMachinesWithId.put(stMachId, stateMach); //вставка StateMachine с id
 					}else{
 						CClass oldClass = stateMach.getcClass();
-						if(oldClass != class4StMach){
+						
+						if(oldClass != class4StMach){	//перешли к состояниям другого класса (StateMachine new)
 							stateMach = new StateMachine();
 							stateMach.setcClass(class4StMach);
-							stMachinesWithId.put(idParClass, stateMach);
+							stateMach.setName(stMachName);
+							stMachinesWithId.put(stMachId, stateMach); 
 						}
 					}
 				}
 				else
 					logger.error("No class for statemachine in list of parsed classes");
 				
+				//разбор состояния
 				State curState = new State();
 				curState.setName(packElem.getAttribute("name"));
 				String idState = packElem.getAttribute("xmi:id");

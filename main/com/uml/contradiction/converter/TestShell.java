@@ -48,21 +48,21 @@ public class TestShell {
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\9.3 Realization without end.uml");
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\9.5 AssocClass.uml");
 		
-		File file = new File("D:\\Programming\\vpworkspace\\Experiments\\For understand\\state Choice 5.uml");
+		File file = new File("D:\\Programming\\vpworkspace\\Experiments\\stateNotSub1.uml");
 		
-		File file2 = new File("oa.uml");
+		File file2 = new File("g.uml");
 		
 //		File file = new File("main\\Test xmi.uml");
 		
 		XMIConverter.reset();
-		XMIConverter.setFile(file2);
+		XMIConverter.setFile(file);
 				
 		
 		try {
 			XMIConverter.parse();
 		} catch (Exception e) {
-//			e.printStackTrace();
-			System.out.println("Fuckkkkkkkkkkkkkkkkkkkkk\n\n");
+			e.printStackTrace();
+			System.out.println("Exception in parsing\n\n");
 		}
 		//печатаем ClassDiagram
 		printClassGraf();
@@ -102,8 +102,8 @@ public class TestShell {
 		for(Generalization gen : geners)
 			System.out.println(gen);
 		
-//		for(ClassDiagram clds : clDiagrams)			
-//			System.out.println(clds);
+		for(ClassDiagram clds : clDiagrams)			
+			System.out.println(clds);
 	}	
 	
 	public static void printObjectGraf () {
