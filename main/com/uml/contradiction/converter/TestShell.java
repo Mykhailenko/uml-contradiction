@@ -13,6 +13,7 @@ import com.uml.contradiction.model.cclass.Generalization;
 import com.uml.contradiction.model.cclass.Realization;
 import com.uml.contradiction.model.object.Link;
 import com.uml.contradiction.model.object.OObject;
+import com.uml.contradiction.model.object.ObjectDiagram;
 import com.uml.contradiction.model.object.ObjectGraph;
 import com.uml.contradiction.model.sequence.Interaction;
 import com.uml.contradiction.model.sequence.InteractionElement;
@@ -109,12 +110,16 @@ public class TestShell {
 	public static void printObjectGraf () {
 		List<OObject> object_s = ObjectGraph.getObjects();
 		List<Link> link_s = ObjectGraph.getLinks();
+		List<ObjectDiagram> objDiagrams = ObjectGraph.getObjectDiagrams();
 		
 		for(OObject obj : object_s)			
 			System.out.println(obj);	
 		
 		for(Link lnk : link_s)			
 			System.out.println(lnk);
+		
+		for(ObjectDiagram obds : objDiagrams)			
+			System.out.println(obds);
 	}
 	
 	public static void printSequenceGraf () {			
