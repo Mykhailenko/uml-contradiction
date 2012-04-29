@@ -19,6 +19,9 @@ public class CriterionSuite {
 		result.add(new MustExistMethodCriterion());
 		result.add(new PartOfSingleComposite());
 		result.add(new ExecutableSequenceCriterion());
+		result.add(new NoUtilityInstances());
+		result.add(new UtilityStaticAttrOnly());
+		result.add(new UtilityStaticMthdOnly());
 		return result;
 	}
 
@@ -32,8 +35,10 @@ public class CriterionSuite {
 		result.add(new DisplayedCriterion(new MustExistMethodCriterion(), "MustExistMethodCriterion", "MustExistMethodCriterion"));
 		result.add(new DisplayedCriterion(new PartOfSingleComposite(), "PartOfSingleComposite", "PartOfSingleComposite"));
 		result.add(new DisplayedCriterion(new ExecutableSequenceCriterion(), "ExecutableSequenceCriterion", "ExecutableSequenceCriterion"));
-		result.add(new DisplayedCriterion(new NaryNoAggregationOnly(), "NaryNoAggregationOnly", "NaryNoAggregationOnly"));
-		
+		result.add(new DisplayedCriterion(new NoUtilityInstances(), "NoUtilityInstances", "NoUtilityInstances"));
+		result.add(new DisplayedCriterion(new UtilityStaticAttrOnly(), "UtilityStaticAttrOnly", "A class woth stereotype <<utility>> may have only static attributes"));
+		result.add(new DisplayedCriterion(new UtilityStaticMthdOnly(), "UtilityStaticMthdOnly", "A class woth stereotype <<utility>> may have only static methods"));
+			
 		return result;
 	}
 }

@@ -9,8 +9,11 @@ import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
 
 public class BoundedPredicate implements Formula{
 	private List<Variable> boundVariable = new LinkedList<Variable>();
+	private List<Variable> permittedNullVars = new LinkedList<Variable>();
+	
 	private boolean negative = false;
 	private Predicate predicate;
+	
 	public boolean isNegative() {
 		return this.negative;
 	}
@@ -43,9 +46,13 @@ public class BoundedPredicate implements Formula{
 		boolean result = false;
 		
 		try {
-			if(isNullExist(vars)){
+			if(isNullExist(variableValues)){
 				result = false;
-			}else{
+			}
+			else if(containsPermittedNullVar(variableValues)) {
+				result = true;
+			}
+			else{
 				result = predicate.predict(vars);
 			}
 		} catch (PredicatException e) {
@@ -56,14 +63,28 @@ public class BoundedPredicate implements Formula{
 		}
 		return result;
 	}
-	private boolean isNullExist(List<Object> list){
-		for(Object o : list){
-			if(o == null){
+	
+	private boolean isNullExist(List<VariableValue> list){
+		for(VariableValue o : list){
+			if(o.value == null && !this.permittedNullVars.contains(o.variable)){
+				System.out.println("CONTAINS!!!!!!!!");
 				return true;
 			}
 		}
 		return false;
 	}
+
+	private boolean containsPermittedNullVar(List<VariableValue> list){
+		for(VariableValue o : list){
+			if(o.value == null && 
+					this.permittedNullVars.contains(o.variable)){
+				System.out.println("CONTAINS PERMITTED!!!!!!!!");
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	private Object findVV(List<VariableValue> list, Variable variable){
 		for(VariableValue variableValue : list){
 			if(variableValue.variable.equals(variable)){
@@ -73,4 +94,13 @@ public class BoundedPredicate implements Formula{
 		return null;
 	}
 
+	public List<Variable> getPermittedNullVars() {
+		return permittedNullVars;
+	}
+
+	public void setPermittedNullVars(List<Variable> permittedNullVars) {
+		this.permittedNullVars = permittedNullVars;
+	}
+
+	
 }

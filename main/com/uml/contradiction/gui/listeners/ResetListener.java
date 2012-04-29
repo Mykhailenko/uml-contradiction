@@ -7,6 +7,8 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import com.uml.contradiction.gui.Client;
+
 public class ResetListener implements ActionListener {
 
 	@Override
@@ -22,6 +24,7 @@ public class ResetListener implements ActionListener {
 	    Object obj = pane.getValue(); 
 	    if(obj.equals(options[0])){	    
 	    	////do something painful
+	    	Client.getClient().started();
 	    }
 	}
 }

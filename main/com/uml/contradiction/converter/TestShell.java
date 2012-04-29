@@ -2,6 +2,7 @@ package com.uml.contradiction.converter;
 
 //import com.uml.contradiction.converter.core.ClassParser;
 import com.uml.contradiction.gui.models.DiagramForChoise;
+import com.uml.contradiction.model.MetaData;
 import com.uml.contradiction.model.VertexType;
 import com.uml.contradiction.model.cclass.Association;
 import com.uml.contradiction.model.cclass.AssociationClass;
@@ -13,6 +14,7 @@ import com.uml.contradiction.model.cclass.Generalization;
 import com.uml.contradiction.model.cclass.Realization;
 import com.uml.contradiction.model.object.Link;
 import com.uml.contradiction.model.object.OObject;
+import com.uml.contradiction.model.object.ObjectDiagram;
 import com.uml.contradiction.model.object.ObjectGraph;
 import com.uml.contradiction.model.sequence.Interaction;
 import com.uml.contradiction.model.sequence.InteractionElement;
@@ -20,6 +22,7 @@ import com.uml.contradiction.model.sequence.LifeLine;
 import com.uml.contradiction.model.sequence.Message;
 import com.uml.contradiction.model.sequence.SequenceGraph;
 import com.uml.contradiction.model.statemachine.*;
+import com.uml.contradiction.model.*;
 import com.uml.contradiction.common.DiagramType;
 
 import java.io.File;
@@ -27,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Collections;
+
+import javax.swing.JTable.PrintMode;
 
 public class TestShell {
 	public static void main(String []argc){
@@ -48,7 +53,7 @@ public class TestShell {
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\9.3 Realization without end.uml");
 //		File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\9.5 AssocClass.uml");
 		
-		File file = new File("D:\\Programming\\vpworkspace\\Experiments\\For understand\\state Choice 5.uml");
+		File file = new File("D:\\Programming\\vpworkspace\\Experiments\\stateNotSub1.uml");
 		
 		File file2 = new File("g.uml");
 		
@@ -62,6 +67,7 @@ public class TestShell {
 			XMIConverter.parse();
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("Exception in parsing\n\n");
 		}
 		//печатаем ClassDiagram
 		printClassGraf();
@@ -71,6 +77,8 @@ public class TestShell {
 		printSequenceGraf();
 		
 		printStateMachineGraf();
+		
+		MetaData.printMetaData();
 	}
 	public static void printClassGraf () {
 		List<CClass> class_s = ClassGraph.getClasses();
@@ -101,19 +109,23 @@ public class TestShell {
 		for(Generalization gen : geners)
 			System.out.println(gen);
 		
-//		for(ClassDiagram clds : clDiagrams)			
-//			System.out.println(clds);
+		for(ClassDiagram clds : clDiagrams)			
+			System.out.println(clds);
 	}	
 	
 	public static void printObjectGraf () {
 		List<OObject> object_s = ObjectGraph.getObjects();
 		List<Link> link_s = ObjectGraph.getLinks();
+		List<ObjectDiagram> objDiagrams = ObjectGraph.getObjectDiagrams();
 		
 		for(OObject obj : object_s)			
 			System.out.println(obj);	
 		
 		for(Link lnk : link_s)			
 			System.out.println(lnk);
+		
+		for(ObjectDiagram obds : objDiagrams)			
+			System.out.println(obds);
 	}
 	
 	public static void printSequenceGraf () {			

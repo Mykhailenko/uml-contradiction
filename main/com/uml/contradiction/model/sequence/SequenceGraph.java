@@ -11,4 +11,7 @@ public class SequenceGraph {
 	public static void setInteractions(List<Interaction> interactions) {
 		SequenceGraph.interactions = interactions;
 	}
+	public static void clear(){
+		interactions.clear();
+	}
 }

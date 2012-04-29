@@ -9,7 +9,7 @@ import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.criteria.CriterionSuite;
 
-public class RunCriterion {
+public class RunCriterions {
 	private static final Logger LOGGER = Logger.getRootLogger();
 	public List<VerificationResult> runAll(){
 		return run(CriterionSuite.getAllCriterion());

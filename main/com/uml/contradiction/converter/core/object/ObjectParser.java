@@ -1,5 +1,6 @@
 package com.uml.contradiction.converter.core.object;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -10,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import com.uml.contradiction.common.DiagramType;
 import com.uml.contradiction.converter.core.CoreParser;
 import com.uml.contradiction.converter.core.CoreParserImpl;
 import com.uml.contradiction.converter.core.ParsersTool;
@@ -56,6 +58,8 @@ extends CoreParserImpl implements CoreParser{
 		
 		makeLinks(umlModelEl);
 		
+		makeObjectDiagram(umlModelEl);
+		
 		return null;
 	}
 	
@@ -65,7 +69,7 @@ extends CoreParserImpl implements CoreParser{
 		for (int i = 0; i < packNodes.getLength(); i++) {
 			Element packObjElem = (Element)packNodes.item(i);
 			
-			//рассматриваем packagedElement для объектов
+			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ packagedElement пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if(packObjElem.getAttribute("xmi:type").equals("uml:InstanceSpecification"))
 			{
 				NodeList listClassifiers = packObjElem.getElementsByTagName("classifier");			
@@ -77,7 +81,7 @@ extends CoreParserImpl implements CoreParser{
 					typeMod = new String("");
 				
 				if(!typeMod.equals("Link"))
-				{			//рассматриваем именно объект
+				{			//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 					OObject obj = new OObject();
 					String idObj = packObjElem.getAttribute("xmi:id");
 					String nameObj = packObjElem.getAttribute("name");
@@ -87,7 +91,7 @@ extends CoreParserImpl implements CoreParser{
 					
 					if(listClassifiers.getLength() != 0){
 										
-						//ссылка на класс
+						//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 						NodeList classList = packObjElem.getElementsByTagName("classifier");
 						for (int k = 0; k < classList.getLength(); k++) {
 							Element classElem = (Element)classList.item(k);
@@ -103,18 +107,12 @@ extends CoreParserImpl implements CoreParser{
 									if(referClass == null)
 										logger.error("The object has reference on class, but no such class");
 									else{
-										List<CClass> classesOfObj = obj.getClasses();
-										
-										if(classesOfObj == null){
-											classesOfObj = new LinkedList<CClass>();
-											obj.setClasses(classesOfObj);
-										}
-										classesOfObj.add(referClass);
+										obj.setClasses(referClass);
 									}
 								}
 							}
 						
-						//ссылка на атрибут
+						//пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 						NodeList attrList = packObjElem.getElementsByTagName("slot");
 						for (int j = 0; j < attrList.getLength(); j++) {
 							Element attrElem = (Element)attrList.item(j);
@@ -160,7 +158,7 @@ extends CoreParserImpl implements CoreParser{
 			for (int i = 0; i < packNodes.getLength(); i++) {
 				Element packObjElem = (Element)packNodes.item(i);
 				
-				//рассматриваем packagedElement для объектов
+				//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ packagedElement пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				if(packObjElem.getAttribute("xmi:type").equals("uml:InstanceSpecification"))
 				{
 					NodeList listExtensions = packObjElem.getElementsByTagName("xmi:Extension");
@@ -173,7 +171,7 @@ extends CoreParserImpl implements CoreParser{
 					
 					if(typeMod.equals("Link"))
 					{	
-						//packagedElement - связь объектов						
+						//packagedElement - пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ						
 						String idLink = packObjElem.getAttribute("xmi:id");
 						String nameLnk = packObjElem.getAttribute("name");
 						if(nameLnk.equals(""))
@@ -192,6 +190,64 @@ extends CoreParserImpl implements CoreParser{
 					}
 				}
 			}
+	}
+	//добавляем элементы к диаграмме объектов
+	private void makeObjectDiagram(Element umlModelEl) {
+		NodeList diagramAll = umlModelEl.getElementsByTagName("uml:Diagram");
+		List<ObjectDiagram> objDiagrams = ObjectGraph.getObjectDiagrams(); 
+		String diagrType = new String("ObjectDiagram");;
+				
+		for(int temp = 0; temp < diagramAll.getLength(); temp++){
+			Element curDiagr = (Element)diagramAll.item(temp);
+			String diagrId = curDiagr.getAttribute("xmi:id");
+			
+			//проход по всем диграммам объектов
+			if(curDiagr.getAttribute("diagramType").equals(diagrType))
+			{
+				ObjectDiagram curObjDiagr = new ObjectDiagram();
+				curObjDiagr.setName(curDiagr.getAttribute("name"));
+				
+				NodeList mainElementOfDiagr = curDiagr.getElementsByTagName("uml:Diagram.element");
+				NodeList listElementsOfDiagr = 
+						((Element)mainElementOfDiagr.item(0)).getElementsByTagName("uml:DiagramElement");
+				
+				for(int i = 0; i < listElementsOfDiagr.getLength(); i++){
+					Element curElem = (Element)listElementsOfDiagr.item(i);
+					String refOnElemDiagr = curElem.getAttribute("subject");
+					String typeElem = curElem.getAttribute("preferredShapeType");
+					
+					//если элемент - объект
+					if(typeElem.equals("InstanceSpecification")){
+						OObject objectCur = objectsWithId.get(refOnElemDiagr);
+						
+						if(objectCur != null){
+							List<OObject> objects = curObjDiagr.getObjects();
+							
+							if(objects == null){
+								objects = new LinkedList<OObject>();
+								curObjDiagr.setObjects(objects);
+							}							
+							objects.add(objectCur);						
+						}
+					}		
+					//если элемент - связь
+					if(typeElem.equals("Link")){
+						Link linkCur = linksWithId.get(refOnElemDiagr);
+						
+						if(linkCur != null){
+							List<Link> links = curObjDiagr.getLinks();
+							
+							if(links == null){
+								links = new LinkedList<Link>();
+								curObjDiagr.setLinks(links);
+							}							
+							links.add(linkCur);					
+						}
+					}		
+				}							
+				objDiagrams.add(curObjDiagr);
+			}			
+		}
 	}
 
 }

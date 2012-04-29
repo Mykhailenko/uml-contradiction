@@ -23,6 +23,8 @@ public class Checker {
 	private List<HistoryItem> failHistory;
 	@SuppressWarnings("unchecked")
 	public VerificationResult verify(){
+	
+		System.out.println("verify...");
 		Quantifier quantifier = criterion.getQuantifiers().get(0);
 		List<Object> firstSet = null;;
 		try {

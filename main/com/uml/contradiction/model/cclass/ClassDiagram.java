@@ -3,11 +3,12 @@ package com.uml.contradiction.model.cclass;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.uml.contradiction.model.Diagram;
 import com.uml.contradiction.model.common.Package;
 
 
 
-public class ClassDiagram {
+public class ClassDiagram implements Diagram{
 	private String name;
 	private List<CClass> classes;
 	private List<Association> associations;
@@ -15,12 +16,7 @@ public class ClassDiagram {
 	private List<Realization> realizations;
 	private List<Generalization> generalizations ;
 	private Package parentPackageElement;
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+
 	public List<CClass> getClasses() {
 		return classes;
 	}
@@ -60,11 +56,17 @@ public class ClassDiagram {
 
 	@Override
 	public String toString() {
-		return "ClassDiagram [name=" + name + "\n\t, classes=" + classes
+		return "ClassDiagram [name=" + getName() + "\n\t, classes=" + classes
 				+ "\n\t, associations=" + associations + "\n\t, dependencies="
 				+ dependencies + "\n\t, realizations=" + realizations
 				+ "\n\t, generalizations=" + generalizations
 				+ "\n\t, parentPackageElement=" + parentPackageElement + "]";
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }
