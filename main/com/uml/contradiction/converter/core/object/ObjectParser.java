@@ -1,5 +1,6 @@
 package com.uml.contradiction.converter.core.object;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -10,6 +11,7 @@ import org.apache.log4j.Logger;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import com.uml.contradiction.common.DiagramType;
 import com.uml.contradiction.converter.core.CoreParser;
 import com.uml.contradiction.converter.core.CoreParserImpl;
 import com.uml.contradiction.converter.core.ParsersTool;
@@ -55,6 +57,8 @@ extends CoreParserImpl implements CoreParser{
 		makeObjects(umlModelEl);
 		
 		makeLinks(umlModelEl);
+		
+		makeObjectDiagram(umlModelEl);
 		
 		return null;
 	}
@@ -186,6 +190,64 @@ extends CoreParserImpl implements CoreParser{
 					}
 				}
 			}
+	}
+	//добавляем элементы к диаграмме объектов
+	private void makeObjectDiagram(Element umlModelEl) {
+		NodeList diagramAll = umlModelEl.getElementsByTagName("uml:Diagram");
+		List<ObjectDiagram> objDiagrams = ObjectGraph.getObjectDiagrams(); 
+		String diagrType = new String("ObjectDiagram");;
+				
+		for(int temp = 0; temp < diagramAll.getLength(); temp++){
+			Element curDiagr = (Element)diagramAll.item(temp);
+			String diagrId = curDiagr.getAttribute("xmi:id");
+			
+			//проход по всем диграммам объектов
+			if(curDiagr.getAttribute("diagramType").equals(diagrType))
+			{
+				ObjectDiagram curObjDiagr = new ObjectDiagram();
+				curObjDiagr.setName(curDiagr.getAttribute("name"));
+				
+				NodeList mainElementOfDiagr = curDiagr.getElementsByTagName("uml:Diagram.element");
+				NodeList listElementsOfDiagr = 
+						((Element)mainElementOfDiagr.item(0)).getElementsByTagName("uml:DiagramElement");
+				
+				for(int i = 0; i < listElementsOfDiagr.getLength(); i++){
+					Element curElem = (Element)listElementsOfDiagr.item(i);
+					String refOnElemDiagr = curElem.getAttribute("subject");
+					String typeElem = curElem.getAttribute("preferredShapeType");
+					
+					//если элемент - объект
+					if(typeElem.equals("InstanceSpecification")){
+						OObject objectCur = objectsWithId.get(refOnElemDiagr);
+						
+						if(objectCur != null){
+							List<OObject> objects = curObjDiagr.getObjects();
+							
+							if(objects == null){
+								objects = new LinkedList<OObject>();
+								curObjDiagr.setObjects(objects);
+							}							
+							objects.add(objectCur);						
+						}
+					}		
+					//если элемент - связь
+					if(typeElem.equals("Link")){
+						Link linkCur = linksWithId.get(refOnElemDiagr);
+						
+						if(linkCur != null){
+							List<Link> links = curObjDiagr.getLinks();
+							
+							if(links == null){
+								links = new LinkedList<Link>();
+								curObjDiagr.setLinks(links);
+							}							
+							links.add(linkCur);					
+						}
+					}		
+				}							
+				objDiagrams.add(curObjDiagr);
+			}			
+		}
 	}
 
 }

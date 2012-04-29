@@ -9,7 +9,7 @@ public class ObjectDiagram implements Diagram{
 	private String name;
 	private List<OObject> objects = new LinkedList<OObject>();
 	private List<Link> links = new LinkedList<Link>();;
-	
+		
 	public List<OObject> getObjects() {
 		return objects;
 	}
@@ -28,5 +28,9 @@ public class ObjectDiagram implements Diagram{
 	public void setLinks(List<Link> links) {
 		this.links = links;
 	}
-	 
+	@Override
+	public String toString() {
+		return "ObjectDiagram [name=" + name +  "\n\t"+ ", objects=" + objects
+				+  "\n\t" + ", links=" + links + "]";
+	}
 }
