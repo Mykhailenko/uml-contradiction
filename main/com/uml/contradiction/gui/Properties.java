@@ -15,6 +15,11 @@ public class Properties {
 	public static String getVersion(){
 		return (String) properties.get("version");
 	}
-	
+	public static String getApplicationName(){
+		return (String) properties.get("application-name");
+	}
+	public static String getEmail(){
+		return (String) properties.get("e-mail");
+	}
 	
 }

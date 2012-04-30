@@ -1,5 +1,6 @@
 package com.uml.contradiction.gui;
 
+
 import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.panels.ContradictionsPanel;
 import com.uml.contradiction.gui.panels.VerificationResultsPanel;
@@ -20,6 +21,7 @@ public class Client implements GUIState{
 	private State state;
 	public static void main(String [] args){
 		client = new Client();
+		
 	}
 	public Client(){
 		mainWindow = new MainWindow();
