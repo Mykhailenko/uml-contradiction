@@ -13,7 +13,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.sun.xml.internal.ws.api.addressing.WSEndpointReference.Metadata;
 import com.uml.contradiction.gui.models.DiagramForChoise;
+import com.uml.contradiction.model.MetaData;
 import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.cclass.Association;
 import com.uml.contradiction.common.DiagramType;
@@ -61,9 +63,7 @@ public class XMIConverter {
 			  }
 		return null;
 		}
-
 	
-//	Hello world
 	public static List<DiagramForChoise> getAvailableDiagram() throws Exception{
 		assert XMIConverter.file != null : "file should be assigned before";
 		return Collections.emptyList();
@@ -74,7 +74,48 @@ public class XMIConverter {
 		
 		Element umlModelEl = (Element)startParse(file); //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		
+		//метаданные
+		MetaData.setProjectName(umlModelEl.getAttribute("name"));
+		CoreParserImpl corePars = new CoreParserImpl();
+		MetaData.setExporter(corePars.getAttrByNameAndTag(umlModelEl, "xmi:Documentation", "xmi:Exporter"));
+		Element extens =(Element)umlModelEl.getElementsByTagName("xmi:Extension").item(0);
+		Element projProp = (Element)extens.getElementsByTagName("projectProperties").item(0);
+		NodeList tagsByName = projProp.getElementsByTagName("projectProperty");
+		String name, value;
+		for (int i = 0; i < tagsByName.getLength(); i++) {
+			Element curTag = (Element)tagsByName.item(i);
+			if(curTag != null  && (curTag.getParentNode() == (Node)projProp)){
+				name = curTag.getAttribute("name");
+				value = curTag.getAttribute("value");
+				if(!value.equals("")){
+					if(name.equals("company"))
+						MetaData.setCompany(value);
+					if(name.equals("author"))
+						MetaData.setAuthor(value);
+					if(name.equals("description"))
+						MetaData.setDescription(value);
+				}
+			}
+		}
+		Element childModels = (Element)(extens.getElementsByTagName("vpumlChildModels")).item(0);
+		Element propEl = (Element) ((Element)(childModels.getElementsByTagName("vpumlModel").item(0))).getElementsByTagName("properties").item(0);
+		NodeList tagsByN = propEl.getElementsByTagName("property");
+		for (int i = 0; i < tagsByN.getLength(); i++) {
+			Element curTag = (Element)tagsByN.item(i);
+			if(curTag != null  && (curTag.getParentNode() == (Node)propEl)){
+				name = curTag.getAttribute("name");
+				value = curTag.getAttribute("value");
+				if(!value.equals("")){
+					if(name.equals("pmCreateDateTime"))
+						MetaData.setPmCreateDateTime(value);
+					if(name.equals("pmLastModified"))
+						MetaData.setPmLastModified(value);					
+				}
+			}
+		}		
 		
+		
+		//распарсивание по типам диаграмм
 		ClassParser clPars = ParsersTool.getInstanceClassParser();
 		clPars.parse(umlModelEl);	
 		clPars.makeResult();

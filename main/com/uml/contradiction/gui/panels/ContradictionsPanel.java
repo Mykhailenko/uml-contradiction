@@ -115,7 +115,7 @@ public class ContradictionsPanel extends JPanel implements GUIState{
 		this.repaint();
 		
 		numOfSelected = new JLabel("0 / " + CriterionSuite.getDisplayedCriterions().size() + " selected");
-		numOfSelected.setBounds(270, 510, 100, 25);
+		numOfSelected.setBounds(220, 510, 150, 25);
 		this.add(numOfSelected);
 		
 		HotKeyBinder.addComponent(this);

@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 
 import com.uml.contradiction.gui.GUIState;
 import com.uml.contradiction.gui.HotKeyBinder;
+import com.uml.contradiction.gui.Properties;
 import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.listeners.ExitListener;
 import com.uml.contradiction.gui.menu.MyMenuBar;
@@ -16,7 +17,7 @@ public class MainWindow extends JFrame implements GUIState{
 	private static final long serialVersionUID = 2504948215343067408L;
 	private MyMenuBar menuBar;
 	public MainWindow() {
-		this.setTitle("UML contradictions");
+		this.setTitle(Properties.getApplicationName() + " " + Properties.getVersion());
 		this.setSize(800, 600);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);

@@ -2,6 +2,8 @@ package com.uml.contradiction.gui.menu;
 
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -13,6 +15,7 @@ import javax.swing.KeyStroke;
 
 import com.uml.contradiction.gui.GUIState;
 import com.uml.contradiction.gui.HotKeyBinder;
+import com.uml.contradiction.gui.components.ProjectInfoDialog;
 import com.uml.contradiction.gui.listeners.AboutListener;
 import com.uml.contradiction.gui.listeners.ExitListener;
 import com.uml.contradiction.gui.listeners.ExportToDOC;
@@ -38,7 +41,7 @@ public class MyMenuBar extends JMenuBar implements GUIState{
 	public MyMenuBar() {
 		super();
 		fileMenu = new JMenu("File");
-
+		fileMenu.setMnemonic(KeyEvent.VK_F);
 		loadXMI = new JMenuItem("Load XMI");
 		loadXMI.addActionListener(new LoadXMIListener());
 		loadXMI.setMnemonic('o');
@@ -56,6 +59,14 @@ public class MyMenuBar extends JMenuBar implements GUIState{
 		fileMenu.add(export);
 		
 		project = new JMenuItem("Project");
+		project.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent paramActionEvent) {
+				ProjectInfoDialog dialog = new ProjectInfoDialog();
+				dialog.setVisible(true);
+			}
+		});
+		project.setMnemonic(KeyEvent.VK_P);
 		fileMenu.add(project);
 		
 		settings = new JMenuItem("Settings");
@@ -66,13 +77,14 @@ public class MyMenuBar extends JMenuBar implements GUIState{
 		
 		reset = new JMenuItem("Reset");
 		reset.addActionListener(new ResetListener());
+		reset.setMnemonic(KeyEvent.VK_R);
 		fileMenu.add(reset);
 		
 		fileMenu.addSeparator();
 		
 		exit = new JMenuItem("Exit");
 		exit.addActionListener(new ExitListener());
-		exit.setMnemonic('x');
+		exit.setMnemonic(KeyEvent.VK_X);
 		fileMenu.add(exit);
 		
 		this.add(fileMenu);

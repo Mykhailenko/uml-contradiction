@@ -1,9 +1,11 @@
 package com.uml.contradiction.gui;
 
+
 import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.panels.ContradictionsPanel;
 import com.uml.contradiction.gui.panels.VerificationResultsPanel;
 import com.uml.contradiction.gui.windows.MainWindow;
+import com.uml.contradiction.model.MetaData;
 import com.uml.contradiction.model.cclass.ClassGraph;
 import com.uml.contradiction.model.object.ObjectGraph;
 import com.uml.contradiction.model.sequence.SequenceGraph;
@@ -19,6 +21,7 @@ public class Client implements GUIState{
 	private State state;
 	public static void main(String [] args){
 		client = new Client();
+		
 	}
 	public Client(){
 		mainWindow = new MainWindow();
@@ -66,6 +69,7 @@ public class Client implements GUIState{
 		ObjectGraph.clear();
 		SequenceGraph.clear();
 		StateMachineGraph.clear();
+		MetaData.clear();
 	}
 	@Override
 	public void loadedNoOneSelected() {

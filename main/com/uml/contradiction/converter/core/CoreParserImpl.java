@@ -34,7 +34,13 @@ public class CoreParserImpl implements CoreParser{
 			diagrType = new String("ClassDiagram");
 		
 		if(t == DiagramType.SEQUENCE)
-			diagrType = new String("InteractionDiagram");		
+			diagrType = new String("InteractionDiagram");
+		
+		if(t == DiagramType.STATE_MACHINE)
+			diagrType = new String("StateDiagram");
+		
+		if(t == DiagramType.OBJECT)
+			diagrType = new String("ObjectDiagram");
 		
 		for(int temp = 0; temp < diagramAll.getLength(); temp++){
 			Element curDiagr = (Element)diagramAll.item(temp);
