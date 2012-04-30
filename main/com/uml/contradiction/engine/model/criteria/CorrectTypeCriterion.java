@@ -59,7 +59,7 @@ public class CorrectTypeCriterion extends Criterion {
 	}
 	@Override
 	public int getInternalID() {
-		return -2;
+		return -7;
 	}
 	@Override
 	public CriterionType getCriterionType() {

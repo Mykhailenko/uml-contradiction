@@ -46,7 +46,7 @@ public class PartOfSingleComposite extends Criterion {
 	@Override
 	public int getInternalID() {
 		// TODO Auto-generated method stub
-		return -1;
+		return -13;
 	}
 
 	@Override

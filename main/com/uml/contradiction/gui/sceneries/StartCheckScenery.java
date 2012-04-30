@@ -16,6 +16,7 @@ import com.uml.contradiction.engine.RunCriterions;
 import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.criteria.result.ResultTemplate;
+import com.uml.contradiction.gui.Client;
 import com.uml.contradiction.gui.components.ProgressDialog;
 import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.models.DisplayedCriterion;
@@ -35,8 +36,7 @@ public class StartCheckScenery {
 				DefaultMutableTreeNode newRoot = getSelectedTree(nodes);
 				List<Criterion> selectedCriterions = getSelectedCriterions(newRoot);
 				Map<Criterion, VerificationResult> results = new HashMap<Criterion, VerificationResult>();
-				RunCriterions runCriterion = new RunCriterions();
-				List<VerificationResult> ver = runCriterion.run(selectedCriterions);
+				List<VerificationResult> ver = StartCheckScenery.verifyCriterions(selectedCriterions);
 				for(VerificationResult vr : ver){
 					results.put(vr.getCriterion(), vr);
 				}
@@ -47,8 +47,13 @@ public class StartCheckScenery {
 			}
 		}).start();
 		dialog.setVisible(true);
-		
 		return;
+	}
+	public static List<VerificationResult> verifyCriterions(List<Criterion> criterions){
+		RunCriterions runCriterion = new RunCriterions();
+		List<VerificationResult> ver = runCriterion.run(criterions);
+		Client.setLastResults(ver);
+		return ver;
 	}
 	public static int countOfSelectedCriterions(List<DefaultMutableTreeNode> nodes){
 		return getSelectedCriterions(getSelectedTree(nodes)).size();

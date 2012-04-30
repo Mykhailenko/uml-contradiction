@@ -59,7 +59,7 @@ public class CheckSequenceCriterion extends Criterion {
 		
 	@Override
 	public int getInternalID() {
-		return -2;
+		return -4;
 	}
 
 	@Override

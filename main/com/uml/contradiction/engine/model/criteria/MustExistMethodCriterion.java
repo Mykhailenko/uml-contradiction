@@ -45,7 +45,7 @@ public class MustExistMethodCriterion extends Criterion {
 	
 	@Override
 	public int getInternalID() {
-		return -2;
+		return -10;
 	}
 
 	@Override

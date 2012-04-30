@@ -36,7 +36,7 @@ public class ExecutableSequenceCriterion extends Criterion {
 	
 	@Override
 	public int getInternalID() {
-		return -2;
+		return -8;
 	}
 
 	@Override

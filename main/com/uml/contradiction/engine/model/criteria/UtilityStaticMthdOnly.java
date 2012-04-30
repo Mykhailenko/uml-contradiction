@@ -62,7 +62,7 @@ public class UtilityStaticMthdOnly  extends Criterion {
 
 	@Override
 	public int getInternalID() {
-		return -2;
+		return -16;
 	}
 
 	@Override

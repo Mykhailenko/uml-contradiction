@@ -57,6 +57,6 @@ public class CheckVisibilityMethod extends Criterion{
 	}
 	@Override
 	public int getInternalID() {
-		return 0;
+		return -6;
 	}
 }

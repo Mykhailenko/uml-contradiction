@@ -39,7 +39,7 @@ public class MustExistClassCriterion extends Criterion {
 
 	@Override
 	public int getInternalID() {
-		return -2;
+		return -9;
 	}
 
 	@Override

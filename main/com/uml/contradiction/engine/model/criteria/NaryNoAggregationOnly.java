@@ -55,7 +55,7 @@ public class NaryNoAggregationOnly extends Criterion {
 	@Override
 	public int getInternalID() {
 		// TODO Auto-generated method stub
-		return 0;
+		return -11;
 	}
 
 	@Override

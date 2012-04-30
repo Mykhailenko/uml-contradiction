@@ -57,7 +57,7 @@ public class CheckNoStaticMethod extends Criterion {
 	
 	@Override
 	public int getInternalID() {
-		return -1;
+		return -3;
 	}
 
 	@Override

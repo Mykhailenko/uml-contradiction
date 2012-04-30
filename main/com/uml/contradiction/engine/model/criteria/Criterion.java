@@ -27,5 +27,8 @@ public abstract class Criterion {
 		this.formula = formula;
 	}
 	public abstract ResultTemplate getResultTemplate();
-	
+	@Override
+	public boolean equals(Object obj) {
+		return this.getInternalID() == ((Criterion)obj).getInternalID();
+	}
 }

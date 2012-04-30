@@ -49,7 +49,7 @@ public class SimpleCriterion extends Criterion {
 	}
 	@Override
 	public int getInternalID() {
-		return -2;
+		return -14;
 	}
 	@Override
 	public CriterionType getCriterionType() {

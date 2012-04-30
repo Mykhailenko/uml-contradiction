@@ -63,8 +63,7 @@ public class NoUtilityInstances extends Criterion{
 	
 	@Override
 	public int getInternalID() {
-		// TODO Auto-generated method stub
-		return 0;
+		return -12;
 	}
 
 	@Override

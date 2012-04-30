@@ -36,9 +36,32 @@ public class CriterionSuite {
 		result.add(new DisplayedCriterion(new PartOfSingleComposite(), "PartOfSingleComposite", "PartOfSingleComposite"));
 		result.add(new DisplayedCriterion(new ExecutableSequenceCriterion(), "ExecutableSequenceCriterion", "ExecutableSequenceCriterion"));
 		result.add(new DisplayedCriterion(new NoUtilityInstances(), "NoUtilityInstances", "NoUtilityInstances"));
-		result.add(new DisplayedCriterion(new UtilityStaticAttrOnly(), "UtilityStaticAttrOnly", "A class woth stereotype <<utility>> may have only static attributes"));
-		result.add(new DisplayedCriterion(new UtilityStaticMthdOnly(), "UtilityStaticMthdOnly", "A class woth stereotype <<utility>> may have only static methods"));
+		result.add(new DisplayedCriterion(new UtilityStaticAttrOnly(), "UtilityStaticAttrOnly", "A class woth stereotype \"utility\" may have only static attributes"));
+		result.add(new DisplayedCriterion(new UtilityStaticMthdOnly(), "UtilityStaticMthdOnly", "A class woth stereotype \"utility\" may have only static methods"));
 			
+		return result;
+	}
+	public static String getDescrOfCriterion(Criterion criterion){
+		for(DisplayedCriterion dc : getDisplayedCriterions()){
+			if(dc.getCriterion().equals(criterion)){
+				return dc.getDesctiption();
+			}
+		}
+		return "";
+	}
+	public static String getNameOfCriterion(Criterion criterion){
+		for(DisplayedCriterion dc : getDisplayedCriterions()){
+			if(dc.getCriterion().equals(criterion)){
+				return dc.getName();
+			}
+		}
+		return "";
+	}
+	public static List<Criterion> getDisplayedCriterionTRICKY(){
+		List<Criterion> result = new LinkedList<Criterion>();
+		for(DisplayedCriterion dc : getDisplayedCriterions()){
+			result.add(dc.getCriterion());
+		}
 		return result;
 	}
 }

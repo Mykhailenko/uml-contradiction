@@ -1,31 +1,31 @@
 package com.uml.contradiction.exporters;
 
 import java.io.File;
+import java.util.List;
 
 import javax.swing.JFileChooser;
 
-import com.uml.contradiction.engine.model.GeneralResult;
-import com.uml.contradiction.exporters.doc.DocExporterPOI;
+import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.gui.controllers.PanelsController;
 
 public class ResultSaver {
-	public static boolean save(GeneralResult generalResult, String filename, Exporter exporter){
+	public static boolean save(List<VerificationResult> verificationResults, String filename, Exporter exporter){
 		JFileChooser chooser = new JFileChooser(new File(filename));
 		chooser.setSelectedFile(new File(filename));
 		int returnValue = chooser.showSaveDialog(PanelsController.mainWindow);
 		if(returnValue == JFileChooser.APPROVE_OPTION){
 			File file = chooser.getSelectedFile();
-			String [] results = new String[]{"gleb", "awesome"};
-			return ResultSaver.savep(generalResult, file.getPath(), exporter);
+			return ResultSaver.savep(verificationResults, file.getPath(), exporter);
 		}else{
 			return false;
 		}
 		
 	}
-	private static boolean savep(GeneralResult generalResult, String filename, Exporter exporter){
+	private static boolean savep(List<VerificationResult> verificationResults, String filename, Exporter exporter){
 		try {
-			exporter.export(generalResult);
+			exporter.export(verificationResults);
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		File file = new File("result");
 		boolean success = file.renameTo(new File(filename));

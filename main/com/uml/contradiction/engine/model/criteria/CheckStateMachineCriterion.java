@@ -78,7 +78,7 @@ public class CheckStateMachineCriterion extends Criterion{
 	
 	@Override
 	public int getInternalID() {
-		return -2;
+		return -5;
 	}
 
 	@Override

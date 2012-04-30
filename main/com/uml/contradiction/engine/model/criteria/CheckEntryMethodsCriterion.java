@@ -46,7 +46,7 @@ public class CheckEntryMethodsCriterion extends Criterion {
 	
 	@Override
 	public int getInternalID() {
-		return -1;
+		return -2;
 	}
 
 	@Override

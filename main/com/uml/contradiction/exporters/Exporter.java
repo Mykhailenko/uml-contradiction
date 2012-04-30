@@ -1,12 +1,9 @@
 package com.uml.contradiction.exporters;
 
-import com.uml.contradiction.engine.model.GeneralResult;
+import java.util.List;
+
+import com.uml.contradiction.engine.model.VerificationResult;
 
 public interface Exporter {
-	/**
-	 * Save to current folder file named 'result'.
-	 * @param verificationResults
-	 * @throws Exception
-	 */
-	void export(GeneralResult generalResult) throws Exception;
+	void export(List<VerificationResult> verificationResults) throws Exception;
 }

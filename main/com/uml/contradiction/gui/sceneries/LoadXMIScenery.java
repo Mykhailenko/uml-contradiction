@@ -35,14 +35,12 @@ public class LoadXMIScenery {
 					@Override
 					public void run() {
 						try {
-							XMIConverter.setFile(file);
+							XMIConverter.setFileAndParse(file);
 							List<DiagramForChoise> availableDiagram = XMIConverter.getAvailableDiagram();
 							PanelsController.diagramsPanel.setFromDiagrams(availableDiagram);
-							XMIConverter.parse();
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
-						Client.setXmiLoaded(true);
 						Client.getClient().loadedNoOneSelected();
 						CheckTreeManager.checkState();
 						dialog.setVisible(false);
@@ -54,5 +52,6 @@ public class LoadXMIScenery {
 			}
 		}
 	}
+	
 	
 }

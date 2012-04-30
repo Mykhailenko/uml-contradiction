@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.util.List;
 
 import org.apache.poi.hwpf.HWPFDocument;
 import org.apache.poi.hwpf.usermodel.CharacterRun;
@@ -12,13 +13,13 @@ import org.apache.poi.hwpf.usermodel.ParagraphProperties;
 import org.apache.poi.hwpf.usermodel.Range;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 
-import com.uml.contradiction.engine.model.GeneralResult;
+import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.exporters.Exporter;
 
 public class DocExporterPOI implements Exporter {
 
 	@Override
-	public void export(GeneralResult generalResult) throws Exception {
+	public void export(List<VerificationResult> verificationResults) throws Exception {
 		File file = new File("resources"+File.separator+"sample.doc");
 		POIFSFileSystem fs = new POIFSFileSystem(new FileInputStream(file));
 		HWPFDocument doc = new HWPFDocument(fs);
