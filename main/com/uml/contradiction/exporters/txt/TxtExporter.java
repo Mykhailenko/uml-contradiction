@@ -80,6 +80,7 @@ public class TxtExporter implements Exporter {
 					Map.Entry<String, List<String>> entry = it.next();
 					out.println(tab(1) + "- " + entry.getKey());
 					for (String e : entry.getValue()) {
+						e = e.replaceAll(ResultTemplate.ELEMENT_MARKER, "");
 						out.println(tab(2) + e + ";");
 					}
 				}

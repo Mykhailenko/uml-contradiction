@@ -89,10 +89,6 @@ public class MyMenuBar extends JMenuBar implements GUIState{
 		
 		this.add(fileMenu);
 		
-		view = new JMenu("View");
-		view.setEnabled(false);
-		
-		this.add(view);
 		
 		help = new JMenu("Help");
 		

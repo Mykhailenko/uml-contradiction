@@ -33,6 +33,11 @@ import com.uml.contradiction.model.MetaData;
 public class DocExporterJ2W implements Exporter {
 	private IDocument myDoc;
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.uml.contradiction.exporters.Exporter#export(java.util.List)
+	 */
 	@Override
 	public void export(List<VerificationResult> verificationResults)
 			throws Exception {
@@ -50,18 +55,18 @@ public class DocExporterJ2W implements Exporter {
 		addProjectInfo("Author: ", MetaData.getAuthor());
 		addProjectInfo("Company: ", MetaData.getCompany());
 		addProjectInfo("Description: ", MetaData.getDescription());
-		
+
 		Calendar calendar = Calendar.getInstance();
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm MM/dd/yyyy");
 
 		calendar.setTimeInMillis(Long.parseLong(MetaData.getPmCreateDateTime()));
 		String pmCreatedDateTime = dateFormat.format(calendar.getTime());
 		addProjectInfo("Created Date: ", pmCreatedDateTime);
-		
+
 		calendar.setTimeInMillis(Long.parseLong(MetaData.getPmLastModified()));
 		String pmLastModified = dateFormat.format(calendar.getTime());
 		addProjectInfo("Last Modified Date: ", pmLastModified);
-		
+
 		for (int i = 0; i < verificationResults.size(); ++i) {
 			VerificationResult vr = verificationResults.get(i);
 			String criterionName = CriterionSuite.getNameOfCriterion(vr
@@ -109,8 +114,20 @@ public class DocExporterJ2W implements Exporter {
 													.create()).withStyle()
 									.indent(Indent.ONE).create());
 					for (String e : entry.getValue()) {
+						String[] arre = e.split(ResultTemplate.ELEMENT_MARKER);
+						ParagraphPiece[] pieces = new ParagraphPiece[arre.length + 1];
+						boolean simple = true;
+						for (int j = 0; j < arre.length; ++j, simple = !simple) {
+							if (simple) {
+								pieces[j] = ParagraphPiece.with(arre[j]);
+							} else {
+								pieces[j] = ParagraphPiece.with(arre[j])
+										.withStyle().bold().create();
+							}
+						}
+						pieces[arre.length] = ParagraphPiece.with(";");
 						myDoc.getBody().addEle(
-								Paragraph.with(e + ";").withStyle()
+								Paragraph.withPieces(pieces).withStyle()
 										.indent(Indent.TWO).create());
 					}
 				}
