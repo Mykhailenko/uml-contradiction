@@ -1,5 +1,6 @@
 package com.uml.contradiction.model.cclass;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,6 +18,14 @@ public class ClassDiagram implements Diagram{
 	private List<Generalization> generalizations ;
 	private Package parentPackageElement;
 
+	public ClassDiagram() {
+		super();
+		classes = new ArrayList<CClass>();
+		associations = new ArrayList<Association>();
+		dependencies = new ArrayList<Dependency>();
+		realizations = new ArrayList<Realization>();
+		generalizations = new ArrayList<Generalization>();
+	}
 	public List<CClass> getClasses() {
 		return classes;
 	}

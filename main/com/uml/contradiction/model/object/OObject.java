@@ -1,5 +1,7 @@
 package com.uml.contradiction.model.object;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import com.uml.contradiction.model.Vertex;
@@ -9,7 +11,7 @@ import com.uml.contradiction.model.cclass.CClass;
 public class OObject implements Vertex {	
 	private String name;
 	private CClass cclass;
-	private List<AttributeObj> attributes;
+	private List<AttributeObj> attributes = new LinkedList<AttributeObj>();
 	
 	public CClass getClasses() {
 		return cclass;

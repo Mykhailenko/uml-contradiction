@@ -1,5 +1,7 @@
 package com.uml.contradiction.model.cclass;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.List;
 
@@ -21,6 +23,17 @@ public class CClass implements Vertex {
 	private String requiredInterface;
 	private List<CClass> nestedCClasses;
 	
+	
+	
+	public CClass() {
+		super();
+		stereotypes = new HashSet<Stereotype>();
+		attributes = new ArrayList<Attribute>();
+		methods  = new ArrayList<MMethod>();
+		templateParameters = new ArrayList<TemplateParameter>(); 
+		nestedCClasses = new ArrayList<CClass>();
+	}
+
 	public String getName() {
 		return name;
 	}

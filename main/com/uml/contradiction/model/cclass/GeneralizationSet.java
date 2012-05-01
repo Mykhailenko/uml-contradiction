@@ -1,5 +1,6 @@
 package com.uml.contradiction.model.cclass;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import com.uml.contradiction.model.Vertex;
@@ -10,6 +11,11 @@ public class GeneralizationSet{
 	private String name;
 	private boolean isCovering;
 	private boolean isDisjoint;
+	
+	public GeneralizationSet() {
+		leafs = new HashSet<CClass>();
+	}
+	
 	public CClass getRoot() {
 		return root;
 	}

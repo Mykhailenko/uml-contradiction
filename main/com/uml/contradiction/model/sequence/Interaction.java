@@ -5,8 +5,8 @@ import com.uml.contradiction.model.Diagram;
 
 public class Interaction extends InteractionElement implements Diagram{
 	private String name;
-	private List<LifeLine> lifeLines;
-	private List<InteractionElement> childs;
+	private List<LifeLine> lifeLines = new LinkedList<LifeLine>();
+	private List<InteractionElement> childs = new LinkedList<InteractionElement>();
 	public String getName() {
 		return name;
 	}
