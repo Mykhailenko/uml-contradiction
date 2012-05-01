@@ -4,7 +4,11 @@ import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import word.api.interfaces.IDocument;
 import word.utils.TestUtils;
@@ -17,6 +21,7 @@ import word.w2004.elements.Paragraph.TabAlign;
 import word.w2004.elements.ParagraphPiece;
 import word.w2004.style.Color;
 import word.w2004.style.HeadingStyle.Align;
+import word.w2004.style.ParagraphStyle.Indent;
 
 import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.CriterionSuite;
@@ -45,26 +50,34 @@ public class DocExporterJ2W implements Exporter {
 		addProjectInfo("Author: ", MetaData.getAuthor());
 		addProjectInfo("Company: ", MetaData.getCompany());
 		addProjectInfo("Description: ", MetaData.getDescription());
-		addProjectInfo("Create Date: ", MetaData.getPmCreateDateTime());
-		addProjectInfo("Last Modified Date: ", MetaData.getPmLastModified());
+		
+		Calendar calendar = Calendar.getInstance();
+		DateFormat dateFormat = new SimpleDateFormat("HH:mm MM/dd/yyyy");
 
+		calendar.setTimeInMillis(Long.parseLong(MetaData.getPmCreateDateTime()));
+		String pmCreatedDateTime = dateFormat.format(calendar.getTime());
+		addProjectInfo("Created Date: ", pmCreatedDateTime);
+		
+		calendar.setTimeInMillis(Long.parseLong(MetaData.getPmLastModified()));
+		String pmLastModified = dateFormat.format(calendar.getTime());
+		addProjectInfo("Last Modified Date: ", pmLastModified);
+		
 		for (int i = 0; i < verificationResults.size(); ++i) {
 			VerificationResult vr = verificationResults.get(i);
 			String criterionName = CriterionSuite.getNameOfCriterion(vr
 					.getCriterion());
 			String description = CriterionSuite.getDescrOfCriterion(vr
 					.getCriterion());
-			System.out.println("cri " + criterionName + " des " + description);
 			myDoc.getBody()
 					.addEle(Heading3.with("Criterion " + (i + 1) + ": "
 							+ criterionName));
 			myDoc.getBody().addEle(
-					Paragraph.with("Description: " + description));
+					Paragraph.with("Description: " + description + "."));
 			if (vr.isGood()) {
 				myDoc.getBody().addEle(
 						Paragraph.withPieces(
 								ParagraphPiece.with("Verification result: "),
-								ParagraphPiece.with("everything is correct")
+								ParagraphPiece.with("everything is correct.")
 										.withStyle().textColor(Color.GREEN)
 										.create()));
 			} else {
@@ -75,11 +88,31 @@ public class DocExporterJ2W implements Exporter {
 										.with("contradictions were detected in the following diagrams:")
 										.withStyle().textColor(Color.RED)
 										.create()));
+				Map<String, List<String>> map = new LinkedHashMap<String, List<String>>();
 				for (ResultTemplate rt : vr.getResultTemplate()) {
+					List<String> list = map.get(rt.getDiagramsNames());
+					if (list == null) {
+						list = new LinkedList<String>();
+						map.put(rt.getDiagramsNames(), list);
+					}
+					list.add(rt.getDescription());
+				}
+				Iterator<Map.Entry<String, List<String>>> it = map.entrySet()
+						.iterator();
+				while (it.hasNext()) {
+					Map.Entry<String, List<String>> entry = it.next();
 					myDoc.getBody().addEle(
-							Paragraph.with(tab(1) + rt.getDiagramsNames()));
-					myDoc.getBody().addEle(
-							Paragraph.with(tab(2) + rt.getDescription()));
+							Paragraph
+									.withPieces(
+											ParagraphPiece.with(entry.getKey())
+													.withStyle().italic()
+													.create()).withStyle()
+									.indent(Indent.ONE).create());
+					for (String e : entry.getValue()) {
+						myDoc.getBody().addEle(
+								Paragraph.with(e + ";").withStyle()
+										.indent(Indent.TWO).create());
+					}
 				}
 			}
 		}
@@ -89,19 +122,6 @@ public class DocExporterJ2W implements Exporter {
 		TestUtils.createLocalDoc(myDoc.getContent());
 		File file = new File("./Java2word_allInOne.doc");
 		file.renameTo(new File("result"));
-	}
-
-	private static String tab(int n) {
-		String tab = "    ";
-		if (n <= 0) {
-			return tab;
-		} else {
-			String s = "";
-			for (int i = 0; i < n; ++i) {
-				s += tab;
-			}
-			return s;
-		}
 	}
 
 	private void addFooter() {
