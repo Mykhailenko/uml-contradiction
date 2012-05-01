@@ -36,9 +36,9 @@ public class CriterionSuite {
 		result.add(new DisplayedCriterion(new PartOfSingleComposite(), "PartOfSingleComposite", "PartOfSingleComposite"));
 		result.add(new DisplayedCriterion(new ExecutableSequenceCriterion(), "ExecutableSequenceCriterion", "ExecutableSequenceCriterion"));
 		result.add(new DisplayedCriterion(new NoUtilityInstances(), "NoUtilityInstances", "NoUtilityInstances"));
-		result.add(new DisplayedCriterion(new UtilityStaticAttrOnly(), "UtilityStaticAttrOnly", "A class woth stereotype \"utility\" may have only static attributes"));
-		result.add(new DisplayedCriterion(new UtilityStaticMthdOnly(), "UtilityStaticMthdOnly", "A class woth stereotype \"utility\" may have only static methods"));
-			
+		result.add(new DisplayedCriterion(new UtilityStaticAttrOnly(), "UtilityStaticAttrOnly", "A class with stereotype \"utility\" may have only static attributes"));
+		result.add(new DisplayedCriterion(new UtilityStaticMthdOnly(), "UtilityStaticMthdOnly", "A class with stereotype \"utility\" may have only static methods"));
+		result.add(new DisplayedCriterion(new CorrectLifeLines(), "CorrectLifeLines", "Each lifeline should belong to exist class or object"));
 		return result;
 	}
 	public static String getDescrOfCriterion(Criterion criterion){

@@ -29,6 +29,11 @@ public class BoundedPredicate implements Formula{
 	public void setBoundVariable(List<Variable> boundVariable) {
 		this.boundVariable = boundVariable;
 	}
+	public void setBoundVariable(Variable ... boundVariable) {
+		for(Variable v : boundVariable){
+			this.boundVariable.add(v);
+		}
+	}
 
 	public Predicate getPredicate() {
 		return predicate;

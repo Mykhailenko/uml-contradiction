@@ -3,13 +3,14 @@ package com.uml.contradiction.engine.model.criteria;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
+import com.uml.contradiction.engine.model.criteria.result.ResultTemplate;
 import com.uml.contradiction.engine.model.mapping.ClassOfLifeLine;
 import com.uml.contradiction.engine.model.mapping.LifeLineFromInteraction;
 import com.uml.contradiction.engine.model.mapping.MessagesOfLifeLineInteraction;
 import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
 import com.uml.contradiction.engine.model.predicate.MessageBelongToClass;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
-import com.uml.contradiction.engine.model.rightPart.simple.RPInteraction;
+import com.uml.contradiction.engine.model.rightPart.simple.RPInteractions;
 
 public class CheckSequenceCriterion extends Criterion {
 	public CheckSequenceCriterion() {
@@ -18,7 +19,7 @@ public class CheckSequenceCriterion extends Criterion {
 		Quantifier quantifier0 = new Quantifier();
 		quantifier0.setType(QuantifierType.ALL);
 		quantifier0.setBoundVariable(Variable.i);
-		quantifier0.setRightPart(new RPInteraction());
+		quantifier0.setRightPart(new RPInteractions());
 		getQuantifiers().add(quantifier0);
 		
 		Quantifier quantifier1 = new Quantifier();
@@ -65,6 +66,12 @@ public class CheckSequenceCriterion extends Criterion {
 	@Override
 	public CriterionType getCriterionType() {
 		return CriterionType.OBJECT_SEQUENCE;
+	}
+
+	@Override
+	public ResultTemplate getResultTemplate() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
