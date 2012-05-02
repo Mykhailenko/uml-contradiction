@@ -33,7 +33,7 @@ public class AboutListener implements ActionListener {
 		
 		String text = "UML Contradiction "+Properties.getVersion()+"\n"+
 				"tool was created by\n"+
-				"Zaretskaya I.T.\n" + 
+				"Zaretska I.T.\n" + 
 				"Kulankhina O.O.\n" +
 				"Shatalov Y.V.\n"+
 				"Mykhailenko H.H.";
