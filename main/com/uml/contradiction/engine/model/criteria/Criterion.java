@@ -31,4 +31,7 @@ public abstract class Criterion {
 	public boolean equals(Object obj) {
 		return this.getInternalID() == ((Criterion)obj).getInternalID();
 	}
+	public int trickyMethod(){
+		return getQuantifiers().size();
+	}	
 }

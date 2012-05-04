@@ -1,7 +1,10 @@
 package com.uml.contradiction.engine;
 
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 
@@ -125,8 +128,30 @@ public class Checker {
 		// � ��� �� ������ � ������ ������� ������ ��������� ������� ���� �� ������ �����������
 		// ���� ������� ������
 		if(result.isFail()){
-			result.setFailHistory(createPlainFailHistory());
+			List<HistoryPlainItem> big = createPlainFailHistory();
+			for(HistoryPlainItem hpi : big){
+				while(hpi.getItems().size() > criterion.trickyMethod()){
+					hpi.getItems().remove(criterion.trickyMethod());
+				}
+			}
+			Set<HistoryPlainItem> bigWithoutRepeat = new LinkedHashSet<HistoryPlainItem>();
+			for(HistoryPlainItem hpi : big){
+				bigWithoutRepeat.add(hpi);
+			}
+			LOGGER.error("big.size() " + big.size());
+			big.clear();
+			Iterator<HistoryPlainItem> it = bigWithoutRepeat.iterator();
+			LOGGER.error("big.size() " + bigWithoutRepeat.size());
+			while(it.hasNext()){
+				big.add(it.next());
+			}
+			LOGGER.error("big.size() " + big.size());
+			result.setFailHistory(big);
+			/**
+			 * ololo we should cut variables
+			 */
 		}
+		
 		return result;
 	}
 

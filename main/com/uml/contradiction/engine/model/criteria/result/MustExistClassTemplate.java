@@ -1,12 +1,9 @@
 package com.uml.contradiction.engine.model.criteria.result;
 
-import java.util.List;
-
 import com.uml.contradiction.common.DiagramType;
 import com.uml.contradiction.engine.model.HistoryPlainItem;
-import com.uml.contradiction.engine.model.Variable;
+import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.object.OObject;
-import com.uml.contradiction.model.object.ObjectGraph;
 
 public class MustExistClassTemplate extends ResultTemplate{
 	
@@ -19,7 +16,7 @@ public class MustExistClassTemplate extends ResultTemplate{
 		super.setDiagrams(hpi.getItems());
 		String s = new String();
 		OObject ob = (OObject)(hpi.getItems().get(0).value);
-		s = "Trere is no class for object " + ResultTemplate.ELEMENT_MARKER+ob.getName()+ ResultTemplate.ELEMENT_MARKER;
+		s = "Trere is no class for object " + ResultTemplate.ELEMENT_MARKER+ob.getName()+ ResultTemplate.ELEMENT_MARKER + " class name " ;
 		this.description = s;
 	}
 
