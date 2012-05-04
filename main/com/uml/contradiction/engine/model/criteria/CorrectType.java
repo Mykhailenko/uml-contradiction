@@ -3,6 +3,8 @@ package com.uml.contradiction.engine.model.criteria;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
+import com.uml.contradiction.engine.model.criteria.result.CorrectTypeTemplate;
+import com.uml.contradiction.engine.model.criteria.result.ResultTemplate;
 import com.uml.contradiction.engine.model.mapping.AttributeClass;
 import com.uml.contradiction.engine.model.mapping.AttributeObject;
 import com.uml.contradiction.engine.model.mapping.ClassObject;
@@ -14,8 +16,8 @@ import com.uml.contradiction.engine.model.predicate.Brackets.OperationType;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPObjects;
 
-public class CorrectTypeCriterion extends Criterion {
-	public CorrectTypeCriterion() {
+public class CorrectType extends Criterion {
+	public CorrectType() {
 		super();
 		Quantifier quantifier0 = new Quantifier();
 		quantifier0.setType(QuantifierType.ALL);
@@ -64,5 +66,13 @@ public class CorrectTypeCriterion extends Criterion {
 	@Override
 	public CriterionType getCriterionType() {
 		return CriterionType.CLASS_OBJECT;
+	}
+	@Override
+	public ResultTemplate getResultTemplate() {
+		return new CorrectTypeTemplate();
+	}
+	@Override
+	public int trickyMethod() {
+		return 2;
 	}
 }

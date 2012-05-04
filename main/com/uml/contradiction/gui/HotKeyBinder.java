@@ -9,6 +9,12 @@ import javax.swing.JComponent;
 import javax.swing.KeyStroke;
 
 import com.uml.contradiction.gui.controllers.PanelsController;
+import com.uml.contradiction.model.cclass.Attribute;
+import com.uml.contradiction.model.cclass.CClass;
+import com.uml.contradiction.model.cclass.ClassGraph;
+import com.uml.contradiction.model.object.AttributeObj;
+import com.uml.contradiction.model.object.OObject;
+import com.uml.contradiction.model.object.ObjectGraph;
 
 public class HotKeyBinder {
 	public static void addComponent(JComponent component) {
@@ -61,6 +67,35 @@ public class HotKeyBinder {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				PanelsController.contradictionsPanel.getVerify().doClick();
+			}
+		});
+		
+		KeyStroke debug = KeyStroke.getKeyStroke(KeyEvent.VK_Q,
+				KeyEvent.CTRL_MASK);
+		String sdebug = "debug";
+		component.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT)
+				.put(debug, sdebug);
+		component.getInputMap(JComponent.WHEN_FOCUSED).put(debug, sdebug);
+		component.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(debug,
+				sdebug);
+		component.getActionMap().put(sdebug, new AbstractAction() {
+			private static final long serialVersionUID = 3316040008531146448L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("ctrl + q " + ClassGraph.getClasses().size() + " " + ObjectGraph.getObjects().size());
+				for(CClass cl : ClassGraph.getClasses()){
+					System.out.println(cl.getName());
+					for(Attribute at : cl.getAttributes()){
+						System.out.println("\t" + at.getName() + "\t" + at.getType());
+					}
+				}
+				for(OObject ob : ObjectGraph.getObjects()){
+					System.out.println(ob.getName());
+					for(AttributeObj ao : ob.getAttributes()){
+						System.out.println("\t" + ao.getName() + "\t" + ao.getValue());
+					}
+				}
 			}
 		});
 	}

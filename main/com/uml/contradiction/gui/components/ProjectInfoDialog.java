@@ -101,24 +101,31 @@ public class ProjectInfoDialog extends JDialog {
 		Calendar calendar = Calendar.getInstance();
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm MM/dd/yyyy");
 
-		calendar.setTimeInMillis(Long.parseLong(MetaData.getPmCreateDateTime()));
-		String pmCreatedDateTime = dateFormat.format(calendar.getTime());
-		pmCreateDateTime = new JLabel(pmCreatedDateTime);
+		pmCreateDateTime = new JLabel();
 		pmCreateDateTime.setBounds(120, 160, 260, 20);
 		setSomeSets(pmCreateDateTime);
 		add(pmCreateDateTime);
+		
+		try{
+			calendar.setTimeInMillis(Long.parseLong(MetaData.getPmCreateDateTime()));
+			pmCreateDateTime.setText(dateFormat.format(calendar.getTime()));
+		}catch(NumberFormatException e){
+		}
 		
 		tpmLastModified = new JLabel("Last modified: ");
 		tpmLastModified.setBounds(10, 190, 100, 20);
 		tpmLastModified.setHorizontalAlignment(JLabel.RIGHT);
 		add(tpmLastModified);
 		
-		calendar.setTimeInMillis(Long.parseLong(MetaData.getPmLastModified()));
-		String lastModified = dateFormat.format(calendar.getTime());
-		pmLastModified = new JLabel(lastModified);
+		pmLastModified = new JLabel();
 		pmLastModified.setBounds(120, 190, 260, 20);
 		setSomeSets(pmLastModified);
 		add(pmLastModified);
+		try{
+			calendar.setTimeInMillis(Long.parseLong(MetaData.getPmLastModified()));
+			pmLastModified.setText(dateFormat.format(calendar.getTime()));
+		}catch (NumberFormatException e) {
+		}
 	}
 	private void setSomeSets(JLabel label){
 		label.setForeground(Color.BLACK);

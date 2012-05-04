@@ -35,7 +35,9 @@ public class HistoryPlainItem {
 	public int hashCode() {
 		int hash = 0;
 		for(VariableValue vv : items){
-			hash += vv.hashCode();
+			if(vv != null){
+				hash += vv.hashCode();
+			}
 		}
 		return hash;
 	}

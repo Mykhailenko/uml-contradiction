@@ -13,7 +13,7 @@ public class CriterionSuite {
 		result.add(new CheckNoStaticMethod());
 		result.add(new CheckSequenceCriterion());
 		result.add(new CheckStateMachineCriterion());
-		result.add(new CorrectTypeCriterion());
+		result.add(new CorrectType());
 		result.add(new MustExistClassCriterion());
 		result.add(new SimpleCriterion());
 		result.add(new MustExistMethodCriterion());
@@ -29,7 +29,7 @@ public class CriterionSuite {
 		List<DisplayedCriterion> result = new LinkedList<DisplayedCriterion>();
 		result.add(new DisplayedCriterion(new CheckSequenceCriterion(), "CheckSequenceCriterion", "CheckSequenceCriterion"));
 		result.add(new DisplayedCriterion(new CheckStateMachineCriterion(), "CheckStateMachineCriterion", "CheckStateMachineCriterion"));
-		result.add(new DisplayedCriterion(new CorrectTypeCriterion(), "CorrectTypeCriterion", "CorrectTypeCriterion"));
+		result.add(new DisplayedCriterion(new CorrectType(), "CorrectType", "Value of each object's attribute should belong to appropriate type"));
 		result.add(new DisplayedCriterion(new MustExistClassCriterion(), "MustExistClassCriterion", "MustExistClassCriterion"));
 		result.add(new DisplayedCriterion(new SimpleCriterion(), "SimpleCriterion", "SimpleCriterion"));
 		result.add(new DisplayedCriterion(new MustExistMethodCriterion(), "MustExistMethodCriterion", "MustExistMethodCriterion"));
