@@ -16,7 +16,8 @@ public class MustExistClassTemplate extends ResultTemplate{
 		super.setDiagrams(hpi.getItems());
 		String s = new String();
 		OObject ob = (OObject)(hpi.getItems().get(0).value);
-		s = "Trere is no class for object " + ResultTemplate.ELEMENT_MARKER+ob.getName()+ ResultTemplate.ELEMENT_MARKER + " class name " ;
+		s = "Trere is no class for object " + 
+		ResultTemplate.ELEMENT_MARKER+ob.getName()+ ResultTemplate.ELEMENT_MARKER;
 		this.description = s;
 	}
 

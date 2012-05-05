@@ -32,18 +32,22 @@ public class StartCheckScenery {
 			
 			@Override
 			public void run() {
-				VerificationResultsPanel resPanel = PanelsController.resultsPanel;
-				DefaultMutableTreeNode newRoot = getSelectedTree(nodes);
-				List<Criterion> selectedCriterions = getSelectedCriterions(newRoot);
-				Map<Criterion, VerificationResult> results = new HashMap<Criterion, VerificationResult>();
-				List<VerificationResult> ver = StartCheckScenery.verifyCriterions(selectedCriterions);
-				for(VerificationResult vr : ver){
-					results.put(vr.getCriterion(), vr);
+				try{
+					VerificationResultsPanel resPanel = PanelsController.resultsPanel;
+					DefaultMutableTreeNode newRoot = getSelectedTree(nodes);
+					List<Criterion> selectedCriterions = getSelectedCriterions(newRoot);
+					Map<Criterion, VerificationResult> results = new HashMap<Criterion, VerificationResult>();
+					List<VerificationResult> ver = StartCheckScenery.verifyCriterions(selectedCriterions);
+					for(VerificationResult vr : ver){
+						results.put(vr.getCriterion(), vr);
+					}
+					resPanel.setResults(results);
+					resPanel.setSelectedDiagrams(newRoot);
+					PanelsController.showPanel(resPanel);
+				}finally{
+					dialog.setVisible(false);
+					
 				}
-				resPanel.setResults(results);
-				resPanel.setSelectedDiagrams(newRoot);
-				PanelsController.showPanel(resPanel);
-				dialog.setVisible(false);
 			}
 		}).start();
 		dialog.setVisible(true);

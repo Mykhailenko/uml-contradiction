@@ -86,7 +86,7 @@ public class ContradictionsPanel extends JPanel implements GUIState{
 		description.setBorder(null);
 		descriptionPanel.setOpaque(false);
 		verify.addActionListener(new StartCheckListener());
-		
+		verify.setToolTipText("Verify (Ctrl + Enter)");
 		imgLbl.setBorder(BorderFactory.createLineBorder(Color.GRAY));
 		imgLbl.setBackground(Color.white);
 		imgLbl.setHorizontalAlignment(JLabel.CENTER);

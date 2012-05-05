@@ -8,6 +8,7 @@ public class Message extends InteractionElement {
 	private String methodName;
 	private int paramCount;
 	private Interaction interaction;
+	private String originalString;
 	public boolean compareWithTransition(Trigger trigger){
 		if(methodName.equals(trigger.getMethodName()) &&
 				paramCount == trigger.getParamCount()){
@@ -17,6 +18,7 @@ public class Message extends InteractionElement {
 		}
 	}
 	public void parseStr(String str){
+		originalString = str;
 //		System.out.println("There are " + str);
 		// i suppose to get some like that 'ololoName(param1,param2)' or 'disable()' or 'enable' 
 		if(str.contains("(")){ // first or second case
@@ -75,6 +77,12 @@ public class Message extends InteractionElement {
 
 	public void setInteraction(Interaction interaction) {
 		this.interaction = interaction;
+	}
+	public String getOriginalString() {
+		return originalString;
+	}
+	public void setOriginalString(String originalString) {
+		this.originalString = originalString;
 	}
 	
 	

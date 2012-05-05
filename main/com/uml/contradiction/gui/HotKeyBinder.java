@@ -90,6 +90,7 @@ public class HotKeyBinder {
 						System.out.println("\t" + at.getName() + "\t" + at.getType());
 					}
 				}
+				System.out.println("objects");
 				for(OObject ob : ObjectGraph.getObjects()){
 					System.out.println(ob.getName());
 					for(AttributeObj ao : ob.getAttributes()){

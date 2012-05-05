@@ -50,7 +50,7 @@ public class Client implements GUIState{
 		File file = new File(xmiFileName);
 		if(file.exists()){
 			XMIConverter.setFileAndParse(file);
-			List<VerificationResult> results = StartCheckScenery.verifyCriterions(CriterionSuite.getDisplayedCriterionTRICKY());
+			List<VerificationResult> results = StartCheckScenery.verifyCriterions(CriterionSuite.getAllCriterion());
 			ResultSaver.save(results, resultFileName, new DocExporterJ2W());
 			
 		}else{

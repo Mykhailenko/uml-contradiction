@@ -42,7 +42,7 @@ public class MyMenuBar extends JMenuBar implements GUIState{
 		super();
 		fileMenu = new JMenu("File");
 		fileMenu.setMnemonic(KeyEvent.VK_F);
-		loadXMI = new JMenuItem("Load XMI");
+		loadXMI = new JMenuItem("Load XMI (Ctrl + O)");
 		loadXMI.addActionListener(new LoadXMIListener());
 		loadXMI.setMnemonic('o');
 		fileMenu.add(loadXMI);
@@ -82,7 +82,7 @@ public class MyMenuBar extends JMenuBar implements GUIState{
 		
 		fileMenu.addSeparator();
 		
-		exit = new JMenuItem("Exit");
+		exit = new JMenuItem("Exit (Ctrl + X)");
 		exit.addActionListener(new ExitListener());
 		exit.setMnemonic(KeyEvent.VK_X);
 		fileMenu.add(exit);

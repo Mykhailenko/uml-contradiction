@@ -7,7 +7,7 @@ import com.uml.contradiction.engine.model.mapping.exception.MappingException;
 import com.uml.contradiction.model.statemachine.StateMachine;
 import com.uml.contradiction.model.statemachine.Transition;
 
-public class TransitionOfState implements Mapping {
+public class TransitionOfStateMachine implements Mapping {
 
 	@Override
 	public List map(List list) throws MappingException {

@@ -128,13 +128,13 @@ public class Checker {
 		// � ��� �� ������ � ������ ������� ������ ��������� ������� ���� �� ������ �����������
 		// ���� ������� ������
 		if(result.isFail()){
+			Set<HistoryPlainItem> bigWithoutRepeat = new LinkedHashSet<HistoryPlainItem>();
 			List<HistoryPlainItem> big = createPlainFailHistory();
 			for(HistoryPlainItem hpi : big){
 				while(hpi.getItems().size() > criterion.trickyMethod()){
 					hpi.getItems().remove(criterion.trickyMethod());
 				}
 			}
-			Set<HistoryPlainItem> bigWithoutRepeat = new LinkedHashSet<HistoryPlainItem>();
 			for(HistoryPlainItem hpi : big){
 				bigWithoutRepeat.add(hpi);
 			}

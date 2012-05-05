@@ -71,7 +71,7 @@ public class DocExporterJ2W implements Exporter {
 			VerificationResult vr = verificationResults.get(i);
 			String criterionName = CriterionSuite.getNameOfCriterion(vr
 					.getCriterion());
-			String description = CriterionSuite.getDescrOfCriterion(vr
+			String description = CriterionSuite.getDescripritionOfCriterion(vr
 					.getCriterion());
 			myDoc.getBody()
 					.addEle(Heading3.with("Criterion " + (i + 1) + ": "

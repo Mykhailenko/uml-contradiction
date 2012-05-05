@@ -57,7 +57,7 @@ public class TxtExporter implements Exporter {
 			VerificationResult vr = verificationResults.get(i);
 			String criterionName = CriterionSuite.getNameOfCriterion(vr
 					.getCriterion());
-			String description = CriterionSuite.getDescrOfCriterion(vr
+			String description = CriterionSuite.getDescripritionOfCriterion(vr
 					.getCriterion());
 			out.println(tab(1) + "Criterion " + (i + 1) + ": " + criterionName);
 			out.println("Description: " + description + ".");
