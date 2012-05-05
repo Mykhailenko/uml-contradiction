@@ -132,24 +132,21 @@ public class Checker {
 			List<HistoryPlainItem> big = createPlainFailHistory();
 			for(HistoryPlainItem hpi : big){
 				while(hpi.getItems().size() > criterion.trickyMethod()){
+					/**
+					 * ololo we should cut variables
+					 */
 					hpi.getItems().remove(criterion.trickyMethod());
 				}
 			}
 			for(HistoryPlainItem hpi : big){
 				bigWithoutRepeat.add(hpi);
 			}
-			LOGGER.error("big.size() " + big.size());
 			big.clear();
 			Iterator<HistoryPlainItem> it = bigWithoutRepeat.iterator();
-			LOGGER.error("big.size() " + bigWithoutRepeat.size());
 			while(it.hasNext()){
 				big.add(it.next());
 			}
-			LOGGER.error("big.size() " + big.size());
 			result.setFailHistory(big);
-			/**
-			 * ololo we should cut variables
-			 */
 		}
 		
 		return result;

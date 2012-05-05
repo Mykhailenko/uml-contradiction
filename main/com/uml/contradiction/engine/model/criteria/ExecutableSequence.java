@@ -3,14 +3,16 @@ package com.uml.contradiction.engine.model.criteria;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
+import com.uml.contradiction.engine.model.criteria.result.ExecutableSequenceTemplate;
+import com.uml.contradiction.engine.model.criteria.result.ResultTemplate;
 import com.uml.contradiction.engine.model.mapping.LifeLineFromInteraction;
 import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
 import com.uml.contradiction.engine.model.predicate.IsExecutableLifeLine;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPInteractions;
 
-public class ExecutableSequenceCriterion extends Criterion {
-	public ExecutableSequenceCriterion() {
+public class ExecutableSequence extends Criterion {
+	public ExecutableSequence() {
 		super();
 		Quantifier quantifier0 = new Quantifier();
 		quantifier0.setType(QuantifierType.ALL);
@@ -43,5 +45,11 @@ public class ExecutableSequenceCriterion extends Criterion {
 	public CriterionType getCriterionType() {
 		return CriterionType.SEQUENCE_STATE;
 	}
+
+	@Override
+	public ResultTemplate getResultTemplate() {
+		return new ExecutableSequenceTemplate();
+	}
+
 
 }

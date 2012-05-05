@@ -3,6 +3,8 @@ package com.uml.contradiction.gui.panels;
 
 
 import java.awt.Color;
+import java.awt.Image;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -13,6 +15,7 @@ import java.util.Set;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -124,6 +127,26 @@ public class ContradictionsPanel extends JPanel implements GUIState{
 		return verify;
 	}
 	
+	public static int [] getScalableWidthAndHeight(ImageIcon image){
+		float w = 400;
+		float h = 340;
+		int [] result = new int[2];
+		float k = image.getIconWidth() / image.getIconHeight();
+		float k1 = w/h;
+		if(image.getIconWidth() >= image.getIconHeight()){
+			if(k >= k1){
+				result[0] = (int)w;
+				result[1] = (int) (w / k);
+			}else{
+				result[0] =	(int)(h*k);
+				result[1] = (int)h;
+			}
+		}else{
+			result[0] = (int)(h*k);
+			result[1] = (int)h;
+		}
+		return result;
+	}
 	public void showDescription(Object object) {
 		
 		if(object instanceof DisplayedCriterion) {
@@ -131,7 +154,14 @@ public class ContradictionsPanel extends JPanel implements GUIState{
 			this.description.repaint();
 			this.description.updateUI();
 			
-			this.imgLbl.setIcon(((DisplayedCriterion)object).getImg());
+//			this.imgLbl.setIcon(((DisplayedCriterion)object).getImg());
+			ImageIcon image = ((DisplayedCriterion)object).getImg();
+			Image i = image.getImage();
+			System.out.println(image.getIconWidth() + " ; " + image.getIconHeight());
+			int [] sca = getScalableWidthAndHeight(image);
+			Image newi = i.getScaledInstance(sca[0], sca[1], Image.SCALE_SMOOTH);
+			ImageIcon newIcon = new ImageIcon(newi);
+			imgLbl.setIcon(newIcon);
 			this.imgLbl.updateUI();
 			this.imgLbl.repaint();
 			

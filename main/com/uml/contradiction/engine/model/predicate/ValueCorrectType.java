@@ -37,6 +37,7 @@ public class ValueCorrectType implements Predicate {
 		com.uml.contradiction.model.cclass.Attribute classAttribute = (com.uml.contradiction.model.cclass.Attribute) second;
 		boolean result;
 		result = valueChecker(classAttribute.getType(), objAttribute.getValue());
+		LOGGER.error("for " + classAttribute.getType().getName() + " v : " + objAttribute.getValue() + " : " + result);
 		return result;
 	}
 	private boolean valueChecker(Type type, String value){

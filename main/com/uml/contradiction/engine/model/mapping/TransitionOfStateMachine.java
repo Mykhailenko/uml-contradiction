@@ -21,6 +21,7 @@ public class TransitionOfStateMachine implements Mapping {
 				assert transition != null : "transition is null";
 				result.add(transition);
 			}
+			System.out.println("transition count " + result.size());
 			return result;
 		}
 		return null;
