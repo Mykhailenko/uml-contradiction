@@ -5,8 +5,8 @@
 	<property name="lib.dir" value="lib"/>
 	<property name="main-class" value="com.uml.contradiction.gui.Client"/>
 	<property name="jar.name" value="diplom.jar"/>
-	<path id="classpath">
-	        <fileset dir="${lib.dir}" includes="/*.jar"/>
+	<path id="clsspth">
+	        <fileset dir="${lib.dir}" includes="*.jar"/>
 	</path>
 	<target name="clean">
 		<delete dir="${build.dir}"/>
@@ -14,19 +14,15 @@
 	
 	<target name="compile" depends="clean">
 		<mkdir dir="${build.dir}"/>
-		<javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="classpath"/>
+		<javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="clsspth"/>
 		<copy todir="${build.dir}">
 			<fileset file="build.properties"/>
-		</copy>
-		<mkdir dir="${build.dir}/com/uml/contradiction/gui/images"/>
-		<copy todir="${build.dir}/com/uml/contradiction/gui/images">
-			<fileset dir="images" />
 		</copy>
 	</target>
 	
 	<target name="run" depends="compile">
 		<java  fork="no" classname="${main-class}" >
-			<classpath refid="classpath"/>
+			<classpath refid="clsspth"/>
 		</java>
 	</target>
 	

@@ -7,8 +7,10 @@ import java.util.List;
 import com.uml.contradiction.converter.XMIConverter;
 import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.CriterionSuite;
+import com.uml.contradiction.exporters.Exporter;
 import com.uml.contradiction.exporters.ResultSaver;
 import com.uml.contradiction.exporters.doc.DocExporterJ2W;
+import com.uml.contradiction.exporters.txt.TxtExporter;
 import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.panels.ContradictionsPanel;
 import com.uml.contradiction.gui.panels.VerificationResultsPanel;
@@ -31,27 +33,44 @@ public class Client implements GUIState{
 	public static void main(String [] args){
 		if(args.length == 0){
 			client = new Client();
-		}else if(args.length == 1){
-			String xmiFileName = args[0];
-			verify(xmiFileName);
+		}else {
+			comandLineStyle(args);
+		}
+	}
+	private static void comandLineStyle(String [] args){
+		String resultFileName = "result.doc";
+		String xmiFileName;
+		if(args.length == 1){
+			xmiFileName= args[0];
+			verify(xmiFileName, resultFileName, true);
 		}else if(args.length == 2){
-			String xmiFileName = args[0];
-			String resultFileName = args[1];
-			verify(xmiFileName, resultFileName);
+			xmiFileName = args[0];
+			resultFileName = args[1];
+			verify(xmiFileName, resultFileName, true);
+		}else if(args.length == 3){
+			xmiFileName = args[0];
+			resultFileName = args[1];
+			boolean txtExporter = true;
+			if(args[2].equals("-doc")){
+				txtExporter = false;
+			}
+			verify(xmiFileName, resultFileName, txtExporter);
 		}else{
 			System.out.println("Unexpected arguments count.");
 		}
 		
 	}
-	private static void verify(String xmiFileName){
-		verify(xmiFileName, "result.doc");
-	}
-	private static void verify(String xmiFileName, String resultFileName){
+	private static void verify(String xmiFileName, String resultFileName, boolean txtExporter){
 		File file = new File(xmiFileName);
 		if(file.exists()){
 			XMIConverter.setFileAndParse(file);
 			List<VerificationResult> results = StartCheckScenery.verifyCriterions(CriterionSuite.getAllCriterion());
-			ResultSaver.savep(results, resultFileName, new DocExporterJ2W());
+			Exporter exporter;
+			if(txtExporter){
+				ResultSaver.savep(results, resultFileName, new TxtExporter());
+			}else{
+				ResultSaver.savep(results, resultFileName, new DocExporterJ2W());
+			}
 		}else{
 			System.out.println("There is no such file : " + xmiFileName);
 		}
