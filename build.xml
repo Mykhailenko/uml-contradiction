@@ -4,7 +4,7 @@
 	<property name="build.dir" value="build"/>
 	<property name="lib.dir" value="lib"/>
 	<property name="main-class" value="com.uml.contradiction.gui.Client"/>
-	
+	<property name="jar.name" value="diplom.jar"/>
 	<path id="classpath">
 	        <fileset dir="${lib.dir}" includes="/*.jar"/>
 	</path>
@@ -17,6 +17,10 @@
 		<javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="classpath"/>
 		<copy todir="${build.dir}">
 			<fileset file="build.properties"/>
+		</copy>
+		<mkdir dir="${build.dir}/com/uml/contradiction/gui/images"/>
+		<copy todir="${build.dir}/com/uml/contradiction/gui/images">
+			<fileset dir="images" />
 		</copy>
 	</target>
 	
@@ -36,7 +40,7 @@
 	</target>
 	
 	<target name="jar" depends="compile">
-		<jar destfile="diplom.jar">
+		<jar destfile="${jar.name}">
 			<fileset dir="build" excludes="**/*.uml"/>
 			<fileset dir="." includes="images/**"/>
 			<zipfileset includes="**/*.class" src="lib/log4j-1.2.16.jar"/>

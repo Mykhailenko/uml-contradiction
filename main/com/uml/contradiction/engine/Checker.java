@@ -26,8 +26,6 @@ public class Checker {
 	private List<HistoryItem> failHistory;
 	@SuppressWarnings("unchecked")
 	public VerificationResult verify(){
-	
-		System.out.println("verify...");
 		Quantifier quantifier = criterion.getQuantifiers().get(0);
 		List<Object> firstSet = null;;
 		try {
@@ -53,7 +51,6 @@ public class Checker {
 	@SuppressWarnings("unchecked")
 	private void verify(HistoryItem parentHistoryItem, int currentIndex) {
 		assert currentIndex > 0 : "Bad index";
-		System.out.println("verify...");
 		if(currentIndex < criterion.getQuantifiers().size()){
 			Quantifier quantifier = criterion.getQuantifiers().get(currentIndex);
 			List<Object> set = null;
@@ -84,7 +81,6 @@ public class Checker {
 		}else{
 			List<VariableValue> currentVariables = parentHistoryItem.getPlainHistory();
 			boolean result = criterion.getFormula().predict(currentVariables);
-			System.out.println("cr=" + result);
 			parentHistoryItem.setSuccess(result);
 		}
 	}

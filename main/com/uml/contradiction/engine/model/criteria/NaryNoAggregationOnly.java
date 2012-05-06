@@ -3,6 +3,7 @@ package com.uml.contradiction.engine.model.criteria;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
+import com.uml.contradiction.engine.model.criteria.result.ResultTemplate;
 import com.uml.contradiction.engine.model.mapping.ClassAssociation;
 import com.uml.contradiction.engine.model.mapping.CompositeEndAssociation;
 import com.uml.contradiction.engine.model.mapping.EndAssociation;
@@ -62,6 +63,14 @@ public class NaryNoAggregationOnly extends Criterion {
 	public CriterionType getCriterionType() {
 		// TODO Auto-generated method stub
 		return CriterionType.CLASS_CLASS;
+	}
+
+
+
+	@Override
+	public ResultTemplate getResultTemplate() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

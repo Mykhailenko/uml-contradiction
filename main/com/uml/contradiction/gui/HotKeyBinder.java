@@ -3,6 +3,7 @@ package com.uml.contradiction.gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
@@ -97,6 +98,10 @@ public class HotKeyBinder {
 						System.out.println("\t" + ao.getName() + "\t" + ao.getValue());
 					}
 				}
+				System.out.println("files");
+				String list[] = new File(".").list();
+	            for(int i = 0; i < list.length; i++)
+	                System.out.println(list[i]);
 			}
 		});
 	}

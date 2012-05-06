@@ -21,7 +21,7 @@ public class ResultSaver {
 		}
 		
 	}
-	private static boolean savep(List<VerificationResult> verificationResults, String filename, Exporter exporter){
+	public static boolean savep(List<VerificationResult> verificationResults, String filename, Exporter exporter){
 		try {
 			exporter.export(verificationResults);
 		} catch (Exception e) {

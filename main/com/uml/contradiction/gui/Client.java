@@ -51,8 +51,7 @@ public class Client implements GUIState{
 		if(file.exists()){
 			XMIConverter.setFileAndParse(file);
 			List<VerificationResult> results = StartCheckScenery.verifyCriterions(CriterionSuite.getAllCriterion());
-			ResultSaver.save(results, resultFileName, new DocExporterJ2W());
-			
+			ResultSaver.savep(results, resultFileName, new DocExporterJ2W());
 		}else{
 			System.out.println("There is no such file : " + xmiFileName);
 		}

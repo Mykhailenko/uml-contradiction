@@ -3,6 +3,7 @@ package com.uml.contradiction.engine.model.criteria;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
+import com.uml.contradiction.engine.model.criteria.result.ResultTemplate;
 import com.uml.contradiction.engine.model.mapping.MessagesForTransition;
 import com.uml.contradiction.engine.model.mapping.TransitionToState;
 import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
@@ -52,6 +53,13 @@ public class CheckEntryMethodsCriterion extends Criterion {
 	@Override
 	public CriterionType getCriterionType() {
 		return CriterionType.SEQUENCE_STATE;
+	}
+
+
+	@Override
+	public ResultTemplate getResultTemplate() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

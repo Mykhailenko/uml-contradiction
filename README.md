@@ -19,3 +19,11 @@
 * Mykhailenko Hlib		tas.nix@gmail.com
 * Shatalov Yaroslav		shatalov_yarik@mail.ru
 	
+	
+	
+	CheckAttributeOrAssociate
+	CheckEntryMethodsCriterion
+	CheckNoStaticMethod
+	CheckVisibilityMethod
+	NaryNoAggregationOnly
+	PartOfSingleComposite
