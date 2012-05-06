@@ -15,6 +15,7 @@ import javax.swing.text.StyledDocument;
 
 
 import com.uml.contradiction.gui.Client;
+import com.uml.contradiction.gui.Images;
 import com.uml.contradiction.gui.Properties;
 
 public class AboutListener implements ActionListener {
@@ -33,7 +34,7 @@ public class AboutListener implements ActionListener {
 		
 		String text = "UML Contradiction "+Properties.getVersion()+"\n"+
 				"tool was created by\n"+
-				"Zaretskaya I.T.\n" + 
+				"Zaretska I.T.\n" + 
 				"Kulankhina O.O.\n" +
 				"Shatalov Y.V.\n"+
 				"Mykhailenko H.H.";
@@ -48,7 +49,7 @@ public class AboutListener implements ActionListener {
 		txt.setOpaque(false);
 		txt.setBounds(120, 10, 170, 160);
 		dialog.add(txt);
-		ImageIcon image = new ImageIcon("images" + File.separator + "hamsters.jpg");
+		ImageIcon image = Images.getImageIcon("images/hamsters.jpg");
 		Image i = image.getImage();
 		Image newi = i.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 		ImageIcon newIcon = new ImageIcon(newi);

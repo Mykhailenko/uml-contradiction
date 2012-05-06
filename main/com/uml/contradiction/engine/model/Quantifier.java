@@ -9,20 +9,23 @@ public class Quantifier {
 	public Variable getBoundVariable() {
 		return boundVariable;
 	}
-	public void setBoundVariable(Variable boundVariable) {
+	public Quantifier setBoundVariable(Variable boundVariable) {
 		this.boundVariable = boundVariable;
+		return this;
 	}
 	public QuantifierType getType() {
 		return type;
 	}
-	public void setType(QuantifierType type) {
+	public Quantifier setType(QuantifierType type) {
 		this.type = type;
+		return this;
 	}
 	public QuantifierRightPart getRightPart() {
 		return rightPart;
 	}
-	public void setRightPart(QuantifierRightPart rightPart) {
+	public Quantifier setRightPart(QuantifierRightPart rightPart) {
 		this.rightPart = rightPart;
+		return this;
 	}
 	
 

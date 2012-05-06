@@ -1,5 +1,6 @@
 package com.uml.contradiction.gui;
 
+import java.io.File;
 import java.io.FileInputStream;
 
 public class Properties {
@@ -7,7 +8,13 @@ public class Properties {
 	static{
 		properties = new java.util.Properties();
 		try {
-			properties.load(new FileInputStream("build.properties"));
+			String path = "build.properties";
+			File file = new File(path);
+			if(file.exists()){
+				properties.load(new FileInputStream(file));
+			}else{
+				properties.load(Properties.class.getClassLoader().getResourceAsStream(path));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

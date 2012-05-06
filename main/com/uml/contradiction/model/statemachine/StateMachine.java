@@ -9,9 +9,9 @@ import com.uml.contradiction.model.sequence.Message;
 
 public class StateMachine implements Diagram{
 	private String name;
-	private List<State> states;
+	private List<State> states = new LinkedList<State>();
 	private CClass cClass;
-	private List<Transition> transitions;
+	private List<Transition> transitions = new LinkedList<Transition>();
 	
 	public List<State> getStates() {
 		return states;

@@ -6,6 +6,7 @@ import java.util.List;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
+import com.uml.contradiction.engine.model.criteria.result.ResultTemplate;
 import com.uml.contradiction.engine.model.mapping.ClassObject;
 import com.uml.contradiction.engine.model.mapping.CompositeEndAssociation;
 import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
@@ -46,13 +47,19 @@ public class PartOfSingleComposite extends Criterion {
 	@Override
 	public int getInternalID() {
 		// TODO Auto-generated method stub
-		return -1;
+		return -13;
 	}
 
 	@Override
 	public CriterionType getCriterionType() {
 		// TODO Auto-generated method stub
 		return CriterionType.CLASS_CLASS;
+	}
+
+	@Override
+	public ResultTemplate getResultTemplate() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

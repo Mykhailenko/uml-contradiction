@@ -3,10 +3,17 @@ package com.uml.contradiction.engine.model.criteria;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
+import com.uml.contradiction.engine.model.criteria.result.ResultTemplate;
+import com.uml.contradiction.engine.model.mapping.ATR;
+import com.uml.contradiction.engine.model.mapping.GenSeq;
+import com.uml.contradiction.engine.model.mapping.Ve;
+import com.uml.contradiction.engine.model.mapping.Vs;
 import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
 import com.uml.contradiction.engine.model.predicate.Brackets;
 import com.uml.contradiction.engine.model.predicate.Brackets.OperationType;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
+import com.uml.contradiction.engine.model.rightPart.simple.RPAssosiates;
+import com.uml.contradiction.engine.model.rightPart.simple.RPOblecjLink;
 
 public class CheckAttributeOrAssociate extends Criterion {
 	public CheckAttributeOrAssociate() {
@@ -92,6 +99,11 @@ public class CheckAttributeOrAssociate extends Criterion {
 	@Override
 	public CriterionType getCriterionType() {
 		return CriterionType.CLASS_OBJECT;
+	}
+	@Override
+	public ResultTemplate getResultTemplate() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -7,7 +7,7 @@ import org.junit.Test;
 import com.uml.contradiction.converter.XMIConverter;
 import com.uml.contradiction.engine.Checker;
 import com.uml.contradiction.engine.model.VerificationResult;
-import com.uml.contradiction.engine.model.criteria.CheckStateMachineCriterion;
+import com.uml.contradiction.engine.model.criteria.CheckTriggers;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import static org.junit.Assert.assertTrue;
 
@@ -22,7 +22,7 @@ public class CheckStateMachineTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		Criterion criterion = new CheckStateMachineCriterion();
+		Criterion criterion = new CheckTriggers();
 		Checker engine = new Checker(criterion);
 		VerificationResult result = engine.verify();
 		assertTrue(result.isFail());

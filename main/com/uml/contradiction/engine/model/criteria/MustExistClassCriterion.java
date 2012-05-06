@@ -5,13 +5,10 @@ import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
 import com.uml.contradiction.engine.model.criteria.result.MustExistClassTemplate;
 import com.uml.contradiction.engine.model.criteria.result.ResultTemplate;
-import com.uml.contradiction.engine.model.mapping.ClassObject;
 import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
 import com.uml.contradiction.engine.model.predicate.IsObjInsancetOfClass;
-import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPClasses;
 import com.uml.contradiction.engine.model.rightPart.simple.RPObjects;
-import com.uml.contradiction.tests.MustExistClassCriterionTest;
 
 public class MustExistClassCriterion extends Criterion {
 	public MustExistClassCriterion() {
@@ -39,7 +36,7 @@ public class MustExistClassCriterion extends Criterion {
 
 	@Override
 	public int getInternalID() {
-		return -2;
+		return -9;
 	}
 
 	@Override
@@ -49,7 +46,10 @@ public class MustExistClassCriterion extends Criterion {
 
 	@Override
 	public ResultTemplate getResultTemplate() {
-		// TODO Auto-generated method stub
 		return new MustExistClassTemplate();
+	}
+	@Override
+	public int trickyMethod() {
+		return 1;
 	}
 }

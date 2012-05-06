@@ -62,6 +62,11 @@ public class ComplexRightPart implements QuantifierRightPart {
 	public void setBoundVariables(List<Variable> boundVariables) {
 		this.boundVariables = boundVariables;
 	}
+	public void setBoundVariables(Variable ... boundVariables) {
+		for(Variable v : boundVariables){
+			this.boundVariables.add(v);
+		}
+	}
 	public List<Mapping> getNestedMappings() {
 		return nestedMappings;
 	}

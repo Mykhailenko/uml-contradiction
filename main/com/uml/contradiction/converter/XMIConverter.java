@@ -13,7 +13,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import com.sun.xml.internal.ws.api.addressing.WSEndpointReference.Metadata;
 import com.uml.contradiction.gui.models.DiagramForChoise;
 import com.uml.contradiction.model.MetaData;
 import com.uml.contradiction.model.cclass.CClass;

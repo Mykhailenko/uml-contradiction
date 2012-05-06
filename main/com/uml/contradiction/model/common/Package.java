@@ -1,5 +1,6 @@
 package com.uml.contradiction.model.common;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.uml.contradiction.model.Vertex;
@@ -9,8 +10,8 @@ import com.uml.contradiction.model.cclass.CClass;
 public class Package implements Vertex{
 	private String name;
 	private Package parentPackageElement;
-	private List<Package> childrenPackages;
-	private List<CClass> childrenClass;
+	private List<Package> childrenPackages = new ArrayList<Package>();
+	private List<CClass> childrenClass = new ArrayList<CClass>();
 	public String getName() {
 		return name;
 	}

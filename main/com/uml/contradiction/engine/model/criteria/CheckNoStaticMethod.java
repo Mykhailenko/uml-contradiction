@@ -6,6 +6,7 @@ import java.util.List;
 import com.uml.contradiction.engine.model.Quantifier;
 import com.uml.contradiction.engine.model.QuantifierType;
 import com.uml.contradiction.engine.model.Variable;
+import com.uml.contradiction.engine.model.criteria.result.ResultTemplate;
 import com.uml.contradiction.engine.model.mapping.Mapping;
 import com.uml.contradiction.engine.model.mapping.MethodClass;
 import com.uml.contradiction.engine.model.mapping.TargetMessage;
@@ -57,12 +58,19 @@ public class CheckNoStaticMethod extends Criterion {
 	
 	@Override
 	public int getInternalID() {
-		return -1;
+		return -3;
 	}
 
 	@Override
 	public CriterionType getCriterionType() {
 		return CriterionType.CLASS_SEQUENCE;
+	}
+
+
+	@Override
+	public ResultTemplate getResultTemplate() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

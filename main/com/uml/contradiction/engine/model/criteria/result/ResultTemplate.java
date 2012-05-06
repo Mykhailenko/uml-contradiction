@@ -50,7 +50,7 @@ public abstract class ResultTemplate {
 		Diagram res = null;
 		Object element = ((VariableValue)(var)).value;
 	
-		System.out.println("Searching for element: " + element.toString());
+//		System.out.println("Searching for element: " + element.toString());
 		
 		if(type == null) {
 			return null;

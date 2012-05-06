@@ -11,7 +11,7 @@ import org.junit.Test;
 import com.uml.contradiction.engine.Checker;
 import com.uml.contradiction.engine.model.HistoryPlainItem;
 import com.uml.contradiction.engine.model.VerificationResult;
-import com.uml.contradiction.engine.model.criteria.CorrectTypeCriterion;
+import com.uml.contradiction.engine.model.criteria.CorrectType;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.criteria.PartOfSingleComposite;
 import com.uml.contradiction.model.cclass.AggregationKind;

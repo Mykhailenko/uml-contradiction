@@ -21,7 +21,7 @@ public class UtilStaticMthsTemplate extends ResultTemplate{
 		CClass cl = (CClass)(hpi.getItems().get(0).value);
 		MMethod meth = (MMethod)(hpi.getItems().get(1).value);
 		
-		s = s+ "There is a method " + marker+meth.getName()+marker + " withinstance scope in class " + marker+cl.getName()+marker + " with stereotype <<utility>>";;
+		s = s+ "There is a method " + marker+meth.getName()+marker + " withinstance scope in class " + marker+cl.getName()+marker + " with stereotype \"utility\"";;
 		
 		super.setDiagrams(hpi.getItems());
 		this.description = s;

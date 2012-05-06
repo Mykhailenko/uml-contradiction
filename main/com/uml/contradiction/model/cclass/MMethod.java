@@ -1,5 +1,6 @@
 package com.uml.contradiction.model.cclass;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -11,10 +12,16 @@ public class MMethod {
 	private String name;
 	private Visibility visibility;
 	private Set<Stereotype> stereotypes;
-	private List<Parameter> parameters = new LinkedList<Parameter>();
+	private List<Parameter> parameters;
 	private String returnResult;
 	private String properties;
 	private Scope scope;
+	
+	public MMethod() {
+		stereotypes = new HashSet<Stereotype>();
+		parameters = new LinkedList<Parameter>();
+	}
+	
 	public boolean compareWithMessage(Message message){
 		if(name.equals(message.getMethodName()) &&
 				parameters.size() == message.getParamCount()){

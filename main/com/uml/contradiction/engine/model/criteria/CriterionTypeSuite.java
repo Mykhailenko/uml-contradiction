@@ -13,7 +13,6 @@ public class CriterionTypeSuite {
 		res.add(new DisplayedCriterionType(CriterionType.CLASS_OBJECT, "Class-Object"));
 		res.add(new DisplayedCriterionType(CriterionType.CLASS_SEQUENCE, "Class-Sequence"));
 		res.add(new DisplayedCriterionType(CriterionType.CLASS_STATE, "Class-State"));
-		res.add(new DisplayedCriterionType(CriterionType.OBJECT_SEQUENCE, "Object-Sequence"));
 		res.add(new DisplayedCriterionType(CriterionType.SEQUENCE_STATE, "Sequence-State"));
 		
 		return res;

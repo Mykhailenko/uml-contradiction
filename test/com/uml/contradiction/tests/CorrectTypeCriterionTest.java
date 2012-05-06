@@ -12,7 +12,7 @@ import org.junit.Test;
 import com.uml.contradiction.engine.Checker;
 import com.uml.contradiction.engine.model.HistoryPlainItem;
 import com.uml.contradiction.engine.model.VerificationResult;
-import com.uml.contradiction.engine.model.criteria.CorrectTypeCriterion;
+import com.uml.contradiction.engine.model.criteria.CorrectType;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.criteria.SimpleCriterion;
 import com.uml.contradiction.model.cclass.CClass;
@@ -63,7 +63,7 @@ public class CorrectTypeCriterionTest {
 		ObjectGraph.setObjects(loo);
 		
 		/////
-		Criterion criterion = new CorrectTypeCriterion();
+		Criterion criterion = new CorrectType();
 		Checker engine = new Checker(criterion);
 		VerificationResult verificationResult = engine.verify();
 		assert verificationResult != null : "verificationResult == null";
@@ -107,7 +107,7 @@ public class CorrectTypeCriterionTest {
 		ObjectGraph.setObjects(loo);
 		
 		/////
-		Criterion criterion = new CorrectTypeCriterion();
+		Criterion criterion = new CorrectType();
 		Checker engine = new Checker(criterion);
 		VerificationResult verificationResult = engine.verify();
 		assert verificationResult != null : "verificationResult == null";

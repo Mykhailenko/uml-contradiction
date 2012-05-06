@@ -1,7 +1,10 @@
 package com.uml.contradiction.engine;
 
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 
@@ -23,8 +26,6 @@ public class Checker {
 	private List<HistoryItem> failHistory;
 	@SuppressWarnings("unchecked")
 	public VerificationResult verify(){
-	
-		System.out.println("verify...");
 		Quantifier quantifier = criterion.getQuantifiers().get(0);
 		List<Object> firstSet = null;;
 		try {
@@ -50,7 +51,6 @@ public class Checker {
 	@SuppressWarnings("unchecked")
 	private void verify(HistoryItem parentHistoryItem, int currentIndex) {
 		assert currentIndex > 0 : "Bad index";
-		System.out.println("verify...");
 		if(currentIndex < criterion.getQuantifiers().size()){
 			Quantifier quantifier = criterion.getQuantifiers().get(currentIndex);
 			List<Object> set = null;
@@ -81,7 +81,6 @@ public class Checker {
 		}else{
 			List<VariableValue> currentVariables = parentHistoryItem.getPlainHistory();
 			boolean result = criterion.getFormula().predict(currentVariables);
-			System.out.println("cr=" + result);
 			parentHistoryItem.setSuccess(result);
 		}
 	}
@@ -125,8 +124,27 @@ public class Checker {
 		// � ��� �� ������ � ������ ������� ������ ��������� ������� ���� �� ������ �����������
 		// ���� ������� ������
 		if(result.isFail()){
-			result.setFailHistory(createPlainFailHistory());
+			Set<HistoryPlainItem> bigWithoutRepeat = new LinkedHashSet<HistoryPlainItem>();
+			List<HistoryPlainItem> big = createPlainFailHistory();
+			for(HistoryPlainItem hpi : big){
+				while(hpi.getItems().size() > criterion.trickyMethod()){
+					/**
+					 * ololo we should cut variables
+					 */
+					hpi.getItems().remove(criterion.trickyMethod());
+				}
+			}
+			for(HistoryPlainItem hpi : big){
+				bigWithoutRepeat.add(hpi);
+			}
+			big.clear();
+			Iterator<HistoryPlainItem> it = bigWithoutRepeat.iterator();
+			while(it.hasNext()){
+				big.add(it.next());
+			}
+			result.setFailHistory(big);
 		}
+		
 		return result;
 	}
 

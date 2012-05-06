@@ -63,7 +63,7 @@ public class UtilityStaticAttrOnly extends Criterion {
 
 	@Override
 	public int getInternalID() {
-		return -2;
+		return -15;
 	}
 
 	@Override

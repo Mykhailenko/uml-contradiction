@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Insets;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
@@ -95,20 +98,34 @@ public class ProjectInfoDialog extends JDialog {
 		tpmCreateDateTime.setHorizontalAlignment(JLabel.RIGHT);
 		add(tpmCreateDateTime);
 		
-		pmCreateDateTime = new JLabel(MetaData.getPmCreateDateTime());
+		Calendar calendar = Calendar.getInstance();
+		DateFormat dateFormat = new SimpleDateFormat("HH:mm MM/dd/yyyy");
+
+		pmCreateDateTime = new JLabel();
 		pmCreateDateTime.setBounds(120, 160, 260, 20);
 		setSomeSets(pmCreateDateTime);
 		add(pmCreateDateTime);
+		
+		try{
+			calendar.setTimeInMillis(Long.parseLong(MetaData.getPmCreateDateTime()));
+			pmCreateDateTime.setText(dateFormat.format(calendar.getTime()));
+		}catch(NumberFormatException e){
+		}
 		
 		tpmLastModified = new JLabel("Last modified: ");
 		tpmLastModified.setBounds(10, 190, 100, 20);
 		tpmLastModified.setHorizontalAlignment(JLabel.RIGHT);
 		add(tpmLastModified);
 		
-		pmLastModified = new JLabel(MetaData.getPmLastModified());
+		pmLastModified = new JLabel();
 		pmLastModified.setBounds(120, 190, 260, 20);
 		setSomeSets(pmLastModified);
 		add(pmLastModified);
+		try{
+			calendar.setTimeInMillis(Long.parseLong(MetaData.getPmLastModified()));
+			pmLastModified.setText(dateFormat.format(calendar.getTime()));
+		}catch (NumberFormatException e) {
+		}
 	}
 	private void setSomeSets(JLabel label){
 		label.setForeground(Color.BLACK);
