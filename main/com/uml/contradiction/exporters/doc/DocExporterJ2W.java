@@ -1,6 +1,8 @@
 package com.uml.contradiction.exporters.doc;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -114,7 +116,8 @@ public class DocExporterJ2W implements Exporter {
 													.create()).withStyle()
 									.indent(Indent.ONE).create());
 					for (String e : entry.getValue()) {
-						String[] arre = escapeXML(e).split(ResultTemplate.ELEMENT_MARKER);
+						String[] arre = escapeXML(e).split(
+								ResultTemplate.ELEMENT_MARKER);
 						ParagraphPiece[] pieces = new ParagraphPiece[arre.length + 1];
 						boolean simple = true;
 						for (int j = 0; j < arre.length; ++j, simple = !simple) {
@@ -135,9 +138,20 @@ public class DocExporterJ2W implements Exporter {
 		}
 		addFooter();
 		// //////////////////////////////////
-		TestUtils.createLocalDoc(myDoc.getContent());
-		File file = new File("./Java2word_allInOne.doc");
-		file.renameTo(new File("result"));
+		createLocalDoc(myDoc.getContent(), "result");
+	}
+
+	private void createLocalDoc(String content, String fileName) {
+		File fileObj = new File(fileName);
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter(fileObj);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		writer.println(content);
+		writer.close();
 	}
 
 	private void addFooter() {
@@ -170,18 +184,20 @@ public class DocExporterJ2W implements Exporter {
 					Paragraph
 							.withPieces(
 									ParagraphPiece.with(lbl),
-									ParagraphPiece.with(escapeXML(value)).withStyle()
-											.bold().create()).withStyle()
+									ParagraphPiece.with(escapeXML(value))
+											.withStyle().bold().create())
+							.withStyle()
 							.align(word.w2004.style.ParagraphStyle.Align.RIGHT)
 							.create());
 		}
 	}
-	public static String escapeXML(String xml){
-		xml = xml.replaceAll("&", "&amp;"); 
-		xml = xml.replaceAll("<", "&lt;"); 
-		xml = xml.replaceAll(">", "&gt;"); 
-		xml = xml.replaceAll(" ", "&apos;"); 
-		xml = xml.replaceAll("\"", "&quot;"); 
+
+	public static String escapeXML(String xml) {
+		xml = xml.replaceAll("&", "&amp;");
+		xml = xml.replaceAll("<", "&lt;");
+		xml = xml.replaceAll(">", "&gt;");
+		xml = xml.replaceAll(" ", "&apos;");
+		xml = xml.replaceAll("\"", "&quot;");
 		return xml;
 	}
 
