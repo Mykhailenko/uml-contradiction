@@ -3,8 +3,9 @@
 	<property name="src.dir" value="main"/>
 	<property name="build.dir" value="build"/>
 	<property name="lib.dir" value="lib"/>
+	<property file="build.properties"/>
 	<property name="main-class" value="com.uml.contradiction.gui.Client"/>
-	<property name="jar.name" value="diplom.jar"/>
+	<property name="jar.name" value="${application-name.short}.jar"/>
 	<path id="clsspth">
 	        <fileset dir="${lib.dir}" includes="*.jar"/>
 	</path>

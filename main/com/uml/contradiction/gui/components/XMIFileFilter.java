@@ -1,4 +1,4 @@
-package com.uml.contradiction.gui.sceneries;
+package com.uml.contradiction.gui.components;
 
 import java.io.File;
 
@@ -11,11 +11,16 @@ public class XMIFileFilter extends FileFilter {
 		if(file.isDirectory()){
 			return true;
 		}
-		if(getExtension(file).equalsIgnoreCase("xmi")){
-			return true;
-		}else{
-			return false;
+		return isAcceptableExtension(getExtension(file));
+	}
+	private boolean isAcceptableExtension(String extension){
+		String [] acceptableExtensions = {"xmi", "uml"}; 
+		for(String ac : acceptableExtensions){
+			if(ac.equalsIgnoreCase(extension)){
+				return true;
+			}
 		}
+		return false;
 	}
 	private String getExtension(File file){
 		int point = file.getName().lastIndexOf('.');

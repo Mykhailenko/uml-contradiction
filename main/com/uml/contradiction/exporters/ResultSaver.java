@@ -28,8 +28,11 @@ public class ResultSaver {
 			e.printStackTrace();
 		}
 		File file = new File("result");
-		boolean success = file.renameTo(new File(filename));
-		return success;
+		File e = new File(filename);
+		if(e.exists() && e.isFile()){
+			e.delete();
+		}
+		return file.renameTo(new File(filename));
 	}
 	
 }

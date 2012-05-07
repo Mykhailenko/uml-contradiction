@@ -13,13 +13,11 @@ import java.util.List;
 import java.util.Map;
 
 import word.api.interfaces.IDocument;
-import word.utils.TestUtils;
 import word.w2004.Document2004;
 import word.w2004.Document2004.Encoding;
 import word.w2004.elements.Heading1;
 import word.w2004.elements.Heading3;
 import word.w2004.elements.Paragraph;
-import word.w2004.elements.Paragraph.TabAlign;
 import word.w2004.elements.ParagraphPiece;
 import word.w2004.style.Color;
 import word.w2004.style.HeadingStyle.Align;
@@ -60,13 +58,18 @@ public class DocExporterJ2W implements Exporter {
 
 		Calendar calendar = Calendar.getInstance();
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm MM/dd/yyyy");
-
-		calendar.setTimeInMillis(Long.parseLong(MetaData.getPmCreateDateTime()));
-		String pmCreatedDateTime = dateFormat.format(calendar.getTime());
+		String pmCreatedDateTime = null;
+		try{
+			calendar.setTimeInMillis(Long.parseLong(MetaData.getPmCreateDateTime()));
+			pmCreatedDateTime = dateFormat.format(calendar.getTime());
+		}catch (Exception e) {	}
 		addProjectInfo("Created Date: ", pmCreatedDateTime);
-
-		calendar.setTimeInMillis(Long.parseLong(MetaData.getPmLastModified()));
-		String pmLastModified = dateFormat.format(calendar.getTime());
+		
+		String pmLastModified = null;
+		try{
+			calendar.setTimeInMillis(Long.parseLong(MetaData.getPmLastModified()));
+			pmLastModified = dateFormat.format(calendar.getTime());
+		}catch(Exception e){  }
 		addProjectInfo("Last Modified Date: ", pmLastModified);
 
 		for (int i = 0; i < verificationResults.size(); ++i) {

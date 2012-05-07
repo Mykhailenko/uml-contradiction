@@ -42,16 +42,23 @@ public class TxtExporter implements Exporter {
 		addProjectInfo("Author: ", MetaData.getAuthor());
 		addProjectInfo("Company: ", MetaData.getCompany());
 		addProjectInfo("Description: ", MetaData.getDescription());
+
 		Calendar calendar = Calendar.getInstance();
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm MM/dd/yyyy");
-
-		calendar.setTimeInMillis(Long.parseLong(MetaData.getPmCreateDateTime()));
-		String pmCreatedDateTime = dateFormat.format(calendar.getTime());
+		String pmCreatedDateTime = null;
+		try{
+			calendar.setTimeInMillis(Long.parseLong(MetaData.getPmCreateDateTime()));
+			pmCreatedDateTime = dateFormat.format(calendar.getTime());
+		}catch (Exception e) {	}
 		addProjectInfo("Created Date: ", pmCreatedDateTime);
-
-		calendar.setTimeInMillis(Long.parseLong(MetaData.getPmLastModified()));
-		String pmLastModified = dateFormat.format(calendar.getTime());
+		
+		String pmLastModified = null;
+		try{
+			calendar.setTimeInMillis(Long.parseLong(MetaData.getPmLastModified()));
+			pmLastModified = dateFormat.format(calendar.getTime());
+		}catch(Exception e){  }
 		addProjectInfo("Last Modified Date: ", pmLastModified);
+
 		out.println();
 		for (int i = 0; i < verificationResults.size(); ++i) {
 			VerificationResult vr = verificationResults.get(i);
