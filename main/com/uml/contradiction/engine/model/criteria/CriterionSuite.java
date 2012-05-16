@@ -9,7 +9,7 @@ public class CriterionSuite {
 	public static List<DisplayedCriterion> getDisplayedCriterions(){
 		List<DisplayedCriterion> result = new LinkedList<DisplayedCriterion>();
 		result.add(new DisplayedCriterion(new CheckMessages(), "CheckMessages", "CheckMessages"));
-		result.add(new DisplayedCriterion(new CheckTriggers(), "CheckTriggers", "CheckTriggers"));
+		result.add(new DisplayedCriterion(new CheckTriggers(), "CheckTriggers", "CheckTriggers CheckTriggersCheckTriggers  CheckTriggers CheckTriggers CheckTriggers CheckTriggersCheckTriggers  CheckTriggers CheckTriggers Check CheckTriggers CheckTriggersCheckTriggers  CheckTriggers CheckTriggers Check CheckTriggers CheckTriggersCheckTriggers  CheckTriggers CheckTriggers Check CheckTriggers CheckTriggersCheckTriggers  CheckTriggers CheckTriggers Check CheckTriggers CheckTriggersCheckTriggers  CheckTriggers CheckTriggers Check CheckTriggers CheckTriggersCheckTriggers  CheckTriggers CheckTriggers Check CheckTriggers CheckTriggersCheckTriggers  CheckTriggers CheckTriggers Check CheckTriggers CheckTriggersCheckTriggers  CheckTriggers CheckTriggers Check CheckTriggers CheckTriggersCheckTriggers  CheckTriggers CheckTriggers Check CheckTriggers CheckTriggersCheckTriggers  CheckTriggers CheckTriggers Check CheckTriggers CheckTriggers CheckTriggersCheckTriggers"));
 		result.add(new DisplayedCriterion(new CorrectType(), "CorrectType", "Value of each object's attribute should belong to appropriate type"));
 		result.add(new DisplayedCriterion(new MustExistClassCriterion(), "MustExistClassCriterion", "MustExistClassCriterion"));
 		result.add(new DisplayedCriterion(new PartOfSingleComposite(), "PartOfSingleComposite", "PartOfSingleComposite"));

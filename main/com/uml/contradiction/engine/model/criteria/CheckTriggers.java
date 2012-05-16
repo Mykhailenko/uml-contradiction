@@ -7,7 +7,6 @@ import com.uml.contradiction.engine.model.criteria.result.CheckTriggersTemplate;
 import com.uml.contradiction.engine.model.criteria.result.ResultTemplate;
 import com.uml.contradiction.engine.model.mapping.ClassOfState;
 import com.uml.contradiction.engine.model.mapping.TransitionOfStateMachine;
-import com.uml.contradiction.engine.model.mapping.TriggersOfState;
 import com.uml.contradiction.engine.model.mapping.TriggersOfTransition;
 import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
 import com.uml.contradiction.engine.model.predicate.Brackets;
@@ -56,26 +55,11 @@ public class CheckTriggers extends Criterion{
 		quantifier3.setRightPart(rightPart1);
 		getQuantifiers().add(quantifier3);
 
-		Brackets brackets = new Brackets();
-		brackets.setType(OperationType.OR);
-		
 		BoundedPredicate boundedPredicate = new BoundedPredicate();
 		boundedPredicate.getBoundVariable().add(Variable.t);
 		boundedPredicate.getBoundVariable().add(Variable.c);
 		boundedPredicate.setPredicate(new TriggerBelongToClass());
-		brackets.getFormulas().add(boundedPredicate);
-		
-		BoundedPredicate boundedPredicate2 = new BoundedPredicate();
-		boundedPredicate2.getBoundVariable().add(Variable.l);
-		boundedPredicate2.getBoundVariable().add(Variable.c);
-		boundedPredicate2.setPredicate(new TransitionBelongToClass());
-		brackets.getFormulas().add(boundedPredicate2);
-		
-		BoundedPredicate boundedPredicate3 = new BoundedPredicate();
-		boundedPredicate3.getBoundVariable().add(Variable.l);
-		boundedPredicate3.setPredicate(new TransitionFromInit());
-		brackets.getFormulas().add(boundedPredicate3);
-		setFormula(brackets);
+		setFormula(boundedPredicate);
 	}
 	
 	

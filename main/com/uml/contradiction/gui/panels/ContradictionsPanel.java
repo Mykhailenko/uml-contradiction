@@ -4,17 +4,10 @@ package com.uml.contradiction.gui.panels;
 
 import java.awt.Color;
 import java.awt.Image;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import javax.swing.BorderFactory;
-import javax.swing.DefaultListModel;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -22,30 +15,26 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTree;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 
-import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.criteria.CriterionSuite;
 import com.uml.contradiction.engine.model.criteria.CriterionTypeSuite;
-import com.uml.contradiction.gui.Client;
 import com.uml.contradiction.gui.GUIState;
 import com.uml.contradiction.gui.HotKeyBinder;
-import com.uml.contradiction.gui.Images;
 import com.uml.contradiction.gui.components.CheckTreeManager;
 import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.listeners.ContrTreeListener;
 import com.uml.contradiction.gui.listeners.StartCheckListener;
-import com.uml.contradiction.gui.models.DiagramForChoise;
 import com.uml.contradiction.gui.models.DisplayedCriterion;
 import com.uml.contradiction.gui.models.DisplayedCriterionType;
 import com.uml.contradiction.gui.sceneries.StartCheckScenery;
-import com.uml.contradiction.gui.vocabularies.english.DiagrPanelVoc;
 
 public class ContradictionsPanel extends JPanel implements GUIState{
+	private static final long serialVersionUID = 4294444439402447738L;
 	private final JButton verify = new JButton("Verify");
-	private final JButton backBut = new JButton("<< Back");
 	private final JTree tree = new JTree();
 	private final JTextArea description = new JTextArea();
 	private CheckTreeManager checkTreeManager;
@@ -85,8 +74,13 @@ public class ContradictionsPanel extends JPanel implements GUIState{
 		JScrollPane descriptionPanel = new JScrollPane(description);
 		description.setEditable(false);
 		description.setOpaque(false);
+		
 		descriptionPanel.setBorder(null);
+		descriptionPanel.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		descriptionPanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		description.setBorder(null);
+		description.setWrapStyleWord(true);
+		description.setLineWrap(true);
 		descriptionPanel.setOpaque(false);
 		verify.addActionListener(new StartCheckListener());
 		verify.setToolTipText("Verify (Ctrl + Enter)");
@@ -103,7 +97,7 @@ public class ContradictionsPanel extends JPanel implements GUIState{
 		desLabel.setBounds(380, 0, 400, 20);
 		this.add(desLabel);
 		descriptionPanel.setBounds(380, 20, 400, 120);
-		
+		description.setBounds(descriptionPanel.getBounds());
 		JLabel imgLabel = new JLabel("Image:");
 		imgLabel.setBounds(380, 140, 400, 20);
 		this.add(imgLabel);
@@ -157,7 +151,6 @@ public class ContradictionsPanel extends JPanel implements GUIState{
 //			this.imgLbl.setIcon(((DisplayedCriterion)object).getImg());
 			ImageIcon image = ((DisplayedCriterion)object).getImg();
 			Image i = image.getImage();
-			System.out.println(image.getIconWidth() + " ; " + image.getIconHeight());
 			int [] sca = getScalableWidthAndHeight(image);
 			Image newi = i.getScaledInstance(sca[0], sca[1], Image.SCALE_SMOOTH);
 			ImageIcon newIcon = new ImageIcon(newi);

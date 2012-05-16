@@ -17,9 +17,14 @@ public class CheckTriggersTemplate extends ResultTemplate {
 		if(trigger != null){
 			description = "There is an uncorrect trigger" + sep
 				+ trigger.getMethodName() + sep;
-		}else{
+		}else if (transition != null){
 			description = "There is an uncorrect transition" + sep
 					+ transition.getName() + sep;
+		}else if (stateMachine != null){
+			description = "There is an uncorrect state machine " + sep 
+					+ stateMachine.getName() + sep;
+		}else{
+			description = "can't say where it is";
 		}
 		super.setDiagrams(hpi.getItems());
 	}
