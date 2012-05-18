@@ -27,13 +27,23 @@ public class CompMultCorrect implements Predicate {
 			System.out.println("Multipl: class: "
 					+ as.getEnd2().getAssociatedClass().getName() + " "
 					+ as.getEnd2().getMultiplicity().toString());
+			System.out.println(as.getEnd2().getMultiplicity().getUpperBound() <= 1);
 		}
-
+		if (as.getEnd1().getAggregationKind() != null) {
+			System.out.println("Aggr: class: "
+					+ as.getEnd1().getAggregationKind()+"\n"+ as.getEnd1().getAssociatedClass());
+		}
+		if (as.getEnd2().getAggregationKind() != null) {
+			System.out.println("Aggr: class: "
+					+ as.getEnd2().getAggregationKind() +"\n"+ as.getEnd2().getAssociatedClass());
+		}
+		
 		if (as.getEnd1().getAggregationKind() != null
 				&& as.getEnd1().getAggregationKind() == AggregationKind.COMPOSITE) {
 
 			if (as.getEnd1().getMultiplicity() == null
 					|| as.getEnd1().getMultiplicity().getUpperBound() <= 1) {
+				
 				correct1 = true;
 			}
 		} else {
@@ -50,7 +60,7 @@ public class CompMultCorrect implements Predicate {
 		} else {
 			correct2 = true;
 		}
-
+System.out.println(correct1 + " " + correct2);
 		return correct1 & correct2;
 	}
 
