@@ -15,7 +15,6 @@ public class Images {
 		 return getImageIcon("images/criterion/"+ imageName + ".png");
 	 }
 	 public static ImageIcon getImageIcon(String path){
-		 System.out.println("try to find " + path);
 		 URL url = Client.getClient().getClass().getClassLoader().getResource(path);
 		 if(url != null){
 			 Image image = Toolkit.getDefaultToolkit().getImage(url);

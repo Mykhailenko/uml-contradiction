@@ -67,10 +67,11 @@ public class Client implements GUIState{
 			List<VerificationResult> results = StartCheckScenery.verifyCriterions(CriterionSuite.getAllCriterion());
 			Exporter exporter;
 			if(txtExporter){
-				ResultSaver.savep(results, resultFileName, new TxtExporter());
+				exporter = new TxtExporter();
 			}else{
-				ResultSaver.savep(results, resultFileName, new DocExporterJ2W());
+				exporter = new DocExporterJ2W();
 			}
+			ResultSaver.savep(results, resultFileName, exporter);
 		}else{
 			System.out.println("There is no such file : " + xmiFileName);
 		}

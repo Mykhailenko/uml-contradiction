@@ -328,29 +328,34 @@ public class ClassParsHelper {
 	
 	private Multiplicity getMultiplicity(Element el){
 		Multiplicity multipl = null;
+		Integer lowerBound =  null;
+		Double upperBound =  null;		
 		try {			
 			NodeList nlistLow = el.getElementsByTagName("lowerValue");
-			if(nlistLow.getLength() > 0){
+			NodeList nlistHi = el.getElementsByTagName("upperValue");
+			if(nlistLow.getLength() > 0){ //разбор нижней кратности
 				String lowValue = ((Element)nlistLow.item(0)).getAttribute("value");
-				NodeList nlistHi = el.getElementsByTagName("upperValue");
-				String highValue = ((Element)nlistHi.item(0)).getAttribute("value");
-				
-				Integer lowerBound =  new Integer(0);
-				Double upperBound =  new Double(0);
-							
+											
 				if(lowValue.equals("*")) lowerBound = 0;
 				else
-					lowerBound = Integer.valueOf(lowValue);
-					
+					lowerBound = Integer.valueOf(lowValue);								
+			}
+			
+			if(nlistHi.getLength() > 0){ //разбор верхней кратности
+				String highValue = ((Element)nlistHi.item(0)).getAttribute("value");
+				
 				if(highValue.equals("*")) {
 					upperBound = Double.POSITIVE_INFINITY;
-					LOGGER.info("We have upper value *");
+					LOGGER.debug("We have upper value *");
+					if(lowerBound == null)//нет тега lowerValue
+						lowerBound = new Integer(0);
 				}
 				else
-					upperBound = Double.valueOf(highValue);
-				
-				multipl = new Multiplicity(lowerBound, upperBound); 
+					upperBound = Double.valueOf(highValue);			
 			}
+			if(lowerBound != null && upperBound != null)
+				multipl = new Multiplicity(lowerBound, upperBound); 
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			multipl = null;

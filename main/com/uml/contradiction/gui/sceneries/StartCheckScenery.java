@@ -26,7 +26,6 @@ public class StartCheckScenery {
 	private static final Logger LOGGER = Logger.getRootLogger();
 	
 	public static void run(final List<DefaultMutableTreeNode> nodes) {
-		System.out.println("CheckScenery");
 		final JDialog dialog = new ProgressDialog("verifying...");
 		new Thread( new Runnable() {
 			
