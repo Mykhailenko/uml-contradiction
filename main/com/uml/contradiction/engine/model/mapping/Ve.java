@@ -7,6 +7,7 @@ import com.uml.contradiction.engine.model.mapping.exception.MappingException;
 public class Ve implements Mapping {
 
 	@Override
+	@SuppressWarnings("rawtypes")
 	public List map(List args) throws MappingException {
 		// TODO Auto-generated method stub
 		return null;

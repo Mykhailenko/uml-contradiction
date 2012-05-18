@@ -9,9 +9,10 @@ public interface Mapping {
 	/**
 	 * 
 	 * @param args
-	 * @return 
-	 * @throws MappingException 
+	 * @return
+	 * @throws MappingException
 	 */
+	@SuppressWarnings("rawtypes")
 	List map(List args) throws MappingException;
 
 }

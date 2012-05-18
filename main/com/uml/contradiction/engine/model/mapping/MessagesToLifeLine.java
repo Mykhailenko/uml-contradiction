@@ -10,20 +10,24 @@ import com.uml.contradiction.model.sequence.LifeLine;
 public class MessagesToLifeLine implements Mapping {
 
 	@Override
+	@SuppressWarnings("rawtypes")
 	public List map(List list) throws MappingException {
 		assert list != null;
 		assert list.size() == 2;
 		Object first = list.get(0);
-		if((first instanceof LifeLine) == false){
-			throw new MappingException("Unexpected type: " + first.getClass().toString());
+		if ((first instanceof LifeLine) == false) {
+			throw new MappingException("Unexpected type: "
+					+ first.getClass().toString());
 		}
 		Object second = list.get(1);
-		if((second instanceof Interaction) == false){
-			throw new MappingException("Unexpected type: " + second.getClass().toString());
+		if ((second instanceof Interaction) == false) {
+			throw new MappingException("Unexpected type: "
+					+ second.getClass().toString());
 		}
 		LifeLine lifeLine = (LifeLine) first;
 		Interaction interaction = (Interaction) second;
-		return IsExecutableLifeLine.findAllMessagesTargetLifeLine(interaction, lifeLine);
+		return IsExecutableLifeLine.findAllMessagesTargetLifeLine(interaction,
+				lifeLine);
 	}
 
 }

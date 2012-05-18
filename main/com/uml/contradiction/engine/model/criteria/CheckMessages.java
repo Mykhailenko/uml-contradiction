@@ -16,13 +16,13 @@ import com.uml.contradiction.engine.model.rightPart.simple.RPInteractions;
 public class CheckMessages extends Criterion {
 	public CheckMessages() {
 		super();
-	
+
 		Quantifier quantifier0 = new Quantifier();
 		quantifier0.setType(QuantifierType.ALL);
 		quantifier0.setBoundVariable(Variable.i);
 		quantifier0.setRightPart(new RPInteractions());
 		getQuantifiers().add(quantifier0);
-		
+
 		Quantifier quantifier1 = new Quantifier();
 		quantifier1.setType(QuantifierType.ALL);
 		quantifier1.setBoundVariable(Variable.l);
@@ -31,7 +31,7 @@ public class CheckMessages extends Criterion {
 		rightPart1.getNestedMappings().add(new LifeLineFromInteraction());
 		quantifier1.setRightPart(rightPart1);
 		getQuantifiers().add(quantifier1);
-		
+
 		Quantifier quantifier2 = new Quantifier();
 		quantifier2.setType(QuantifierType.ALL);
 		quantifier2.setBoundVariable(Variable.m);
@@ -41,7 +41,7 @@ public class CheckMessages extends Criterion {
 		rightPart3.getNestedMappings().add(new MessagesToLifeLine());
 		quantifier2.setRightPart(rightPart3);
 		getQuantifiers().add(quantifier2);
-		
+
 		Quantifier quantifier3 = new Quantifier();
 		quantifier3.setType(QuantifierType.ALONE);
 		quantifier3.setBoundVariable(Variable.c);
@@ -50,15 +50,15 @@ public class CheckMessages extends Criterion {
 		rightPart2.getNestedMappings().add(new ClassOfLifeLine());
 		quantifier3.setRightPart(rightPart2);
 		getQuantifiers().add(quantifier3);
-		
+
 		BoundedPredicate boundedPredicate = new BoundedPredicate();
 		boundedPredicate.setPredicate(new MessageBelongToClass());
 		boundedPredicate.getBoundVariable().add(Variable.m);
 		boundedPredicate.getBoundVariable().add(Variable.c);
 		setFormula(boundedPredicate);
-		
+
 	}
-		
+
 	@Override
 	public int getInternalID() {
 		return -4;
@@ -73,6 +73,7 @@ public class CheckMessages extends Criterion {
 	public ResultTemplate getResultTemplate() {
 		return new CheckMessagesTemplate();
 	}
+
 	@Override
 	public int trickyMethod() {
 		return 3;

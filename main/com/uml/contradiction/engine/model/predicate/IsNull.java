@@ -3,14 +3,13 @@ package com.uml.contradiction.engine.model.predicate;
 import java.util.List;
 
 import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
-import com.uml.contradiction.model.cclass.Attribute;
-import com.uml.contradiction.model.cclass.Scope;
 
-public class IsNull implements Predicate{
+public class IsNull implements Predicate {
 
 	@Override
+	@SuppressWarnings("rawtypes")
 	public boolean predict(List params) throws PredicatException {
-		if(params.get(0) == null) {
+		if (params.get(0) == null) {
 			return true;
 		}
 		return false;

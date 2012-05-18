@@ -11,19 +11,23 @@ public class VerificationResult {
 	private boolean good = false;
 	private List<HistoryPlainItem> failHistory = new LinkedList<HistoryPlainItem>();
 	private List<ResultTemplate> descriptions = null;
-	
+
 	public Criterion getCriterion() {
 		return criterion;
 	}
+
 	public void setCriterion(Criterion criterion) {
 		this.criterion = criterion;
 	}
+
 	public boolean isGood() {
 		return good;
 	}
-	public boolean isFail(){
+
+	public boolean isFail() {
 		return !good;
 	}
+
 	public void setGood(boolean good) {
 		this.good = good;
 	}
@@ -35,25 +39,27 @@ public class VerificationResult {
 	public void setFailHistory(List<HistoryPlainItem> badHistory) {
 		this.failHistory = badHistory;
 	}
-	
+
+	@Override
 	public String toString() {
-		if(good)
+		if (good) {
 			return "OK!";
-		else
+		} else {
 			return "ERROR";
+		}
 	}
-	
+
 	public List<ResultTemplate> getResultTemplate() {
-		if(this.descriptions == null) {
+		if (this.descriptions == null) {
 			this.descriptions = new LinkedList<ResultTemplate>();
-			for(HistoryPlainItem hpi : this.failHistory) {
+			for (HistoryPlainItem hpi : this.failHistory) {
 				ResultTemplate rt = this.criterion.getResultTemplate();
 				rt.fill(hpi);
 				descriptions.add(rt);
 			}
 		}
-		
+
 		return this.descriptions;
 	}
-	
+
 }

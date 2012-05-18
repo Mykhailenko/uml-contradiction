@@ -14,24 +14,27 @@ public class CheckMessagesTemplate extends ResultTemplate {
 		Interaction interaction = (Interaction) hpi.getItems().get(0).value;
 		LifeLine lifeLine = (LifeLine) hpi.getItems().get(1).value;
 		Message message = (Message) hpi.getItems().get(2).value;
-		if(message != null && interaction !=null & lifeLine != null){
+		if (message != null && interaction != null & lifeLine != null) {
 			description = "There is uncorrect message " + sep
-					+ m(message.getOriginalString())+ sep + " in " 
-					+ sep + m(interaction.getName()) + sep + " interaction to lifeline" 
-					+ sep + m(lifeLine.getName()) + sep;
-		}else if (lifeLine != null){
+					+ m(message.getOriginalString()) + sep + " in " + sep
+					+ m(interaction.getName()) + sep
+					+ " interaction to lifeline" + sep + m(lifeLine.getName())
+					+ sep;
+		} else if (lifeLine != null) {
 			description = "There is uncorrect message to lifeline " + sep
 					+ m(lifeLine.getName()) + sep;
 		}
 		super.setDiagrams(hpi.getItems());
 	}
-	private static String m(String n){
-		if(n == null){
+
+	private static String m(String n) {
+		if (n == null) {
 			return "";
-		}else{
+		} else {
 			return n;
 		}
 	}
+
 	@Override
 	public void setDiagrTypes() {
 		diagrTypes.add(null);

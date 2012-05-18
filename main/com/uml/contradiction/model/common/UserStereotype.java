@@ -1,7 +1,7 @@
 package com.uml.contradiction.model.common;
 
 public class UserStereotype implements Stereotype {
-	
+
 	private String name;
 
 	public UserStereotype(String name) {
@@ -20,12 +20,12 @@ public class UserStereotype implements Stereotype {
 
 	@Override
 	public boolean equals(Object obj) {
-		return this.name.equals(((Stereotype)obj).getName());
+		return this.name.equals(((Stereotype) obj).getName());
 	}
 
 	@Override
 	public String toString() {
 		return "UserStereotype [name=" + name + "]";
-	}	
-	
+	}
+
 }

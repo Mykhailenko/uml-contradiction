@@ -9,27 +9,24 @@ import com.uml.contradiction.engine.model.mapping.LifeLineFromInteraction;
 import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
 import com.uml.contradiction.engine.model.predicate.CorrectLifeLine;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
-import com.uml.contradiction.engine.model.rightPart.simple.RPClasses;
 import com.uml.contradiction.engine.model.rightPart.simple.RPInteractions;
-import com.uml.contradiction.engine.model.rightPart.simple.RPObjects;
 
 public class CorrectLifeLines extends Criterion {
 	public CorrectLifeLines() {
 		super();
-		
-		getQuantifiers().add(new Quantifier()
-				.setType(QuantifierType.ALL)
-				.setBoundVariable(Variable.i)
-				.setRightPart(new RPInteractions()));
-		
+
+		getQuantifiers().add(
+				new Quantifier().setType(QuantifierType.ALL)
+						.setBoundVariable(Variable.i)
+						.setRightPart(new RPInteractions()));
+
 		ComplexRightPart rightPart = new ComplexRightPart();
 		rightPart.setBoundVariables(Variable.i);
 		rightPart.getNestedMappings().add(new LifeLineFromInteraction());
-		getQuantifiers().add(new Quantifier()
-				.setType(QuantifierType.ALL)
-				.setBoundVariable(Variable.l)
-				.setRightPart(rightPart));
-		
+		getQuantifiers().add(
+				new Quantifier().setType(QuantifierType.ALL)
+						.setBoundVariable(Variable.l).setRightPart(rightPart));
+
 		BoundedPredicate boundedPredicate = new BoundedPredicate();
 		boundedPredicate.setBoundVariable(Variable.l);
 		boundedPredicate.setPredicate(new CorrectLifeLine());

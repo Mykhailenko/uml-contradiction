@@ -1,18 +1,16 @@
 package com.uml.contradiction.model.common;
 
 public enum UMLClassStereotype implements Stereotype {
-	
-	
-	UTILITY("utility"),
-	ENTITY("entity"),
-	CONTROL("control"),
-	IMPLEMENTATION_CLASS("implementationClass");
-	
+
+	UTILITY("utility"), ENTITY("entity"), CONTROL("control"), IMPLEMENTATION_CLASS(
+			"implementationClass");
+
 	private String name;
+
 	private UMLClassStereotype(String name) {
 		this.name = name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -22,5 +20,5 @@ public enum UMLClassStereotype implements Stereotype {
 		// TODO Auto-generated method stub
 		return name;
 	}
-	
+
 }

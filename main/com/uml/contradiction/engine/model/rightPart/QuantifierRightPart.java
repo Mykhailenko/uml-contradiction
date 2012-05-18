@@ -10,9 +10,10 @@ public interface QuantifierRightPart {
 	/**
 	 * 
 	 * @param params
-	 * @return 
-	 * @throws MappingException 
+	 * @return
+	 * @throws MappingException
 	 */
+	@SuppressWarnings("rawtypes")
 	List getSet(List<VariableValue> params) throws MappingException;
 
 }

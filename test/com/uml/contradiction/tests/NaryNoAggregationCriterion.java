@@ -10,7 +10,6 @@ import org.junit.Test;
 import com.uml.contradiction.engine.Checker;
 import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.Criterion;
-import com.uml.contradiction.engine.model.criteria.MustExistClassCriterion;
 import com.uml.contradiction.engine.model.criteria.NaryNoAggregationOnly;
 import com.uml.contradiction.model.cclass.AggregationKind;
 import com.uml.contradiction.model.cclass.Association;

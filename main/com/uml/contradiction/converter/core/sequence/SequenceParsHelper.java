@@ -1,9 +1,7 @@
 package com.uml.contradiction.converter.core.sequence;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,21 +11,27 @@ import org.w3c.dom.NodeList;
 
 import com.uml.contradiction.converter.core.CoreParserImpl;
 import com.uml.contradiction.converter.core.ParsersTool;
-import com.uml.contradiction.converter.core.classes.CommonClDiagrHelper;
-import com.uml.contradiction.model.cclass.*;
-import com.uml.contradiction.model.common.*;
-import com.uml.contradiction.model.object.*;
-import com.uml.contradiction.model.sequence.*;
+import com.uml.contradiction.model.cclass.CClass;
+import com.uml.contradiction.model.cclass.ClassGraph;
+import com.uml.contradiction.model.cclass.MMethod;
+import com.uml.contradiction.model.cclass.Parameter;
+import com.uml.contradiction.model.object.OObject;
+import com.uml.contradiction.model.object.ObjectGraph;
+import com.uml.contradiction.model.sequence.Interaction;
+import com.uml.contradiction.model.sequence.LifeLine;
+import com.uml.contradiction.model.sequence.Message;
 
 public class SequenceParsHelper {
-	private static final Logger logger = Logger.getLogger(SequenceParsHelper.class);
-	
+	private static final Logger logger = Logger
+			.getLogger(SequenceParsHelper.class);
+
+	@SuppressWarnings("unused")
 	private Map<String, Interaction> interactionsFrWithId;
 	private Map<String, LifeLine> lifelinesWithId;
 	private Map<String, LifeLine> fragmentsWithLifeln;
 	private Map<String, Message> messagesWithId;
 	private Map<String, String> referencesOnClassId;
-	
+
 	public SequenceParsHelper(Map<String, Interaction> interactionsFrWithId,
 			Map<String, LifeLine> lifelinesWithId,
 			Map<String, LifeLine> fragmentsWithLifeln,
@@ -37,228 +41,246 @@ public class SequenceParsHelper {
 		this.lifelinesWithId = lifelinesWithId;
 		this.fragmentsWithLifeln = fragmentsWithLifeln;
 		this.messagesWithId = messagesWithId;
-		
+
 		referencesOnClassId = new LinkedHashMap<String, String>();
 	}
-	
+
 	public LifeLine parseLifeline(Element lifeLine) {
 		LifeLine lifeln = new LifeLine();
 		CClass referClass;
 		String lifelnName = lifeLine.getAttribute("name");
-		
-		//находим класс, на который ссылается lifeline
-		if(lifeLine.hasAttribute("represents")){
+
+		// находим класс, на который ссылается lifeline
+		if (lifeLine.hasAttribute("represents")) {
 			String idOwnAttr = lifeLine.getAttribute("represents");
-			if(!idOwnAttr.equals("")){
+			if (!idOwnAttr.equals("")) {
 				String refOnClass = referencesOnClassId.get(idOwnAttr);
-				if(refOnClass != null){
-					referClass = ParsersTool.getInstanceClassParser().getClassesWithId().get(refOnClass);
-					if(referClass != null){
+				if (refOnClass != null) {
+					referClass = ParsersTool.getInstanceClassParser()
+							.getClassesWithId().get(refOnClass);
+					if (referClass != null) {
 						lifeln.setcClass(referClass);
 						lifeln.setClassLifeLine(true);
-						
-						if(lifelnName.equals("")) //анонимный объект
+
+						if (lifelnName.equals("")) {
 							lifeln.setAnonymObject(true);
-						else{	//конкретный объект
+						} else { // конкретный объект
 							lifeln.setAnonymObject(false);
 							boolean isObj = false;
 							OObject ob1 = null;
 							List<OObject> objts = ObjectGraph.getObjects();
 							for (OObject ob : objts) {
-								if(ob.getName().equals(lifelnName)){
+								if (ob.getName().equals(lifelnName)) {
 									isObj = true;
-									ob1 = ob; 
+									ob1 = ob;
 									break;
 								}
 							}
-							if(isObj) //если нашли
+							if (isObj) {
 								lifeln.setoObject(ob1);
-							else   //нет объекта с заданным именем 
-								lifeln.setName(lifelnName);							
+							} else {
+								// нет объекта с заданным именем
+								lifeln.setName(lifelnName);
+							}
 						}
-					}
-					else
+					} else {
 						logger.info("reference on unknown cclass");
-				}
-				else{		//если не ссылается на класс через средство VP
-					//возможна ссылка на сам класс
+					}
+				} else { // если не ссылается на класс через средство VP
+					// возможна ссылка на сам класс
 					boolean isCls = false;
 					String[] arrS = lifelnName.split(":");
-					if(arrS.length > 2)
+					if (arrS.length > 2) {
 						logger.error("can't be such name in lifeline");
-					else{
-						if(arrS.length == 1){
-							 List<CClass> clses = ClassGraph.getClasses();							 
-							 
+					} else {
+						if (arrS.length == 1) {
+							List<CClass> clses = ClassGraph.getClasses();
+
 							CClass cl1 = null;
 							for (CClass cl : clses) {
 								String fullname = cl.getFullName();
 								int deleteDefPack = fullname.indexOf(".");
-								String withoutDefPack = fullname.substring(deleteDefPack+1);
-								if(withoutDefPack.equals(lifelnName)){
+								String withoutDefPack = fullname
+										.substring(deleteDefPack + 1);
+								if (withoutDefPack.equals(lifelnName)) {
 									isCls = true;
-									cl1 = cl; 
+									cl1 = cl;
 									break;
 								}
 							}
-							if(isCls) //если нашли класс
-								lifeln.setcClass(cl1);							
+							if (isCls) {
+								lifeln.setcClass(cl1);
+							}
 						}
 					}
-					if(isCls)
+					if (isCls) {
 						lifeln.setClassLifeLine(true);
-					else {
-						//нет никаких ссылок
+					} else {
+						// нет никаких ссылок
 						lifeln.setClassLifeLine(false);
-						if(!lifelnName.equals(""))
+						if (!lifelnName.equals("")) {
 							lifeln.setName(lifelnName);
-					}					
+						}
+					}
 				}
 			}
 		}
-				
+
 		return lifeln;
 	}
-	
+
 	public void parseAllLifelines(Element frameEl) {
-		
+
 		NodeList ownedAttrs = frameEl.getElementsByTagName("ownedAttribute");
-		//работаем с вложенными ссылками жизненных линий на классы
+		// работаем с вложенными ссылками жизненных линий на классы
 		for (int k = 0; k < ownedAttrs.getLength(); k++) {
-			Element ownedAttrEl = (Element)ownedAttrs.item(k);			
-			if(ownedAttrEl.getParentNode() == frameEl)
-			{
+			Element ownedAttrEl = (Element) ownedAttrs.item(k);
+			if (ownedAttrEl.getParentNode() == frameEl) {
 				String idownAtr = ownedAttrEl.getAttribute("xmi:id");
-				if(ownedAttrEl.hasAttribute("type")){
+				if (ownedAttrEl.hasAttribute("type")) {
 					String refOnClass = ownedAttrEl.getAttribute("type");
-					if(!refOnClass.equals(""))
+					if (!refOnClass.equals("")) {
 						referencesOnClassId.put(idownAtr, refOnClass);
+					}
 				}
 			}
-		}		
-		NodeList includedLifelines = frameEl.getElementsByTagName("lifeline");
-		//работаем с вложенными жизненными линиями
-		for (int k = 0; k < includedLifelines.getLength(); k++) {
-			Element lifelineEl = (Element)includedLifelines.item(k);
-			
-				//проверка что точно Lifeline
-			if(lifelineEl.getAttribute("xmi:type").equals("uml:Lifeline"))
-			{
-				//получаем LifeLine
-				LifeLine curLifeLine = parseLifeline(lifelineEl);
-				lifelinesWithId.put(lifelineEl.getAttribute("xmi:id"), curLifeLine);				
-			}			
 		}
-	}
-	
-	//разбор фрагментов - промежуточное звено между lifeline  и message
-	public void parseAllInlaidEvents(Element frameEl) {
-		
-		NodeList events = frameEl.getElementsByTagName("fragment");
-		//работаем с вложенными фрагментами Events
-		for (int k = 0; k < events.getLength(); k++) {
-			Element eventEl = (Element)events.item(k);
-				
-			//рассматриваем фрагменты тольео для сообщений
-			//для комбинрованных фрагментов берем только их внутренность
-			String frag = eventEl.getAttribute("xmi:type");
-			if(frag.equals("uml:MessageOccurrenceSpecification")){
-				
-				//получаем ccылку на lifeline
-				String covd = eventEl.getAttribute("covered");
-				LifeLine curLfln = lifelinesWithId.get(covd);
-				if(curLfln == null)
-					logger.error("There are no lifeline for fragment with id: " + covd);
-				else{
-					fragmentsWithLifeln.put(eventEl.getAttribute("xmi:id"), curLfln);
-				}	
+		NodeList includedLifelines = frameEl.getElementsByTagName("lifeline");
+		// работаем с вложенными жизненными линиями
+		for (int k = 0; k < includedLifelines.getLength(); k++) {
+			Element lifelineEl = (Element) includedLifelines.item(k);
+
+			// проверка что точно Lifeline
+			if (lifelineEl.getAttribute("xmi:type").equals("uml:Lifeline")) {
+				// получаем LifeLine
+				LifeLine curLifeLine = parseLifeline(lifelineEl);
+				lifelinesWithId.put(lifelineEl.getAttribute("xmi:id"),
+						curLifeLine);
 			}
 		}
 	}
-	
+
+	// разбор фрагментов - промежуточное звено между lifeline и message
+	public void parseAllInlaidEvents(Element frameEl) {
+
+		NodeList events = frameEl.getElementsByTagName("fragment");
+		// работаем с вложенными фрагментами Events
+		for (int k = 0; k < events.getLength(); k++) {
+			Element eventEl = (Element) events.item(k);
+
+			// рассматриваем фрагменты тольео для сообщений
+			// для комбинрованных фрагментов берем только их внутренность
+			String frag = eventEl.getAttribute("xmi:type");
+			if (frag.equals("uml:MessageOccurrenceSpecification")) {
+
+				// получаем ccылку на lifeline
+				String covd = eventEl.getAttribute("covered");
+				LifeLine curLfln = lifelinesWithId.get(covd);
+				if (curLfln == null) {
+					logger.error("There are no lifeline for fragment with id: "
+							+ covd);
+				} else {
+					fragmentsWithLifeln.put(eventEl.getAttribute("xmi:id"),
+							curLfln);
+				}
+			}
+		}
+	}
+
 	public Message parseMessage(Element messElem) {
-		
-		//не рассматриваем возвратные сообщения
+
+		// не рассматриваем возвратные сообщения
 		String messSort = messElem.getAttribute("messageSort");
-		if(messSort.equals("reply")) 
+		if (messSort.equals("reply")) {
 			return null;
-		
+		}
+
 		Message curMess = new Message();
-		
+
 		String messageValue = messElem.getAttribute("name");
 		curMess.parseStr(messageValue);
-		
-		//получили Id получающего Event (fragment)
-		String resEvId = messElem.getAttribute("receiveEvent");		
-		
-		//сообщение ссылается на lifeline
+
+		// получили Id получающего Event (fragment)
+		String resEvId = messElem.getAttribute("receiveEvent");
+
+		// сообщение ссылается на lifeline
 		LifeLine resLifeline = fragmentsWithLifeln.get(resEvId);
-		
-		if(resLifeline != null)
-			curMess.setTarget(resLifeline);	///В сообщение сослались на получающее Event
-		else
+
+		if (resLifeline != null) {
+			curMess.setTarget(resLifeline); // /В сообщение сослались на
+											// получающее Event
+		} else {
 			logger.warn("recieve Event was not find before message");
-				
-		//получили Id отправляющего Event
+		}
+
+		// получили Id отправляющего Event
 		String sendEvId = messElem.getAttribute("sendEvent");
 		LifeLine sendLifeln = fragmentsWithLifeln.get(sendEvId);
-		
-		if(sendLifeln != null)
+
+		if (sendLifeln != null) {
 			curMess.setSource(sendLifeln);
-		else
-			logger.warn("send Event was not find before message");			
-		
-//		String messSort = messElem.getAttribute("messageSort");
-//		if(messSort.equals("synchCall"))  
-//			curMess.setMessageSort(MessageSort.SYNCH_CALL);
-//		
-//		if(messSort.equals("reply"))  
-//			curMess.setMessageSort(MessageSort.ASYNCH_SIGNAL);
-		
-		//получаем ссылку на метод из сообщения
+		} else {
+			logger.warn("send Event was not find before message");
+		}
+
+		// String messSort = messElem.getAttribute("messageSort");
+		// if(messSort.equals("synchCall"))
+		// curMess.setMessageSort(MessageSort.SYNCH_CALL);
+		//
+		// if(messSort.equals("reply"))
+		// curMess.setMessageSort(MessageSort.ASYNCH_SIGNAL);
+
+		// получаем ссылку на метод из сообщения
 		CoreParserImpl coreParse = new CoreParserImpl();
-		Element extens = (Element)messElem.getElementsByTagName("xmi:Extension").item(0);
-		String methodStr = coreParse.getAttrByNameAndTag(extens, "modelTransition", "from");
+		Element extens = (Element) messElem.getElementsByTagName(
+				"xmi:Extension").item(0);
+		String methodStr = coreParse.getAttrByNameAndTag(extens,
+				"modelTransition", "from");
 		int index;
 		MMethod refMethod = null;
-		if(methodStr != null){
-			//for (int i = methodStr.length(); i!=0 || methodStr.in[i] != "$"; i--) {
+		if (methodStr != null) {
+			// for (int i = methodStr.length(); i!=0 || methodStr.in[i] != "$";
+			// i--) {
 			index = methodStr.indexOf("$");
-			if(index != -1){
-				String id4Meth = methodStr.substring(index+1, methodStr.length()-1);
-				if(id4Meth != null){
-					refMethod = ParsersTool.getInstanceClassParser().getMethodsWithId().get(id4Meth);
-					if(refMethod != null){
+			if (index != -1) {
+				String id4Meth = methodStr.substring(index + 1,
+						methodStr.length() - 1);
+				if (id4Meth != null) {
+					refMethod = ParsersTool.getInstanceClassParser()
+							.getMethodsWithId().get(id4Meth);
+					if (refMethod != null) {
 						curMess.setMethodName(refMethod.getName());
 						List<Parameter> parameters = refMethod.getParameters();
 						int paramCount;
-						if(parameters == null)
+						if (parameters == null) {
 							paramCount = 0;
-						else
+						} else {
 							paramCount = parameters.size();
+						}
 						curMess.setParamCount(paramCount);
 					}
-				}					
+				}
 			}
-		}	
-		
+		}
+
 		return curMess;
 	}
-	public boolean checkedConnections(){
+
+	public boolean checkedConnections() {
 		boolean flag = true;
 		Collection<Message> allMes = messagesWithId.values();
-		
-		for(Message mes : allMes){
-			if(mes.getTarget() == null){
+
+		for (Message mes : allMes) {
+			if (mes.getTarget() == null) {
 				logger.error("not all messages has RecieveEvent");
 				flag = false;
 			}
-			if(mes.getSource() == null){
+			if (mes.getSource() == null) {
 				logger.error("not all events has SendEvent");
 				flag = false;
 			}
 		}
-		
+
 		return flag;
 	}
 }

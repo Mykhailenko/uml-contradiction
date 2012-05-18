@@ -2,7 +2,6 @@ package com.uml.contradiction.tests;
 
 import static org.junit.Assert.assertTrue;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,10 +13,8 @@ import com.uml.contradiction.engine.model.HistoryPlainItem;
 import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.CorrectType;
 import com.uml.contradiction.engine.model.criteria.Criterion;
-import com.uml.contradiction.engine.model.criteria.SimpleCriterion;
 import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.cclass.ClassGraph;
-import com.uml.contradiction.model.common.Type;
 import com.uml.contradiction.model.common.UMLType;
 import com.uml.contradiction.model.object.OObject;
 import com.uml.contradiction.model.object.ObjectGraph;
@@ -44,10 +41,7 @@ public class CorrectTypeCriterionTest {
 		ClassGraph.setClasses(classes);
 		
 		OObject object0 = new OObject();
-		List<CClass> c0 = new LinkedList<CClass>();
-		c0.add(cClass);
-		object0.setClasses(c0);
-		
+		object0.setClasses(cClass);
 		List<com.uml.contradiction.model.object.AttributeObj> lao = new LinkedList<com.uml.contradiction.model.object.AttributeObj>();
 		com.uml.contradiction.model.object.AttributeObj a0 = new com.uml.contradiction.model.object.AttributeObj();
 		a0.setName("sex");
@@ -88,10 +82,7 @@ public class CorrectTypeCriterionTest {
 		
 		OObject object0 = new OObject();
 		object0.setName("olololool");
-		List<CClass> c0 = new LinkedList<CClass>();
-		c0.add(cClass);
-		object0.setClasses(c0);
-		
+		object0.setClasses(cClass);
 		List<com.uml.contradiction.model.object.AttributeObj> lao = new LinkedList<com.uml.contradiction.model.object.AttributeObj>();
 		com.uml.contradiction.model.object.AttributeObj a0 = new com.uml.contradiction.model.object.AttributeObj();
 		a0.setName("sex");

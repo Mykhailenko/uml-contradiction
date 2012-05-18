@@ -3,18 +3,20 @@ package com.uml.contradiction.engine.model.predicate;
 import java.util.List;
 
 import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
-import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.object.OObject;
 
-public class IsAnonymous implements Predicate{
+public class IsAnonymous implements Predicate {
 
 	@Override
+	@SuppressWarnings("rawtypes")
 	public boolean predict(List params) throws PredicatException {
-		OObject ob = (OObject)(params.get(0));
-		if(ob.getName() == null)
+		OObject ob = (OObject) (params.get(0));
+		if (ob.getName() == null) {
 			return true;
-		if(ob.getName().length() == 0)
-			return true;	
+		}
+		if (ob.getName().length() == 0) {
+			return true;
+		}
 		return false;
 	}
 

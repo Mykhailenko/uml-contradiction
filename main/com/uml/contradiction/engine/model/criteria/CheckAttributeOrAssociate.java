@@ -22,7 +22,7 @@ public class CheckAttributeOrAssociate extends Criterion {
 		quantifier0.setBoundVariable(Variable.l);
 		quantifier0.setRightPart(new RPOblecjLink());
 		getQuantifiers().add(quantifier0);
-		
+
 		Quantifier quantifier1 = new Quantifier();
 		quantifier1.setType(QuantifierType.EXIST);
 		quantifier1.setBoundVariable(Variable.v);
@@ -32,7 +32,7 @@ public class CheckAttributeOrAssociate extends Criterion {
 		rightPart1.getNestedMappings().add(new Vs());
 		quantifier1.setRightPart(rightPart1);
 		getQuantifiers().add(quantifier1);
-		
+
 		Quantifier quantifier2 = new Quantifier();
 		quantifier2.setType(QuantifierType.EXIST);
 		quantifier2.setBoundVariable(Variable.u);
@@ -42,13 +42,13 @@ public class CheckAttributeOrAssociate extends Criterion {
 		rightPart2.getNestedMappings().add(new Ve());
 		quantifier2.setRightPart(rightPart2);
 		getQuantifiers().add(quantifier2);
-		
+
 		Quantifier quantifier3 = new Quantifier();
 		quantifier3.setType(QuantifierType.EXIST);
 		quantifier3.setBoundVariable(Variable.a);
 		quantifier3.setRightPart(new RPAssosiations());
 		getQuantifiers().add(quantifier3);
-		
+
 		Quantifier quantifier4 = new Quantifier();
 		quantifier4.setType(QuantifierType.EXIST);
 		quantifier4.setBoundVariable(Variable.r);
@@ -57,7 +57,7 @@ public class CheckAttributeOrAssociate extends Criterion {
 		rightPart4.getNestedMappings().add(new ATR());
 		quantifier4.setRightPart(rightPart4);
 		getQuantifiers().add(quantifier4);
-		
+
 		Quantifier quantifier5 = new Quantifier();
 		quantifier5.setType(QuantifierType.EXIST);
 		quantifier5.setBoundVariable(Variable.t);
@@ -66,31 +66,31 @@ public class CheckAttributeOrAssociate extends Criterion {
 		rightPart5.getNestedMappings().add(new ATR());
 		quantifier5.setRightPart(rightPart5);
 		getQuantifiers().add(quantifier5);
-		
+
 		Brackets brackets = new Brackets();
 		brackets.setType(OperationType.OR);
-		
-			Brackets brackets1 = new Brackets();
-			brackets1.setType(OperationType.AND);
-			//////
-		brackets.getFormulas().add(brackets1);	
 
-			
-			Brackets brackets2 = new Brackets();
-			brackets2.setType(OperationType.AND);
-			////////
+		Brackets brackets1 = new Brackets();
+		brackets1.setType(OperationType.AND);
+		// ////
+		brackets.getFormulas().add(brackets1);
+
+		Brackets brackets2 = new Brackets();
+		brackets2.setType(OperationType.AND);
+		// //////
 		brackets.getFormulas().add(brackets2);
-			
-			BoundedPredicate boundedPredicate3 = new BoundedPredicate();
-			//////
+
+		BoundedPredicate boundedPredicate3 = new BoundedPredicate();
+		// ////
 		brackets.getFormulas().add(boundedPredicate3);
-			
-			BoundedPredicate boundedPredicate4 = new BoundedPredicate();
-			//////
+
+		BoundedPredicate boundedPredicate4 = new BoundedPredicate();
+		// ////
 		brackets.getFormulas().add(boundedPredicate4);
-		
+
 		setFormula(brackets);
 	}
+
 	@Override
 	public int getInternalID() {
 		return -1;
@@ -100,6 +100,7 @@ public class CheckAttributeOrAssociate extends Criterion {
 	public CriterionType getCriterionType() {
 		return CriterionType.CLASS_OBJECT;
 	}
+
 	@Override
 	public ResultTemplate getResultTemplate() {
 		// TODO Auto-generated method stub

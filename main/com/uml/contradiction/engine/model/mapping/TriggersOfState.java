@@ -11,14 +11,15 @@ import com.uml.contradiction.model.statemachine.Trigger;
 public class TriggersOfState implements Mapping {
 
 	@Override
+	@SuppressWarnings("rawtypes")
 	public List map(List list) throws MappingException {
 		assert list != null;
 		assert list.size() == 1;
 		Object first = list.get(0);
-		if(first instanceof StateMachine){
+		if (first instanceof StateMachine) {
 			StateMachine stateMachine = (StateMachine) first;
 			List<Trigger> result = new LinkedList<Trigger>();
-			for(Transition transition : stateMachine.getTransitions()){
+			for (Transition transition : stateMachine.getTransitions()) {
 				assert transition != null : "transition is null";
 				System.out.println(transition);
 				assert transition.getTriggers() != null : "triggers is null";

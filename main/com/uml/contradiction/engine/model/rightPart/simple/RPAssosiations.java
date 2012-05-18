@@ -10,6 +10,7 @@ import com.uml.contradiction.model.cclass.ClassGraph;
 public class RPAssosiations implements QuantifierRightPart {
 
 	@Override
+	@SuppressWarnings("rawtypes")
 	public List getSet(List<VariableValue> params) throws MappingException {
 		// TODO Auto-generated method stub
 		return ClassGraph.getAssociations();

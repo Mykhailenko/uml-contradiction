@@ -12,10 +12,9 @@ import com.uml.contradiction.engine.model.mapping.MethodClass;
 import com.uml.contradiction.engine.model.mapping.TargetMessage;
 import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
 import com.uml.contradiction.engine.model.predicate.Brackets;
-import com.uml.contradiction.engine.model.predicate.MessageBelongToMethod;
+import com.uml.contradiction.engine.model.predicate.Brackets.OperationType;
 import com.uml.contradiction.engine.model.predicate.MessageMethodEqualName;
 import com.uml.contradiction.engine.model.predicate.MessageMethodStatic;
-import com.uml.contradiction.engine.model.predicate.Brackets.OperationType;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPMessages;
 
@@ -26,7 +25,7 @@ public class CheckNoStaticMethod extends Criterion {
 		quantifier0.setBoundVariable(Variable.m);
 		quantifier0.setRightPart(new RPMessages());
 		getQuantifiers().add(quantifier0);
-		
+
 		Quantifier quantifier1 = new Quantifier();
 		quantifier1.setType(QuantifierType.ALONE);
 		quantifier1.setBoundVariable(Variable.o);
@@ -40,13 +39,13 @@ public class CheckNoStaticMethod extends Criterion {
 		getQuantifiers().add(quantifier1);
 		Brackets brackets = new Brackets();
 		brackets.setType(OperationType.AND);
-		
+
 		BoundedPredicate boundedPredicate0 = new BoundedPredicate();
 		boundedPredicate0.getBoundVariable().add(Variable.m);
 		boundedPredicate0.getBoundVariable().add(Variable.o);
 		boundedPredicate0.setPredicate(new MessageMethodEqualName());
 		brackets.getFormulas().add(boundedPredicate0);
-			
+
 		BoundedPredicate boundedPredicate1 = new BoundedPredicate();
 		boundedPredicate1.getBoundVariable().add(Variable.m);
 		boundedPredicate1.getBoundVariable().add(Variable.o);
@@ -54,8 +53,7 @@ public class CheckNoStaticMethod extends Criterion {
 		brackets.getFormulas().add(boundedPredicate1);
 		setFormula(brackets);
 	}
-	
-	
+
 	@Override
 	public int getInternalID() {
 		return -3;
@@ -65,7 +63,6 @@ public class CheckNoStaticMethod extends Criterion {
 	public CriterionType getCriterionType() {
 		return CriterionType.CLASS_SEQUENCE;
 	}
-
 
 	@Override
 	public ResultTemplate getResultTemplate() {

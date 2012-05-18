@@ -9,20 +9,14 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import com.uml.contradiction.engine.Checker;
-import com.uml.contradiction.engine.model.HistoryPlainItem;
 import com.uml.contradiction.engine.model.VerificationResult;
-import com.uml.contradiction.engine.model.criteria.CorrectType;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.criteria.PartOfSingleComposite;
 import com.uml.contradiction.model.cclass.AggregationKind;
 import com.uml.contradiction.model.cclass.Association;
 import com.uml.contradiction.model.cclass.AssociationEnd;
-import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.cclass.ClassGraph;
 import com.uml.contradiction.model.cclass.Multiplicity;
-import com.uml.contradiction.model.common.UMLType;
-import com.uml.contradiction.model.object.OObject;
-import com.uml.contradiction.model.object.ObjectGraph;
 
 public class CorrectCompositeMultiplicityTest {
 	private static final Logger LOGGER = Logger.getRootLogger();

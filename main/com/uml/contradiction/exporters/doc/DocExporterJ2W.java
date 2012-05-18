@@ -59,17 +59,21 @@ public class DocExporterJ2W implements Exporter {
 		Calendar calendar = Calendar.getInstance();
 		DateFormat dateFormat = new SimpleDateFormat("HH:mm MM/dd/yyyy");
 		String pmCreatedDateTime = null;
-		try{
-			calendar.setTimeInMillis(Long.parseLong(MetaData.getPmCreateDateTime()));
+		try {
+			calendar.setTimeInMillis(Long.parseLong(MetaData
+					.getPmCreateDateTime()));
 			pmCreatedDateTime = dateFormat.format(calendar.getTime());
-		}catch (Exception e) {	}
+		} catch (Exception e) {
+		}
 		addProjectInfo("Created Date: ", pmCreatedDateTime);
-		
+
 		String pmLastModified = null;
-		try{
-			calendar.setTimeInMillis(Long.parseLong(MetaData.getPmLastModified()));
+		try {
+			calendar.setTimeInMillis(Long.parseLong(MetaData
+					.getPmLastModified()));
 			pmLastModified = dateFormat.format(calendar.getTime());
-		}catch(Exception e){  }
+		} catch (Exception e) {
+		}
 		addProjectInfo("Last Modified Date: ", pmLastModified);
 
 		for (int i = 0; i < verificationResults.size(); ++i) {

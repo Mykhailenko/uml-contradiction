@@ -1,17 +1,12 @@
 package com.uml.contradiction.gui.menu;
 
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.JComponent;
-import javax.swing.JMenuBar;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.KeyStroke;
 
 import com.uml.contradiction.gui.GUIState;
 import com.uml.contradiction.gui.HotKeyBinder;
@@ -23,7 +18,7 @@ import com.uml.contradiction.gui.listeners.ExportToTXT;
 import com.uml.contradiction.gui.listeners.LoadXMIListener;
 import com.uml.contradiction.gui.listeners.ResetListener;
 
-public class MyMenuBar extends JMenuBar implements GUIState{
+public class MyMenuBar extends JMenuBar implements GUIState {
 	private static final long serialVersionUID = -8023112033523408083L;
 	private JMenu fileMenu;
 	private JMenuItem loadXMI;
@@ -32,12 +27,13 @@ public class MyMenuBar extends JMenuBar implements GUIState{
 	private JMenuItem exportToDOC;
 	private JMenuItem reset;
 	private JMenuItem exit;
-	private JMenu view;
+//	private JMenu view;
 	private JMenu help;
 	private JMenuItem about;
 	private JMenuItem helpContent;
 	private JMenuItem project;
 	private JMenuItem settings;
+
 	public MyMenuBar() {
 		super();
 		fileMenu = new JMenu("File");
@@ -46,18 +42,18 @@ public class MyMenuBar extends JMenuBar implements GUIState{
 		loadXMI.addActionListener(new LoadXMIListener());
 		loadXMI.setMnemonic('o');
 		fileMenu.add(loadXMI);
-		
+
 		export = new JMenu("Export");
 		exportToTXT = new JMenuItem("to TXT");
 		exportToTXT.addActionListener(new ExportToTXT());
 		export.add(exportToTXT);
-		
+
 		exportToDOC = new JMenuItem("to DOC");
 		exportToDOC.addActionListener(new ExportToDOC());
 		export.add(exportToDOC);
-		
+
 		fileMenu.add(export);
-		
+
 		project = new JMenuItem("Project");
 		project.addActionListener(new ActionListener() {
 			@Override
@@ -68,43 +64,42 @@ public class MyMenuBar extends JMenuBar implements GUIState{
 		});
 		project.setMnemonic(KeyEvent.VK_P);
 		fileMenu.add(project);
-		
+
 		settings = new JMenuItem("Settings");
 		settings.setEnabled(false);
 		fileMenu.add(settings);
-		
+
 		fileMenu.addSeparator();
-		
+
 		reset = new JMenuItem("Reset");
 		reset.addActionListener(new ResetListener());
 		reset.setMnemonic(KeyEvent.VK_R);
 		fileMenu.add(reset);
-		
+
 		fileMenu.addSeparator();
-		
+
 		exit = new JMenuItem("Exit (Ctrl + X)");
 		exit.addActionListener(new ExitListener());
 		exit.setMnemonic(KeyEvent.VK_X);
 		fileMenu.add(exit);
-		
+
 		this.add(fileMenu);
-		
-		
+
 		help = new JMenu("Help");
-		
+
 		about = new JMenuItem("About");
 		about.addActionListener(new AboutListener());
 		help.add(about);
-		
+
 		helpContent = new JMenuItem("Help Content");
 		helpContent.setEnabled(false);
 		help.add(helpContent);
-		
+
 		this.add(help);
-		
+
 		HotKeyBinder.addComponent(this);
 	}
-	
+
 	public JMenuItem getLoadXMI() {
 		return loadXMI;
 	}
@@ -172,5 +167,5 @@ public class MyMenuBar extends JMenuBar implements GUIState{
 		reset.setEnabled(true);
 		project.setEnabled(true);
 	}
-	
+
 }

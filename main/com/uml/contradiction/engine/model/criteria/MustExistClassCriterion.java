@@ -13,7 +13,7 @@ import com.uml.contradiction.engine.model.rightPart.simple.RPObjects;
 public class MustExistClassCriterion extends Criterion {
 	public MustExistClassCriterion() {
 		super();
-		
+
 		Quantifier quantifier = new Quantifier();
 		quantifier.setType(QuantifierType.ALL);
 		quantifier.setBoundVariable(Variable.o);
@@ -24,13 +24,13 @@ public class MustExistClassCriterion extends Criterion {
 		quantifier2.setType(QuantifierType.ALONE);
 		quantifier2.setBoundVariable(Variable.c);
 		quantifier2.setRightPart(new RPClasses());
-		getQuantifiers().add(quantifier2);		
-		
+		getQuantifiers().add(quantifier2);
+
 		BoundedPredicate pr = new BoundedPredicate();
 		pr.setPredicate(new IsObjInsancetOfClass());
 		pr.getBoundVariable().add(Variable.o);
 		pr.getBoundVariable().add(Variable.e);
-		
+
 		this.setFormula(pr);
 	}
 
@@ -48,6 +48,7 @@ public class MustExistClassCriterion extends Criterion {
 	public ResultTemplate getResultTemplate() {
 		return new MustExistClassTemplate();
 	}
+
 	@Override
 	public int trickyMethod() {
 		return 1;

@@ -5,6 +5,7 @@ import java.util.List;
 
 public class HistoryPlainItem {
 	private List<VariableValue> items = new LinkedList<VariableValue>();
+
 	public HistoryPlainItem(List<VariableValue> items) {
 		this.items = items;
 	}
@@ -16,26 +17,28 @@ public class HistoryPlainItem {
 	public void setItems(List<VariableValue> items) {
 		this.items = items;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		HistoryPlainItem hpi = (HistoryPlainItem) obj;
-		if(hpi.getItems().size() == items.size()){
-			for(int i = 0; i < items.size(); ++i){
+		if (hpi.getItems().size() == items.size()) {
+			for (int i = 0; i < items.size(); ++i) {
 				VariableValue origin = items.get(i);
-				if(!origin.equals(hpi.getItems().get(i))){
+				if (!origin.equals(hpi.getItems().get(i))) {
 					return false;
 				}
 			}
 			return true;
-		}else{
+		} else {
 			return false;
 		}
 	}
+
 	@Override
 	public int hashCode() {
 		int hash = 0;
-		for(VariableValue vv : items){
-			if(vv != null){
+		for (VariableValue vv : items) {
+			if (vv != null) {
 				hash += vv.hashCode();
 			}
 		}

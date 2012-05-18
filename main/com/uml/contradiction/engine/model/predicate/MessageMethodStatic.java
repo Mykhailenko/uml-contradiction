@@ -9,26 +9,29 @@ import com.uml.contradiction.model.sequence.Message;
 
 public class MessageMethodStatic implements Predicate {
 	@Override
+	@SuppressWarnings("rawtypes")
 	public boolean predict(List params) throws PredicatException {
 		assert params != null;
 		assert params.size() == 2;
 		Object first = params.get(0);
-		if((first instanceof Message) == false){
-			throw new PredicatException("Unexpected type: " + first.getClass().toString());
+		if ((first instanceof Message) == false) {
+			throw new PredicatException("Unexpected type: "
+					+ first.getClass().toString());
 		}
 		Object second = params.get(1);
-		if((second instanceof MMethod) == false){
-			throw new PredicatException("Unexpected type: " + second.getClass().toString());
+		if ((second instanceof MMethod) == false) {
+			throw new PredicatException("Unexpected type: "
+					+ second.getClass().toString());
 		}
 		Message message = (Message) first;
 		MMethod method = (MMethod) second;
-		if(message.getTarget().isClassLifeLine() ==
-				(method.getScope() == Scope.CLASSIFIER)){
+		if (message.getTarget().isClassLifeLine() == (method.getScope() == Scope.CLASSIFIER)) {
 			return true;
-		}else{
+		} else {
 			return false;
 		}
 	}
+
 	@Override
 	public String getFailDescription() {
 		return null;

@@ -18,7 +18,7 @@ public class CheckEntryMethodsCriterion extends Criterion {
 		quantifier0.setBoundVariable(Variable.s);
 		quantifier0.setRightPart(new StatesWithEntryRP());
 		getQuantifiers().add(quantifier0);
-		
+
 		Quantifier quantifier1 = new Quantifier();
 		quantifier1.setType(QuantifierType.ALL);
 		quantifier1.setBoundVariable(Variable.t);
@@ -27,7 +27,7 @@ public class CheckEntryMethodsCriterion extends Criterion {
 		rightPart0.getNestedMappings().add(new TransitionToState());
 		quantifier1.setRightPart(rightPart0);
 		getQuantifiers().add(quantifier1);
-		
+
 		Quantifier quantifier2 = new Quantifier();
 		quantifier2.setType(QuantifierType.ALL);
 		quantifier2.setBoundVariable(Variable.m);
@@ -36,15 +36,14 @@ public class CheckEntryMethodsCriterion extends Criterion {
 		rightPart1.getNestedMappings().add(new MessagesForTransition());
 		quantifier2.setRightPart(rightPart1);
 		getQuantifiers().add(quantifier2);
-		
+
 		BoundedPredicate boundedPredicate = new BoundedPredicate();
 		boundedPredicate.getBoundVariable().add(Variable.s);
 		boundedPredicate.getBoundVariable().add(Variable.m);
 		boundedPredicate.setPredicate(new WeirdPredicate());
 		setFormula(boundedPredicate);
 	}
-		
-	
+
 	@Override
 	public int getInternalID() {
 		return -2;
@@ -54,7 +53,6 @@ public class CheckEntryMethodsCriterion extends Criterion {
 	public CriterionType getCriterionType() {
 		return CriterionType.SEQUENCE_STATE;
 	}
-
 
 	@Override
 	public ResultTemplate getResultTemplate() {

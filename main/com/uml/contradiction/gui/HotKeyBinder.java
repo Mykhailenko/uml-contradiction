@@ -55,7 +55,7 @@ public class HotKeyBinder {
 		});
 
 		KeyStroke verify = KeyStroke.getKeyStroke(KeyEvent.VK_ENTER,
-				KeyEvent.CTRL_MASK);
+				InputEvent.CTRL_MASK);
 		String sverify = "verify";
 		component.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT)
 				.put(verify, sverify);
@@ -70,9 +70,9 @@ public class HotKeyBinder {
 				PanelsController.contradictionsPanel.getVerify().doClick();
 			}
 		});
-		
+
 		KeyStroke debug = KeyStroke.getKeyStroke(KeyEvent.VK_Q,
-				KeyEvent.CTRL_MASK);
+				InputEvent.CTRL_MASK);
 		String sdebug = "debug";
 		component.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT)
 				.put(debug, sdebug);
@@ -84,24 +84,28 @@ public class HotKeyBinder {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("ctrl + q " + ClassGraph.getClasses().size() + " " + ObjectGraph.getObjects().size());
-				for(CClass cl : ClassGraph.getClasses()){
+				System.out.println("ctrl + q " + ClassGraph.getClasses().size()
+						+ " " + ObjectGraph.getObjects().size());
+				for (CClass cl : ClassGraph.getClasses()) {
 					System.out.println(cl.getName());
-					for(Attribute at : cl.getAttributes()){
-						System.out.println("\t" + at.getName() + "\t" + at.getType());
+					for (Attribute at : cl.getAttributes()) {
+						System.out.println("\t" + at.getName() + "\t"
+								+ at.getType());
 					}
 				}
 				System.out.println("objects");
-				for(OObject ob : ObjectGraph.getObjects()){
+				for (OObject ob : ObjectGraph.getObjects()) {
 					System.out.println(ob.getName());
-					for(AttributeObj ao : ob.getAttributes()){
-						System.out.println("\t" + ao.getName() + "\t" + ao.getValue());
+					for (AttributeObj ao : ob.getAttributes()) {
+						System.out.println("\t" + ao.getName() + "\t"
+								+ ao.getValue());
 					}
 				}
 				System.out.println("files");
 				String list[] = new File(".").list();
-	            for(int i = 0; i < list.length; i++)
-	                System.out.println(list[i]);
+				for (int i = 0; i < list.length; i++) {
+					System.out.println(list[i]);
+				}
 			}
 		});
 	}

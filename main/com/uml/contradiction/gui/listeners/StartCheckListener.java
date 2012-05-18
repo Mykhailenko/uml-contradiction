@@ -15,13 +15,12 @@ public class StartCheckListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-	//	StartCheckScenery.run();
+		// StartCheckScenery.run();
 		ContradictionsPanel panel = PanelsController.contradictionsPanel;
 		List<DefaultMutableTreeNode> nodes = panel.getSelectedNodes();
-		if(nodes == null || nodes.size() == 0) {
-			
-		}
-		else {
+		if (nodes == null || nodes.size() == 0) {
+
+		} else {
 			StartCheckScenery.run(nodes);
 			Client.getClient().verified();
 		}

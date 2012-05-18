@@ -1,6 +1,5 @@
 package com.uml.contradiction.gui;
 
-
 import java.io.File;
 import java.util.List;
 
@@ -22,61 +21,69 @@ import com.uml.contradiction.model.object.ObjectGraph;
 import com.uml.contradiction.model.sequence.SequenceGraph;
 import com.uml.contradiction.model.statemachine.StateMachineGraph;
 
-public class Client implements GUIState{
+public class Client implements GUIState {
 	private static MainWindow mainWindow;
 	private static Client client;
 	private static List<VerificationResult> lastResults;
+
 	private enum State {
 		START, LOADED_NO_ONE, LOADED_ONE, VERIFIED;
 	};
+
 	private State state;
-	public static void main(String [] args){
-		if(args.length == 0){
+
+	public static void main(String[] args) {
+		if (args.length == 0) {
 			client = new Client();
-		}else {
+		} else {
 			comandLineStyle(args);
 		}
 	}
-	private static void comandLineStyle(String [] args){
+
+	private static void comandLineStyle(String[] args) {
 		String resultFileName = "result.doc";
 		String xmiFileName;
-		if(args.length == 1){
-			xmiFileName= args[0];
+		if (args.length == 1) {
+			xmiFileName = args[0];
 			verify(xmiFileName, resultFileName, true);
-		}else if(args.length == 2){
+		} else if (args.length == 2) {
 			xmiFileName = args[0];
 			resultFileName = args[1];
 			verify(xmiFileName, resultFileName, true);
-		}else if(args.length == 3){
+		} else if (args.length == 3) {
 			xmiFileName = args[0];
 			resultFileName = args[1];
 			boolean txtExporter = true;
-			if(args[2].equals("-doc")){
+			if (args[2].equals("-doc")) {
 				txtExporter = false;
 			}
 			verify(xmiFileName, resultFileName, txtExporter);
-		}else{
+		} else {
 			System.out.println("Unexpected arguments count.");
 		}
-		
+
 	}
-	private static void verify(String xmiFileName, String resultFileName, boolean txtExporter){
+
+	private static void verify(String xmiFileName, String resultFileName,
+			boolean txtExporter) {
 		File file = new File(xmiFileName);
-		if(file.exists()){
+		if (file.exists()) {
 			XMIConverter.setFileAndParse(file);
-			List<VerificationResult> results = StartCheckScenery.verifyCriterions(CriterionSuite.getAllCriterion());
+			List<VerificationResult> results = StartCheckScenery
+					.verifyCriterions(CriterionSuite.getAllCriterion());
 			Exporter exporter;
-			if(txtExporter){
+			if (txtExporter) {
 				exporter = new TxtExporter();
-			}else{
+			} else {
 				exporter = new DocExporterJ2W();
 			}
 			ResultSaver.savep(results, resultFileName, exporter);
-		}else{
+		} else {
 			System.out.println("There is no such file : " + xmiFileName);
 		}
 	}
-	public Client(){
+
+	public Client() {
 		mainWindow = new MainWindow();
 		ContradictionsPanel p = new ContradictionsPanel();
 		VerificationResultsPanel pp = new VerificationResultsPanel();
@@ -87,25 +94,31 @@ public class Client implements GUIState{
 		mainWindow.setVisible(true);
 		started();
 	}
-	public boolean isStart(){
+
+	public boolean isStart() {
 		return state == State.START;
 	}
-	public boolean isLoadedNoOne(){
+
+	public boolean isLoadedNoOne() {
 		return state == State.LOADED_NO_ONE;
 	}
-	public boolean isLoadedOne(){
+
+	public boolean isLoadedOne() {
 		return state == State.LOADED_ONE;
 	}
-	public boolean isVerified(){
+
+	public boolean isVerified() {
 		return state == State.VERIFIED;
 	}
-	
+
 	public static Client getClient() {
 		return client;
 	}
+
 	public static MainWindow getMainWindow() {
 		return mainWindow;
 	}
+
 	@Override
 	public void started() {
 		PanelsController.contradictionsPanel.started();
@@ -119,6 +132,7 @@ public class Client implements GUIState{
 		MetaData.clear();
 		lastResults = null;
 	}
+
 	@Override
 	public void loadedNoOneSelected() {
 		PanelsController.contradictionsPanel.loadedNoOneSelected();
@@ -126,6 +140,7 @@ public class Client implements GUIState{
 		PanelsController.mainWindow.loadedNoOneSelected();
 		state = State.LOADED_NO_ONE;
 	}
+
 	@Override
 	public void loadedOneSelected() {
 		PanelsController.contradictionsPanel.loadedOneSelected();
@@ -133,6 +148,7 @@ public class Client implements GUIState{
 		PanelsController.mainWindow.loadedOneSelected();
 		state = State.LOADED_NO_ONE;
 	}
+
 	@Override
 	public void verified() {
 		PanelsController.contradictionsPanel.verified();
@@ -140,9 +156,11 @@ public class Client implements GUIState{
 		PanelsController.mainWindow.verified();
 		state = State.VERIFIED;
 	}
+
 	public static void setLastResults(List<VerificationResult> lastResults) {
 		Client.lastResults = lastResults;
 	}
+
 	public static List<VerificationResult> getLastResults() {
 		return lastResults;
 	}

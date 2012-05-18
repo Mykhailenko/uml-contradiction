@@ -10,6 +10,7 @@ import com.uml.contradiction.model.statemachine.StateMachineGraph;
 public class RPStateMachines implements QuantifierRightPart {
 
 	@Override
+	@SuppressWarnings("rawtypes")
 	public List getSet(List<VariableValue> params) throws MappingException {
 		return StateMachineGraph.getStateMachines();
 	}

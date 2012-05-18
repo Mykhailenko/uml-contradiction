@@ -10,35 +10,39 @@ import com.uml.contradiction.model.sequence.Message;
 public class MessageBelongToClass implements Predicate {
 
 	@Override
+	@SuppressWarnings("rawtypes")
 	public boolean predict(List list) throws PredicatException {
 		assert list != null;
 		assert list.size() == 2;
 		Object first = list.get(0);
-		if((first instanceof Message) == false){
-			throw new PredicatException("Unexpected type: " + first.getClass().toString());
+		if ((first instanceof Message) == false) {
+			throw new PredicatException("Unexpected type: "
+					+ first.getClass().toString());
 		}
 		Object second = list.get(1);
-		if((second instanceof CClass) == false){
-			throw new PredicatException("Unexpected type: " + second.getClass().toString());
+		if ((second instanceof CClass) == false) {
+			throw new PredicatException("Unexpected type: "
+					+ second.getClass().toString());
 		}
 		Message message = (Message) first;
 		CClass cClass = (CClass) second;
-		for(MMethod method : cClass.getMethods()){
-			if(messageBelongToMethod(message, method)){
+		for (MMethod method : cClass.getMethods()) {
+			if (messageBelongToMethod(message, method)) {
 				return true;
 			}
 		}
 		return false;
 	}
 
-	private static boolean messageBelongToMethod(Message message, MMethod method){
-		if(message.getMethodName().equals(method.getName()) &&
-				message.getParamCount() == method.getParameters().size()){
+	private static boolean messageBelongToMethod(Message message, MMethod method) {
+		if (message.getMethodName().equals(method.getName())
+				&& message.getParamCount() == method.getParameters().size()) {
 			return true;
-		}else{
+		} else {
 			return false;
 		}
 	}
+
 	@Override
 	public String getFailDescription() {
 		return null;

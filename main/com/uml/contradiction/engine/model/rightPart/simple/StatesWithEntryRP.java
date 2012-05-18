@@ -13,11 +13,12 @@ import com.uml.contradiction.model.statemachine.StateMachineGraph;
 public class StatesWithEntryRP implements QuantifierRightPart {
 
 	@Override
+	@SuppressWarnings("rawtypes")
 	public List getSet(List<VariableValue> params) throws MappingException {
 		List<State> result = new LinkedList<State>();
-		for(StateMachine sm :StateMachineGraph.getStateMachines()){
-			for(State s : sm.getStates()){
-				if(s.getEntry() != null){
+		for (StateMachine sm : StateMachineGraph.getStateMachines()) {
+			for (State s : sm.getStates()) {
+				if (s.getEntry() != null) {
 					result.add(s);
 				}
 			}

@@ -2,7 +2,6 @@ package com.uml.contradiction.tests;
 
 import static org.junit.Assert.assertTrue;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -14,7 +13,6 @@ import com.uml.contradiction.engine.model.HistoryPlainItem;
 import com.uml.contradiction.engine.model.VerificationResult;
 import com.uml.contradiction.engine.model.criteria.Criterion;
 import com.uml.contradiction.engine.model.criteria.MustExistClassCriterion;
-import com.uml.contradiction.engine.model.criteria.SimpleCriterion;
 import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.cclass.ClassGraph;
 import com.uml.contradiction.model.object.OObject;
@@ -33,14 +31,10 @@ public class MustExistClassCriterionTest {
 		
 		OObject object0 = new OObject();
 		object0.setName("goodovo");
-		List<CClass> c0 = new LinkedList<CClass>();
-		c0.add(cClass);
-		object0.setClasses(c0);
+		object0.setClasses(cClass);
 		OObject object1 = new OObject();
 		object1.setName("badovo");
-		List<CClass> c1 = new LinkedList<CClass>();
-		c1.add(null);
-		object1.setClasses(c1);
+		object1.setClasses(cClass);
 
 		List<OObject> loo = new LinkedList<OObject>();
 		loo.add(object0);

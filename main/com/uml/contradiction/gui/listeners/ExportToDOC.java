@@ -13,8 +13,9 @@ public class ExportToDOC implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		String filename = File.separator + "result.doc";
-		ResultSaver.save(Client.getLastResults(), filename, new DocExporterJ2W());
-		
+		ResultSaver.save(Client.getLastResults(), filename,
+				new DocExporterJ2W());
+
 	}
 
 }

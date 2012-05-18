@@ -5,14 +5,8 @@ import java.io.File;
 import org.junit.Test;
 
 import com.uml.contradiction.converter.XMIConverter;
-import com.uml.contradiction.engine.Checker;
-import com.uml.contradiction.engine.model.VerificationResult;
-import com.uml.contradiction.engine.model.criteria.Criterion;
-import com.uml.contradiction.engine.model.criteria.MustExistMethodCriterion;
 import com.uml.contradiction.model.sequence.Interaction;
-import com.uml.contradiction.model.sequence.InteractionElement;
 import com.uml.contradiction.model.sequence.LifeLine;
-import com.uml.contradiction.model.sequence.Message;
 import com.uml.contradiction.model.sequence.SequenceGraph;
 
 import static org.junit.Assert.assertTrue;

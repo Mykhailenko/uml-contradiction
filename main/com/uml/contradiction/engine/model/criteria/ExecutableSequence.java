@@ -19,7 +19,7 @@ public class ExecutableSequence extends Criterion {
 		quantifier0.setBoundVariable(Variable.f);
 		quantifier0.setRightPart(new RPInteractions());
 		getQuantifiers().add(quantifier0);
-		
+
 		Quantifier quantifier1 = new Quantifier();
 		quantifier1.setType(QuantifierType.ALL);
 		quantifier1.setBoundVariable(Variable.l);
@@ -28,14 +28,14 @@ public class ExecutableSequence extends Criterion {
 		rightPart.getNestedMappings().add(new LifeLineFromInteraction());
 		quantifier1.setRightPart(rightPart);
 		getQuantifiers().add(quantifier1);
-		
+
 		BoundedPredicate boundedPredicate = new BoundedPredicate();
 		boundedPredicate.getBoundVariable().add(Variable.f);
 		boundedPredicate.getBoundVariable().add(Variable.l);
 		boundedPredicate.setPredicate(new IsExecutableLifeLine());
 		setFormula(boundedPredicate);
 	}
-	
+
 	@Override
 	public int getInternalID() {
 		return -8;
@@ -50,6 +50,5 @@ public class ExecutableSequence extends Criterion {
 	public ResultTemplate getResultTemplate() {
 		return new ExecutableSequenceTemplate();
 	}
-
 
 }

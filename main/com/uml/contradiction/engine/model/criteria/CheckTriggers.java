@@ -9,25 +9,20 @@ import com.uml.contradiction.engine.model.mapping.ClassOfState;
 import com.uml.contradiction.engine.model.mapping.TransitionOfStateMachine;
 import com.uml.contradiction.engine.model.mapping.TriggersOfTransition;
 import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
-import com.uml.contradiction.engine.model.predicate.Brackets;
-import com.uml.contradiction.engine.model.predicate.TransitionBelongToClass;
-import com.uml.contradiction.engine.model.predicate.TransitionFromInit;
 import com.uml.contradiction.engine.model.predicate.TriggerBelongToClass;
-import com.uml.contradiction.engine.model.predicate.Brackets.OperationType;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPStateMachines;
 
-public class CheckTriggers extends Criterion{
+public class CheckTriggers extends Criterion {
 	public CheckTriggers() {
 		super();
-		
+
 		Quantifier quantifier0 = new Quantifier();
 		quantifier0.setType(QuantifierType.ALL);
 		quantifier0.setBoundVariable(Variable.s);
 		quantifier0.setRightPart(new RPStateMachines());
 		getQuantifiers().add(quantifier0);
-		
-		
+
 		Quantifier quantifier1 = new Quantifier();
 		quantifier1.setType(QuantifierType.ALL);
 		quantifier1.setBoundVariable(Variable.l);
@@ -36,7 +31,7 @@ public class CheckTriggers extends Criterion{
 		rightPart2.getNestedMappings().add(new TransitionOfStateMachine());
 		quantifier1.setRightPart(rightPart2);
 		getQuantifiers().add(quantifier1);
-		
+
 		Quantifier quantifier2 = new Quantifier();
 		quantifier2.setType(QuantifierType.ALL);
 		quantifier2.setBoundVariable(Variable.t);
@@ -45,7 +40,7 @@ public class CheckTriggers extends Criterion{
 		rightPart3.getNestedMappings().add(new TriggersOfTransition());
 		quantifier2.setRightPart(rightPart3);
 		getQuantifiers().add(quantifier2);
-		
+
 		Quantifier quantifier3 = new Quantifier();
 		quantifier3.setType(QuantifierType.ALONE);
 		quantifier3.setBoundVariable(Variable.c);
@@ -61,8 +56,7 @@ public class CheckTriggers extends Criterion{
 		boundedPredicate.setPredicate(new TriggerBelongToClass());
 		setFormula(boundedPredicate);
 	}
-	
-	
+
 	@Override
 	public int getInternalID() {
 		return -5;
@@ -73,12 +67,11 @@ public class CheckTriggers extends Criterion{
 		return CriterionType.CLASS_STATE;
 	}
 
-
 	@Override
 	public ResultTemplate getResultTemplate() {
 		return new CheckTriggersTemplate();
 	}
-	
+
 	@Override
 	public int trickyMethod() {
 		return 3;

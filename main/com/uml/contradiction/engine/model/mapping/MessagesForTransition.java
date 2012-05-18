@@ -14,22 +14,24 @@ import com.uml.contradiction.model.statemachine.Transition;
 public class MessagesForTransition implements Mapping {
 
 	@Override
+	@SuppressWarnings("rawtypes")
 	public List map(List list) throws MappingException {
 		assert list != null;
 		assert list.size() == 1;
 		Object first = list.get(0);
-		if((first instanceof Transition) == false){
-			throw new MappingException("Unexpected type: " + first.getClass().toString());
+		if ((first instanceof Transition) == false) {
+			throw new MappingException("Unexpected type: "
+					+ first.getClass().toString());
 		}
 		List<Message> result = new LinkedList<Message>();
 		Transition transition = (Transition) first;
 		CClass transitionClass = transition.getStateMachine().getcClass();
-		for(Interaction interaction : SequenceGraph.getInteractions()){
-			for(InteractionElement ie : interaction.getChilds()){
-				if(ie.isMessage()){
+		for (Interaction interaction : SequenceGraph.getInteractions()) {
+			for (InteractionElement ie : interaction.getChilds()) {
+				if (ie.isMessage()) {
 					Message message = (Message) ie;
 					CClass messageClass = message.getTarget().getcClass();
-					if(messageClass.equals(transitionClass)){
+					if (messageClass.equals(transitionClass)) {
 						result.add(message);
 					}
 				}

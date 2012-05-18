@@ -3,7 +3,6 @@ package com.uml.contradiction.gui.listeners;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
@@ -12,7 +11,6 @@ import javax.swing.JTextPane;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
-
 
 import com.uml.contradiction.gui.Client;
 import com.uml.contradiction.gui.Images;
@@ -24,20 +22,18 @@ public class AboutListener implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		doit();
 	}
-	public void doit(){
+
+	public void doit() {
 		JDialog dialog = new JDialog(Client.getMainWindow(), true);
 		dialog.setLayout(null);
 		dialog.setSize(300, 180);
 		dialog.setResizable(false);
 		dialog.setLocationRelativeTo(null);
 		dialog.setTitle("About");
-		
-		String text = "UML Contradiction "+Properties.getVersion()+"\n"+
-				"tool was created by\n"+
-				"Zaretska I.T.\n" + 
-				"Kulankhina O.O.\n" +
-				"Shatalov Y.V.\n"+
-				"Mykhailenko H.H.";
+
+		String text = "UML Contradiction " + Properties.getVersion() + "\n"
+				+ "tool was created by\n" + "Zaretska I.T.\n"
+				+ "Kulankhina O.O.\n" + "Shatalov Y.V.\n" + "Mykhailenko H.H.";
 		JTextPane txt = new JTextPane();
 		txt.setEditable(false);
 		txt.setFocusable(false);

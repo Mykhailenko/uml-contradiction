@@ -2,8 +2,8 @@ package com.uml.contradiction.model.object;
 
 public class LinkEnd {
 	private OObject object;
-	private String 	role;
-			
+	private String role;
+
 	public LinkEnd(OObject object) {
 		super();
 		this.object = object;
@@ -33,7 +33,8 @@ public class LinkEnd {
 
 	@Override
 	public String toString() {
-		return "LinkEnd [objectName=" + object.getName() + ", role=" + role + "]";
+		return "LinkEnd [objectName=" + object.getName() + ", role=" + role
+				+ "]";
 	}
-	
+
 }

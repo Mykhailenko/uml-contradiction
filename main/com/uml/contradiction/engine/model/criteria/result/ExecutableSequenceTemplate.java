@@ -12,8 +12,10 @@ public class ExecutableSequenceTemplate extends ResultTemplate {
 		@SuppressWarnings("unused")
 		Interaction interaction = (Interaction) hpi.getItems().get(0).value;
 		LifeLine lifeLine = (LifeLine) hpi.getItems().get(1).value;
-		this.description = "Trere is unexecutable sequence of messages to lifeline" + ResultTemplate.ELEMENT_MARKER
-				+ lifeLine.getName() + ResultTemplate.ELEMENT_MARKER;
+		this.description = "Trere is unexecutable sequence of messages to lifeline"
+				+ ResultTemplate.ELEMENT_MARKER
+				+ lifeLine.getName()
+				+ ResultTemplate.ELEMENT_MARKER;
 		super.setDiagrams(hpi.getItems());
 	}
 

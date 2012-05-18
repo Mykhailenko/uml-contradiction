@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import com.uml.contradiction.gui.Client;
 import com.uml.contradiction.gui.controllers.PanelsController;
 
-public class ResPanelBackListener implements ActionListener{
+public class ResPanelBackListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

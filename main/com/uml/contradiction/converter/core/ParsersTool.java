@@ -12,7 +12,7 @@ public class ParsersTool {
 	private static StatemachineParser statemachineParser;
 
 	public static ClassParser getInstanceClassParser() {
-		if(classParser == null){
+		if (classParser == null) {
 			classParser = new ClassParser();
 		}
 		return classParser;
@@ -23,19 +23,21 @@ public class ParsersTool {
 	}
 
 	public static SequenceParser getInstanceSequenceParser() {
-		if(sequenceParser == null){
+		if (sequenceParser == null) {
 			sequenceParser = new SequenceParser();
 		}
 		return sequenceParser;
 	}
+
 	public static ObjectParser getInstanceObjectParser() {
-		if(objectParser == null){
+		if (objectParser == null) {
 			objectParser = new ObjectParser();
 		}
 		return objectParser;
 	}
+
 	public static StatemachineParser getInstanceStatemachineParser() {
-		if(statemachineParser == null){
+		if (statemachineParser == null) {
 			statemachineParser = new StatemachineParser();
 		}
 		return statemachineParser;
@@ -44,5 +46,5 @@ public class ParsersTool {
 	public static void setSequenceParser(SequenceParser sequenceParser) {
 		ParsersTool.sequenceParser = sequenceParser;
 	}
-	
+
 }

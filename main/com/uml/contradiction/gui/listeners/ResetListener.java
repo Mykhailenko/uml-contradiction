@@ -15,16 +15,17 @@ public class ResetListener implements ActionListener {
 	public void actionPerformed(ActionEvent arg0) {
 		doit();
 	}
-	public void doit(){
+
+	public void doit() {
 		JOptionPane pane = new JOptionPane(null, JOptionPane.OK_CANCEL_OPTION);
-	    Object[] options = new String[] { "Yes", "No" };
-	    pane.setOptions(options);
-	    JDialog dialog = pane.createDialog(new JFrame(), "Do you want reset?");
-	    dialog.setVisible(true);
-	    Object obj = pane.getValue(); 
-	    if(obj.equals(options[0])){	    
-	    	////do something painful
-	    	Client.getClient().started();
-	    }
+		Object[] options = new String[] { "Yes", "No" };
+		pane.setOptions(options);
+		JDialog dialog = pane.createDialog(new JFrame(), "Do you want reset?");
+		dialog.setVisible(true);
+		Object obj = pane.getValue();
+		if (obj.equals(options[0])) {
+			// //do something painful
+			Client.getClient().started();
+		}
 	}
 }

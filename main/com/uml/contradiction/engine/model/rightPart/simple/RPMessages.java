@@ -16,15 +16,15 @@ public class RPMessages implements QuantifierRightPart {
 	@Override
 	public List getSet(List<VariableValue> params) throws MappingException {
 		List<Message> result = new LinkedList<Message>();
-		for(Interaction interaction : SequenceGraph.getInteractions()){
-			for(InteractionElement element : interaction.getChilds()){
-				if(element.getType().equals(InteractionElement.Type.MESSAGE)){
+		for (Interaction interaction : SequenceGraph.getInteractions()) {
+			for (InteractionElement element : interaction.getChilds()) {
+				if (element.getType().equals(InteractionElement.Type.MESSAGE)) {
 					result.add((Message) element);
 				}
 			}
 		}
-		
+
 		return result;
 	}
-	
+
 }

@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import word.api.interfaces.IDocument;
 import word.utils.TestUtils;
-import word.utils.Utils;
 import word.w2004.Document2004;
 import word.w2004.Document2004.Encoding;
 import word.w2004.elements.BreakLine;
@@ -12,12 +11,9 @@ import word.w2004.elements.Heading1;
 import word.w2004.elements.Heading2;
 import word.w2004.elements.Heading3;
 import word.w2004.elements.HyperLink;
-import word.w2004.elements.Image;
 import word.w2004.elements.PageBreak;
 import word.w2004.elements.Paragraph;
 import word.w2004.elements.ParagraphPiece;
-import word.w2004.elements.Table;
-import word.w2004.elements.tableElements.TableEle;
 import word.w2004.style.Font;
 import word.w2004.style.HeadingStyle.Align;
 

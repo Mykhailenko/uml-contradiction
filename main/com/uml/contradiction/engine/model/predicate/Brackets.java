@@ -4,20 +4,21 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.uml.contradiction.engine.model.VariableValue;
-import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
 
 public class Brackets implements Formula {
 	public enum OperationType {
 		AND, OR;
 	};
+
 	private OperationType type;
 	private List<Formula> formulas;
 	private boolean negative;
+
 	public Brackets() {
 		type = OperationType.OR;
 		formulas = new LinkedList<Formula>();
 	}
-	
+
 	public OperationType getType() {
 		return type;
 	}
@@ -34,7 +35,6 @@ public class Brackets implements Formula {
 		this.formulas = formulas;
 	}
 
-	
 	public boolean isNegative() {
 		return negative;
 	}
@@ -55,8 +55,8 @@ public class Brackets implements Formula {
 	}
 
 	private boolean predictOr(List<VariableValue> variableValues) {
-		for(Formula formula : formulas){
-			if(formula.predict(variableValues)){
+		for (Formula formula : formulas) {
+			if (formula.predict(variableValues)) {
 				return true;
 			}
 		}
@@ -64,13 +64,12 @@ public class Brackets implements Formula {
 	}
 
 	private boolean predictAnd(List<VariableValue> variableValues) {
-		for(Formula formula : formulas){
-			if(formula.predict(variableValues) == false){
+		for (Formula formula : formulas) {
+			if (formula.predict(variableValues) == false) {
 				return false;
 			}
 		}
 		return true;
 	}
 
-	
 }

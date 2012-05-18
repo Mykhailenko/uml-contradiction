@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="UML Contradiction" basedir="." default="run">
+<project name="UML Contradiction" 
+	basedir="." default="run">
 	<property name="src.dir" value="main"/>
 	<property name="build.dir" value="build"/>
 	<property name="lib.dir" value="lib"/>
@@ -36,7 +37,7 @@
 		/>
 	</target>
 	
-	<target name="jar" depends="compile">
+	<target name="jarw">
 		<jar destfile="${jar.name}">
 			<fileset dir="build" excludes="**/*.uml"/>
 			<fileset dir="." includes="images/**"/>
@@ -47,5 +48,7 @@
 				<attribute name="Main-Class" value="${main-class}"/>
 			</manifest>
 		</jar>
+	</target>
+	<target name="jar" depends="compile, jarw">
 	</target>
 </project>

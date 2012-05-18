@@ -10,7 +10,8 @@ public class ResultsTreeListener implements TreeSelectionListener {
 
 	@Override
 	public void valueChanged(TreeSelectionEvent e) {
-		DefaultMutableTreeNode node = (DefaultMutableTreeNode)(e.getPath().getLastPathComponent());
+		DefaultMutableTreeNode node = (DefaultMutableTreeNode) (e.getPath()
+				.getLastPathComponent());
 		PanelsController.resultsPanel.showResult(node);
 	}
 

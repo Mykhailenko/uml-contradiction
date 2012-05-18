@@ -14,27 +14,29 @@ public class ObjectsByClass implements Mapping {
 	private static final Logger LOGGER = Logger.getRootLogger();
 
 	@Override
+	@SuppressWarnings("rawtypes")
 	public List map(List args) throws MappingException {
-		assert args != null ;
+		assert args != null;
 		assert args.size() == 1 : "bad size";
 		Object element = args.get(0);
-		if(element instanceof CClass){
+		if (element instanceof CClass) {
 			CClass cls = (CClass) element;
-			if(cls == null){
-				LOGGER.info("Can't find class!");
-				return null;
-			}
+//			if (cls == null) {
+//				LOGGER.info("Can't find class!");
+//				return null;
+//			}
 			List<OObject> result = new LinkedList<OObject>();
-			for(OObject ob:ObjectGraph.getObjects()) {
-				if(ob.getClasses().equals(cls)){
+			for (OObject ob : ObjectGraph.getObjects()) {
+				if (ob.getClasses().equals(cls)) {
 					result.add(ob);
 				}
 			}
 			return result;
-		}else{
+		} else {
 			LOGGER.error("Unexpected type: " + element.getClass().toString());
-			throw new MappingException("Unexpected type: " + element.getClass().toString());
+			throw new MappingException("Unexpected type: "
+					+ element.getClass().toString());
 		}
 	}
-	
+
 }

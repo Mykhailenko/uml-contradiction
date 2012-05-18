@@ -1,18 +1,13 @@
 package com.uml.contradictions.view.tests;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Test;
 
-import com.uml.contradiction.common.DiagramType;
-import com.uml.contradiction.engine.model.criteria.NaryNoAggregationOnly;
 import com.uml.contradiction.gui.controllers.PanelsController;
-import com.uml.contradiction.gui.models.DiagramForChoise;
 import com.uml.contradiction.gui.panels.ContradictionsPanel;
-import com.uml.contradiction.gui.panels.DiagramsPanel;
 import com.uml.contradiction.gui.panels.VerificationResultsPanel;
 import com.uml.contradiction.gui.windows.MainWindow;
 import com.uml.contradiction.model.cclass.AggregationKind;
@@ -21,13 +16,13 @@ import com.uml.contradiction.model.cclass.AssociationEnd;
 import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.cclass.ClassGraph;
 import com.uml.contradiction.model.cclass.NaryAssociationClass;
-import com.uml.contradiction.model.common.UMLType;
 import com.uml.contradiction.model.object.OObject;
 import com.uml.contradiction.model.object.ObjectDiagram;
 import com.uml.contradiction.model.object.ObjectGraph;
 
 public class StartTest {
 	
+	@SuppressWarnings("deprecation")
 	@Test
 	public void createStartWindow() throws IOException {
 		NaryAssociationClass nary = new NaryAssociationClass();
@@ -67,7 +62,6 @@ public class StartTest {
 		OObject ob1 = new OObject();
 		OObject ob2 = new OObject();
 		CClass cl1 = new CClass();
-		CClass cl2 = new CClass();
 		
 		cl1.setName("cl1");
 		

@@ -11,25 +11,27 @@ import com.uml.contradiction.engine.model.criteria.CriterionSuite;
 
 public class RunCriterions {
 	private static final Logger LOGGER = Logger.getRootLogger();
-	public List<VerificationResult> runAll(){
+
+	public List<VerificationResult> runAll() {
 		return run(CriterionSuite.getAllCriterion());
 	}
-	public List<VerificationResult> run(List<Criterion> criterions){
+
+	public List<VerificationResult> run(List<Criterion> criterions) {
 		List<CriterionRunner> criterionRunners = new LinkedList<CriterionRunner>();
 		try {
-			for(Criterion criterion : criterions){
+			for (Criterion criterion : criterions) {
 				CriterionRunner criterionRunner = new CriterionRunner(criterion);
 				criterionRunners.add(criterionRunner);
 				criterionRunner.start();
 			}
-			for(CriterionRunner criterionRunner : criterionRunners){
+			for (CriterionRunner criterionRunner : criterionRunners) {
 				criterionRunner.join();
 			}
 		} catch (InterruptedException e) {
 			LOGGER.error("OLOLO " + e);
 		}
 		List<VerificationResult> result = new LinkedList<VerificationResult>();
-		for(CriterionRunner criterionRunner : criterionRunners){
+		for (CriterionRunner criterionRunner : criterionRunners) {
 			result.add(criterionRunner.getResult());
 		}
 		return result;

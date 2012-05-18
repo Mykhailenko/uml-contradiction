@@ -19,7 +19,8 @@ import com.uml.contradiction.gui.models.DiagramForChoise;
 
 public class LoadXMIScenery {
 	private static final Logger LOGGER = Logger.getRootLogger();
-	public static void run() throws IOException{
+
+	public static void run() throws IOException {
 		JFileChooser chooser = new JFileChooser("Load XMI");
 		XMIFileFilter xmiFileFilter = new XMIFileFilter();
 		chooser.setFileFilter(xmiFileFilter);
@@ -27,7 +28,7 @@ public class LoadXMIScenery {
 		chooser.setAcceptAllFileFilterUsed(false);
 		chooser.setMultiSelectionEnabled(false);
 		int returnValue = chooser.showOpenDialog(PanelsController.mainWindow);
-		if(returnValue == JFileChooser.APPROVE_OPTION){
+		if (returnValue == JFileChooser.APPROVE_OPTION) {
 			final File file = chooser.getSelectedFile();
 			LOGGER.info("we choosed " + file.getName());
 			try {
@@ -37,8 +38,10 @@ public class LoadXMIScenery {
 					public void run() {
 						try {
 							XMIConverter.setFileAndParse(file);
-							List<DiagramForChoise> availableDiagram = XMIConverter.getAvailableDiagram();
-							PanelsController.diagramsPanel.setFromDiagrams(availableDiagram);
+							List<DiagramForChoise> availableDiagram = XMIConverter
+									.getAvailableDiagram();
+							PanelsController.diagramsPanel
+									.setFromDiagrams(availableDiagram);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -53,6 +56,5 @@ public class LoadXMIScenery {
 			}
 		}
 	}
-	
-	
+
 }

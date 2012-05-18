@@ -6,46 +6,51 @@ import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
 import com.uml.contradiction.model.cclass.AggregationKind;
 import com.uml.contradiction.model.cclass.Association;
 
-public class CompMultCorrect implements Predicate{
+public class CompMultCorrect implements Predicate {
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public boolean predict(List params) throws PredicatException {
-		Association as = (Association)(params.get(0));
+		Association as = (Association) (params.get(0));
 		boolean correct1 = false;
 		boolean correct2 = false;
-		
-		System.out.println("Check for classes " + as.getEnd1().getAssociatedClass() + " and " + as.getEnd2().getAssociatedClass());
-		if(as.getEnd1().getMultiplicity() != null) {
-			System.out.println("Multipl: class: " + as.getEnd1().getAssociatedClass().getName() + " " + as.getEnd1().getMultiplicity().toString());
+
+		System.out.println("Check for classes "
+				+ as.getEnd1().getAssociatedClass() + " and "
+				+ as.getEnd2().getAssociatedClass());
+		if (as.getEnd1().getMultiplicity() != null) {
+			System.out.println("Multipl: class: "
+					+ as.getEnd1().getAssociatedClass().getName() + " "
+					+ as.getEnd1().getMultiplicity().toString());
 		}
-		if(as.getEnd2().getMultiplicity() != null) {
-			System.out.println("Multipl: class: " + as.getEnd2().getAssociatedClass().getName() + " " + as.getEnd2().getMultiplicity().toString());
+		if (as.getEnd2().getMultiplicity() != null) {
+			System.out.println("Multipl: class: "
+					+ as.getEnd2().getAssociatedClass().getName() + " "
+					+ as.getEnd2().getMultiplicity().toString());
 		}
-		
-		if(as.getEnd1().getAggregationKind() != null &&
-				as.getEnd1().getAggregationKind() == AggregationKind.COMPOSITE) {
-			
-			if(as.getEnd1().getMultiplicity() == null ||
-				as.getEnd1().getMultiplicity().getUpperBound() <= 1){
-					correct1 = true;
+
+		if (as.getEnd1().getAggregationKind() != null
+				&& as.getEnd1().getAggregationKind() == AggregationKind.COMPOSITE) {
+
+			if (as.getEnd1().getMultiplicity() == null
+					|| as.getEnd1().getMultiplicity().getUpperBound() <= 1) {
+				correct1 = true;
 			}
-		}
-		else {
+		} else {
 			correct1 = true;
 		}
-		
-		if(as.getEnd2().getAggregationKind() != null &&
-				as.getEnd2().getAggregationKind() == AggregationKind.COMPOSITE) {
-			
-			if(as.getEnd2().getMultiplicity() == null ||
-				as.getEnd2().getMultiplicity().getUpperBound() <= 1){
-					correct2 = true;
+
+		if (as.getEnd2().getAggregationKind() != null
+				&& as.getEnd2().getAggregationKind() == AggregationKind.COMPOSITE) {
+
+			if (as.getEnd2().getMultiplicity() == null
+					|| as.getEnd2().getMultiplicity().getUpperBound() <= 1) {
+				correct2 = true;
 			}
-		}
-		else {
+		} else {
 			correct2 = true;
 		}
-	
+
 		return correct1 & correct2;
 	}
 
