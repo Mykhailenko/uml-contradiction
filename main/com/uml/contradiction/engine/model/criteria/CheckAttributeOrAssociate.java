@@ -12,7 +12,7 @@ import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
 import com.uml.contradiction.engine.model.predicate.Brackets;
 import com.uml.contradiction.engine.model.predicate.Brackets.OperationType;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
-import com.uml.contradiction.engine.model.rightPart.simple.RPAssosiates;
+import com.uml.contradiction.engine.model.rightPart.simple.RPAssosiations;
 import com.uml.contradiction.engine.model.rightPart.simple.RPOblecjLink;
 
 public class CheckAttributeOrAssociate extends Criterion {
@@ -46,7 +46,7 @@ public class CheckAttributeOrAssociate extends Criterion {
 		Quantifier quantifier3 = new Quantifier();
 		quantifier3.setType(QuantifierType.EXIST);
 		quantifier3.setBoundVariable(Variable.a);
-		quantifier3.setRightPart(new RPAssosiates());
+		quantifier3.setRightPart(new RPAssosiations());
 		getQuantifiers().add(quantifier3);
 		
 		Quantifier quantifier4 = new Quantifier();

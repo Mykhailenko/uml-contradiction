@@ -18,6 +18,9 @@ public class CriterionSuite {
 		result.add(new DisplayedCriterion(new UtilityStaticAttrOnly(), "UtilityStaticAttrOnly", "A class with stereotype \"utility\" may have only static attributes"));
 		result.add(new DisplayedCriterion(new UtilityStaticMthdOnly(), "UtilityStaticMthdOnly", "A class with stereotype \"utility\" may have only static methods"));
 		result.add(new DisplayedCriterion(new CorrectLifeLines(), "CorrectLifeLines", "Each lifeline should belong to exist class or object"));
+		result.add(new DisplayedCriterion(new CompositeMultOneOnly(), "CompositeMultOneOnly", "The multiplicity of a composite must be equal or less than 1."));
+			
+		
 		return result;
 	}
 	public static String getDescripritionOfCriterion(Criterion criterion){
