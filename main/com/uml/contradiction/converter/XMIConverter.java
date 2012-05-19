@@ -76,51 +76,58 @@ public class XMIConverter {
 															// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 		// метаданные
+		String name, value;
 		MetaData.setProjectName(umlModelEl.getAttribute("name"));
 		CoreParserImpl corePars = new CoreParserImpl();
 		MetaData.setExporter(corePars.getAttrByNameAndTag(umlModelEl,
 				"xmi:Documentation", "xmi:Exporter"));
-		Element extens = (Element) umlModelEl.getElementsByTagName(
-				"xmi:Extension").item(0);
-		Element projProp = (Element) extens.getElementsByTagName(
-				"projectProperties").item(0);
-		NodeList tagsByName = projProp.getElementsByTagName("projectProperty");
-		String name, value;
-		for (int i = 0; i < tagsByName.getLength(); i++) {
-			Element curTag = (Element) tagsByName.item(i);
-			if (curTag != null && (curTag.getParentNode() == projProp)) {
-				name = curTag.getAttribute("name");
-				value = curTag.getAttribute("value");
-				if (!value.equals("")) {
-					if (name.equals("company")) {
-						MetaData.setCompany(value);
-					}
-					if (name.equals("author")) {
-						MetaData.setAuthor(value);
-					}
-					if (name.equals("description")) {
-						MetaData.setDescription(value);
+		NodeList listExtens = umlModelEl.getElementsByTagName("xmi:Extension");
+		if(listExtens.getLength() > 0){
+			Element extens = (Element) listExtens.item(0);
+			NodeList propertList = extens.getElementsByTagName("projectProperties");
+			//разбор автора, компании, описания 
+			if(propertList.getLength()>0){
+				Element projProp = (Element) propertList.item(0);
+				NodeList tagsByName = projProp.getElementsByTagName("projectProperty");				
+				for (int i = 0; i < tagsByName.getLength(); i++) {
+					Element curTag = (Element) tagsByName.item(i);
+					if (curTag != null && (curTag.getParentNode() == projProp)) {
+						name = curTag.getAttribute("name");
+						value = curTag.getAttribute("value");
+						if (!value.equals("")) {
+							if (name.equals("company")) {
+								MetaData.setCompany(value);
+							}
+							if (name.equals("author")) {
+								MetaData.setAuthor(value);
+							}
+							if (name.equals("description")) {
+								MetaData.setDescription(value);
+							}
+						}
 					}
 				}
 			}
-		}
-		Element childModels = (Element) (extens
-				.getElementsByTagName("vpumlChildModels")).item(0);
-		Element propEl = (Element) ((Element) (childModels
-				.getElementsByTagName("vpumlModel").item(0)))
-				.getElementsByTagName("properties").item(0);
-		NodeList tagsByN = propEl.getElementsByTagName("property");
-		for (int i = 0; i < tagsByN.getLength(); i++) {
-			Element curTag = (Element) tagsByN.item(i);
-			if (curTag != null && (curTag.getParentNode() == propEl)) {
-				name = curTag.getAttribute("name");
-				value = curTag.getAttribute("value");
-				if (!value.equals("")) {
-					if (name.equals("pmCreateDateTime")) {
-						MetaData.setPmCreateDateTime(value);
-					}
-					if (name.equals("pmLastModified")) {
-						MetaData.setPmLastModified(value);
+			NodeList listVPmodels = extens.getElementsByTagName("vpumlChildModels");
+			if(listVPmodels.getLength()>0){
+				Element childModels = (Element) listVPmodels.item(0);
+				Element propEl = (Element) ((Element) (childModels
+						.getElementsByTagName("vpumlModel").item(0)))
+						.getElementsByTagName("properties").item(0);
+				NodeList tagsByN = propEl.getElementsByTagName("property");
+				for (int i = 0; i < tagsByN.getLength(); i++) {
+					Element curTag = (Element) tagsByN.item(i);
+					if (curTag != null && (curTag.getParentNode() == propEl)) {
+						name = curTag.getAttribute("name");
+						value = curTag.getAttribute("value");
+						if (!value.equals("")) {
+							if (name.equals("pmCreateDateTime")) {
+								MetaData.setPmCreateDateTime(value);
+							}
+							if (name.equals("pmLastModified")) {
+								MetaData.setPmLastModified(value);
+							}
+						}
 					}
 				}
 			}
