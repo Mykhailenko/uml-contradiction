@@ -2,7 +2,7 @@ package com.uml.contradiction.gui.vocabularies.english;
 
 public class DiagrPanelVoc {
 	public static String getBtnLabel(String element) {
-		String lbl = new String("?");
+		String lbl = "?";
 
 		if (element.equals("nextBut")) {
 			lbl = "Next >>";

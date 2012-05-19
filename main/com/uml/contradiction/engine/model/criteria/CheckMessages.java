@@ -53,6 +53,8 @@ public class CheckMessages extends Criterion {
 
 		BoundedPredicate boundedPredicate = new BoundedPredicate();
 		boundedPredicate.setPredicate(new MessageBelongToClass());
+		boundedPredicate.getPermittedNullVars().add(Variable.m);
+		boundedPredicate.getPermittedNullVars().add(Variable.c);
 		boundedPredicate.getBoundVariable().add(Variable.m);
 		boundedPredicate.getBoundVariable().add(Variable.c);
 		setFormula(boundedPredicate);

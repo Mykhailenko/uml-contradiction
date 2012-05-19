@@ -1,6 +1,7 @@
 package com.uml.contradiction.gui.components;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 import javax.swing.tree.DefaultTreeSelectionModel;
@@ -52,8 +53,8 @@ public class CheckTreeSelectionModel extends DefaultTreeSelectionModel {
 
 	// is path1 descendant of path2
 	private boolean isDescendant(TreePath path1, TreePath path2) {
-		Object obj1[] = path1.getPath();
-		Object obj2[] = path2.getPath();
+		Object [] obj1 = path1.getPath();
+		Object [] obj2 = path2.getPath();
 		for (int i = 0; i < obj2.length; i++) {
 			if (obj1[i] != obj2[i]) {
 				return false;
@@ -77,7 +78,7 @@ public class CheckTreeSelectionModel extends DefaultTreeSelectionModel {
 			if (selectionPaths == null) {
 				break;
 			}
-			ArrayList toBeRemoved = new ArrayList();
+			List toBeRemoved = new ArrayList();
 			for (int j = 0; j < selectionPaths.length; j++) {
 				if (isDescendant(selectionPaths[j], path)) {
 					toBeRemoved.add(selectionPaths[j]);

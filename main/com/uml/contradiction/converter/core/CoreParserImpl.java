@@ -25,26 +25,26 @@ public class CoreParserImpl implements CoreParser {
 	}
 
 	protected List<String> getAllIdDiagrams(DiagramType t, Element umlModelEl) {
-		// проходим по всем диаграммам с поиском выбранного типа
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		NodeList diagramAll = umlModelEl.getElementsByTagName("uml:Diagram");
 
 		String diagrType = null;
 		List<String> listId = new ArrayList<String>();
 
 		if (t == DiagramType.CLASS) {
-			diagrType = new String("ClassDiagram");
+			diagrType = "ClassDiagram";
 		}
 
 		if (t == DiagramType.SEQUENCE) {
-			diagrType = new String("InteractionDiagram");
+			diagrType = "InteractionDiagram";
 		}
 
 		if (t == DiagramType.STATE_MACHINE) {
-			diagrType = new String("StateDiagram");
+			diagrType = "StateDiagram";
 		}
 
 		if (t == DiagramType.OBJECT) {
-			diagrType = new String("ObjectDiagram");
+			diagrType = "ObjectDiagram";
 		}
 
 		for (int temp = 0; temp < diagramAll.getLength(); temp++) {
@@ -70,10 +70,10 @@ public class CoreParserImpl implements CoreParser {
 		return pres;
 	}
 
-	// получения списка Id элементов для выбранной диаграммы
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ Id пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	protected List<String> getIdElementsInDiagramm(
 			DiagramForChoise diagrForSearch, Element umlModelEl) {
-		// проходим по всем диаграммам с поиском выбранной
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		NodeList diagramAll = umlModelEl.getElementsByTagName("uml:Diagram");
 
 		String diagrType = null;
@@ -81,7 +81,7 @@ public class CoreParserImpl implements CoreParser {
 		int flag = 0;
 
 		if (diagrForSearch.getType() == DiagramType.CLASS) {
-			diagrType = new String("ClassDiagram");
+			diagrType = "ClassDiagram";
 		}
 
 		for (int temp = 0; temp < diagramAll.getLength(); temp++) {
@@ -108,7 +108,7 @@ public class CoreParserImpl implements CoreParser {
 		}
 	}
 
-	// относиться ли данный элемент к диаграмме
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	protected boolean isElementInDiagrammByID(String idElem) {
 		boolean present = false;
 
@@ -121,7 +121,7 @@ public class CoreParserImpl implements CoreParser {
 		return present;
 	}
 
-	// получение значения заданного атрибута в заданном теге
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 	public String getAttrByNameAndTag(Element elem, String tagName,
 			String attrName) {
 		NodeList tagsByName = elem.getElementsByTagName(tagName);

@@ -15,7 +15,7 @@ public abstract class InteractionElement {
 		};
 	}
 
-	abstract public Type getType();
+	public abstract  Type getType();
 
 	public boolean isMessage() {
 		return getType().equals(Type.MESSAGE);

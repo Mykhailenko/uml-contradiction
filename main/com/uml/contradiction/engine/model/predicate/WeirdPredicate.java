@@ -11,7 +11,7 @@ import com.uml.contradiction.model.sequence.Message;
 import com.uml.contradiction.model.statemachine.State;
 
 public class WeirdPredicate implements Predicate {
-	private final static Logger LOGGER = Logger.getRootLogger();
+	private  static final Logger LOGGER = Logger.getRootLogger();
 
 	/**
 	 * There are 2 input parameters in the list: - state (State) that contains

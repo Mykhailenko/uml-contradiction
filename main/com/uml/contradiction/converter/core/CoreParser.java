@@ -6,7 +6,7 @@ import org.w3c.dom.Element;
 
 public interface CoreParser {
 
-	public List<Object> parse(Element umlModelEl);
+	List<Object> parse(Element umlModelEl);
 
-	public void makeResult();
+	void makeResult();
 }

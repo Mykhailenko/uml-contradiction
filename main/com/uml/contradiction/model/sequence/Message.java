@@ -1,5 +1,6 @@
 package com.uml.contradiction.model.sequence;
 
+import com.uml.contradiction.engine.model.Pair;
 import com.uml.contradiction.model.statemachine.Trigger;
 
 public class Message extends InteractionElement {
@@ -21,22 +22,26 @@ public class Message extends InteractionElement {
 
 	public void parseStr(String str) {
 		originalString = str;
-		// System.out.println("There are " + str);
-		// i suppose to get some like that 'ololoName(param1,param2)' or
-		// 'disable()' or 'enable'
-		if (str.contains("(")) { // first or second case
-			methodName = str.substring(0, str.indexOf("(")).trim();
-			String params = str.substring(str.indexOf("("), str.indexOf(")"));
-			params = params.replaceAll(" ", "");
-			if (params.length() > 2) {// first case
-				paramCount = params.split(",").length;
-			} else {
-				paramCount = 1;
-			}
-		} else {
-			methodName = str;
-			paramCount = 0;
-		}
+		Pair<String, Integer> p = Trigger.getNameAndParamCount(str);
+		methodName = p.a;
+		paramCount = p.b;
+		
+//		// System.out.println("There are " + str);
+//		// i suppose to get some like that 'ololoName(param1,param2)' or
+//		// 'disable()' or 'enable'
+//		if (str.contains("(")) { // first or second case
+//			methodName = str.substring(0, str.indexOf("(")).trim();
+//			String params = str.substring(str.indexOf("("), str.indexOf(")"));
+//			params = params.replaceAll(" ", "");
+//			if (params.length() > 2) {// first case
+//				paramCount = params.split(",").length;
+//			} else {
+//				paramCount = 1;
+//			}
+//		} else {
+//			methodName = str;
+//			paramCount = 0;
+//		}
 	}
 
 	public String getMethodName() {

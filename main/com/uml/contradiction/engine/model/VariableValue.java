@@ -16,7 +16,7 @@ public class VariableValue {
 
 	@Override
 	public int hashCode() {
-		return variable.hashCode() + (value != null ? value.hashCode() : 0);
+		return variable.hashCode() + ((value != null )? value.hashCode() : 0);
 		// return variable.hashCode() + value.hashCode();
 	}
 

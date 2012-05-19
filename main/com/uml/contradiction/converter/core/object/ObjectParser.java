@@ -85,7 +85,7 @@ public class ObjectParser extends CoreParserImpl implements CoreParser {
 							"value");
 				}
 				if (typeMod == null) {
-					typeMod = new String("");
+					typeMod = "";
 				}
 
 				if (!typeMod.equals("Link")) { // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
@@ -193,7 +193,7 @@ public class ObjectParser extends CoreParserImpl implements CoreParser {
 							"value");
 				}
 				if (typeMod == null) {
-					typeMod = new String("");
+					typeMod = "";
 				}
 
 				if (typeMod.equals("Link")) {
@@ -224,19 +224,18 @@ public class ObjectParser extends CoreParserImpl implements CoreParser {
 		}
 	}
 
-	// добавляем элементы к диаграмме объектов
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	private void makeObjectDiagram(Element umlModelEl) {
 		NodeList diagramAll = umlModelEl.getElementsByTagName("uml:Diagram");
 		List<ObjectDiagram> objDiagrams = ObjectGraph.getObjectDiagrams();
-		String diagrType = new String("ObjectDiagram");
-		;
+		String diagrType = "ObjectDiagram";
 
 		for (int temp = 0; temp < diagramAll.getLength(); temp++) {
 			Element curDiagr = (Element) diagramAll.item(temp);
 			@SuppressWarnings("unused")
 			String diagrId = curDiagr.getAttribute("xmi:id");
 
-			// проход по всем диграммам объектов
+			// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			if (curDiagr.getAttribute("diagramType").equals(diagrType)) {
 				ObjectDiagram curObjDiagr = new ObjectDiagram();
 				curObjDiagr.setName(curDiagr.getAttribute("name"));
@@ -252,7 +251,7 @@ public class ObjectParser extends CoreParserImpl implements CoreParser {
 					String typeElem = curElem
 							.getAttribute("preferredShapeType");
 
-					// если элемент - объект
+					// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅ
 					if (typeElem.equals("InstanceSpecification")) {
 						OObject objectCur = objectsWithId.get(refOnElemDiagr);
 
@@ -266,7 +265,7 @@ public class ObjectParser extends CoreParserImpl implements CoreParser {
 							objects.add(objectCur);
 						}
 					}
-					// если элемент - связь
+					// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ
 					if (typeElem.equals("Link")) {
 						Link linkCur = linksWithId.get(refOnElemDiagr);
 

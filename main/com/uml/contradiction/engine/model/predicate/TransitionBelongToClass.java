@@ -51,7 +51,7 @@ public class TransitionBelongToClass implements Predicate {
 
 	private static int paramsCount(String str) {
 		if (str.contains("(")) { // first or second case
-			String params = str.substring(str.indexOf("("), str.indexOf(")"));
+			String params = str.substring(str.indexOf('('), str.indexOf(')'));
 			params = params.replaceAll(" ", "");
 			if (params.length() > 2) {// first case
 				return params.split(",").length;

@@ -22,7 +22,6 @@ public class UtilStaticMthsTemplate extends ResultTemplate {
 		s = s + "There is a method " + marker + meth.getName() + marker
 				+ " withinstance scope in class " + marker + cl.getName()
 				+ marker + " with stereotype \"utility\"";
-		;
 
 		super.setDiagrams(hpi.getItems());
 		this.description = s;

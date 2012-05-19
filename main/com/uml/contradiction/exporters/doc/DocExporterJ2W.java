@@ -153,12 +153,13 @@ public class DocExporterJ2W implements Exporter {
 		PrintWriter writer = null;
 		try {
 			writer = new PrintWriter(fileObj);
+			writer.println(content);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
+		}finally{
+			writer.close();
 		}
 
-		writer.println(content);
-		writer.close();
 	}
 
 	private void addFooter() {

@@ -100,6 +100,7 @@ public class TxtExporter implements Exporter {
 		addFooter();
 
 		// //////////////////////////////////
+		fileWriter.close();
 		out.flush();
 		out.close();
 		out = null;

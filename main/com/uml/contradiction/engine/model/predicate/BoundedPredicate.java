@@ -1,13 +1,17 @@
 package com.uml.contradiction.engine.model.predicate;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+//import org.apache.log4j.Logger;
 
 import com.uml.contradiction.engine.model.Variable;
 import com.uml.contradiction.engine.model.VariableValue;
 import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
 
 public class BoundedPredicate implements Formula {
+//	private static final Logger LOGGER = Logger.getRootLogger();
 	private List<Variable> boundVariable = new LinkedList<Variable>();
 	private List<Variable> permittedNullVars = new LinkedList<Variable>();
 
@@ -43,12 +47,46 @@ public class BoundedPredicate implements Formula {
 	public void setPredicate(Predicate predicate) {
 		this.predicate = predicate;
 	}
-
+	public int trickyMethod(List<VariableValue> lst){
+		List<VariableValue> newLst = new ArrayList<VariableValue>(lst);
+		for(int i = newLst.size() - 1; i >= 0; --i){
+			boolean notFound = true;
+			for(Variable v : boundVariable){
+				if(newLst.get(i).variable == v){
+					notFound = false;
+					break;
+				}
+			}
+			if(notFound){
+				newLst.remove(i);
+			}
+		}
+		int result = 0;
+		for(int i = 0; i < newLst.size(); ++i){
+			if(newLst.get(i).value == null){
+				if(permittedNullVars.contains(newLst.get(i).variable)){
+					result = 1;
+				}else{
+					result = -1;
+				}
+			}
+		}
+		return result;		
+	}
 	@Override
 	public boolean predict(List<VariableValue> variableValues) {
 		List<Object> vars = new LinkedList<Object>();
 		for (int i = 0; i < boundVariable.size(); ++i) {
 			vars.add(findVV(variableValues, boundVariable.get(i)));
+		}
+		int r = trickyMethod(variableValues);
+		switch (r) {
+		case 1:
+			return true;
+		case -1:
+			return false;
+		case 0:
+		default:
 		}
 		boolean result = false;
 
@@ -71,8 +109,8 @@ public class BoundedPredicate implements Formula {
 
 	private boolean isNullExist(List<VariableValue> list) {
 		for (VariableValue o : list) {
-			if (o.value == null && !this.permittedNullVars.contains(o.variable)) {
-				System.out.println("CONTAINS!!!!!!!!");
+			if (o.value == null && !isVarialbePermitterToNull(o.variable)) {
+//				System.out.println("CONTAINS!!!!!!!!");
 				return true;
 			}
 		}
@@ -81,14 +119,17 @@ public class BoundedPredicate implements Formula {
 
 	private boolean containsPermittedNullVar(List<VariableValue> list) {
 		for (VariableValue o : list) {
-			if (o.value == null && this.permittedNullVars.contains(o.variable)) {
-				System.out.println("CONTAINS PERMITTED!!!!!!!!");
+			if (o.value == null && permittedNullVars.contains(o.variable)) {
+//				System.out.println("CONTAINS PERMITTED!!!!!!!!");
 				return true;
 			}
 		}
 		return false;
 	}
-
+	private boolean isVarialbePermitterToNull(Variable v){
+		boolean result = permittedNullVars.contains(v);
+		return result;
+	}
 	private Object findVV(List<VariableValue> list, Variable variable) {
 		for (VariableValue variableValue : list) {
 			if (variableValue.variable.equals(variable)) {

@@ -53,10 +53,11 @@ public class CheckTriggers extends Criterion {
 		BoundedPredicate boundedPredicate = new BoundedPredicate();
 		boundedPredicate.getBoundVariable().add(Variable.t);
 		boundedPredicate.getBoundVariable().add(Variable.c);
+		boundedPredicate.getPermittedNullVars().add(Variable.t);
 		boundedPredicate.setPredicate(new TriggerBelongToClass());
 		setFormula(boundedPredicate);
 	}
-
+	
 	@Override
 	public int getInternalID() {
 		return -5;

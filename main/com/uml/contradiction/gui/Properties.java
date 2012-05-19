@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 
 public class Properties {
-	static private java.util.Properties properties;
+	private static  java.util.Properties properties;
 	static {
 		properties = new java.util.Properties();
 		try {

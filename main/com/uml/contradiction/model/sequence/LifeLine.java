@@ -7,14 +7,14 @@ public class LifeLine {
 	private String name;
 	private CClass cClass;
 	private OObject oObject;
-	private boolean classLifeLine; // равно 0, когда актер(имя в name
-									// заноситься) или нет ссылки на класс
-	private boolean anonymObject; // равно 1, когда анонимный объект класса
+	private boolean classLifeLine; // пїЅпїЅпїЅпїЅпїЅ 0, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ(пїЅпїЅпїЅ пїЅ name
+									// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ) пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	private boolean anonymObject; // пїЅпїЅпїЅпїЅпїЅ 1, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 
-	// Случай classLifeLine = 1, anonymObject = 0 означает наличия имени объекта
-	// у lifeline
-	// если при этом oObject = null, то нет объекта с заданным именем и это имя
-	// запишеться в name
+	// пїЅпїЅпїЅпїЅпїЅпїЅ classLifeLine = 1, anonymObject = 0 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	// пїЅ lifeline
+	// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ oObject = null, пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ name
 
 	public CClass getcClass() {
 		return cClass;
@@ -58,7 +58,7 @@ public class LifeLine {
 
 	@Override
 	public String toString() {
-		String s = new String("LifeLine [");
+		String s = "LifeLine [";
 		if (name != null) {
 			s += "LifeLineName=" + name;
 		}

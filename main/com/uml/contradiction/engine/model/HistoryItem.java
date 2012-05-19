@@ -3,10 +3,9 @@ package com.uml.contradiction.engine.model;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 
 public class HistoryItem {
-	private static final Logger LOGGER = Logger.getRootLogger();
+//	private static final Logger LOGGER = Logger.getRootLogger();
 	private HistoryItem parent = null;
 	private VariableValue variableValue = new VariableValue();
 	private List<HistoryItem> children = new LinkedList<HistoryItem>();
@@ -39,13 +38,14 @@ public class HistoryItem {
 			result.add(0, curr.variableValue);
 			curr = curr.parent;
 		}
-		for (VariableValue vv : result) {
-			LOGGER.debug("" + vv.variable + " = " + vv.value);
-		}
-		LOGGER.debug(" ");
+//		for (VariableValue vv : result) {
+//			LOGGER.debug("" + vv.variable + " = " + vv.value);
+//		}
+//		LOGGER.debug(" ");
 		return result;
 
 	}
+	
 
 	public int getDepth() {
 		int result = 1;

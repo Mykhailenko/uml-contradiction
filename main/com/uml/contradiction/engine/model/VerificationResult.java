@@ -45,7 +45,12 @@ public class VerificationResult {
 		if (good) {
 			return "OK!";
 		} else {
-			return "ERROR";
+			StringBuffer sb = new StringBuffer();
+			for(HistoryPlainItem hpi : failHistory){
+				sb.append(hpi.toString());
+				sb.append('\n');
+			}
+			return "ERROR " + sb.toString();
 		}
 	}
 

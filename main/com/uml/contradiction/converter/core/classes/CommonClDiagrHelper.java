@@ -26,7 +26,7 @@ public class CommonClDiagrHelper {
 	private static final Logger logger = Logger
 			.getLogger(CommonClDiagrHelper.class);
 
-	// получаем стереотипы со ссылками на классы
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	public void getStereotWithId(Element umlModel,
 			Map<String, Set<Stereotype>> streotypeWithRefClass) {
 
@@ -37,7 +37,7 @@ public class CommonClDiagrHelper {
 		Node sterNode = umlModel.getNextSibling();
 		String tagName = null;
 
-		while (sterNode != null) { // находим все элементов типа стреотип
+		while (sterNode != null) { // пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 			if (sterNode.getNodeType() == Node.ELEMENT_NODE) {
 				Element stereotypeEl = (Element) sterNode;
@@ -46,7 +46,7 @@ public class CommonClDiagrHelper {
 
 				String stereotypeName = getStereotypeName(tagName);
 
-				// если точно тег-стереотип
+				// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 				if (stereotypeName != null) {
 					boolean flagIsUmlSter = false;
 					boolean isRefOnIdClass = false;
@@ -54,7 +54,7 @@ public class CommonClDiagrHelper {
 					Stereotype curStereot = null;
 					String refOnIdClass = null;
 
-					// получение ссылки на класс
+					// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 					if (stereotypeEl.hasAttribute("base_Class")) {
 						refOnIdClass = stereotypeEl.getAttribute("base_Class");
 						isRefOnIdClass = true;
@@ -96,7 +96,7 @@ public class CommonClDiagrHelper {
 						}
 					}
 
-					// если UMLClassStereotype
+					// пїЅпїЅпїЅпїЅ UMLClassStereotype
 					if (stereotypeName.equals("control")) {
 						curStereot = UMLClassStereotype.CONTROL;
 						flagIsUmlSter = true;
@@ -113,7 +113,7 @@ public class CommonClDiagrHelper {
 						curStereot = UMLClassStereotype.IMPLEMENTATION_CLASS;
 						flagIsUmlSter = true;
 					}
-					// если UserStereotype
+					// пїЅпїЅпїЅпїЅ UserStereotype
 					if (!flagIsUmlSter) {
 						curStereot = new UserStereotype(stereotypeName);
 					}
@@ -122,7 +122,7 @@ public class CommonClDiagrHelper {
 
 					if (refOnIdClass != null && curStereot != null) {
 						Set<Stereotype> setSters;
-						// если ссылки на класс с ID refOnIdClass ещё не было
+						// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ ID refOnIdClass пїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ
 						if (streotypeWithRefClass.get(refOnIdClass) == null) {
 
 							setSters = new HashSet<Stereotype>();
@@ -139,7 +139,7 @@ public class CommonClDiagrHelper {
 				break;
 			}
 
-			// перешли на следующий узел
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 			sterNode = sterNode.getNextSibling();
 		}
 	}
@@ -149,11 +149,11 @@ public class CommonClDiagrHelper {
 		boolean checked = false;
 		String[] arrPartColon = tagName.split(":");
 
-		// проверка что это тег с нужным именем
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		if (tagName.split(":") != null) {
 			String profileName = arrPartColon[0];
 			int lenProf = profileName.length();
-			// отнимаем длину слова profile
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ profile
 			String prof = profileName.substring(lenProf - 7);
 			if (prof.equals("profile")) {
 				checked = true;
@@ -176,7 +176,7 @@ public class CommonClDiagrHelper {
 	// int temp;
 	//
 	// for (temp = 0; temp < rules.getLength(); temp++) {
-	// //разбор одного элемента
+	// //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	// Element curRule = (Element)rules.item(temp);
 	//
 	// String strOfRefs = curRule.getAttribute("constrainedElement");
@@ -199,7 +199,7 @@ public class CommonClDiagrHelper {
 	// }
 	// }
 
-	// добавление к класс диаграмме пакета, в котором она содержиться
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	public boolean putParentPackInClassDiadramm(
 			Map<String, ClassDiagram> diagrClassWithId, Element umlModelEl,
 			Package curUmlPackage) {
@@ -212,7 +212,7 @@ public class CommonClDiagrHelper {
 		if (firstExt.getParentNode() == umlModelEl) {
 			NodeList subDiagrams = firstExt.getElementsByTagName("subdiagram");
 
-			// для всех тегов- ссылок на ID диаграммы классов
+			// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ- пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ ID пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			for (int i = 0; i < subDiagrams.getLength(); i++) {
 				Element curSubDiagram = (Element) subDiagrams.item(i);
 
@@ -220,7 +220,7 @@ public class CommonClDiagrHelper {
 					String idSub = curSubDiagram.getAttribute("xmi:value");
 					ClassDiagram clDiagr = diagrClassWithId.get(idSub);
 
-					if (clDiagr != null) { // устанавливаем пакет для диаграммы
+					if (clDiagr != null) { // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 						clDiagr.setParentPackageElement(curUmlPackage);
 						hasSubDiagrams = true;
 					}
@@ -233,7 +233,7 @@ public class CommonClDiagrHelper {
 		return hasSubDiagrams;
 	}
 
-	// добавляем ссылки на классы и ассоциации к диаграмме классов
+	// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 	public void putClassesAssocInClDiagramm(Map<String, CClass> classesWithId,
 			Map<String, Association> assocesWithId,
 			Map<String, ClassDiagram> diagrClassWithId,
@@ -242,10 +242,10 @@ public class CommonClDiagrHelper {
 			Map<String, Generalization> generalizationsWithId,
 			Element umlModelEl) {
 
-		// проходим по всем диаграммам с поиском диаграмм классов
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		NodeList diagramAll = umlModelEl.getElementsByTagName("uml:Diagram");
 
-		String diagrType = new String("ClassDiagram");
+		String diagrType = "ClassDiagram";
 
 		for (int temp = 0; temp < diagramAll.getLength(); temp++) {
 			Element curDiagr = (Element) diagramAll.item(temp);
@@ -269,7 +269,7 @@ public class CommonClDiagrHelper {
 						String typeElem = curElem
 								.getAttribute("preferredShapeType");
 
-						// если элемент - класс
+						// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅ
 						if (typeElem.equals("Class")) {
 							CClass classCur = classesWithId.get(refOnObject);
 
@@ -283,7 +283,7 @@ public class CommonClDiagrHelper {
 								classes.add(classCur);
 							}
 						}
-						// если элемент - ассоциация
+						// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 						if (typeElem.equals("Association")) {
 							Association assocCur = assocesWithId
 									.get(refOnObject);
@@ -299,7 +299,7 @@ public class CommonClDiagrHelper {
 								assoces.add(assocCur);
 							}
 						}
-						// если элемент - Generalization
+						// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - Generalization
 						if (typeElem.equals("Generalization")) {
 							Generalization genCur = generalizationsWithId
 									.get(refOnObject);
@@ -315,7 +315,7 @@ public class CommonClDiagrHelper {
 								gens.add(genCur);
 							}
 						}
-						// если элемент - Realization
+						// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - Realization
 						if (typeElem.equals("Realization")) {
 							Realization realCur = realizationsWithId
 									.get(refOnObject);
@@ -331,7 +331,7 @@ public class CommonClDiagrHelper {
 								reals.add(realCur);
 							}
 						}
-						// если элемент - Dependency
+						// пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ - Dependency
 						if (typeElem.equals("Dependency")) {
 							Dependency depenCur = dependenciesWithId
 									.get(refOnObject);

@@ -26,7 +26,6 @@ public class Checker {
 	public VerificationResult verify() {
 		Quantifier quantifier = criterion.getQuantifiers().get(0);
 		List<Object> firstSet = null;
-		;
 		try {
 			firstSet = quantifier.getRightPart().getSet(null);
 		} catch (MappingException e) {
@@ -48,6 +47,7 @@ public class Checker {
 		// ��������������
 
 		VerificationResult result = analyseHistory();
+		LOGGER.error(result.toString());
 		return result;
 	}
 

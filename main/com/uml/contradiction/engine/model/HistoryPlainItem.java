@@ -17,7 +17,19 @@ public class HistoryPlainItem {
 	public void setItems(List<VariableValue> items) {
 		this.items = items;
 	}
-
+	@Override
+	public String toString() {
+		StringBuffer sb = new StringBuffer();
+		for(VariableValue vv : items){
+			sb.append(vv.variable + ":");
+			if(vv.value == null){
+				sb.append("null;");
+			}else{
+				sb.append("!=null;");
+			}
+		}
+		return sb.toString();
+	}
 	@Override
 	public boolean equals(Object obj) {
 		HistoryPlainItem hpi = (HistoryPlainItem) obj;

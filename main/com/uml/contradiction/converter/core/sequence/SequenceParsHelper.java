@@ -50,7 +50,7 @@ public class SequenceParsHelper {
 		CClass referClass;
 		String lifelnName = lifeLine.getAttribute("name");
 
-		// находим класс, на который ссылается lifeline
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ lifeline
 		if (lifeLine.hasAttribute("represents")) {
 			String idOwnAttr = lifeLine.getAttribute("represents");
 			if (!idOwnAttr.equals("")) {
@@ -64,7 +64,7 @@ public class SequenceParsHelper {
 
 						if (lifelnName.equals("")) {
 							lifeln.setAnonymObject(true);
-						} else { // конкретный объект
+						} else { // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 							lifeln.setAnonymObject(false);
 							boolean isObj = false;
 							OObject ob1 = null;
@@ -79,15 +79,15 @@ public class SequenceParsHelper {
 							if (isObj) {
 								lifeln.setoObject(ob1);
 							} else {
-								// нет объекта с заданным именем
+								// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 								lifeln.setName(lifelnName);
 							}
 						}
 					} else {
 						logger.info("reference on unknown cclass");
 					}
-				} else { // если не ссылается на класс через средство VP
-					// возможна ссылка на сам класс
+				} else { // пїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ VP
+					// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 					boolean isCls = false;
 					String[] arrS = lifelnName.split(":");
 					if (arrS.length > 2) {
@@ -99,7 +99,7 @@ public class SequenceParsHelper {
 							CClass cl1 = null;
 							for (CClass cl : clses) {
 								String fullname = cl.getFullName();
-								int deleteDefPack = fullname.indexOf(".");
+								int deleteDefPack = fullname.indexOf('.');
 								String withoutDefPack = fullname
 										.substring(deleteDefPack + 1);
 								if (withoutDefPack.equals(lifelnName)) {
@@ -116,7 +116,7 @@ public class SequenceParsHelper {
 					if (isCls) {
 						lifeln.setClassLifeLine(true);
 					} else {
-						// нет никаких ссылок
+						// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 						lifeln.setClassLifeLine(false);
 						if (!lifelnName.equals("")) {
 							lifeln.setName(lifelnName);
@@ -132,7 +132,7 @@ public class SequenceParsHelper {
 	public void parseAllLifelines(Element frameEl) {
 
 		NodeList ownedAttrs = frameEl.getElementsByTagName("ownedAttribute");
-		// работаем с вложенными ссылками жизненных линий на классы
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		for (int k = 0; k < ownedAttrs.getLength(); k++) {
 			Element ownedAttrEl = (Element) ownedAttrs.item(k);
 			if (ownedAttrEl.getParentNode() == frameEl) {
@@ -146,13 +146,13 @@ public class SequenceParsHelper {
 			}
 		}
 		NodeList includedLifelines = frameEl.getElementsByTagName("lifeline");
-		// работаем с вложенными жизненными линиями
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		for (int k = 0; k < includedLifelines.getLength(); k++) {
 			Element lifelineEl = (Element) includedLifelines.item(k);
 
-			// проверка что точно Lifeline
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ Lifeline
 			if (lifelineEl.getAttribute("xmi:type").equals("uml:Lifeline")) {
-				// получаем LifeLine
+				// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ LifeLine
 				LifeLine curLifeLine = parseLifeline(lifelineEl);
 				lifelinesWithId.put(lifelineEl.getAttribute("xmi:id"),
 						curLifeLine);
@@ -160,20 +160,20 @@ public class SequenceParsHelper {
 		}
 	}
 
-	// разбор фрагментов - промежуточное звено между lifeline и message
+	// пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ lifeline пїЅ message
 	public void parseAllInlaidEvents(Element frameEl) {
 
 		NodeList events = frameEl.getElementsByTagName("fragment");
-		// работаем с вложенными фрагментами Events
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Events
 		for (int k = 0; k < events.getLength(); k++) {
 			Element eventEl = (Element) events.item(k);
 
-			// рассматриваем фрагменты тольео для сообщений
-			// для комбинрованных фрагментов берем только их внутренность
+			// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+			// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 			String frag = eventEl.getAttribute("xmi:type");
 			if (frag.equals("uml:MessageOccurrenceSpecification")) {
 
-				// получаем ccылку на lifeline
+				// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ccпїЅпїЅпїЅпїЅ пїЅпїЅ lifeline
 				String covd = eventEl.getAttribute("covered");
 				LifeLine curLfln = lifelinesWithId.get(covd);
 				if (curLfln == null) {
@@ -189,7 +189,7 @@ public class SequenceParsHelper {
 
 	public Message parseMessage(Element messElem) {
 
-		// не рассматриваем возвратные сообщения
+		// пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		String messSort = messElem.getAttribute("messageSort");
 		if (messSort.equals("reply")) {
 			return null;
@@ -200,20 +200,20 @@ public class SequenceParsHelper {
 		String messageValue = messElem.getAttribute("name");
 		curMess.parseStr(messageValue);
 
-		// получили Id получающего Event (fragment)
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Id пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Event (fragment)
 		String resEvId = messElem.getAttribute("receiveEvent");
 
-		// сообщение ссылается на lifeline
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ lifeline
 		LifeLine resLifeline = fragmentsWithLifeln.get(resEvId);
 
 		if (resLifeline != null) {
-			curMess.setTarget(resLifeline); // /В сообщение сослались на
-											// получающее Event
+			curMess.setTarget(resLifeline); // /пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ
+											// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Event
 		} else {
 			logger.warn("recieve Event was not find before message");
 		}
 
-		// получили Id отправляющего Event
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Id пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Event
 		String sendEvId = messElem.getAttribute("sendEvent");
 		LifeLine sendLifeln = fragmentsWithLifeln.get(sendEvId);
 
@@ -230,7 +230,7 @@ public class SequenceParsHelper {
 		// if(messSort.equals("reply"))
 		// curMess.setMessageSort(MessageSort.ASYNCH_SIGNAL);
 
-		// получаем ссылку на метод из сообщения
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		CoreParserImpl coreParse = new CoreParserImpl();
 		Element extens = (Element) messElem.getElementsByTagName(
 				"xmi:Extension").item(0);
@@ -241,7 +241,7 @@ public class SequenceParsHelper {
 		if (methodStr != null) {
 			// for (int i = methodStr.length(); i!=0 || methodStr.in[i] != "$";
 			// i--) {
-			index = methodStr.indexOf("$");
+			index = methodStr.indexOf('$');
 			if (index != -1) {
 				String id4Meth = methodStr.substring(index + 1,
 						methodStr.length() - 1);

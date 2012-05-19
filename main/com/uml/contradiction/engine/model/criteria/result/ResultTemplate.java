@@ -26,7 +26,7 @@ public abstract class ResultTemplate {
 
 	public abstract void setDiagrTypes();
 
-	public ResultTemplate() {
+	protected ResultTemplate() {
 		this.setDiagrTypes();
 	}
 

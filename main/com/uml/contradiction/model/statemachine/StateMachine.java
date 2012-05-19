@@ -64,7 +64,7 @@ public class StateMachine implements Diagram {
 
 	@Override
 	public String toString() {
-		String s = new String("\n\t, states=");
+		String s = "\n\t, states=";
 		if (states != null) {
 			for (State st : states) {
 				s += "\n\t    " + st + ", ";

@@ -11,9 +11,9 @@ public abstract class Criterion {
 	private List<Quantifier> quantifiers = new LinkedList<Quantifier>();
 	private Formula formula;
 
-	abstract public int getInternalID();
+	public abstract int getInternalID();
 
-	abstract public CriterionType getCriterionType();
+	public abstract  CriterionType getCriterionType();
 
 	public List<Quantifier> getQuantifiers() {
 		return quantifiers;
