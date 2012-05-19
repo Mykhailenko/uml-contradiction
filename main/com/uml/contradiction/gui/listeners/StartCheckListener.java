@@ -10,6 +10,7 @@ import com.uml.contradiction.gui.Client;
 import com.uml.contradiction.gui.controllers.PanelsController;
 import com.uml.contradiction.gui.panels.ContradictionsPanel;
 import com.uml.contradiction.gui.sceneries.StartCheckScenery;
+import com.uml.contradiction.model.cclass.ClassGraph;
 
 public class StartCheckListener implements ActionListener {
 
@@ -22,6 +23,7 @@ public class StartCheckListener implements ActionListener {
 
 		} else {
 			StartCheckScenery.run(nodes);
+			System.out.println(ClassGraph.getAssociations().size());
 			Client.getClient().verified();
 		}
 	}
