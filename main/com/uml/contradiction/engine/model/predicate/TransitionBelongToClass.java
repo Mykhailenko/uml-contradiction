@@ -6,6 +6,7 @@ import com.uml.contradiction.engine.model.predicate.exception.PredicatException;
 import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.cclass.MMethod;
 import com.uml.contradiction.model.statemachine.Transition;
+import com.uml.contradiction.model.statemachine.Trigger;
 
 public class TransitionBelongToClass implements Predicate {
 
@@ -50,21 +51,22 @@ public class TransitionBelongToClass implements Predicate {
 	}
 
 	private static int paramsCount(String str) {
-		if (str.contains("(")) { // first or second case
-			String params = str.substring(str.indexOf('('), str.indexOf(')'));
-			params = params.replaceAll(" ", "");
-			if (params.length() > 2) {// first case
-				return params.split(",").length;
-			} else {
-				if (str.contains("()")) {
-					return 0;
-				} else {
-					return 1;
-				}
-			}
-		} else {
-			return 0;
-		}
+		return Trigger.getNameAndParamCount(str).b;
+//		if (str.contains("(")) { // first or second case
+//			String params = str.substring(str.indexOf('('), str.indexOf(')'));
+//			params = params.replaceAll(" ", "");
+//			if (params.length() > 2) {// first case
+//				return params.split(",").length;
+//			} else {
+//				if (str.contains("()")) {
+//					return 0;
+//				} else {
+//					return 1;
+//				}
+//			}
+//		} else {
+//			return 0;
+//		}
 	}
 
 	@Override
