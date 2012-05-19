@@ -15,6 +15,7 @@ import com.uml.contradiction.common.DiagramType;
 import com.uml.contradiction.converter.core.CoreParser;
 import com.uml.contradiction.converter.core.CoreParserImpl;
 import com.uml.contradiction.model.VertexType;
+import com.uml.contradiction.model.cclass.AggregationKind;
 import com.uml.contradiction.model.cclass.Association;
 import com.uml.contradiction.model.cclass.AssociationClass;
 import com.uml.contradiction.model.cclass.AssociationEnd;
@@ -183,6 +184,9 @@ public class ClassParser extends CoreParserImpl implements CoreParser {
 
 		// проверка
 		check();
+		
+		//изменение направления агрегации
+		changeDirrectionAggregation();
 
 		// запись значений в статические коллекции
 		addToClassGraf(rootPackage);
@@ -575,4 +579,31 @@ public class ClassParser extends CoreParserImpl implements CoreParser {
 		}
 		return okFlag;
 	}
+	
+	//изменение направления агрегации
+	private void changeDirrectionAggregation(){
+		for (String key : assocesWithId.keySet()) {
+			Association ass = assocesWithId.get(key);
+			if (ass.getEnd1().getAggregationKind() == AggregationKind.COMPOSITE) {
+				ass.getEnd2().setAggregationKind(AggregationKind.COMPOSITE);
+				ass.getEnd1().setAggregationKind(AggregationKind.NONE);
+			}else{
+				if (ass.getEnd2().getAggregationKind() == AggregationKind.COMPOSITE) {
+					ass.getEnd1().setAggregationKind(AggregationKind.COMPOSITE);
+					ass.getEnd2().setAggregationKind(AggregationKind.NONE);
+				}else{
+					if (ass.getEnd2().getAggregationKind() == AggregationKind.SHARED) {
+						ass.getEnd1().setAggregationKind(AggregationKind.SHARED);
+						ass.getEnd2().setAggregationKind(AggregationKind.NONE);
+					}else{
+						if (ass.getEnd1().getAggregationKind() == AggregationKind.SHARED) {
+							ass.getEnd2().setAggregationKind(AggregationKind.SHARED);
+							ass.getEnd1().setAggregationKind(AggregationKind.NONE);
+						}
+					}
+				}
+			}
+		}
+	}
+	
 }
