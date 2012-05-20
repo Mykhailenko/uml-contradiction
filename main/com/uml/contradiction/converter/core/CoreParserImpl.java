@@ -23,7 +23,7 @@ public class CoreParserImpl implements CoreParser {
 	@Override
 	public void makeResult() {
 	}
-
+//лоролорлор
 	protected List<String> getAllIdDiagrams(DiagramType t, Element umlModelEl) {
 		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ С‹РІС„С‹С‰Р›Р’Р¤Р«Р—
 		NodeList diagramAll = umlModelEl.getElementsByTagName("uml:Diagram");
