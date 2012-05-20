@@ -25,7 +25,7 @@ public class CoreParserImpl implements CoreParser {
 	}
 
 	protected List<String> getAllIdDiagrams(DiagramType t, Element umlModelEl) {
-		// �������� �� ���� ���������� � ������� ���������� ����
+		// �������� �� ���� ���������� � ������� ���������� ���� ывфыщЛВФЫЗ
 		NodeList diagramAll = umlModelEl.getElementsByTagName("uml:Diagram");
 
 		String diagrType = null;
