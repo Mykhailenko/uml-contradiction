@@ -19,7 +19,7 @@ import com.uml.contradiction.engine.model.rightPart.simple.RPInteractions;
 public class CheckMessages extends Criterion {
 	public CheckMessages() {
 		super();
-
+		//////////// ололо проверка комментов
 		Quantifier quantifier0 = new Quantifier();
 		quantifier0.setType(QuantifierType.ALL);
 		quantifier0.setBoundVariable(Variable.i);
