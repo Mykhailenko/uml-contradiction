@@ -70,7 +70,7 @@ public class VerificationResultsPanel extends JPanel implements GUIState {
 		this.tree.setCellRenderer(new ResCellRenderer());
 
 		this.backBut.addActionListener(new ResPanelBackListener());
-
+		backBut.setToolTipText("Back (Ctrl + Enter)");
 		this.diagrams.addListSelectionListener(new FailDiagrListListener());
 
 		// this.description//.setLineWrap(true);
@@ -296,5 +296,7 @@ public class VerificationResultsPanel extends JPanel implements GUIState {
 		StyleConstants.setLeftIndent(heading2Style, 8);
 		StyleConstants.setFirstLineIndent(heading2Style, 0);
 	}
-
+	public JButton getBackBut() {
+		return backBut;
+	}
 }

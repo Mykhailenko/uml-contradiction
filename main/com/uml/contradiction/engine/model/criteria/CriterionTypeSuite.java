@@ -17,8 +17,8 @@ public class CriterionTypeSuite {
 				"Class-Sequence"));
 		res.add(new DisplayedCriterionType(CriterionType.CLASS_STATE,
 				"Class-State"));
-		res.add(new DisplayedCriterionType(CriterionType.SEQUENCE_STATE,
-				"Sequence-State"));
+//		res.add(new DisplayedCriterionType(CriterionType.SEQUENCE_STATE,
+//				"Sequence-State"));
 
 		return res;
 	}

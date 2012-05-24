@@ -7,10 +7,10 @@ import com.uml.contradiction.model.cclass.CClass;
 import com.uml.contradiction.model.cclass.MMethod;
 import com.uml.contradiction.model.sequence.Message;
 
-public class MessageBelongToClass implements Predicate {
+public class MessageVisibility implements Predicate {
 
-	@Override
 	@SuppressWarnings("rawtypes")
+	@Override
 	public boolean predict(List list) throws PredicatException {
 		assert list != null;
 		assert list.size() == 2;
@@ -26,25 +26,50 @@ public class MessageBelongToClass implements Predicate {
 		}
 		Message message = (Message) first;
 		CClass cClass = (CClass) second;
+		MMethod m = null;
 		for (MMethod method : cClass.getMethods()) {
-			if (messageBelongToMethod(message, method)) {
-				return true;
+			if (MessageBelongToClass.messageBelongToMethod(message, method)) {
+				m = method; 
+				break;
 			}
 		}
-		return false;
+		if(m != null){
+			switch (m.getVisibility()) {
+			case PUBLIC:
+				return true;
+			case PACKAGE:
+				return isBothClassesInSamePackege(message.getSource().getcClass(), cClass);
+			case PRIVATE:
+			case PROTECTED:
+			default:
+				return false;
+			}
+		}else{
+			return false;
+		}
 	}
 
-	public  static boolean messageBelongToMethod(Message message, MMethod method) {
-		if (message.getMethodName().equals(method.getName())
-				&& message.getParamCount() == method.getParameters().size()) {
-			return true;
-		} else {
+	private boolean isBothClassesInSamePackege(CClass cl0, CClass cl1) {
+		if(cl0 != null && cl1 != null){
+			if(cl0 instanceof CClass &&
+					cl1 instanceof CClass){
+				if(cl0.getPackageName() != null &&
+						cl1.getPackageName() != null){
+					return cl0.getPackageName().equals(cl1.getPackageName());
+				}else{
+					return false;
+				}
+			}else{
+				return false;
+			}
+		}else{
 			return false;
 		}
 	}
 
 	@Override
 	public String getFailDescription() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

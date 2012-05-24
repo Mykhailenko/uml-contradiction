@@ -64,10 +64,13 @@ public class HotKeyBinder {
 				sverify);
 		component.getActionMap().put(sverify, new AbstractAction() {
 			private static final long serialVersionUID = 3316040008531146448L;
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				PanelsController.contradictionsPanel.getVerify().doClick();
+				if(Client.getClient().isVerified()){
+					PanelsController.resultsPanel.getBackBut().doClick();
+				}else{
+					PanelsController.contradictionsPanel.getVerify().doClick();
+				}
 			}
 		});
 

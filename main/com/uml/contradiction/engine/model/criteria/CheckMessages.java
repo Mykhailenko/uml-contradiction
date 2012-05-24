@@ -9,10 +9,7 @@ import com.uml.contradiction.engine.model.mapping.ClassOfLifeLine;
 import com.uml.contradiction.engine.model.mapping.LifeLineFromInteraction;
 import com.uml.contradiction.engine.model.mapping.MessagesToLifeLine;
 import com.uml.contradiction.engine.model.predicate.BoundedPredicate;
-import com.uml.contradiction.engine.model.predicate.Brackets;
 import com.uml.contradiction.engine.model.predicate.MessageBelongToClass;
-import com.uml.contradiction.engine.model.predicate.TransitionBelongToClass;
-import com.uml.contradiction.engine.model.predicate.Brackets.OperationType;
 import com.uml.contradiction.engine.model.rightPart.ComplexRightPart;
 import com.uml.contradiction.engine.model.rightPart.simple.RPInteractions;
 
@@ -54,26 +51,14 @@ public class CheckMessages extends Criterion {
 		quantifier3.setRightPart(rightPart2);
 		getQuantifiers().add(quantifier3);
 
-		Brackets brackets = new Brackets();
-		brackets.setType(OperationType.OR);
+		BoundedPredicate boundedPredicate = new BoundedPredicate();
+		boundedPredicate.setPredicate(new MessageBelongToClass());
+		boundedPredicate.getPermittedNullVars().add(Variable.m);
+		boundedPredicate.getPermittedNullVars().add(Variable.c);
+		boundedPredicate.getBoundVariable().add(Variable.m);
+		boundedPredicate.getBoundVariable().add(Variable.c);
+		setFormula(boundedPredicate);
 		
-		BoundedPredicate boundedPredicate0 = new BoundedPredicate();
-		boundedPredicate0.getBoundVariable().add(Variable.l);
-		boundedPredicate0.getBoundVariable().add(Variable.c);
-		boundedPredicate0.getPermittedNullVars().add(Variable.l);
-		boundedPredicate0.getPermittedNullVars().add(Variable.c);
-		boundedPredicate0.setPredicate(new TransitionBelongToClass());
-		brackets.getFormulas().add(boundedPredicate0);
-		
-		BoundedPredicate boundedPredicate1 = new BoundedPredicate();
-		boundedPredicate1.setPredicate(new MessageBelongToClass());
-		boundedPredicate1.getPermittedNullVars().add(Variable.m);
-		boundedPredicate1.getPermittedNullVars().add(Variable.c);
-		boundedPredicate1.getBoundVariable().add(Variable.m);
-		boundedPredicate1.getBoundVariable().add(Variable.c);
-		brackets.getFormulas().add(boundedPredicate1);
-		
-		setFormula(brackets);
 	}
 
 	@Override
