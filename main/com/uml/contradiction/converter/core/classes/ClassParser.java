@@ -187,6 +187,9 @@ public class ClassParser extends CoreParserImpl implements CoreParser {
 		
 		//изменение направления агрегации
 		changeDirrectionAggregation();
+		
+		//изменение ссылки на класс на его название, в типе аргументов метода
+		classParsHelper.changeNameTypeOfMethod();
 
 		// запись значений в статические коллекции
 		addToClassGraf(rootPackage);

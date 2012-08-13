@@ -239,7 +239,7 @@ public class ClassParsHelper {
 			if (typeVal != null) {
 				String[] arr = typeVal.split("_");
 				if (arr.length != 2) {
-					LOGGER.error("Trouble with attribute type " + "in tag  ");
+					LOGGER.debug("Trouble with attribute type " + "in tag  ");
 				}
 				if (arr != null) {
 					if (arr[0].equals("int")) {
@@ -250,8 +250,11 @@ public class ClassParsHelper {
 						} else {
 							if (arr[0].equals("string")) {
 								type = UMLType.STRING;
-							} else {
-								type = new UserType(arr[0]);
+							} else {								
+								if(arr.length >= 2 && arr[1].equals("id")){
+									type = new UserType(arr[0]);
+								}else
+									type = new UserType(typeVal);
 							}
 						}
 					}
@@ -319,11 +322,14 @@ public class ClassParsHelper {
 							if (typeVal != null) {
 								String[] arr = typeVal.split("_");
 								if (arr.length != 2) {
-									LOGGER.error("Trouble with parameter type "
+									LOGGER.debug("Trouble with parameter type "
 											+ "in tag  ");
 								}
 								if (arr != null) {
-									meth_1.setReturnResult(arr[0]);
+									if(arr.length >= 2 && arr[1].equals("id")){
+										meth_1.setReturnResult(arr[0]);
+									}else
+										meth_1.setReturnResult(typeVal);
 								}
 							}
 						}
@@ -456,5 +462,29 @@ public class ClassParsHelper {
 			multipl = null;
 		}
 		return multipl;
+	}
+	
+	//the return (argument) type of method can reference on user class type
+	//change id-reference on name of class
+	public void changeNameTypeOfMethod() {
+		for(String key : methodsWithId.keySet()){
+			MMethod curMeth = methodsWithId.get(key);
+			for(Parameter param : curMeth.getParameters()){
+				if(param.getType().getClass() == UserType.class){
+					CClass refCclass = classesWithId.get(param.getType().getName());
+					if(refCclass != null){
+						System.out.println("Faaaaaaaaaaaaa " + refCclass.getName());
+						((UserType)param.getType()).setName(refCclass.getName());
+					}
+				}
+			}
+			
+			String retRes = curMeth.getReturnResult();
+			if(retRes != null){
+				CClass refCclass = classesWithId.get(retRes);
+				if(refCclass != null)
+					curMeth.setReturnResult(refCclass.getName());
+			}
+		}
 	}
 }
