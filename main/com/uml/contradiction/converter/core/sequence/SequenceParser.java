@@ -19,16 +19,19 @@ import com.uml.contradiction.model.sequence.LifeLine;
 import com.uml.contradiction.model.sequence.Message;
 import com.uml.contradiction.model.sequence.SequenceGraph;
 
+//предназначен для преобразованием элементов xmi документа, 
+//относящихся к uml диаграмме последовательностей, в соотвествующие объекты модели, реализованной на Java
 public class SequenceParser extends CoreParserImpl implements CoreParser {
 	private static final Logger LOGGER = Logger.getRootLogger();
 
+	//храним отображения: значение - элемент модели, ключ - его идентификатор в xmi документе
 	private Map<String, Interaction> interactionsFrWithId = new LinkedHashMap<String, Interaction>();
 	private Map<String, Interaction> interactsSequenceWithId = new LinkedHashMap<String, Interaction>();
 	private Map<String, LifeLine> lifelinesWithId = new LinkedHashMap<String, LifeLine>();
 	private Map<String, LifeLine> fragmentsWithLifeln = new LinkedHashMap<String, LifeLine>();
 	private Map<String, Message> messagesWithId = new LinkedHashMap<String, Message>();
 
-	SequenceParsHelper sequenceParsHelper; // содержит помощника
+	SequenceParsHelper sequenceParsHelper; // содержит помощника для решения подзадач
 
 	public SequenceParser() {
 		super();
@@ -52,11 +55,6 @@ public class SequenceParser extends CoreParserImpl implements CoreParser {
 				@SuppressWarnings("unused")
 				Interaction oneOfmainInter = parseFrame(curSequenceEl);
 			}
-
-			// рассматриваем часть где храняться большинство диаграмм
-			// последовательностей
-			// if(curPackEl.getAttribute("xmi:type").equals("uml:Collaboration")){
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -92,21 +90,15 @@ public class SequenceParser extends CoreParserImpl implements CoreParser {
 
 					// проверка что будем рассматривать только непосредственных
 					// потомков
-					if (lifelineEl.getParentNode() == frameEl) { // проверка что
-																	// точно
-																	// Lifeline
+					if (lifelineEl.getParentNode() == frameEl) { 
+						// проверка что точно Lifeline
 						if (lifelineEl.getAttribute("xmi:type").equals(
 								"uml:Lifeline")) {
 							// получаем LifeLine
-							// LifeLine curLifeLine =
-							// sequenceParsHelper.parseLifeline(lifelineEl);
-							// lifelinesWithId.put(lifelineEl.getAttribute("xmi:id"),
-							// curLifeLine);
-
 							LifeLine curLifeLine = lifelinesWithId
 									.get(lifelineEl.getAttribute("xmi:id"));
+							
 							if (curLifeLine != null) {
-
 								List<LifeLine> lifnes = curInteraction
 										.getLifeLines();
 								if (lifnes == null) {
@@ -205,8 +197,6 @@ public class SequenceParser extends CoreParserImpl implements CoreParser {
 		sequenceParsHelper.checkedConnections();
 
 		Collection<Interaction> allFrames = interactionsFrWithId.values();
-//		Collection<Interaction> sequences = interactsSequenceWithId.values();
-
 		List<Interaction> interList = SequenceGraph.getInteractions();
 
 		for (Interaction intr : allFrames) {

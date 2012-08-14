@@ -63,7 +63,7 @@ public class TestShell {
 
 		// File file = new File("main\\Test xmi.uml");
 		 
-		 File file = new File("E:\\Programming\\Work_spaces\\workspace3_java\\xmi2.xmi");
+		 File file = new File("E:\\Programming\\Work_spaces\\vpworkspace3\\Support\\xmi2.xmi");
 
 		XMIConverter.reset();
 		XMIConverter.setFile(file);
